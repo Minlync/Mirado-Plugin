@@ -1,0 +1,27 @@
+{
+  "name": "mirador3-plugin-example1",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.13",
+    "@mui/material": "^5.15.13",
+    "@reduxjs/toolkit": "^2.2.2",
+    "mirador": "^3.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^9.1.0"
+  },
+  "devDependencies": {
+    "parcel": "next",
+    "parcel-bundler": "^1.12.5"
+  },
+  "scripts": {
+    "start": "parcel serve ./index.html",
+    "build": "parcel build ./index.html",
+    "postinstall": "sed -i 's/fetch(/fetch.bind(window)(/g' ./node_modules/mirador/dist/es/src/state/sagas/iiif.js"
+  },
+  "author": "Johannes Baiter <johannes.baiter@gmail.com>",
+  "license": "ISC"
+}
