@@ -1,12 +1,17 @@
 import Mirador from 'mirador'
 import MyPlugin from './MyPlugin'
+import MyBranding from './MyBranding'
 
 const myPlugin = {
     component: MyPlugin,
     target: 'WindowTopBarPluginArea',
     mode: 'add'
 };
-
+const brandingPlugin = {
+    component: MyBranding,
+    target: 'Branding',
+    mode: 'wrap'
+};
 const miradorCfg = {
     id: 'mirador',
     windows: [{
@@ -25,4 +30,4 @@ const miradorCfg = {
     },
 };
 
-Mirador.viewer(miradorCfg, [myPlugin]);
+Mirador.viewer(miradorCfg, [brandingPlugin, myPlugin]);

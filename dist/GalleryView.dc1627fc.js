@@ -1150,6 +1150,6 @@ GalleryViewThumbnail.defaultProps = {
     selected: false
 };
 
-},{"react":"21dqq","@mui/material/styles":"1lzai","@mui/material/Chip":"6k8Vq","@mui/icons-material/CommentSharp":"lbSVT","@mui/icons-material/SearchSharp":"lfiHo","react-intersection-observer":"hOIJm","../containers/IIIFThumbnail":"5lvUl","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["duN1q","1xC6H"], null, "parcelRequirec023")
+},{"react":"21dqq","@mui/material/styles":"1lzai","@mui/material/Chip":"6k8Vq","@mui/icons-material/CommentSharp":"lbSVT","@mui/icons-material/SearchSharp":"lfiHo","react-intersection-observer":"hOIJm","../containers/IIIFThumbnail":"5lvUl","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["duN1q","1xC6H"], null, "parcelRequire5eb7")
 
 //# sourceMappingURL=GalleryView.dc1627fc.js.map

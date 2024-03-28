@@ -21002,6 +21002,6 @@ var OSDReferences = {
     }
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["9Ij5p","1xC6H"], null, "parcelRequirec023")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["9Ij5p","1xC6H"], null, "parcelRequire5eb7")
 
 //# sourceMappingURL=OpenSeadragonViewer.570eae9d.js.map

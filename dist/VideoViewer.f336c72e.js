@@ -806,6 +806,6 @@ VideoViewer.defaultProps = {
     videoResources: []
 };
 
-},{"react":"21dqq","@mui/material/styles":"1lzai","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["1D6Od","1xC6H"], null, "parcelRequirec023")
+},{"react":"21dqq","@mui/material/styles":"1lzai","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["1D6Od","1xC6H"], null, "parcelRequire5eb7")
 
 //# sourceMappingURL=VideoViewer.f336c72e.js.map

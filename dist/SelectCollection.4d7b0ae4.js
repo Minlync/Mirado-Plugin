@@ -803,6 +803,6 @@ var _default = exports.default = (0, _createSvgIcon.default)(/*#__PURE__*/ (0, _
     d: "M3 13h2v-2H3zm0 4h2v-2H3zm0-8h2V7H3zm4 4h14v-2H7zm0 4h14v-2H7zM7 7v2h14V7zm-4 6h2v-2H3zm0 4h2v-2H3zm0-8h2V7H3zm4 4h14v-2H7zm0 4h14v-2H7zM7 7v2h14V7z"
 }), "ListSharp");
 
-},{"7d9c7d9743c85b94":"7XM86","6c2603496e9446a8":"lVV9C","e421f9419f88e498":"6AEwr"}]},["aXZ7Z","1xC6H"], null, "parcelRequirec023")
+},{"7d9c7d9743c85b94":"7XM86","6c2603496e9446a8":"lVV9C","e421f9419f88e498":"6AEwr"}]},["aXZ7Z","1xC6H"], null, "parcelRequire5eb7")
 
 //# sourceMappingURL=SelectCollection.4d7b0ae4.js.map
