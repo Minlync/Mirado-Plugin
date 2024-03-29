@@ -1,6 +1,7 @@
 import Mirador from 'mirador'
 import MyPlugin from './MyPlugin'
 import MyBranding from './MyBranding'
+import CustomSidePanel from 'mirador-custom-panel/es/components/index';
 
 const myPlugin = {
     component: MyPlugin,
@@ -30,4 +31,5 @@ const miradorCfg = {
     },
 };
 
-Mirador.viewer(miradorCfg, [brandingPlugin, myPlugin]);
+//Mirador.viewer(miradorCfg, [brandingPlugin, myPlugin]);
+Mirador.viewer(miradorCfg, [CustomSidePanel]);

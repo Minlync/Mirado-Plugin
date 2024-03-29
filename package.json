@@ -9,9 +9,10 @@
     "@material-ui/core": "^4.12.4",
     "@mui/icons-material": "^5.15.14",
     "@mui/material": "^5.15.14",
-    "mirador": "^4.0.0-alpha.1",
+    "mirador": "^4.0.0-alpha.2",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "mirador-custom-panel": "furugoorin/mirador-custom-side-panel#master"
   },
   "devDependencies": {
     "parcel": "^2.12.0",
@@ -21,8 +22,7 @@
   },
   "scripts": {
     "start": "parcel serve ./index.html",
-    "build": "parcel build ./index.html",
-    "postinstall": "sed -i 's/fetch(/fetch.bind(window)(/g' ./node_modules/mirador/dist/es/src/state/sagas/iiif.js"
+    "build": "parcel build ./index.html"
   },
   "author": "Johannes Baiter <johannes.baiter@gmail.com>",
   "license": "ISC"
