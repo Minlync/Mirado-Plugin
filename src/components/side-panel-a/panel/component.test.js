@@ -2,7 +2,7 @@ import expect from 'expect';
 import React from 'react';
 import {render, unmountComponentAtNode} from 'react-dom';
 
-import CustomSidePanel from '../panel/component';
+import CustomSidePanel from './Customsidepannel';
 
 describe('Component', () => {
   let node;

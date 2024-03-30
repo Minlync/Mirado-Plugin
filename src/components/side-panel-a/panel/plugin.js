@@ -1,4 +1,4 @@
-import CustomSidePanel from './component';
+import CustomSidePanel from './Customsidepannel';
 
 export default {
   component: CustomSidePanel,
