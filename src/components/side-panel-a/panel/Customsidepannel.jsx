@@ -1,6 +1,7 @@
 import React from 'react';
 import CompanionWindow from 'mirador/dist/es/src/containers/CompanionWindow';
 import PropTypes from 'prop-types';
+import Selector from '../../Selector';
 
 export default function CustomSidePanel(props) {
     const { id, windowId, title } = props;
@@ -12,6 +13,7 @@ export default function CustomSidePanel(props) {
             id={ id }
         >
             <h1>Story Behind this patinting</h1>
+            <Selector />
             <p>Artist:Vincent Van Gogh</p>
             <p>Date:1888 </p>
             <p>Medium:Oil On Canvas </p>

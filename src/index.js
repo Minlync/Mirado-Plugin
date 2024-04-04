@@ -1,14 +1,11 @@
 import Mirador from 'mirador'
-import MyPlugin from './MyPlugin'
-import MyBranding from './MyBranding'
-//import CustomSidePanel from './components/side-panel-a/panel/component';
-
-//import CustomSidePanel from 'mirador-custom-panel/es/components/index';
-import CustomSidePanel from './components/sidebar'; // check the path and made it import from local file than repository!
+import Top from './plugin/Top'
+import MyBranding from './plugin/MyBranding'
+import CustomSidePanel from './components/sidebar';
 
 
 const myPlugin = {
-    component: MyPlugin,
+    component: Top,
     target: 'WindowTopBarPluginArea',
     mode: 'add'
 };
@@ -18,11 +15,10 @@ const brandingPlugin = {
     mode: 'wrap'
 };
 
-//new add//
 const customSidePanelPlugin = {
     component: CustomSidePanel,
     companionWindowKey: 'CustomKey1',
-    target: 'WindowSideBarButtons', // assuming this is where you want to add it
+    target: 'WindowSideBarButtons', 
     mode: 'add',
   };
 
