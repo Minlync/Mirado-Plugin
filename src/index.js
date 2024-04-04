@@ -1,47 +1,37 @@
-import Mirador from 'mirador'
-import Top from './plugin/Top'
-import MyBranding from './plugin/MyBranding'
+import Mirador from 'mirador';
 import CustomSidePanel from './components/sidebar';
+import { defaultConfig } from './viewerConfig';
 
+const uuid = 'mirador-app';
 
-const myPlugin = {
-    component: Top,
-    target: 'WindowTopBarPluginArea',
-    mode: 'add'
-};
-const brandingPlugin = {
-    component: MyBranding,
-    target: 'Branding',
-    mode: 'wrap'
-};
+const elem = document.getElementById(uuid);
 
-const customSidePanelPlugin = {
-    component: CustomSidePanel,
-    companionWindowKey: 'CustomKey1',
-    target: 'WindowSideBarButtons', 
-    mode: 'add',
-  };
+const {
+  endpoint,
+  identifier,
+  type,
+  language,
+  sequence,
+} = elem.dataset;
 
+const manifestId = `${endpoint}/api/presentation/${type}/${identifier}/manifest.json`;
 
+const config = { 
+  ...defaultConfig, 
+  ...{
+    id: uuid,
+    language,
+    windows: [
+      {
+        manifestId: manifestId,
+        imageToolsEnabled: true,
+        imageToolsOpen: false,
+        canvasIndex: Number(sequence) - 1,
+        view: 'single',
+        hideWindowTitle: (type === 'photos') ? true: false , // We don't want to show the window title for photos (not metadata to display).
+      },
+    ],
+  },
+}
 
-const miradorCfg = {
-    id: 'mirador',
-    windows: [{
-        manifestId: 'https://iiif.harvardartmuseums.org/manifests/object/299843',
-        canvasId: 'https://iiif.harvardartmuseums.org/manifests/object/299843/canvas/canvas-47174892',
-        thumbnailNavigationPosition: 'far-bottom',
-        allowClose: false,
-    }],
-    window: {
-        allowWindowSideBar: true,
-        //allowWindowSideBar: false,
-        sideBarPanel: '',
-        sideBarOpen: true,
-    },
-    workspace: {
-        type: 'not-mosaic-or-elastic',
-    },
-};
-
-//Mirador.viewer(miradorCfg, [brandingPlugin, myPlugin]);
-Mirador.viewer(miradorCfg, [CustomSidePanel, brandingPlugin, myPlugin]);
+Mirador.viewer(config, [ CustomSidePanel ]);

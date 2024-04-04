@@ -25,6 +25,6 @@
     "start": "parcel serve ./index.html",
     "build": "parcel build ./index.html"
   },
-  "author": "Johannes Baiter <johannes.baiter@gmail.com>",
+  "author": "Evelyn Chen <mc9435@nyu.edu>",
   "license": "ISC"
 }

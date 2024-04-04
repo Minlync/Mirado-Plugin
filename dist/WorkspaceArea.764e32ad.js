@@ -1023,255 +1023,2117 @@ ErrorDialog.defaultProps = {
     }
 };
 
-},{"lodash/isUndefined":"aaheT","react":"21dqq","@mui/material/Dialog":"ftK48","@mui/material/DialogContent":"gZO7I","@mui/material/DialogTitle":"642rE","@mui/material":"40376","@mui/material/Button":"73csw","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"16sup":[function(require,module,exports) {
+},{"lodash/isUndefined":"aaheT","react":"21dqq","@mui/material/Dialog":"ftK48","@mui/material/DialogContent":"gZO7I","@mui/material/DialogTitle":"642rE","@mui/material":"40376","@mui/material/Button":"73csw","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ftK48":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-var _redux = require("redux");
-var _reactI18Next = require("react-i18next");
-var _withPlugins = require("../extend/withPlugins");
-var _workspaceControlPanel = require("../components/WorkspaceControlPanel");
-var enhance = (0, _redux.compose)((0, _reactI18Next.withTranslation)(), (0, _withPlugins.withPlugins)("WorkspaceControlPanel"));
-exports.default = enhance((0, _workspaceControlPanel.WorkspaceControlPanel));
+parcelHelpers.export(exports, "default", ()=>(0, _dialogDefault.default));
+parcelHelpers.export(exports, "dialogClasses", ()=>(0, _dialogClassesDefault.default));
+var _dialog = require("./Dialog");
+var _dialogDefault = parcelHelpers.interopDefault(_dialog);
+var _dialogClasses = require("./dialogClasses");
+var _dialogClassesDefault = parcelHelpers.interopDefault(_dialogClasses);
+parcelHelpers.exportAll(_dialogClasses, exports);
+"use client";
 
-},{"redux":"anWnS","react-i18next":"faThV","../extend/withPlugins":"8qYrm","../components/WorkspaceControlPanel":"5jNrM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5jNrM":[function(require,module,exports) {
+},{"./Dialog":"20Psa","./dialogClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"20Psa":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "WorkspaceControlPanel", ()=>WorkspaceControlPanel);
+var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
+var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
 var _react = require("react");
-var _styles = require("@mui/material/styles");
-var _classnames = require("classnames");
-var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
-var _appBar = require("@mui/material/AppBar");
-var _appBarDefault = parcelHelpers.interopDefault(_appBar);
-var _toolbar = require("@mui/material/Toolbar");
-var _toolbarDefault = parcelHelpers.interopDefault(_toolbar);
-var _workspaceAddButton = require("../containers/WorkspaceAddButton");
-var _workspaceAddButtonDefault = parcelHelpers.interopDefault(_workspaceAddButton);
-var _workspaceControlPanelButtons = require("../containers/WorkspaceControlPanelButtons");
-var _workspaceControlPanelButtonsDefault = parcelHelpers.interopDefault(_workspaceControlPanelButtons);
-var _branding = require("../containers/Branding");
-var _brandingDefault = parcelHelpers.interopDefault(_branding);
-var _cssNs = require("../config/css-ns");
-var _cssNsDefault = parcelHelpers.interopDefault(_cssNs);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _clsx = require("clsx");
+var _clsxDefault = parcelHelpers.interopDefault(_clsx);
+var _composeClasses = require("@mui/utils/composeClasses");
+var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
+var _useId = require("@mui/utils/useId");
+var _useIdDefault = parcelHelpers.interopDefault(_useId);
+var _capitalize = require("../utils/capitalize");
+var _capitalizeDefault = parcelHelpers.interopDefault(_capitalize);
+var _modal = require("../Modal");
+var _modalDefault = parcelHelpers.interopDefault(_modal);
+var _fade = require("../Fade");
+var _fadeDefault = parcelHelpers.interopDefault(_fade);
+var _paper = require("../Paper");
+var _paperDefault = parcelHelpers.interopDefault(_paper);
+var _useThemeProps = require("../styles/useThemeProps");
+var _useThemePropsDefault = parcelHelpers.interopDefault(_useThemeProps);
+var _styled = require("../styles/styled");
+var _styledDefault = parcelHelpers.interopDefault(_styled);
+var _dialogClasses = require("./dialogClasses");
+var _dialogClassesDefault = parcelHelpers.interopDefault(_dialogClasses);
+var _dialogContext = require("./DialogContext");
+var _dialogContextDefault = parcelHelpers.interopDefault(_dialogContext);
+var _backdrop = require("../Backdrop");
+var _backdropDefault = parcelHelpers.interopDefault(_backdrop);
+var _useTheme = require("../styles/useTheme");
+var _useThemeDefault = parcelHelpers.interopDefault(_useTheme);
 var _jsxRuntime = require("react/jsx-runtime");
-function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) throw new TypeError("Cannot call a class as a function");
-}
-function _defineProperties(target, props) {
-    for(var i = 0; i < props.length; i++){
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true;
-        if ("value" in descriptor) descriptor.writable = true;
-        Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
-    }
-}
-function _createClass(Constructor, protoProps, staticProps) {
-    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) _defineProperties(Constructor, staticProps);
-    Object.defineProperty(Constructor, "prototype", {
-        writable: false
-    });
-    return Constructor;
-}
-function _callSuper(t, o, e) {
-    return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e));
-}
-function _possibleConstructorReturn(self, call) {
-    if (call && (typeof call === "object" || typeof call === "function")) return call;
-    else if (call !== void 0) throw new TypeError("Derived constructors may only return object or undefined");
-    return _assertThisInitialized(self);
-}
-function _assertThisInitialized(self) {
-    if (self === void 0) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    return self;
-}
-function _isNativeReflectConstruct() {
-    try {
-        var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {}));
-    } catch (t) {}
-    return (_isNativeReflectConstruct = function _isNativeReflectConstruct() {
-        return !!t;
-    })();
-}
-function _getPrototypeOf(o) {
-    _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
-        return o.__proto__ || Object.getPrototypeOf(o);
+"use client";
+const _excluded = [
+    "aria-describedby",
+    "aria-labelledby",
+    "BackdropComponent",
+    "BackdropProps",
+    "children",
+    "className",
+    "disableEscapeKeyDown",
+    "fullScreen",
+    "fullWidth",
+    "maxWidth",
+    "onBackdropClick",
+    "onClose",
+    "open",
+    "PaperComponent",
+    "PaperProps",
+    "scroll",
+    "TransitionComponent",
+    "transitionDuration",
+    "TransitionProps"
+];
+const DialogBackdrop = (0, _styledDefault.default)((0, _backdropDefault.default), {
+    name: "MuiDialog",
+    slot: "Backdrop",
+    overrides: (props, styles)=>styles.backdrop
+})({
+    // Improve scrollable dialog support.
+    zIndex: -1
+});
+const useUtilityClasses = (ownerState)=>{
+    const { classes, scroll, maxWidth, fullWidth, fullScreen } = ownerState;
+    const slots = {
+        root: [
+            "root"
+        ],
+        container: [
+            "container",
+            `scroll${(0, _capitalizeDefault.default)(scroll)}`
+        ],
+        paper: [
+            "paper",
+            `paperScroll${(0, _capitalizeDefault.default)(scroll)}`,
+            `paperWidth${(0, _capitalizeDefault.default)(String(maxWidth))}`,
+            fullWidth && "paperFullWidth",
+            fullScreen && "paperFullScreen"
+        ]
     };
-    return _getPrototypeOf(o);
-}
-function _inherits(subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) throw new TypeError("Super expression must either be null or a function");
-    subClass.prototype = Object.create(superClass && superClass.prototype, {
-        constructor: {
-            value: subClass,
-            writable: true,
-            configurable: true
+    return (0, _composeClassesDefault.default)(slots, (0, _dialogClasses.getDialogUtilityClass), classes);
+};
+const DialogRoot = (0, _styledDefault.default)((0, _modalDefault.default), {
+    name: "MuiDialog",
+    slot: "Root",
+    overridesResolver: (props, styles)=>styles.root
+})({
+    "@media print": {
+        // Use !important to override the Modal inline-style.
+        position: "absolute !important"
+    }
+});
+const DialogContainer = (0, _styledDefault.default)("div", {
+    name: "MuiDialog",
+    slot: "Container",
+    overridesResolver: (props, styles)=>{
+        const { ownerState } = props;
+        return [
+            styles.container,
+            styles[`scroll${(0, _capitalizeDefault.default)(ownerState.scroll)}`]
+        ];
+    }
+})(({ ownerState })=>(0, _extendsDefault.default)({
+        height: "100%",
+        "@media print": {
+            height: "auto"
+        },
+        // We disable the focus ring for mouse, touch and keyboard users.
+        outline: 0
+    }, ownerState.scroll === "paper" && {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+    }, ownerState.scroll === "body" && {
+        overflowY: "auto",
+        overflowX: "hidden",
+        textAlign: "center",
+        "&::after": {
+            content: '""',
+            display: "inline-block",
+            verticalAlign: "middle",
+            height: "100%",
+            width: "0"
         }
-    });
-    Object.defineProperty(subClass, "prototype", {
-        writable: false
-    });
-    if (superClass) _setPrototypeOf(subClass, superClass);
-}
-function _setPrototypeOf(o, p) {
-    _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
-        o.__proto__ = p;
-        return o;
-    };
-    return _setPrototypeOf(o, p);
-}
-function ownKeys(e, r) {
-    var t = Object.keys(e);
-    if (Object.getOwnPropertySymbols) {
-        var o = Object.getOwnPropertySymbols(e);
-        r && (o = o.filter(function(r) {
-            return Object.getOwnPropertyDescriptor(e, r).enumerable;
-        })), t.push.apply(t, o);
+    }));
+const DialogPaper = (0, _styledDefault.default)((0, _paperDefault.default), {
+    name: "MuiDialog",
+    slot: "Paper",
+    overridesResolver: (props, styles)=>{
+        const { ownerState } = props;
+        return [
+            styles.paper,
+            styles[`scrollPaper${(0, _capitalizeDefault.default)(ownerState.scroll)}`],
+            styles[`paperWidth${(0, _capitalizeDefault.default)(String(ownerState.maxWidth))}`],
+            ownerState.fullWidth && styles.paperFullWidth,
+            ownerState.fullScreen && styles.paperFullScreen
+        ];
     }
-    return t;
-}
-function _objectSpread(e) {
-    for(var r = 1; r < arguments.length; r++){
-        var t = null != arguments[r] ? arguments[r] : {};
-        r % 2 ? ownKeys(Object(t), !0).forEach(function(r) {
-            _defineProperty(e, r, t[r]);
-        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r) {
-            Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r));
-        });
-    }
-    return e;
-}
-function _defineProperty(obj, key, value) {
-    key = _toPropertyKey(key);
-    if (key in obj) Object.defineProperty(obj, key, {
-        value: value,
-        enumerable: true,
-        configurable: true,
-        writable: true
-    });
-    else obj[key] = value;
-    return obj;
-}
-function _toPropertyKey(t) {
-    var i = _toPrimitive(t, "string");
-    return "symbol" == typeof i ? i : String(i);
-}
-function _toPrimitive(t, r) {
-    if ("object" != typeof t || !t) return t;
-    var e = t[Symbol.toPrimitive];
-    if (void 0 !== e) {
-        var i = e.call(t, r || "default");
-        if ("object" != typeof i) return i;
-        throw new TypeError("@@toPrimitive must return a primitive value.");
-    }
-    return ("string" === r ? String : Number)(t);
-}
-var Root = (0, _styles.styled)((0, _appBarDefault.default), {
-    name: "WorkspaceControlPanel",
-    slot: "root"
-})(function(_ref) {
-    var ownerState = _ref.ownerState, theme = _ref.theme;
-    return _objectSpread(_defineProperty({
-        display: "flex",
-        height: 64,
-        padding: theme.spacing(1),
-        paddingBottom: 0,
-        position: "relative"
-    }, theme.breakpoints.up("sm"), {
-        height: "auto",
-        width: ownerState.variant === "wide" ? "auto" : 64
-    }), ownerState.variant === "wide" && {
-        width: "auto"
-    });
-});
-var StyledToolbar = (0, _styles.styled)((0, _toolbarDefault.default), {
-    name: "WorkspaceControlPanel",
-    slot: "toolbar"
-})(function(_ref2) {
-    var theme = _ref2.theme;
-    return _defineProperty({
-        display: "flex",
-        flexGrow: 1,
-        justifyContent: "space-between"
-    }, theme.breakpoints.up("sm"), {
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        minHeight: 0
-    });
-});
-var StyledWorkspaceButtons = (0, _styles.styled)("div", {
-    name: "WorkspaceControlPanel",
-    slot: "buttonArea"
-})(function(_ref4) {
-    var theme = _ref4.theme;
-    return _defineProperty({}, theme.breakpoints.up("sm"), {
+})(({ theme, ownerState })=>(0, _extendsDefault.default)({
+        margin: 32,
+        position: "relative",
+        overflowY: "auto",
+        // Fix IE11 issue, to remove at some point.
+        "@media print": {
+            overflowY: "visible",
+            boxShadow: "none"
+        }
+    }, ownerState.scroll === "paper" && {
         display: "flex",
         flexDirection: "column",
-        gap: theme.spacing(2),
-        marginBottom: theme.spacing(1),
-        marginTop: theme.spacing(1)
-    });
-});
-var StyledBranding = (0, _styles.styled)((0, _brandingDefault.default), {
-    name: "WorkspaceControlPanel",
-    slot: "branding"
-})(function(_ref6) {
-    var theme = _ref6.theme;
-    return _defineProperty(_defineProperty({}, theme.breakpoints.up("xs"), {
-        display: "none"
-    }), theme.breakpoints.up("sm"), {
-        display: "flex"
-    });
-});
-var WorkspaceControlPanel = /*#__PURE__*/ function(_Component) {
-    _inherits(WorkspaceControlPanel, _Component);
-    function WorkspaceControlPanel() {
-        _classCallCheck(this, WorkspaceControlPanel);
-        return _callSuper(this, WorkspaceControlPanel, arguments);
-    }
-    _createClass(WorkspaceControlPanel, [
-        {
-            key: "render",
-            value: /**
-     * render
-     * @return {String} - HTML markup for the component
-     */ function render() {
-                var _this$props = this.props, t = _this$props.t, variant = _this$props.variant;
-                return /*#__PURE__*/ (0, _jsxRuntime.jsxs)(Root, {
-                    ownerState: this.props,
-                    className: (0, _classnamesDefault.default)((0, _cssNsDefault.default)("workspace-control-panel")),
-                    color: "default",
-                    enableColorOnDark: true,
-                    position: "absolute",
-                    component: "nav",
-                    "aria-label": t("workspaceNavigation"),
-                    children: [
-                        /*#__PURE__*/ (0, _jsxRuntime.jsxs)(StyledToolbar, {
-                            disableGutters: true,
-                            children: [
-                                /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _workspaceAddButtonDefault.default), {}),
-                                /*#__PURE__*/ (0, _jsxRuntime.jsx)(StyledWorkspaceButtons, {
-                                    children: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _workspaceControlPanelButtonsDefault.default), {})
-                                })
-                            ]
-                        }),
-                        /*#__PURE__*/ (0, _jsxRuntime.jsx)(StyledBranding, {
-                            t: t,
-                            variant: variant
-                        })
-                    ]
-                });
+        maxHeight: "calc(100% - 64px)"
+    }, ownerState.scroll === "body" && {
+        display: "inline-block",
+        verticalAlign: "middle",
+        textAlign: "left" // 'initial' doesn't work on IE11
+    }, !ownerState.maxWidth && {
+        maxWidth: "calc(100% - 64px)"
+    }, ownerState.maxWidth === "xs" && {
+        maxWidth: theme.breakpoints.unit === "px" ? Math.max(theme.breakpoints.values.xs, 444) : `max(${theme.breakpoints.values.xs}${theme.breakpoints.unit}, 444px)`,
+        [`&.${(0, _dialogClassesDefault.default).paperScrollBody}`]: {
+            [theme.breakpoints.down(Math.max(theme.breakpoints.values.xs, 444) + 64)]: {
+                maxWidth: "calc(100% - 64px)"
             }
         }
+    }, ownerState.maxWidth && ownerState.maxWidth !== "xs" && {
+        maxWidth: `${theme.breakpoints.values[ownerState.maxWidth]}${theme.breakpoints.unit}`,
+        [`&.${(0, _dialogClassesDefault.default).paperScrollBody}`]: {
+            [theme.breakpoints.down(theme.breakpoints.values[ownerState.maxWidth] + 64)]: {
+                maxWidth: "calc(100% - 64px)"
+            }
+        }
+    }, ownerState.fullWidth && {
+        width: "calc(100% - 64px)"
+    }, ownerState.fullScreen && {
+        margin: 0,
+        width: "100%",
+        maxWidth: "100%",
+        height: "100%",
+        maxHeight: "none",
+        borderRadius: 0,
+        [`&.${(0, _dialogClassesDefault.default).paperScrollBody}`]: {
+            margin: 0,
+            maxWidth: "100%"
+        }
+    }));
+/**
+ * Dialogs are overlaid modal paper based components with a backdrop.
+ */ const Dialog = /*#__PURE__*/ _react.forwardRef(function Dialog(inProps, ref) {
+    const props = (0, _useThemePropsDefault.default)({
+        props: inProps,
+        name: "MuiDialog"
+    });
+    const theme = (0, _useThemeDefault.default)();
+    const defaultTransitionDuration = {
+        enter: theme.transitions.duration.enteringScreen,
+        exit: theme.transitions.duration.leavingScreen
+    };
+    const { "aria-describedby": ariaDescribedby, "aria-labelledby": ariaLabelledbyProp, BackdropComponent, BackdropProps, children, className, disableEscapeKeyDown = false, fullScreen = false, fullWidth = false, maxWidth = "sm", onBackdropClick, onClose, open, PaperComponent = (0, _paperDefault.default), PaperProps = {}, scroll = "paper", TransitionComponent = (0, _fadeDefault.default), transitionDuration = defaultTransitionDuration, TransitionProps } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
+    const ownerState = (0, _extendsDefault.default)({}, props, {
+        disableEscapeKeyDown,
+        fullScreen,
+        fullWidth,
+        maxWidth,
+        scroll
+    });
+    const classes = useUtilityClasses(ownerState);
+    const backdropClick = _react.useRef();
+    const handleMouseDown = (event)=>{
+        // We don't want to close the dialog when clicking the dialog content.
+        // Make sure the event starts and ends on the same DOM element.
+        backdropClick.current = event.target === event.currentTarget;
+    };
+    const handleBackdropClick = (event)=>{
+        // Ignore the events not coming from the "backdrop".
+        if (!backdropClick.current) return;
+        backdropClick.current = null;
+        if (onBackdropClick) onBackdropClick(event);
+        if (onClose) onClose(event, "backdropClick");
+    };
+    const ariaLabelledby = (0, _useIdDefault.default)(ariaLabelledbyProp);
+    const dialogContextValue = _react.useMemo(()=>{
+        return {
+            titleId: ariaLabelledby
+        };
+    }, [
+        ariaLabelledby
     ]);
-    return WorkspaceControlPanel;
-}((0, _react.Component));
-WorkspaceControlPanel.defaultProps = {
-    variant: "default"
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(DialogRoot, (0, _extendsDefault.default)({
+        className: (0, _clsxDefault.default)(classes.root, className),
+        closeAfterTransition: true,
+        components: {
+            Backdrop: DialogBackdrop
+        },
+        componentsProps: {
+            backdrop: (0, _extendsDefault.default)({
+                transitionDuration,
+                as: BackdropComponent
+            }, BackdropProps)
+        },
+        disableEscapeKeyDown: disableEscapeKeyDown,
+        onClose: onClose,
+        open: open,
+        ref: ref,
+        onClick: handleBackdropClick,
+        ownerState: ownerState
+    }, other, {
+        children: /*#__PURE__*/ (0, _jsxRuntime.jsx)(TransitionComponent, (0, _extendsDefault.default)({
+            appear: true,
+            in: open,
+            timeout: transitionDuration,
+            role: "presentation"
+        }, TransitionProps, {
+            children: /*#__PURE__*/ (0, _jsxRuntime.jsx)(DialogContainer, {
+                className: (0, _clsxDefault.default)(classes.container),
+                onMouseDown: handleMouseDown,
+                ownerState: ownerState,
+                children: /*#__PURE__*/ (0, _jsxRuntime.jsx)(DialogPaper, (0, _extendsDefault.default)({
+                    as: PaperComponent,
+                    elevation: 24,
+                    role: "dialog",
+                    "aria-describedby": ariaDescribedby,
+                    "aria-labelledby": ariaLabelledby
+                }, PaperProps, {
+                    className: (0, _clsxDefault.default)(classes.paper, PaperProps.className),
+                    ownerState: ownerState,
+                    children: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _dialogContextDefault.default).Provider, {
+                        value: dialogContextValue,
+                        children: children
+                    })
+                }))
+            })
+        }))
+    }));
+});
+Dialog.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * The id(s) of the element(s) that describe the dialog.
+   */ "aria-describedby": (0, _propTypesDefault.default).string,
+    /**
+   * The id(s) of the element(s) that label the dialog.
+   */ "aria-labelledby": (0, _propTypesDefault.default).string,
+    /**
+   * A backdrop component. This prop enables custom backdrop rendering.
+   * @deprecated Use `slots.backdrop` instead. While this prop currently works, it will be removed in the next major version.
+   * Use the `slots.backdrop` prop to make your application ready for the next version of Material UI.
+   * @default styled(Backdrop, {
+   *   name: 'MuiModal',
+   *   slot: 'Backdrop',
+   *   overridesResolver: (props, styles) => {
+   *     return styles.backdrop;
+   *   },
+   * })({
+   *   zIndex: -1,
+   * })
+   */ BackdropComponent: (0, _propTypesDefault.default).elementType,
+    /**
+   * @ignore
+   */ BackdropProps: (0, _propTypesDefault.default).object,
+    /**
+   * Dialog children, usually the included sub-components.
+   */ children: (0, _propTypesDefault.default).node,
+    /**
+   * Override or extend the styles applied to the component.
+   */ classes: (0, _propTypesDefault.default).object,
+    /**
+   * @ignore
+   */ className: (0, _propTypesDefault.default).string,
+    /**
+   * If `true`, hitting escape will not fire the `onClose` callback.
+   * @default false
+   */ disableEscapeKeyDown: (0, _propTypesDefault.default).bool,
+    /**
+   * If `true`, the dialog is full-screen.
+   * @default false
+   */ fullScreen: (0, _propTypesDefault.default).bool,
+    /**
+   * If `true`, the dialog stretches to `maxWidth`.
+   *
+   * Notice that the dialog width grow is limited by the default margin.
+   * @default false
+   */ fullWidth: (0, _propTypesDefault.default).bool,
+    /**
+   * Determine the max-width of the dialog.
+   * The dialog width grows with the size of the screen.
+   * Set to `false` to disable `maxWidth`.
+   * @default 'sm'
+   */ maxWidth: (0, _propTypesDefault.default /* @typescript-to-proptypes-ignore */ ).oneOfType([
+        (0, _propTypesDefault.default).oneOf([
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+            false
+        ]),
+        (0, _propTypesDefault.default).string
+    ]),
+    /**
+   * Callback fired when the backdrop is clicked.
+   * @deprecated Use the `onClose` prop with the `reason` argument to handle the `backdropClick` events.
+   */ onBackdropClick: (0, _propTypesDefault.default).func,
+    /**
+   * Callback fired when the component requests to be closed.
+   *
+   * @param {object} event The event source of the callback.
+   * @param {string} reason Can be: `"escapeKeyDown"`, `"backdropClick"`.
+   */ onClose: (0, _propTypesDefault.default).func,
+    /**
+   * If `true`, the component is shown.
+   */ open: (0, _propTypesDefault.default).bool.isRequired,
+    /**
+   * The component used to render the body of the dialog.
+   * @default Paper
+   */ PaperComponent: (0, _propTypesDefault.default).elementType,
+    /**
+   * Props applied to the [`Paper`](/material-ui/api/paper/) element.
+   * @default {}
+   */ PaperProps: (0, _propTypesDefault.default).object,
+    /**
+   * Determine the container for scrolling the dialog.
+   * @default 'paper'
+   */ scroll: (0, _propTypesDefault.default).oneOf([
+        "body",
+        "paper"
+    ]),
+    /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */ sx: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object,
+            (0, _propTypesDefault.default).bool
+        ])),
+        (0, _propTypesDefault.default).func,
+        (0, _propTypesDefault.default).object
+    ]),
+    /**
+   * The component used for the transition.
+   * [Follow this guide](/material-ui/transitions/#transitioncomponent-prop) to learn more about the requirements for this component.
+   * @default Fade
+   */ TransitionComponent: (0, _propTypesDefault.default).elementType,
+    /**
+   * The duration for the transition, in milliseconds.
+   * You may specify a single timeout for all transitions, or individually with an object.
+   * @default {
+   *   enter: theme.transitions.duration.enteringScreen,
+   *   exit: theme.transitions.duration.leavingScreen,
+   * }
+   */ transitionDuration: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).shape({
+            appear: (0, _propTypesDefault.default).number,
+            enter: (0, _propTypesDefault.default).number,
+            exit: (0, _propTypesDefault.default).number
+        })
+    ]),
+    /**
+   * Props applied to the transition element.
+   * By default, the element is based on this [`Transition`](https://reactcommunity.org/react-transition-group/transition/) component.
+   */ TransitionProps: (0, _propTypesDefault.default).object
 };
+exports.default = Dialog;
 
-},{"react":"21dqq","@mui/material/styles":"1lzai","classnames":"jocGM","@mui/material/AppBar":"c3vaq","@mui/material/Toolbar":"h8rSE","../containers/WorkspaceAddButton":"iqWQe","../containers/WorkspaceControlPanelButtons":"dVM27","../containers/Branding":"drvqa","../config/css-ns":"7FzFf","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"c3vaq":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"G7PIs","@mui/utils/composeClasses":"4kKno","@mui/utils/useId":"fXm4I","../utils/capitalize":"lwNtZ","../Modal":"lSUh1","../Fade":"eB1a4","../Paper":"6IiTP","../styles/useThemeProps":"dewuS","../styles/styled":"32xTg","./dialogClasses":"fJvp4","./DialogContext":"9xRZm","../Backdrop":"23PLD","../styles/useTheme":"5nWMX","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fJvp4":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getDialogUtilityClass", ()=>getDialogUtilityClass);
+var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
+var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
+var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
+var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
+function getDialogUtilityClass(slot) {
+    return (0, _generateUtilityClassDefault.default)("MuiDialog", slot);
+}
+const dialogClasses = (0, _generateUtilityClassesDefault.default)("MuiDialog", [
+    "root",
+    "scrollPaper",
+    "scrollBody",
+    "container",
+    "paper",
+    "paperScrollPaper",
+    "paperScrollBody",
+    "paperWidthFalse",
+    "paperWidthXs",
+    "paperWidthSm",
+    "paperWidthMd",
+    "paperWidthLg",
+    "paperWidthXl",
+    "paperFullWidth",
+    "paperFullScreen"
+]);
+exports.default = dialogClasses;
+
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9xRZm":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+const DialogContext = /*#__PURE__*/ _react.createContext({});
+DialogContext.displayName = "DialogContext";
+exports.default = DialogContext;
+
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gZO7I":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _dialogContentDefault.default));
+parcelHelpers.export(exports, "dialogContentClasses", ()=>(0, _dialogContentClassesDefault.default));
+var _dialogContent = require("./DialogContent");
+var _dialogContentDefault = parcelHelpers.interopDefault(_dialogContent);
+var _dialogContentClasses = require("./dialogContentClasses");
+var _dialogContentClassesDefault = parcelHelpers.interopDefault(_dialogContentClasses);
+parcelHelpers.exportAll(_dialogContentClasses, exports);
+"use client";
+
+},{"./DialogContent":"gZreI","./dialogContentClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gZreI":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
+var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+var _react = require("react");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _clsx = require("clsx");
+var _clsxDefault = parcelHelpers.interopDefault(_clsx);
+var _composeClasses = require("@mui/utils/composeClasses");
+var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
+var _styled = require("../styles/styled");
+var _styledDefault = parcelHelpers.interopDefault(_styled);
+var _useThemeProps = require("../styles/useThemeProps");
+var _useThemePropsDefault = parcelHelpers.interopDefault(_useThemeProps);
+var _dialogContentClasses = require("./dialogContentClasses");
+var _dialogTitleClasses = require("../DialogTitle/dialogTitleClasses");
+var _dialogTitleClassesDefault = parcelHelpers.interopDefault(_dialogTitleClasses);
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const _excluded = [
+    "className",
+    "dividers"
+];
+const useUtilityClasses = (ownerState)=>{
+    const { classes, dividers } = ownerState;
+    const slots = {
+        root: [
+            "root",
+            dividers && "dividers"
+        ]
+    };
+    return (0, _composeClassesDefault.default)(slots, (0, _dialogContentClasses.getDialogContentUtilityClass), classes);
+};
+const DialogContentRoot = (0, _styledDefault.default)("div", {
+    name: "MuiDialogContent",
+    slot: "Root",
+    overridesResolver: (props, styles)=>{
+        const { ownerState } = props;
+        return [
+            styles.root,
+            ownerState.dividers && styles.dividers
+        ];
+    }
+})(({ theme, ownerState })=>(0, _extendsDefault.default)({
+        flex: "1 1 auto",
+        // Add iOS momentum scrolling for iOS < 13.0
+        WebkitOverflowScrolling: "touch",
+        overflowY: "auto",
+        padding: "20px 24px"
+    }, ownerState.dividers ? {
+        padding: "16px 24px",
+        borderTop: `1px solid ${(theme.vars || theme).palette.divider}`,
+        borderBottom: `1px solid ${(theme.vars || theme).palette.divider}`
+    } : {
+        [`.${(0, _dialogTitleClassesDefault.default).root} + &`]: {
+            paddingTop: 0
+        }
+    }));
+const DialogContent = /*#__PURE__*/ _react.forwardRef(function DialogContent(inProps, ref) {
+    const props = (0, _useThemePropsDefault.default)({
+        props: inProps,
+        name: "MuiDialogContent"
+    });
+    const { className, dividers = false } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
+    const ownerState = (0, _extendsDefault.default)({}, props, {
+        dividers
+    });
+    const classes = useUtilityClasses(ownerState);
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(DialogContentRoot, (0, _extendsDefault.default)({
+        className: (0, _clsxDefault.default)(classes.root, className),
+        ownerState: ownerState,
+        ref: ref
+    }, other));
+});
+DialogContent.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * The content of the component.
+   */ children: (0, _propTypesDefault.default).node,
+    /**
+   * Override or extend the styles applied to the component.
+   */ classes: (0, _propTypesDefault.default).object,
+    /**
+   * @ignore
+   */ className: (0, _propTypesDefault.default).string,
+    /**
+   * Display the top and bottom dividers.
+   * @default false
+   */ dividers: (0, _propTypesDefault.default).bool,
+    /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */ sx: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object,
+            (0, _propTypesDefault.default).bool
+        ])),
+        (0, _propTypesDefault.default).func,
+        (0, _propTypesDefault.default).object
+    ])
+};
+exports.default = DialogContent;
+
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"G7PIs","@mui/utils/composeClasses":"4kKno","../styles/styled":"32xTg","../styles/useThemeProps":"dewuS","./dialogContentClasses":"oJjRp","../DialogTitle/dialogTitleClasses":"6HAYZ","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"oJjRp":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getDialogContentUtilityClass", ()=>getDialogContentUtilityClass);
+var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
+var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
+var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
+var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
+function getDialogContentUtilityClass(slot) {
+    return (0, _generateUtilityClassDefault.default)("MuiDialogContent", slot);
+}
+const dialogContentClasses = (0, _generateUtilityClassesDefault.default)("MuiDialogContent", [
+    "root",
+    "dividers"
+]);
+exports.default = dialogContentClasses;
+
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6HAYZ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getDialogTitleUtilityClass", ()=>getDialogTitleUtilityClass);
+var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
+var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
+var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
+var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
+function getDialogTitleUtilityClass(slot) {
+    return (0, _generateUtilityClassDefault.default)("MuiDialogTitle", slot);
+}
+const dialogTitleClasses = (0, _generateUtilityClassesDefault.default)("MuiDialogTitle", [
+    "root"
+]);
+exports.default = dialogTitleClasses;
+
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"642rE":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _dialogTitleDefault.default));
+parcelHelpers.export(exports, "dialogTitleClasses", ()=>(0, _dialogTitleClassesDefault.default));
+var _dialogTitle = require("./DialogTitle");
+var _dialogTitleDefault = parcelHelpers.interopDefault(_dialogTitle);
+var _dialogTitleClasses = require("./dialogTitleClasses");
+var _dialogTitleClassesDefault = parcelHelpers.interopDefault(_dialogTitleClasses);
+parcelHelpers.exportAll(_dialogTitleClasses, exports);
+"use client";
+
+},{"./DialogTitle":"dIj98","./dialogTitleClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dIj98":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
+var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
+var _react = require("react");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _clsx = require("clsx");
+var _clsxDefault = parcelHelpers.interopDefault(_clsx);
+var _composeClasses = require("@mui/utils/composeClasses");
+var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
+var _typography = require("../Typography");
+var _typographyDefault = parcelHelpers.interopDefault(_typography);
+var _styled = require("../styles/styled");
+var _styledDefault = parcelHelpers.interopDefault(_styled);
+var _useThemeProps = require("../styles/useThemeProps");
+var _useThemePropsDefault = parcelHelpers.interopDefault(_useThemeProps);
+var _dialogTitleClasses = require("./dialogTitleClasses");
+var _dialogContext = require("../Dialog/DialogContext");
+var _dialogContextDefault = parcelHelpers.interopDefault(_dialogContext);
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const _excluded = [
+    "className",
+    "id"
+];
+const useUtilityClasses = (ownerState)=>{
+    const { classes } = ownerState;
+    const slots = {
+        root: [
+            "root"
+        ]
+    };
+    return (0, _composeClassesDefault.default)(slots, (0, _dialogTitleClasses.getDialogTitleUtilityClass), classes);
+};
+const DialogTitleRoot = (0, _styledDefault.default)((0, _typographyDefault.default), {
+    name: "MuiDialogTitle",
+    slot: "Root",
+    overridesResolver: (props, styles)=>styles.root
+})({
+    padding: "16px 24px",
+    flex: "0 0 auto"
+});
+const DialogTitle = /*#__PURE__*/ _react.forwardRef(function DialogTitle(inProps, ref) {
+    const props = (0, _useThemePropsDefault.default)({
+        props: inProps,
+        name: "MuiDialogTitle"
+    });
+    const { className, id: idProp } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
+    const ownerState = props;
+    const classes = useUtilityClasses(ownerState);
+    const { titleId = idProp } = _react.useContext((0, _dialogContextDefault.default));
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(DialogTitleRoot, (0, _extendsDefault.default)({
+        component: "h2",
+        className: (0, _clsxDefault.default)(classes.root, className),
+        ownerState: ownerState,
+        ref: ref,
+        variant: "h6",
+        id: idProp != null ? idProp : titleId
+    }, other));
+});
+DialogTitle.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * The content of the component.
+   */ children: (0, _propTypesDefault.default).node,
+    /**
+   * Override or extend the styles applied to the component.
+   */ classes: (0, _propTypesDefault.default).object,
+    /**
+   * @ignore
+   */ className: (0, _propTypesDefault.default).string,
+    /**
+   * @ignore
+   */ id: (0, _propTypesDefault.default).string,
+    /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */ sx: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object,
+            (0, _propTypesDefault.default).bool
+        ])),
+        (0, _propTypesDefault.default).func,
+        (0, _propTypesDefault.default).object
+    ])
+};
+exports.default = DialogTitle;
+
+},{"@babel/runtime/helpers/esm/extends":"fTBFS","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","react":"21dqq","prop-types":"7wKI2","clsx":"G7PIs","@mui/utils/composeClasses":"4kKno","../Typography":"faxSz","../styles/styled":"32xTg","../styles/useThemeProps":"dewuS","./dialogTitleClasses":"6HAYZ","../Dialog/DialogContext":"9xRZm","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"40376":[function(require,module,exports) {
+/**
+ * @mui/material v5.15.15
+ *
+ * @license MIT
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */ /* eslint-disable import/export */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Accordion", ()=>(0, _accordionDefault.default));
+parcelHelpers.export(exports, "AccordionActions", ()=>(0, _accordionActionsDefault.default));
+parcelHelpers.export(exports, "AccordionDetails", ()=>(0, _accordionDetailsDefault.default));
+parcelHelpers.export(exports, "AccordionSummary", ()=>(0, _accordionSummaryDefault.default));
+parcelHelpers.export(exports, "Alert", ()=>(0, _alertDefault.default));
+parcelHelpers.export(exports, "AlertTitle", ()=>(0, _alertTitleDefault.default));
+parcelHelpers.export(exports, "AppBar", ()=>(0, _appBarDefault.default));
+parcelHelpers.export(exports, "Autocomplete", ()=>(0, _autocompleteDefault.default));
+parcelHelpers.export(exports, "Avatar", ()=>(0, _avatarDefault.default));
+parcelHelpers.export(exports, "AvatarGroup", ()=>(0, _avatarGroupDefault.default));
+parcelHelpers.export(exports, "Backdrop", ()=>(0, _backdropDefault.default));
+parcelHelpers.export(exports, "Badge", ()=>(0, _badgeDefault.default));
+parcelHelpers.export(exports, "BottomNavigation", ()=>(0, _bottomNavigationDefault.default));
+parcelHelpers.export(exports, "BottomNavigationAction", ()=>(0, _bottomNavigationActionDefault.default));
+parcelHelpers.export(exports, "Box", ()=>(0, _boxDefault.default));
+parcelHelpers.export(exports, "Breadcrumbs", ()=>(0, _breadcrumbsDefault.default));
+parcelHelpers.export(exports, "Button", ()=>(0, _buttonDefault.default));
+parcelHelpers.export(exports, "ButtonBase", ()=>(0, _buttonBaseDefault.default));
+parcelHelpers.export(exports, "ButtonGroup", ()=>(0, _buttonGroupDefault.default));
+parcelHelpers.export(exports, "Card", ()=>(0, _cardDefault.default));
+parcelHelpers.export(exports, "CardActionArea", ()=>(0, _cardActionAreaDefault.default));
+parcelHelpers.export(exports, "CardActions", ()=>(0, _cardActionsDefault.default));
+parcelHelpers.export(exports, "CardContent", ()=>(0, _cardContentDefault.default));
+parcelHelpers.export(exports, "CardHeader", ()=>(0, _cardHeaderDefault.default));
+parcelHelpers.export(exports, "CardMedia", ()=>(0, _cardMediaDefault.default));
+parcelHelpers.export(exports, "Checkbox", ()=>(0, _checkboxDefault.default));
+parcelHelpers.export(exports, "Chip", ()=>(0, _chipDefault.default));
+parcelHelpers.export(exports, "CircularProgress", ()=>(0, _circularProgressDefault.default));
+parcelHelpers.export(exports, "ClickAwayListener", ()=>(0, _clickAwayListenerDefault.default));
+parcelHelpers.export(exports, "Collapse", ()=>(0, _collapseDefault.default));
+parcelHelpers.export(exports, "Container", ()=>(0, _containerDefault.default));
+parcelHelpers.export(exports, "CssBaseline", ()=>(0, _cssBaselineDefault.default));
+parcelHelpers.export(exports, "darkScrollbar", ()=>(0, _darkScrollbarDefault.default));
+parcelHelpers.export(exports, "Dialog", ()=>(0, _dialogDefault.default));
+parcelHelpers.export(exports, "DialogActions", ()=>(0, _dialogActionsDefault.default));
+parcelHelpers.export(exports, "DialogContent", ()=>(0, _dialogContentDefault.default));
+parcelHelpers.export(exports, "DialogContentText", ()=>(0, _dialogContentTextDefault.default));
+parcelHelpers.export(exports, "DialogTitle", ()=>(0, _dialogTitleDefault.default));
+parcelHelpers.export(exports, "Divider", ()=>(0, _dividerDefault.default));
+parcelHelpers.export(exports, "Drawer", ()=>(0, _drawerDefault.default));
+parcelHelpers.export(exports, "Fab", ()=>(0, _fabDefault.default));
+parcelHelpers.export(exports, "Fade", ()=>(0, _fadeDefault.default));
+parcelHelpers.export(exports, "FilledInput", ()=>(0, _filledInputDefault.default));
+parcelHelpers.export(exports, "FormControl", ()=>(0, _formControlDefault.default));
+parcelHelpers.export(exports, "FormControlLabel", ()=>(0, _formControlLabelDefault.default));
+parcelHelpers.export(exports, "FormGroup", ()=>(0, _formGroupDefault.default));
+parcelHelpers.export(exports, "FormHelperText", ()=>(0, _formHelperTextDefault.default));
+parcelHelpers.export(exports, "FormLabel", ()=>(0, _formLabelDefault.default));
+parcelHelpers.export(exports, "Grid", ()=>(0, _gridDefault.default));
+parcelHelpers.export(exports, "Unstable_Grid2", ()=>(0, _unstableGrid2Default.default));
+parcelHelpers.export(exports, "Grow", ()=>(0, _growDefault.default));
+parcelHelpers.export(exports, "Hidden", ()=>(0, _hiddenDefault.default));
+parcelHelpers.export(exports, "Icon", ()=>(0, _iconDefault.default));
+parcelHelpers.export(exports, "IconButton", ()=>(0, _iconButtonDefault.default));
+parcelHelpers.export(exports, "ImageList", ()=>(0, _imageListDefault.default));
+parcelHelpers.export(exports, "ImageListItem", ()=>(0, _imageListItemDefault.default));
+parcelHelpers.export(exports, "ImageListItemBar", ()=>(0, _imageListItemBarDefault.default));
+parcelHelpers.export(exports, "Input", ()=>(0, _inputDefault.default));
+parcelHelpers.export(exports, "InputAdornment", ()=>(0, _inputAdornmentDefault.default));
+parcelHelpers.export(exports, "InputBase", ()=>(0, _inputBaseDefault.default));
+parcelHelpers.export(exports, "InputLabel", ()=>(0, _inputLabelDefault.default));
+parcelHelpers.export(exports, "LinearProgress", ()=>(0, _linearProgressDefault.default));
+parcelHelpers.export(exports, "Link", ()=>(0, _linkDefault.default));
+parcelHelpers.export(exports, "List", ()=>(0, _listDefault.default));
+parcelHelpers.export(exports, "ListItem", ()=>(0, _listItemDefault.default));
+parcelHelpers.export(exports, "ListItemAvatar", ()=>(0, _listItemAvatarDefault.default));
+parcelHelpers.export(exports, "ListItemButton", ()=>(0, _listItemButtonDefault.default));
+parcelHelpers.export(exports, "ListItemIcon", ()=>(0, _listItemIconDefault.default));
+parcelHelpers.export(exports, "ListItemSecondaryAction", ()=>(0, _listItemSecondaryActionDefault.default));
+parcelHelpers.export(exports, "ListItemText", ()=>(0, _listItemTextDefault.default));
+parcelHelpers.export(exports, "ListSubheader", ()=>(0, _listSubheaderDefault.default));
+parcelHelpers.export(exports, "Menu", ()=>(0, _menuDefault.default));
+parcelHelpers.export(exports, "MenuItem", ()=>(0, _menuItemDefault.default));
+parcelHelpers.export(exports, "MenuList", ()=>(0, _menuListDefault.default));
+parcelHelpers.export(exports, "MobileStepper", ()=>(0, _mobileStepperDefault.default));
+parcelHelpers.export(exports, "Modal", ()=>(0, _modalDefault.default));
+parcelHelpers.export(exports, "NativeSelect", ()=>(0, _nativeSelectDefault.default));
+parcelHelpers.export(exports, "NoSsr", ()=>(0, _noSsrDefault.default));
+parcelHelpers.export(exports, "OutlinedInput", ()=>(0, _outlinedInputDefault.default));
+parcelHelpers.export(exports, "Pagination", ()=>(0, _paginationDefault.default));
+parcelHelpers.export(exports, "PaginationItem", ()=>(0, _paginationItemDefault.default));
+parcelHelpers.export(exports, "Paper", ()=>(0, _paperDefault.default));
+parcelHelpers.export(exports, "Popover", ()=>(0, _popoverDefault.default));
+parcelHelpers.export(exports, "Popper", ()=>(0, _popperDefault.default));
+parcelHelpers.export(exports, "Portal", ()=>(0, _portalDefault.default));
+parcelHelpers.export(exports, "Radio", ()=>(0, _radioDefault.default));
+parcelHelpers.export(exports, "RadioGroup", ()=>(0, _radioGroupDefault.default));
+parcelHelpers.export(exports, "Rating", ()=>(0, _ratingDefault.default));
+parcelHelpers.export(exports, "ScopedCssBaseline", ()=>(0, _scopedCssBaselineDefault.default));
+parcelHelpers.export(exports, "Select", ()=>(0, _selectDefault.default));
+parcelHelpers.export(exports, "Skeleton", ()=>(0, _skeletonDefault.default));
+parcelHelpers.export(exports, "Slide", ()=>(0, _slideDefault.default));
+parcelHelpers.export(exports, "Slider", ()=>(0, _sliderDefault.default));
+parcelHelpers.export(exports, "Snackbar", ()=>(0, _snackbarDefault.default));
+parcelHelpers.export(exports, "SnackbarContent", ()=>(0, _snackbarContentDefault.default));
+parcelHelpers.export(exports, "SpeedDial", ()=>(0, _speedDialDefault.default));
+parcelHelpers.export(exports, "SpeedDialAction", ()=>(0, _speedDialActionDefault.default));
+parcelHelpers.export(exports, "SpeedDialIcon", ()=>(0, _speedDialIconDefault.default));
+parcelHelpers.export(exports, "Stack", ()=>(0, _stackDefault.default));
+parcelHelpers.export(exports, "Step", ()=>(0, _stepDefault.default));
+parcelHelpers.export(exports, "StepButton", ()=>(0, _stepButtonDefault.default));
+parcelHelpers.export(exports, "StepConnector", ()=>(0, _stepConnectorDefault.default));
+parcelHelpers.export(exports, "StepContent", ()=>(0, _stepContentDefault.default));
+parcelHelpers.export(exports, "StepIcon", ()=>(0, _stepIconDefault.default));
+parcelHelpers.export(exports, "StepLabel", ()=>(0, _stepLabelDefault.default));
+parcelHelpers.export(exports, "Stepper", ()=>(0, _stepperDefault.default));
+parcelHelpers.export(exports, "SvgIcon", ()=>(0, _svgIconDefault.default));
+parcelHelpers.export(exports, "SwipeableDrawer", ()=>(0, _swipeableDrawerDefault.default));
+parcelHelpers.export(exports, "Switch", ()=>(0, _switchDefault.default));
+parcelHelpers.export(exports, "Tab", ()=>(0, _tabDefault.default));
+parcelHelpers.export(exports, "Table", ()=>(0, _tableDefault.default));
+parcelHelpers.export(exports, "TableBody", ()=>(0, _tableBodyDefault.default));
+parcelHelpers.export(exports, "TableCell", ()=>(0, _tableCellDefault.default));
+parcelHelpers.export(exports, "TableContainer", ()=>(0, _tableContainerDefault.default));
+parcelHelpers.export(exports, "TableFooter", ()=>(0, _tableFooterDefault.default));
+parcelHelpers.export(exports, "TableHead", ()=>(0, _tableHeadDefault.default));
+parcelHelpers.export(exports, "TablePagination", ()=>(0, _tablePaginationDefault.default));
+parcelHelpers.export(exports, "TableRow", ()=>(0, _tableRowDefault.default));
+parcelHelpers.export(exports, "TableSortLabel", ()=>(0, _tableSortLabelDefault.default));
+parcelHelpers.export(exports, "Tabs", ()=>(0, _tabsDefault.default));
+parcelHelpers.export(exports, "TabScrollButton", ()=>(0, _tabScrollButtonDefault.default));
+parcelHelpers.export(exports, "TextField", ()=>(0, _textFieldDefault.default));
+parcelHelpers.export(exports, "TextareaAutosize", ()=>(0, _textareaAutosizeDefault.default));
+parcelHelpers.export(exports, "ToggleButton", ()=>(0, _toggleButtonDefault.default));
+parcelHelpers.export(exports, "ToggleButtonGroup", ()=>(0, _toggleButtonGroupDefault.default));
+parcelHelpers.export(exports, "Toolbar", ()=>(0, _toolbarDefault.default));
+parcelHelpers.export(exports, "Tooltip", ()=>(0, _tooltipDefault.default));
+parcelHelpers.export(exports, "Typography", ()=>(0, _typographyDefault.default));
+parcelHelpers.export(exports, "useMediaQuery", ()=>(0, _useMediaQueryDefault.default));
+parcelHelpers.export(exports, "usePagination", ()=>(0, _usePaginationDefault.default));
+parcelHelpers.export(exports, "useScrollTrigger", ()=>(0, _useScrollTriggerDefault.default));
+parcelHelpers.export(exports, "Zoom", ()=>(0, _zoomDefault.default));
+// createFilterOptions is exported from Autocomplete
+parcelHelpers.export(exports, "useAutocomplete", ()=>(0, _useAutocompleteDefault.default));
+parcelHelpers.export(exports, "GlobalStyles", ()=>(0, _globalStylesDefault.default));
+parcelHelpers.export(exports, "unstable_composeClasses", ()=>(0, _composeClasses.unstable_composeClasses));
+parcelHelpers.export(exports, "generateUtilityClass", ()=>(0, _generateUtilityClassDefault.default));
+parcelHelpers.export(exports, "generateUtilityClasses", ()=>(0, _generateUtilityClassesDefault.default));
+parcelHelpers.export(exports, "Unstable_TrapFocus", ()=>(0, _unstableTrapFocusDefault.default));
+parcelHelpers.export(exports, "colors", ()=>_colors);
+var _colors = require("./colors");
+var _styles = require("./styles");
+parcelHelpers.exportAll(_styles, exports);
+// TODO remove, import directly from Base UI or create one folder per module
+var _utils = require("./utils");
+parcelHelpers.exportAll(_utils, exports);
+var _accordion = require("./Accordion");
+var _accordionDefault = parcelHelpers.interopDefault(_accordion);
+parcelHelpers.exportAll(_accordion, exports);
+var _accordionActions = require("./AccordionActions");
+var _accordionActionsDefault = parcelHelpers.interopDefault(_accordionActions);
+parcelHelpers.exportAll(_accordionActions, exports);
+var _accordionDetails = require("./AccordionDetails");
+var _accordionDetailsDefault = parcelHelpers.interopDefault(_accordionDetails);
+parcelHelpers.exportAll(_accordionDetails, exports);
+var _accordionSummary = require("./AccordionSummary");
+var _accordionSummaryDefault = parcelHelpers.interopDefault(_accordionSummary);
+parcelHelpers.exportAll(_accordionSummary, exports);
+var _alert = require("./Alert");
+var _alertDefault = parcelHelpers.interopDefault(_alert);
+parcelHelpers.exportAll(_alert, exports);
+var _alertTitle = require("./AlertTitle");
+var _alertTitleDefault = parcelHelpers.interopDefault(_alertTitle);
+parcelHelpers.exportAll(_alertTitle, exports);
+var _appBar = require("./AppBar");
+var _appBarDefault = parcelHelpers.interopDefault(_appBar);
+parcelHelpers.exportAll(_appBar, exports);
+var _autocomplete = require("./Autocomplete");
+var _autocompleteDefault = parcelHelpers.interopDefault(_autocomplete);
+parcelHelpers.exportAll(_autocomplete, exports);
+var _avatar = require("./Avatar");
+var _avatarDefault = parcelHelpers.interopDefault(_avatar);
+parcelHelpers.exportAll(_avatar, exports);
+var _avatarGroup = require("./AvatarGroup");
+var _avatarGroupDefault = parcelHelpers.interopDefault(_avatarGroup);
+parcelHelpers.exportAll(_avatarGroup, exports);
+var _backdrop = require("./Backdrop");
+var _backdropDefault = parcelHelpers.interopDefault(_backdrop);
+parcelHelpers.exportAll(_backdrop, exports);
+var _badge = require("./Badge");
+var _badgeDefault = parcelHelpers.interopDefault(_badge);
+parcelHelpers.exportAll(_badge, exports);
+var _bottomNavigation = require("./BottomNavigation");
+var _bottomNavigationDefault = parcelHelpers.interopDefault(_bottomNavigation);
+parcelHelpers.exportAll(_bottomNavigation, exports);
+var _bottomNavigationAction = require("./BottomNavigationAction");
+var _bottomNavigationActionDefault = parcelHelpers.interopDefault(_bottomNavigationAction);
+parcelHelpers.exportAll(_bottomNavigationAction, exports);
+var _box = require("./Box");
+var _boxDefault = parcelHelpers.interopDefault(_box);
+parcelHelpers.exportAll(_box, exports);
+var _breadcrumbs = require("./Breadcrumbs");
+var _breadcrumbsDefault = parcelHelpers.interopDefault(_breadcrumbs);
+parcelHelpers.exportAll(_breadcrumbs, exports);
+var _button = require("./Button");
+var _buttonDefault = parcelHelpers.interopDefault(_button);
+parcelHelpers.exportAll(_button, exports);
+var _buttonBase = require("./ButtonBase");
+var _buttonBaseDefault = parcelHelpers.interopDefault(_buttonBase);
+parcelHelpers.exportAll(_buttonBase, exports);
+var _buttonGroup = require("./ButtonGroup");
+var _buttonGroupDefault = parcelHelpers.interopDefault(_buttonGroup);
+parcelHelpers.exportAll(_buttonGroup, exports);
+var _card = require("./Card");
+var _cardDefault = parcelHelpers.interopDefault(_card);
+parcelHelpers.exportAll(_card, exports);
+var _cardActionArea = require("./CardActionArea");
+var _cardActionAreaDefault = parcelHelpers.interopDefault(_cardActionArea);
+parcelHelpers.exportAll(_cardActionArea, exports);
+var _cardActions = require("./CardActions");
+var _cardActionsDefault = parcelHelpers.interopDefault(_cardActions);
+parcelHelpers.exportAll(_cardActions, exports);
+var _cardContent = require("./CardContent");
+var _cardContentDefault = parcelHelpers.interopDefault(_cardContent);
+parcelHelpers.exportAll(_cardContent, exports);
+var _cardHeader = require("./CardHeader");
+var _cardHeaderDefault = parcelHelpers.interopDefault(_cardHeader);
+parcelHelpers.exportAll(_cardHeader, exports);
+var _cardMedia = require("./CardMedia");
+var _cardMediaDefault = parcelHelpers.interopDefault(_cardMedia);
+parcelHelpers.exportAll(_cardMedia, exports);
+var _checkbox = require("./Checkbox");
+var _checkboxDefault = parcelHelpers.interopDefault(_checkbox);
+parcelHelpers.exportAll(_checkbox, exports);
+var _chip = require("./Chip");
+var _chipDefault = parcelHelpers.interopDefault(_chip);
+parcelHelpers.exportAll(_chip, exports);
+var _circularProgress = require("./CircularProgress");
+var _circularProgressDefault = parcelHelpers.interopDefault(_circularProgress);
+parcelHelpers.exportAll(_circularProgress, exports);
+var _clickAwayListener = require("./ClickAwayListener");
+var _clickAwayListenerDefault = parcelHelpers.interopDefault(_clickAwayListener);
+parcelHelpers.exportAll(_clickAwayListener, exports);
+var _collapse = require("./Collapse");
+var _collapseDefault = parcelHelpers.interopDefault(_collapse);
+parcelHelpers.exportAll(_collapse, exports);
+var _container = require("./Container");
+var _containerDefault = parcelHelpers.interopDefault(_container);
+parcelHelpers.exportAll(_container, exports);
+var _cssBaseline = require("./CssBaseline");
+var _cssBaselineDefault = parcelHelpers.interopDefault(_cssBaseline);
+parcelHelpers.exportAll(_cssBaseline, exports);
+var _darkScrollbar = require("./darkScrollbar");
+var _darkScrollbarDefault = parcelHelpers.interopDefault(_darkScrollbar);
+parcelHelpers.exportAll(_darkScrollbar, exports);
+var _dialog = require("./Dialog");
+var _dialogDefault = parcelHelpers.interopDefault(_dialog);
+parcelHelpers.exportAll(_dialog, exports);
+var _dialogActions = require("./DialogActions");
+var _dialogActionsDefault = parcelHelpers.interopDefault(_dialogActions);
+parcelHelpers.exportAll(_dialogActions, exports);
+var _dialogContent = require("./DialogContent");
+var _dialogContentDefault = parcelHelpers.interopDefault(_dialogContent);
+parcelHelpers.exportAll(_dialogContent, exports);
+var _dialogContentText = require("./DialogContentText");
+var _dialogContentTextDefault = parcelHelpers.interopDefault(_dialogContentText);
+parcelHelpers.exportAll(_dialogContentText, exports);
+var _dialogTitle = require("./DialogTitle");
+var _dialogTitleDefault = parcelHelpers.interopDefault(_dialogTitle);
+parcelHelpers.exportAll(_dialogTitle, exports);
+var _divider = require("./Divider");
+var _dividerDefault = parcelHelpers.interopDefault(_divider);
+parcelHelpers.exportAll(_divider, exports);
+var _drawer = require("./Drawer");
+var _drawerDefault = parcelHelpers.interopDefault(_drawer);
+parcelHelpers.exportAll(_drawer, exports);
+var _fab = require("./Fab");
+var _fabDefault = parcelHelpers.interopDefault(_fab);
+parcelHelpers.exportAll(_fab, exports);
+var _fade = require("./Fade");
+var _fadeDefault = parcelHelpers.interopDefault(_fade);
+parcelHelpers.exportAll(_fade, exports);
+var _filledInput = require("./FilledInput");
+var _filledInputDefault = parcelHelpers.interopDefault(_filledInput);
+parcelHelpers.exportAll(_filledInput, exports);
+var _formControl = require("./FormControl");
+var _formControlDefault = parcelHelpers.interopDefault(_formControl);
+parcelHelpers.exportAll(_formControl, exports);
+var _formControlLabel = require("./FormControlLabel");
+var _formControlLabelDefault = parcelHelpers.interopDefault(_formControlLabel);
+parcelHelpers.exportAll(_formControlLabel, exports);
+var _formGroup = require("./FormGroup");
+var _formGroupDefault = parcelHelpers.interopDefault(_formGroup);
+parcelHelpers.exportAll(_formGroup, exports);
+var _formHelperText = require("./FormHelperText");
+var _formHelperTextDefault = parcelHelpers.interopDefault(_formHelperText);
+parcelHelpers.exportAll(_formHelperText, exports);
+var _formLabel = require("./FormLabel");
+var _formLabelDefault = parcelHelpers.interopDefault(_formLabel);
+parcelHelpers.exportAll(_formLabel, exports);
+var _grid = require("./Grid");
+var _gridDefault = parcelHelpers.interopDefault(_grid);
+parcelHelpers.exportAll(_grid, exports);
+var _unstableGrid2 = require("./Unstable_Grid2");
+var _unstableGrid2Default = parcelHelpers.interopDefault(_unstableGrid2);
+parcelHelpers.exportAll(_unstableGrid2, exports);
+var _grow = require("./Grow");
+var _growDefault = parcelHelpers.interopDefault(_grow);
+parcelHelpers.exportAll(_grow, exports);
+var _hidden = require("./Hidden");
+var _hiddenDefault = parcelHelpers.interopDefault(_hidden);
+parcelHelpers.exportAll(_hidden, exports);
+var _icon = require("./Icon");
+var _iconDefault = parcelHelpers.interopDefault(_icon);
+parcelHelpers.exportAll(_icon, exports);
+var _iconButton = require("./IconButton");
+var _iconButtonDefault = parcelHelpers.interopDefault(_iconButton);
+parcelHelpers.exportAll(_iconButton, exports);
+var _imageList = require("./ImageList");
+var _imageListDefault = parcelHelpers.interopDefault(_imageList);
+parcelHelpers.exportAll(_imageList, exports);
+var _imageListItem = require("./ImageListItem");
+var _imageListItemDefault = parcelHelpers.interopDefault(_imageListItem);
+parcelHelpers.exportAll(_imageListItem, exports);
+var _imageListItemBar = require("./ImageListItemBar");
+var _imageListItemBarDefault = parcelHelpers.interopDefault(_imageListItemBar);
+parcelHelpers.exportAll(_imageListItemBar, exports);
+var _input = require("./Input");
+var _inputDefault = parcelHelpers.interopDefault(_input);
+parcelHelpers.exportAll(_input, exports);
+var _inputAdornment = require("./InputAdornment");
+var _inputAdornmentDefault = parcelHelpers.interopDefault(_inputAdornment);
+parcelHelpers.exportAll(_inputAdornment, exports);
+var _inputBase = require("./InputBase");
+var _inputBaseDefault = parcelHelpers.interopDefault(_inputBase);
+parcelHelpers.exportAll(_inputBase, exports);
+var _inputLabel = require("./InputLabel");
+var _inputLabelDefault = parcelHelpers.interopDefault(_inputLabel);
+parcelHelpers.exportAll(_inputLabel, exports);
+var _linearProgress = require("./LinearProgress");
+var _linearProgressDefault = parcelHelpers.interopDefault(_linearProgress);
+parcelHelpers.exportAll(_linearProgress, exports);
+var _link = require("./Link");
+var _linkDefault = parcelHelpers.interopDefault(_link);
+parcelHelpers.exportAll(_link, exports);
+var _list = require("./List");
+var _listDefault = parcelHelpers.interopDefault(_list);
+parcelHelpers.exportAll(_list, exports);
+var _listItem = require("./ListItem");
+var _listItemDefault = parcelHelpers.interopDefault(_listItem);
+parcelHelpers.exportAll(_listItem, exports);
+var _listItemAvatar = require("./ListItemAvatar");
+var _listItemAvatarDefault = parcelHelpers.interopDefault(_listItemAvatar);
+parcelHelpers.exportAll(_listItemAvatar, exports);
+var _listItemButton = require("./ListItemButton");
+var _listItemButtonDefault = parcelHelpers.interopDefault(_listItemButton);
+parcelHelpers.exportAll(_listItemButton, exports);
+var _listItemIcon = require("./ListItemIcon");
+var _listItemIconDefault = parcelHelpers.interopDefault(_listItemIcon);
+parcelHelpers.exportAll(_listItemIcon, exports);
+var _listItemSecondaryAction = require("./ListItemSecondaryAction");
+var _listItemSecondaryActionDefault = parcelHelpers.interopDefault(_listItemSecondaryAction);
+parcelHelpers.exportAll(_listItemSecondaryAction, exports);
+var _listItemText = require("./ListItemText");
+var _listItemTextDefault = parcelHelpers.interopDefault(_listItemText);
+parcelHelpers.exportAll(_listItemText, exports);
+var _listSubheader = require("./ListSubheader");
+var _listSubheaderDefault = parcelHelpers.interopDefault(_listSubheader);
+parcelHelpers.exportAll(_listSubheader, exports);
+var _menu = require("./Menu");
+var _menuDefault = parcelHelpers.interopDefault(_menu);
+parcelHelpers.exportAll(_menu, exports);
+var _menuItem = require("./MenuItem");
+var _menuItemDefault = parcelHelpers.interopDefault(_menuItem);
+parcelHelpers.exportAll(_menuItem, exports);
+var _menuList = require("./MenuList");
+var _menuListDefault = parcelHelpers.interopDefault(_menuList);
+parcelHelpers.exportAll(_menuList, exports);
+var _mobileStepper = require("./MobileStepper");
+var _mobileStepperDefault = parcelHelpers.interopDefault(_mobileStepper);
+parcelHelpers.exportAll(_mobileStepper, exports);
+var _modal = require("./Modal");
+var _modalDefault = parcelHelpers.interopDefault(_modal);
+parcelHelpers.exportAll(_modal, exports);
+var _nativeSelect = require("./NativeSelect");
+var _nativeSelectDefault = parcelHelpers.interopDefault(_nativeSelect);
+parcelHelpers.exportAll(_nativeSelect, exports);
+var _noSsr = require("./NoSsr");
+var _noSsrDefault = parcelHelpers.interopDefault(_noSsr);
+parcelHelpers.exportAll(_noSsr, exports);
+var _outlinedInput = require("./OutlinedInput");
+var _outlinedInputDefault = parcelHelpers.interopDefault(_outlinedInput);
+parcelHelpers.exportAll(_outlinedInput, exports);
+var _pagination = require("./Pagination");
+var _paginationDefault = parcelHelpers.interopDefault(_pagination);
+parcelHelpers.exportAll(_pagination, exports);
+var _paginationItem = require("./PaginationItem");
+var _paginationItemDefault = parcelHelpers.interopDefault(_paginationItem);
+parcelHelpers.exportAll(_paginationItem, exports);
+var _paper = require("./Paper");
+var _paperDefault = parcelHelpers.interopDefault(_paper);
+parcelHelpers.exportAll(_paper, exports);
+var _popover = require("./Popover");
+var _popoverDefault = parcelHelpers.interopDefault(_popover);
+parcelHelpers.exportAll(_popover, exports);
+var _popper = require("./Popper");
+var _popperDefault = parcelHelpers.interopDefault(_popper);
+parcelHelpers.exportAll(_popper, exports);
+var _portal = require("./Portal");
+var _portalDefault = parcelHelpers.interopDefault(_portal);
+parcelHelpers.exportAll(_portal, exports);
+var _radio = require("./Radio");
+var _radioDefault = parcelHelpers.interopDefault(_radio);
+parcelHelpers.exportAll(_radio, exports);
+var _radioGroup = require("./RadioGroup");
+var _radioGroupDefault = parcelHelpers.interopDefault(_radioGroup);
+parcelHelpers.exportAll(_radioGroup, exports);
+var _rating = require("./Rating");
+var _ratingDefault = parcelHelpers.interopDefault(_rating);
+parcelHelpers.exportAll(_rating, exports);
+var _scopedCssBaseline = require("./ScopedCssBaseline");
+var _scopedCssBaselineDefault = parcelHelpers.interopDefault(_scopedCssBaseline);
+parcelHelpers.exportAll(_scopedCssBaseline, exports);
+var _select = require("./Select");
+var _selectDefault = parcelHelpers.interopDefault(_select);
+parcelHelpers.exportAll(_select, exports);
+var _skeleton = require("./Skeleton");
+var _skeletonDefault = parcelHelpers.interopDefault(_skeleton);
+parcelHelpers.exportAll(_skeleton, exports);
+var _slide = require("./Slide");
+var _slideDefault = parcelHelpers.interopDefault(_slide);
+parcelHelpers.exportAll(_slide, exports);
+var _slider = require("./Slider");
+var _sliderDefault = parcelHelpers.interopDefault(_slider);
+parcelHelpers.exportAll(_slider, exports);
+var _snackbar = require("./Snackbar");
+var _snackbarDefault = parcelHelpers.interopDefault(_snackbar);
+parcelHelpers.exportAll(_snackbar, exports);
+var _snackbarContent = require("./SnackbarContent");
+var _snackbarContentDefault = parcelHelpers.interopDefault(_snackbarContent);
+parcelHelpers.exportAll(_snackbarContent, exports);
+var _speedDial = require("./SpeedDial");
+var _speedDialDefault = parcelHelpers.interopDefault(_speedDial);
+parcelHelpers.exportAll(_speedDial, exports);
+var _speedDialAction = require("./SpeedDialAction");
+var _speedDialActionDefault = parcelHelpers.interopDefault(_speedDialAction);
+parcelHelpers.exportAll(_speedDialAction, exports);
+var _speedDialIcon = require("./SpeedDialIcon");
+var _speedDialIconDefault = parcelHelpers.interopDefault(_speedDialIcon);
+parcelHelpers.exportAll(_speedDialIcon, exports);
+var _stack = require("./Stack");
+var _stackDefault = parcelHelpers.interopDefault(_stack);
+parcelHelpers.exportAll(_stack, exports);
+var _step = require("./Step");
+var _stepDefault = parcelHelpers.interopDefault(_step);
+parcelHelpers.exportAll(_step, exports);
+var _stepButton = require("./StepButton");
+var _stepButtonDefault = parcelHelpers.interopDefault(_stepButton);
+parcelHelpers.exportAll(_stepButton, exports);
+var _stepConnector = require("./StepConnector");
+var _stepConnectorDefault = parcelHelpers.interopDefault(_stepConnector);
+parcelHelpers.exportAll(_stepConnector, exports);
+var _stepContent = require("./StepContent");
+var _stepContentDefault = parcelHelpers.interopDefault(_stepContent);
+parcelHelpers.exportAll(_stepContent, exports);
+var _stepIcon = require("./StepIcon");
+var _stepIconDefault = parcelHelpers.interopDefault(_stepIcon);
+parcelHelpers.exportAll(_stepIcon, exports);
+var _stepLabel = require("./StepLabel");
+var _stepLabelDefault = parcelHelpers.interopDefault(_stepLabel);
+parcelHelpers.exportAll(_stepLabel, exports);
+var _stepper = require("./Stepper");
+var _stepperDefault = parcelHelpers.interopDefault(_stepper);
+parcelHelpers.exportAll(_stepper, exports);
+var _svgIcon = require("./SvgIcon");
+var _svgIconDefault = parcelHelpers.interopDefault(_svgIcon);
+parcelHelpers.exportAll(_svgIcon, exports);
+var _swipeableDrawer = require("./SwipeableDrawer");
+var _swipeableDrawerDefault = parcelHelpers.interopDefault(_swipeableDrawer);
+parcelHelpers.exportAll(_swipeableDrawer, exports);
+var _switch = require("./Switch");
+var _switchDefault = parcelHelpers.interopDefault(_switch);
+parcelHelpers.exportAll(_switch, exports);
+var _tab = require("./Tab");
+var _tabDefault = parcelHelpers.interopDefault(_tab);
+parcelHelpers.exportAll(_tab, exports);
+var _table = require("./Table");
+var _tableDefault = parcelHelpers.interopDefault(_table);
+parcelHelpers.exportAll(_table, exports);
+var _tableBody = require("./TableBody");
+var _tableBodyDefault = parcelHelpers.interopDefault(_tableBody);
+parcelHelpers.exportAll(_tableBody, exports);
+var _tableCell = require("./TableCell");
+var _tableCellDefault = parcelHelpers.interopDefault(_tableCell);
+parcelHelpers.exportAll(_tableCell, exports);
+var _tableContainer = require("./TableContainer");
+var _tableContainerDefault = parcelHelpers.interopDefault(_tableContainer);
+parcelHelpers.exportAll(_tableContainer, exports);
+var _tableFooter = require("./TableFooter");
+var _tableFooterDefault = parcelHelpers.interopDefault(_tableFooter);
+parcelHelpers.exportAll(_tableFooter, exports);
+var _tableHead = require("./TableHead");
+var _tableHeadDefault = parcelHelpers.interopDefault(_tableHead);
+parcelHelpers.exportAll(_tableHead, exports);
+var _tablePagination = require("./TablePagination");
+var _tablePaginationDefault = parcelHelpers.interopDefault(_tablePagination);
+parcelHelpers.exportAll(_tablePagination, exports);
+var _tableRow = require("./TableRow");
+var _tableRowDefault = parcelHelpers.interopDefault(_tableRow);
+parcelHelpers.exportAll(_tableRow, exports);
+var _tableSortLabel = require("./TableSortLabel");
+var _tableSortLabelDefault = parcelHelpers.interopDefault(_tableSortLabel);
+parcelHelpers.exportAll(_tableSortLabel, exports);
+var _tabs = require("./Tabs");
+var _tabsDefault = parcelHelpers.interopDefault(_tabs);
+parcelHelpers.exportAll(_tabs, exports);
+var _tabScrollButton = require("./TabScrollButton");
+var _tabScrollButtonDefault = parcelHelpers.interopDefault(_tabScrollButton);
+parcelHelpers.exportAll(_tabScrollButton, exports);
+var _textField = require("./TextField");
+var _textFieldDefault = parcelHelpers.interopDefault(_textField);
+parcelHelpers.exportAll(_textField, exports);
+var _textareaAutosize = require("./TextareaAutosize");
+var _textareaAutosizeDefault = parcelHelpers.interopDefault(_textareaAutosize);
+parcelHelpers.exportAll(_textareaAutosize, exports);
+var _toggleButton = require("./ToggleButton");
+var _toggleButtonDefault = parcelHelpers.interopDefault(_toggleButton);
+parcelHelpers.exportAll(_toggleButton, exports);
+var _toggleButtonGroup = require("./ToggleButtonGroup");
+var _toggleButtonGroupDefault = parcelHelpers.interopDefault(_toggleButtonGroup);
+parcelHelpers.exportAll(_toggleButtonGroup, exports);
+var _toolbar = require("./Toolbar");
+var _toolbarDefault = parcelHelpers.interopDefault(_toolbar);
+parcelHelpers.exportAll(_toolbar, exports);
+var _tooltip = require("./Tooltip");
+var _tooltipDefault = parcelHelpers.interopDefault(_tooltip);
+parcelHelpers.exportAll(_tooltip, exports);
+var _typography = require("./Typography");
+var _typographyDefault = parcelHelpers.interopDefault(_typography);
+parcelHelpers.exportAll(_typography, exports);
+var _useMediaQuery = require("./useMediaQuery");
+var _useMediaQueryDefault = parcelHelpers.interopDefault(_useMediaQuery);
+parcelHelpers.exportAll(_useMediaQuery, exports);
+var _usePagination = require("./usePagination");
+var _usePaginationDefault = parcelHelpers.interopDefault(_usePagination);
+parcelHelpers.exportAll(_usePagination, exports);
+var _useScrollTrigger = require("./useScrollTrigger");
+var _useScrollTriggerDefault = parcelHelpers.interopDefault(_useScrollTrigger);
+parcelHelpers.exportAll(_useScrollTrigger, exports);
+var _zoom = require("./Zoom");
+var _zoomDefault = parcelHelpers.interopDefault(_zoom);
+parcelHelpers.exportAll(_zoom, exports);
+var _useAutocomplete = require("./useAutocomplete");
+var _useAutocompleteDefault = parcelHelpers.interopDefault(_useAutocomplete);
+var _globalStyles = require("./GlobalStyles");
+var _globalStylesDefault = parcelHelpers.interopDefault(_globalStyles);
+parcelHelpers.exportAll(_globalStyles, exports);
+var _composeClasses = require("@mui/base/composeClasses");
+var _generateUtilityClass = require("./generateUtilityClass");
+var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
+parcelHelpers.exportAll(_generateUtilityClass, exports);
+var _generateUtilityClasses = require("./generateUtilityClasses");
+var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
+var _unstableTrapFocus = require("./Unstable_TrapFocus");
+var _unstableTrapFocusDefault = parcelHelpers.interopDefault(_unstableTrapFocus);
+
+},{"./colors":false,"./styles":false,"./utils":false,"./Accordion":false,"./AccordionActions":false,"./AccordionDetails":false,"./AccordionSummary":false,"./Alert":false,"./AlertTitle":false,"./AppBar":false,"./Autocomplete":false,"./Avatar":false,"./AvatarGroup":false,"./Backdrop":false,"./Badge":false,"./BottomNavigation":false,"./BottomNavigationAction":false,"./Box":false,"./Breadcrumbs":false,"./Button":"73csw","./ButtonBase":false,"./ButtonGroup":false,"./Card":"hWYZ3","./CardActionArea":false,"./CardActions":false,"./CardContent":"lVecn","./CardHeader":false,"./CardMedia":false,"./Checkbox":false,"./Chip":"6k8Vq","./CircularProgress":false,"./ClickAwayListener":false,"./Collapse":false,"./Container":false,"./CssBaseline":false,"./darkScrollbar":false,"./Dialog":"ftK48","./DialogActions":"25Z2G","./DialogContent":"gZO7I","./DialogContentText":"iLsKC","./DialogTitle":"642rE","./Divider":false,"./Drawer":false,"./Fab":false,"./Fade":false,"./FilledInput":false,"./FormControl":false,"./FormControlLabel":false,"./FormGroup":false,"./FormHelperText":false,"./FormLabel":false,"./Grid":false,"./Unstable_Grid2":false,"./Grow":false,"./Hidden":false,"./Icon":false,"./IconButton":false,"./ImageList":false,"./ImageListItem":false,"./ImageListItemBar":false,"./Input":false,"./InputAdornment":false,"./InputBase":false,"./InputLabel":false,"./LinearProgress":false,"./Link":"f1yGe","./List":false,"./ListItem":false,"./ListItemAvatar":false,"./ListItemButton":false,"./ListItemIcon":"2P7xS","./ListItemSecondaryAction":false,"./ListItemText":"g3ISx","./ListSubheader":false,"./Menu":false,"./MenuItem":"6tZ4p","./MenuList":"8m6xB","./MobileStepper":false,"./Modal":false,"./NativeSelect":false,"./NoSsr":false,"./OutlinedInput":false,"./Pagination":false,"./PaginationItem":false,"./Paper":false,"./Popover":false,"./Popper":false,"./Portal":false,"./Radio":false,"./RadioGroup":false,"./Rating":false,"./ScopedCssBaseline":false,"./Select":false,"./Skeleton":false,"./Slide":false,"./Slider":false,"./Snackbar":false,"./SnackbarContent":false,"./SpeedDial":false,"./SpeedDialAction":false,"./SpeedDialIcon":false,"./Stack":false,"./Step":false,"./StepButton":false,"./StepConnector":false,"./StepContent":false,"./StepIcon":false,"./StepLabel":false,"./Stepper":false,"./SvgIcon":false,"./SwipeableDrawer":false,"./Switch":false,"./Tab":false,"./Table":false,"./TableBody":false,"./TableCell":false,"./TableContainer":false,"./TableFooter":false,"./TableHead":false,"./TablePagination":false,"./TableRow":false,"./TableSortLabel":false,"./Tabs":false,"./TabScrollButton":false,"./TextField":"hlqrK","./TextareaAutosize":false,"./ToggleButton":false,"./ToggleButtonGroup":false,"./Toolbar":false,"./Tooltip":false,"./Typography":"faxSz","./useMediaQuery":false,"./usePagination":false,"./useScrollTrigger":false,"./Zoom":false,"./useAutocomplete":false,"./GlobalStyles":false,"@mui/base/composeClasses":false,"./generateUtilityClass":false,"./generateUtilityClasses":false,"./Unstable_TrapFocus":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jNAPI":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "common", ()=>(0, _commonDefault.default));
+parcelHelpers.export(exports, "red", ()=>(0, _redDefault.default));
+parcelHelpers.export(exports, "pink", ()=>(0, _pinkDefault.default));
+parcelHelpers.export(exports, "purple", ()=>(0, _purpleDefault.default));
+parcelHelpers.export(exports, "deepPurple", ()=>(0, _deepPurpleDefault.default));
+parcelHelpers.export(exports, "indigo", ()=>(0, _indigoDefault.default));
+parcelHelpers.export(exports, "blue", ()=>(0, _blueDefault.default));
+parcelHelpers.export(exports, "lightBlue", ()=>(0, _lightBlueDefault.default));
+parcelHelpers.export(exports, "cyan", ()=>(0, _cyanDefault.default));
+parcelHelpers.export(exports, "teal", ()=>(0, _tealDefault.default));
+parcelHelpers.export(exports, "green", ()=>(0, _greenDefault.default));
+parcelHelpers.export(exports, "lightGreen", ()=>(0, _lightGreenDefault.default));
+parcelHelpers.export(exports, "lime", ()=>(0, _limeDefault.default));
+parcelHelpers.export(exports, "yellow", ()=>(0, _yellowDefault.default));
+parcelHelpers.export(exports, "amber", ()=>(0, _amberDefault.default));
+parcelHelpers.export(exports, "orange", ()=>(0, _orangeDefault.default));
+parcelHelpers.export(exports, "deepOrange", ()=>(0, _deepOrangeDefault.default));
+parcelHelpers.export(exports, "brown", ()=>(0, _brownDefault.default));
+parcelHelpers.export(exports, "grey", ()=>(0, _greyDefault.default));
+parcelHelpers.export(exports, "blueGrey", ()=>(0, _blueGreyDefault.default));
+var _common = require("./common");
+var _commonDefault = parcelHelpers.interopDefault(_common);
+var _red = require("./red");
+var _redDefault = parcelHelpers.interopDefault(_red);
+var _pink = require("./pink");
+var _pinkDefault = parcelHelpers.interopDefault(_pink);
+var _purple = require("./purple");
+var _purpleDefault = parcelHelpers.interopDefault(_purple);
+var _deepPurple = require("./deepPurple");
+var _deepPurpleDefault = parcelHelpers.interopDefault(_deepPurple);
+var _indigo = require("./indigo");
+var _indigoDefault = parcelHelpers.interopDefault(_indigo);
+var _blue = require("./blue");
+var _blueDefault = parcelHelpers.interopDefault(_blue);
+var _lightBlue = require("./lightBlue");
+var _lightBlueDefault = parcelHelpers.interopDefault(_lightBlue);
+var _cyan = require("./cyan");
+var _cyanDefault = parcelHelpers.interopDefault(_cyan);
+var _teal = require("./teal");
+var _tealDefault = parcelHelpers.interopDefault(_teal);
+var _green = require("./green");
+var _greenDefault = parcelHelpers.interopDefault(_green);
+var _lightGreen = require("./lightGreen");
+var _lightGreenDefault = parcelHelpers.interopDefault(_lightGreen);
+var _lime = require("./lime");
+var _limeDefault = parcelHelpers.interopDefault(_lime);
+var _yellow = require("./yellow");
+var _yellowDefault = parcelHelpers.interopDefault(_yellow);
+var _amber = require("./amber");
+var _amberDefault = parcelHelpers.interopDefault(_amber);
+var _orange = require("./orange");
+var _orangeDefault = parcelHelpers.interopDefault(_orange);
+var _deepOrange = require("./deepOrange");
+var _deepOrangeDefault = parcelHelpers.interopDefault(_deepOrange);
+var _brown = require("./brown");
+var _brownDefault = parcelHelpers.interopDefault(_brown);
+var _grey = require("./grey");
+var _greyDefault = parcelHelpers.interopDefault(_grey);
+var _blueGrey = require("./blueGrey");
+var _blueGreyDefault = parcelHelpers.interopDefault(_blueGrey);
+
+},{"./common":"bwTuH","./red":"6mRcQ","./pink":"ciHKg","./purple":"f3Uf0","./deepPurple":"40ub5","./indigo":"4CY7L","./blue":"3u97j","./lightBlue":"f81LW","./cyan":"akmv6","./teal":"6VKeR","./green":"kH9Ro","./lightGreen":"34oru","./lime":"kDHWK","./yellow":"53O4B","./amber":"7XS0h","./orange":"9tiLD","./deepOrange":"fa0cj","./brown":"lnYX6","./grey":"lwTx7","./blueGrey":"9GO8u","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ciHKg":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const pink = {
+    50: "#fce4ec",
+    100: "#f8bbd0",
+    200: "#f48fb1",
+    300: "#f06292",
+    400: "#ec407a",
+    500: "#e91e63",
+    600: "#d81b60",
+    700: "#c2185b",
+    800: "#ad1457",
+    900: "#880e4f",
+    A100: "#ff80ab",
+    A200: "#ff4081",
+    A400: "#f50057",
+    A700: "#c51162"
+};
+exports.default = pink;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"40ub5":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const deepPurple = {
+    50: "#ede7f6",
+    100: "#d1c4e9",
+    200: "#b39ddb",
+    300: "#9575cd",
+    400: "#7e57c2",
+    500: "#673ab7",
+    600: "#5e35b1",
+    700: "#512da8",
+    800: "#4527a0",
+    900: "#311b92",
+    A100: "#b388ff",
+    A200: "#7c4dff",
+    A400: "#651fff",
+    A700: "#6200ea"
+};
+exports.default = deepPurple;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4CY7L":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const indigo = {
+    50: "#e8eaf6",
+    100: "#c5cae9",
+    200: "#9fa8da",
+    300: "#7986cb",
+    400: "#5c6bc0",
+    500: "#3f51b5",
+    600: "#3949ab",
+    700: "#303f9f",
+    800: "#283593",
+    900: "#1a237e",
+    A100: "#8c9eff",
+    A200: "#536dfe",
+    A400: "#3d5afe",
+    A700: "#304ffe"
+};
+exports.default = indigo;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"akmv6":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const cyan = {
+    50: "#e0f7fa",
+    100: "#b2ebf2",
+    200: "#80deea",
+    300: "#4dd0e1",
+    400: "#26c6da",
+    500: "#00bcd4",
+    600: "#00acc1",
+    700: "#0097a7",
+    800: "#00838f",
+    900: "#006064",
+    A100: "#84ffff",
+    A200: "#18ffff",
+    A400: "#00e5ff",
+    A700: "#00b8d4"
+};
+exports.default = cyan;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6VKeR":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const teal = {
+    50: "#e0f2f1",
+    100: "#b2dfdb",
+    200: "#80cbc4",
+    300: "#4db6ac",
+    400: "#26a69a",
+    500: "#009688",
+    600: "#00897b",
+    700: "#00796b",
+    800: "#00695c",
+    900: "#004d40",
+    A100: "#a7ffeb",
+    A200: "#64ffda",
+    A400: "#1de9b6",
+    A700: "#00bfa5"
+};
+exports.default = teal;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"34oru":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const lightGreen = {
+    50: "#f1f8e9",
+    100: "#dcedc8",
+    200: "#c5e1a5",
+    300: "#aed581",
+    400: "#9ccc65",
+    500: "#8bc34a",
+    600: "#7cb342",
+    700: "#689f38",
+    800: "#558b2f",
+    900: "#33691e",
+    A100: "#ccff90",
+    A200: "#b2ff59",
+    A400: "#76ff03",
+    A700: "#64dd17"
+};
+exports.default = lightGreen;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kDHWK":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const lime = {
+    50: "#f9fbe7",
+    100: "#f0f4c3",
+    200: "#e6ee9c",
+    300: "#dce775",
+    400: "#d4e157",
+    500: "#cddc39",
+    600: "#c0ca33",
+    700: "#afb42b",
+    800: "#9e9d24",
+    900: "#827717",
+    A100: "#f4ff81",
+    A200: "#eeff41",
+    A400: "#c6ff00",
+    A700: "#aeea00"
+};
+exports.default = lime;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"53O4B":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const yellow = {
+    50: "#fffde7",
+    100: "#fff9c4",
+    200: "#fff59d",
+    300: "#fff176",
+    400: "#ffee58",
+    500: "#ffeb3b",
+    600: "#fdd835",
+    700: "#fbc02d",
+    800: "#f9a825",
+    900: "#f57f17",
+    A100: "#ffff8d",
+    A200: "#ffff00",
+    A400: "#ffea00",
+    A700: "#ffd600"
+};
+exports.default = yellow;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7XS0h":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const amber = {
+    50: "#fff8e1",
+    100: "#ffecb3",
+    200: "#ffe082",
+    300: "#ffd54f",
+    400: "#ffca28",
+    500: "#ffc107",
+    600: "#ffb300",
+    700: "#ffa000",
+    800: "#ff8f00",
+    900: "#ff6f00",
+    A100: "#ffe57f",
+    A200: "#ffd740",
+    A400: "#ffc400",
+    A700: "#ffab00"
+};
+exports.default = amber;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fa0cj":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const deepOrange = {
+    50: "#fbe9e7",
+    100: "#ffccbc",
+    200: "#ffab91",
+    300: "#ff8a65",
+    400: "#ff7043",
+    500: "#ff5722",
+    600: "#f4511e",
+    700: "#e64a19",
+    800: "#d84315",
+    900: "#bf360c",
+    A100: "#ff9e80",
+    A200: "#ff6e40",
+    A400: "#ff3d00",
+    A700: "#dd2c00"
+};
+exports.default = deepOrange;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lnYX6":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const brown = {
+    50: "#efebe9",
+    100: "#d7ccc8",
+    200: "#bcaaa4",
+    300: "#a1887f",
+    400: "#8d6e63",
+    500: "#795548",
+    600: "#6d4c41",
+    700: "#5d4037",
+    800: "#4e342e",
+    900: "#3e2723",
+    A100: "#d7ccc8",
+    A200: "#bcaaa4",
+    A400: "#8d6e63",
+    A700: "#5d4037"
+};
+exports.default = brown;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9GO8u":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const blueGrey = {
+    50: "#eceff1",
+    100: "#cfd8dc",
+    200: "#b0bec5",
+    300: "#90a4ae",
+    400: "#78909c",
+    500: "#607d8b",
+    600: "#546e7a",
+    700: "#455a64",
+    800: "#37474f",
+    900: "#263238",
+    A100: "#cfd8dc",
+    A200: "#b0bec5",
+    A400: "#78909c",
+    A700: "#455a64"
+};
+exports.default = blueGrey;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bJH0A":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _alertDefault.default));
+parcelHelpers.export(exports, "alertClasses", ()=>(0, _alertClassesDefault.default));
+var _alert = require("./Alert");
+var _alertDefault = parcelHelpers.interopDefault(_alert);
+var _alertClasses = require("./alertClasses");
+var _alertClassesDefault = parcelHelpers.interopDefault(_alertClasses);
+parcelHelpers.exportAll(_alertClasses, exports);
+"use client";
+
+},{"./Alert":"drgv7","./alertClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"drgv7":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
+var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+var _react = require("react");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _clsx = require("clsx");
+var _clsxDefault = parcelHelpers.interopDefault(_clsx);
+var _composeClasses = require("@mui/utils/composeClasses");
+var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
+var _colorManipulator = require("@mui/system/colorManipulator");
+var _zeroStyled = require("../zero-styled");
+var _useSlot = require("../utils/useSlot");
+var _useSlotDefault = parcelHelpers.interopDefault(_useSlot);
+var _capitalize = require("../utils/capitalize");
+var _capitalizeDefault = parcelHelpers.interopDefault(_capitalize);
+var _paper = require("../Paper");
+var _paperDefault = parcelHelpers.interopDefault(_paper);
+var _alertClasses = require("./alertClasses");
+var _alertClassesDefault = parcelHelpers.interopDefault(_alertClasses);
+var _iconButton = require("../IconButton");
+var _iconButtonDefault = parcelHelpers.interopDefault(_iconButton);
+var _successOutlined = require("../internal/svg-icons/SuccessOutlined");
+var _successOutlinedDefault = parcelHelpers.interopDefault(_successOutlined);
+var _reportProblemOutlined = require("../internal/svg-icons/ReportProblemOutlined");
+var _reportProblemOutlinedDefault = parcelHelpers.interopDefault(_reportProblemOutlined);
+var _errorOutline = require("../internal/svg-icons/ErrorOutline");
+var _errorOutlineDefault = parcelHelpers.interopDefault(_errorOutline);
+var _infoOutlined = require("../internal/svg-icons/InfoOutlined");
+var _infoOutlinedDefault = parcelHelpers.interopDefault(_infoOutlined);
+var _close = require("../internal/svg-icons/Close");
+var _closeDefault = parcelHelpers.interopDefault(_close);
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const _excluded = [
+    "action",
+    "children",
+    "className",
+    "closeText",
+    "color",
+    "components",
+    "componentsProps",
+    "icon",
+    "iconMapping",
+    "onClose",
+    "role",
+    "severity",
+    "slotProps",
+    "slots",
+    "variant"
+];
+const useThemeProps = (0, _zeroStyled.createUseThemeProps)("MuiAlert");
+const useUtilityClasses = (ownerState)=>{
+    const { variant, color, severity, classes } = ownerState;
+    const slots = {
+        root: [
+            "root",
+            `color${(0, _capitalizeDefault.default)(color || severity)}`,
+            `${variant}${(0, _capitalizeDefault.default)(color || severity)}`,
+            `${variant}`
+        ],
+        icon: [
+            "icon"
+        ],
+        message: [
+            "message"
+        ],
+        action: [
+            "action"
+        ]
+    };
+    return (0, _composeClassesDefault.default)(slots, (0, _alertClasses.getAlertUtilityClass), classes);
+};
+const AlertRoot = (0, _zeroStyled.styled)((0, _paperDefault.default), {
+    name: "MuiAlert",
+    slot: "Root",
+    overridesResolver: (props, styles)=>{
+        const { ownerState } = props;
+        return [
+            styles.root,
+            styles[ownerState.variant],
+            styles[`${ownerState.variant}${(0, _capitalizeDefault.default)(ownerState.color || ownerState.severity)}`]
+        ];
+    }
+})(({ theme })=>{
+    const getColor = theme.palette.mode === "light" ? (0, _colorManipulator.darken) : (0, _colorManipulator.lighten);
+    const getBackgroundColor = theme.palette.mode === "light" ? (0, _colorManipulator.lighten) : (0, _colorManipulator.darken);
+    return (0, _extendsDefault.default)({}, theme.typography.body2, {
+        backgroundColor: "transparent",
+        display: "flex",
+        padding: "6px 16px",
+        variants: [
+            ...Object.entries(theme.palette).filter(([, value])=>value.main && value.light).map(([color])=>({
+                    props: {
+                        colorSeverity: color,
+                        variant: "standard"
+                    },
+                    style: {
+                        color: theme.vars ? theme.vars.palette.Alert[`${color}Color`] : getColor(theme.palette[color].light, 0.6),
+                        backgroundColor: theme.vars ? theme.vars.palette.Alert[`${color}StandardBg`] : getBackgroundColor(theme.palette[color].light, 0.9),
+                        [`& .${(0, _alertClassesDefault.default).icon}`]: theme.vars ? {
+                            color: theme.vars.palette.Alert[`${color}IconColor`]
+                        } : {
+                            color: theme.palette[color].main
+                        }
+                    }
+                })),
+            ...Object.entries(theme.palette).filter(([, value])=>value.main && value.light).map(([color])=>({
+                    props: {
+                        colorSeverity: color,
+                        variant: "outlined"
+                    },
+                    style: {
+                        color: theme.vars ? theme.vars.palette.Alert[`${color}Color`] : getColor(theme.palette[color].light, 0.6),
+                        border: `1px solid ${(theme.vars || theme).palette[color].light}`,
+                        [`& .${(0, _alertClassesDefault.default).icon}`]: theme.vars ? {
+                            color: theme.vars.palette.Alert[`${color}IconColor`]
+                        } : {
+                            color: theme.palette[color].main
+                        }
+                    }
+                })),
+            ...Object.entries(theme.palette).filter(([, value])=>value.main && value.dark).map(([color])=>({
+                    props: {
+                        colorSeverity: color,
+                        variant: "filled"
+                    },
+                    style: (0, _extendsDefault.default)({
+                        fontWeight: theme.typography.fontWeightMedium
+                    }, theme.vars ? {
+                        color: theme.vars.palette.Alert[`${color}FilledColor`],
+                        backgroundColor: theme.vars.palette.Alert[`${color}FilledBg`]
+                    } : {
+                        backgroundColor: theme.palette.mode === "dark" ? theme.palette[color].dark : theme.palette[color].main,
+                        color: theme.palette.getContrastText(theme.palette[color].main)
+                    })
+                }))
+        ]
+    });
+});
+const AlertIcon = (0, _zeroStyled.styled)("div", {
+    name: "MuiAlert",
+    slot: "Icon",
+    overridesResolver: (props, styles)=>styles.icon
+})({
+    marginRight: 12,
+    padding: "7px 0",
+    display: "flex",
+    fontSize: 22,
+    opacity: 0.9
+});
+const AlertMessage = (0, _zeroStyled.styled)("div", {
+    name: "MuiAlert",
+    slot: "Message",
+    overridesResolver: (props, styles)=>styles.message
+})({
+    padding: "8px 0",
+    minWidth: 0,
+    overflow: "auto"
+});
+const AlertAction = (0, _zeroStyled.styled)("div", {
+    name: "MuiAlert",
+    slot: "Action",
+    overridesResolver: (props, styles)=>styles.action
+})({
+    display: "flex",
+    alignItems: "flex-start",
+    padding: "4px 0 0 16px",
+    marginLeft: "auto",
+    marginRight: -8
+});
+const defaultIconMapping = {
+    success: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _successOutlinedDefault.default), {
+        fontSize: "inherit"
+    }),
+    warning: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _reportProblemOutlinedDefault.default), {
+        fontSize: "inherit"
+    }),
+    error: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _errorOutlineDefault.default), {
+        fontSize: "inherit"
+    }),
+    info: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _infoOutlinedDefault.default), {
+        fontSize: "inherit"
+    })
+};
+const Alert = /*#__PURE__*/ _react.forwardRef(function Alert(inProps, ref) {
+    const props = useThemeProps({
+        props: inProps,
+        name: "MuiAlert"
+    });
+    const { action, children, className, closeText = "Close", color, components = {}, componentsProps = {}, icon, iconMapping = defaultIconMapping, onClose, role = "alert", severity = "success", slotProps = {}, slots = {}, variant = "standard" } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
+    const ownerState = (0, _extendsDefault.default)({}, props, {
+        color,
+        severity,
+        variant,
+        colorSeverity: color || severity
+    });
+    const classes = useUtilityClasses(ownerState);
+    const externalForwardedProps = {
+        slots: (0, _extendsDefault.default)({
+            closeButton: components.CloseButton,
+            closeIcon: components.CloseIcon
+        }, slots),
+        slotProps: (0, _extendsDefault.default)({}, componentsProps, slotProps)
+    };
+    const [CloseButtonSlot, closeButtonProps] = (0, _useSlotDefault.default)("closeButton", {
+        elementType: (0, _iconButtonDefault.default),
+        externalForwardedProps,
+        ownerState
+    });
+    const [CloseIconSlot, closeIconProps] = (0, _useSlotDefault.default)("closeIcon", {
+        elementType: (0, _closeDefault.default),
+        externalForwardedProps,
+        ownerState
+    });
+    return /*#__PURE__*/ (0, _jsxRuntime.jsxs)(AlertRoot, (0, _extendsDefault.default)({
+        role: role,
+        elevation: 0,
+        ownerState: ownerState,
+        className: (0, _clsxDefault.default)(classes.root, className),
+        ref: ref
+    }, other, {
+        children: [
+            icon !== false ? /*#__PURE__*/ (0, _jsxRuntime.jsx)(AlertIcon, {
+                ownerState: ownerState,
+                className: classes.icon,
+                children: icon || iconMapping[severity] || defaultIconMapping[severity]
+            }) : null,
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)(AlertMessage, {
+                ownerState: ownerState,
+                className: classes.message,
+                children: children
+            }),
+            action != null ? /*#__PURE__*/ (0, _jsxRuntime.jsx)(AlertAction, {
+                ownerState: ownerState,
+                className: classes.action,
+                children: action
+            }) : null,
+            action == null && onClose ? /*#__PURE__*/ (0, _jsxRuntime.jsx)(AlertAction, {
+                ownerState: ownerState,
+                className: classes.action,
+                children: /*#__PURE__*/ (0, _jsxRuntime.jsx)(CloseButtonSlot, (0, _extendsDefault.default)({
+                    size: "small",
+                    "aria-label": closeText,
+                    title: closeText,
+                    color: "inherit",
+                    onClick: onClose
+                }, closeButtonProps, {
+                    children: /*#__PURE__*/ (0, _jsxRuntime.jsx)(CloseIconSlot, (0, _extendsDefault.default)({
+                        fontSize: "small"
+                    }, closeIconProps))
+                }))
+            }) : null
+        ]
+    }));
+});
+Alert.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * The action to display. It renders after the message, at the end of the alert.
+   */ action: (0, _propTypesDefault.default).node,
+    /**
+   * The content of the component.
+   */ children: (0, _propTypesDefault.default).node,
+    /**
+   * Override or extend the styles applied to the component.
+   */ classes: (0, _propTypesDefault.default).object,
+    /**
+   * @ignore
+   */ className: (0, _propTypesDefault.default).string,
+    /**
+   * Override the default label for the *close popup* icon button.
+   *
+   * For localization purposes, you can use the provided [translations](/material-ui/guides/localization/).
+   * @default 'Close'
+   */ closeText: (0, _propTypesDefault.default).string,
+    /**
+   * The color of the component. Unless provided, the value is taken from the `severity` prop.
+   * It supports both default and custom theme colors, which can be added as shown in the
+   * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
+   */ color: (0, _propTypesDefault.default /* @typescript-to-proptypes-ignore */ ).oneOfType([
+        (0, _propTypesDefault.default).oneOf([
+            "error",
+            "info",
+            "success",
+            "warning"
+        ]),
+        (0, _propTypesDefault.default).string
+    ]),
+    /**
+   * The components used for each slot inside.
+   *
+   * @deprecated use the `slots` prop instead. This prop will be removed in v7. [How to migrate](/material-ui/migration/migrating-from-deprecated-apis/).
+   *
+   * @default {}
+   */ components: (0, _propTypesDefault.default).shape({
+        CloseButton: (0, _propTypesDefault.default).elementType,
+        CloseIcon: (0, _propTypesDefault.default).elementType
+    }),
+    /**
+   * The extra props for the slot components.
+   * You can override the existing props or add new ones.
+   *
+   * @deprecated use the `slotProps` prop instead. This prop will be removed in v7. [How to migrate](/material-ui/migration/migrating-from-deprecated-apis/).
+   *
+   * @default {}
+   */ componentsProps: (0, _propTypesDefault.default).shape({
+        closeButton: (0, _propTypesDefault.default).object,
+        closeIcon: (0, _propTypesDefault.default).object
+    }),
+    /**
+   * Override the icon displayed before the children.
+   * Unless provided, the icon is mapped to the value of the `severity` prop.
+   * Set to `false` to remove the `icon`.
+   */ icon: (0, _propTypesDefault.default).node,
+    /**
+   * The component maps the `severity` prop to a range of different icons,
+   * for instance success to `<SuccessOutlined>`.
+   * If you wish to change this mapping, you can provide your own.
+   * Alternatively, you can use the `icon` prop to override the icon displayed.
+   */ iconMapping: (0, _propTypesDefault.default).shape({
+        error: (0, _propTypesDefault.default).node,
+        info: (0, _propTypesDefault.default).node,
+        success: (0, _propTypesDefault.default).node,
+        warning: (0, _propTypesDefault.default).node
+    }),
+    /**
+   * Callback fired when the component requests to be closed.
+   * When provided and no `action` prop is set, a close icon button is displayed that triggers the callback when clicked.
+   * @param {React.SyntheticEvent} event The event source of the callback.
+   */ onClose: (0, _propTypesDefault.default).func,
+    /**
+   * The ARIA role attribute of the element.
+   * @default 'alert'
+   */ role: (0, _propTypesDefault.default).string,
+    /**
+   * The severity of the alert. This defines the color and icon used.
+   * @default 'success'
+   */ severity: (0, _propTypesDefault.default /* @typescript-to-proptypes-ignore */ ).oneOfType([
+        (0, _propTypesDefault.default).oneOf([
+            "error",
+            "info",
+            "success",
+            "warning"
+        ]),
+        (0, _propTypesDefault.default).string
+    ]),
+    /**
+   * The props used for each slot inside.
+   * @default {}
+   */ slotProps: (0, _propTypesDefault.default).shape({
+        closeButton: (0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object
+        ]),
+        closeIcon: (0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object
+        ])
+    }),
+    /**
+   * The components used for each slot inside.
+   * @default {}
+   */ slots: (0, _propTypesDefault.default).shape({
+        closeButton: (0, _propTypesDefault.default).elementType,
+        closeIcon: (0, _propTypesDefault.default).elementType
+    }),
+    /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */ sx: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object,
+            (0, _propTypesDefault.default).bool
+        ])),
+        (0, _propTypesDefault.default).func,
+        (0, _propTypesDefault.default).object
+    ]),
+    /**
+   * The variant to use.
+   * @default 'standard'
+   */ variant: (0, _propTypesDefault.default /* @typescript-to-proptypes-ignore */ ).oneOfType([
+        (0, _propTypesDefault.default).oneOf([
+            "filled",
+            "outlined",
+            "standard"
+        ]),
+        (0, _propTypesDefault.default).string
+    ])
+};
+exports.default = Alert;
+
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"G7PIs","@mui/utils/composeClasses":"4kKno","@mui/system/colorManipulator":"bO1j5","../zero-styled":"e4lsd","../utils/useSlot":"3wNlf","../utils/capitalize":"lwNtZ","../Paper":"6IiTP","./alertClasses":"4g1D4","../IconButton":"38BrD","../internal/svg-icons/SuccessOutlined":"6SDrv","../internal/svg-icons/ReportProblemOutlined":"fMsc8","../internal/svg-icons/ErrorOutline":"8SX77","../internal/svg-icons/InfoOutlined":"6YC70","../internal/svg-icons/Close":"gEje4","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4g1D4":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getAlertUtilityClass", ()=>getAlertUtilityClass);
+var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
+var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
+var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
+var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
+function getAlertUtilityClass(slot) {
+    return (0, _generateUtilityClassDefault.default)("MuiAlert", slot);
+}
+const alertClasses = (0, _generateUtilityClassesDefault.default)("MuiAlert", [
+    "root",
+    "action",
+    "icon",
+    "message",
+    "filled",
+    "colorSuccess",
+    "colorInfo",
+    "colorWarning",
+    "colorError",
+    "filledSuccess",
+    "filledInfo",
+    "filledWarning",
+    "filledError",
+    "outlined",
+    "outlinedSuccess",
+    "outlinedInfo",
+    "outlinedWarning",
+    "outlinedError",
+    "standard",
+    "standardSuccess",
+    "standardInfo",
+    "standardWarning",
+    "standardError"
+]);
+exports.default = alertClasses;
+
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6SDrv":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _createSvgIcon = require("../../utils/createSvgIcon");
+var _createSvgIconDefault = parcelHelpers.interopDefault(_createSvgIcon);
+/**
+ * @ignore - internal component.
+ */ var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+exports.default = (0, _createSvgIconDefault.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("path", {
+    d: "M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.76,4 13.5,4.11 14.2, 4.31L15.77,2.74C14.61,2.26 13.34,2 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0, 0 22,12M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z"
+}), "SuccessOutlined");
+
+},{"react":"21dqq","../../utils/createSvgIcon":"f9XLK","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fMsc8":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _createSvgIcon = require("../../utils/createSvgIcon");
+var _createSvgIconDefault = parcelHelpers.interopDefault(_createSvgIcon);
+/**
+ * @ignore - internal component.
+ */ var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+exports.default = (0, _createSvgIconDefault.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("path", {
+    d: "M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z"
+}), "ReportProblemOutlined");
+
+},{"react":"21dqq","../../utils/createSvgIcon":"f9XLK","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8SX77":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _createSvgIcon = require("../../utils/createSvgIcon");
+var _createSvgIconDefault = parcelHelpers.interopDefault(_createSvgIcon);
+/**
+ * @ignore - internal component.
+ */ var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+exports.default = (0, _createSvgIconDefault.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("path", {
+    d: "M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+}), "ErrorOutline");
+
+},{"react":"21dqq","../../utils/createSvgIcon":"f9XLK","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6YC70":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _createSvgIcon = require("../../utils/createSvgIcon");
+var _createSvgIconDefault = parcelHelpers.interopDefault(_createSvgIcon);
+/**
+ * @ignore - internal component.
+ */ var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+exports.default = (0, _createSvgIconDefault.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("path", {
+    d: "M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20, 12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10, 10 0 0,0 12,2M11,17H13V11H11V17Z"
+}), "InfoOutlined");
+
+},{"react":"21dqq","../../utils/createSvgIcon":"f9XLK","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"c3vaq":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _appBarDefault.default));
@@ -1520,427 +3382,1212 @@ const appBarClasses = (0, _generateUtilityClassesDefault.default)("MuiAppBar", [
 ]);
 exports.default = appBarClasses;
 
-},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iqWQe":[function(require,module,exports) {
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hWYZ3":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-var _reactRedux = require("react-redux");
-var _redux = require("redux");
-var _reactI18Next = require("react-i18next");
-var _styles = require("@mui/material/styles");
-var _useMediaQuery = require("@mui/material/useMediaQuery");
-var _useMediaQueryDefault = parcelHelpers.interopDefault(_useMediaQuery);
-var _withPlugins = require("../extend/withPlugins");
-var _actions = require("../state/actions");
-var _selectors = require("../state/selectors");
-var _workspaceAddButton = require("../components/WorkspaceAddButton");
-/**
- * Be careful using this hook. It only works because the number of
- * breakpoints in theme is static. It will break once you change the number of
- * breakpoints. See https://legacy.reactjs.org/docs/hooks-rules.html#only-call-hooks-at-the-top-level
- */ var _jsxRuntime = require("react/jsx-runtime");
-function ownKeys(e, r) {
-    var t = Object.keys(e);
-    if (Object.getOwnPropertySymbols) {
-        var o = Object.getOwnPropertySymbols(e);
-        r && (o = o.filter(function(r) {
-            return Object.getOwnPropertyDescriptor(e, r).enumerable;
-        })), t.push.apply(t, o);
-    }
-    return t;
-}
-function _objectSpread(e) {
-    for(var r = 1; r < arguments.length; r++){
-        var t = null != arguments[r] ? arguments[r] : {};
-        r % 2 ? ownKeys(Object(t), !0).forEach(function(r) {
-            _defineProperty(e, r, t[r]);
-        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r) {
-            Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r));
-        });
-    }
-    return e;
-}
-function _defineProperty(obj, key, value) {
-    key = _toPropertyKey(key);
-    if (key in obj) Object.defineProperty(obj, key, {
-        value: value,
-        enumerable: true,
-        configurable: true,
-        writable: true
-    });
-    else obj[key] = value;
-    return obj;
-}
-function _toPropertyKey(t) {
-    var i = _toPrimitive(t, "string");
-    return "symbol" == typeof i ? i : String(i);
-}
-function _toPrimitive(t, r) {
-    if ("object" != typeof t || !t) return t;
-    var e = t[Symbol.toPrimitive];
-    if (void 0 !== e) {
-        var i = e.call(t, r || "default");
-        if ("object" != typeof i) return i;
-        throw new TypeError("@@toPrimitive must return a primitive value.");
-    }
-    return ("string" === r ? String : Number)(t);
-}
-function _toConsumableArray(arr) {
-    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
-}
-function _nonIterableSpread() {
-    throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _unsupportedIterableToArray(o, minLen) {
-    if (!o) return;
-    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-    var n = Object.prototype.toString.call(o).slice(8, -1);
-    if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(o);
-    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-function _iterableToArray(iter) {
-    if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
-}
-function _arrayWithoutHoles(arr) {
-    if (Array.isArray(arr)) return _arrayLikeToArray(arr);
-}
-function _arrayLikeToArray(arr, len) {
-    if (len == null || len > arr.length) len = arr.length;
-    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
-    return arr2;
-}
-function useWidth() {
-    var theme = (0, _styles.useTheme)();
-    var keys = _toConsumableArray(theme.breakpoints.keys).reverse();
-    return keys.reduce(function(output, key) {
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        var matches = (0, _useMediaQueryDefault.default)(theme.breakpoints.up(key));
-        return !output && matches ? key : output;
-    }, null) || "xs";
-}
-/**
- * withWidth
- * @memberof WorkspaceControlPanel
- * @private
- */ var withWidth = function withWidth() {
-    return function(WrappedComponent) {
-        return function(props) {
-            return /*#__PURE__*/ (0, _jsxRuntime.jsx)(WrappedComponent, _objectSpread(_objectSpread({}, props), {}, {
-                width: useWidth()
-            }));
-        };
-    };
-};
-/**
- * mapStateToProps - to hook up connect
- * @memberof WorkspaceControlPanel
- * @private
- */ var mapStateToProps = function mapStateToProps(state, _ref) {
-    var width = _ref.width;
-    var _getWorkspace = (0, _selectors.getWorkspace)(state), isWorkspaceAddVisible = _getWorkspace.isWorkspaceAddVisible;
-    return {
-        isWorkspaceAddVisible: isWorkspaceAddVisible,
-        useExtendedFab: width !== "xs" && !isWorkspaceAddVisible && (0, _selectors.getWindowIds)(state).length === 0
-    };
-};
-/**
- * mapDispatchToProps - used to hook up connect to action creators
- * @memberof Workspace
- * @private
- */ var mapDispatchToProps = {
-    setWorkspaceAddVisibility: _actions.setWorkspaceAddVisibility
-};
-var enhance = (0, _redux.compose)((0, _reactI18Next.withTranslation)(), withWidth({
-    initialWidth: "xs"
-}), (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps), (0, _withPlugins.withPlugins)("WorkspaceAddButton"));
-exports.default = enhance((0, _workspaceAddButton.WorkspaceAddButton));
-
-},{"react-redux":"62sf7","redux":"anWnS","react-i18next":"faThV","@mui/material/styles":"1lzai","@mui/material/useMediaQuery":"eeOzk","../extend/withPlugins":"8qYrm","../state/actions":"bqnXe","../state/selectors":"5r9Wj","../components/WorkspaceAddButton":"3m4WD","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eeOzk":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>(0, _useMediaQueryDefault.default));
-var _useMediaQuery = require("@mui/system/useMediaQuery");
-var _useMediaQueryDefault = parcelHelpers.interopDefault(_useMediaQuery);
-
-},{"@mui/system/useMediaQuery":"7wuR6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7wuR6":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>(0, _useMediaQueryDefault.default));
-var _useMediaQuery = require("./useMediaQuery");
-var _useMediaQueryDefault = parcelHelpers.interopDefault(_useMediaQuery);
-parcelHelpers.exportAll(_useMediaQuery, exports);
-
-},{"./useMediaQuery":"hFMec","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hFMec":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>useMediaQuery);
-var _react = require("react");
-var _useEnhancedEffect = require("@mui/utils/useEnhancedEffect");
-var _useEnhancedEffectDefault = parcelHelpers.interopDefault(_useEnhancedEffect);
-var _useThemeProps = require("../useThemeProps");
-var _useThemeWithoutDefault = require("../useThemeWithoutDefault");
-var _useThemeWithoutDefaultDefault = parcelHelpers.interopDefault(_useThemeWithoutDefault);
+parcelHelpers.export(exports, "default", ()=>(0, _cardDefault.default));
+parcelHelpers.export(exports, "cardClasses", ()=>(0, _cardClassesDefault.default));
+var _card = require("./Card");
+var _cardDefault = parcelHelpers.interopDefault(_card);
+var _cardClasses = require("./cardClasses");
+var _cardClassesDefault = parcelHelpers.interopDefault(_cardClasses);
+parcelHelpers.exportAll(_cardClasses, exports);
 "use client";
-/**
- * @deprecated Not used internally. Use `MediaQueryListEvent` from lib.dom.d.ts instead.
- */ /**
- * @deprecated Not used internally. Use `MediaQueryList` from lib.dom.d.ts instead.
- */ /**
- * @deprecated Not used internally. Use `(event: MediaQueryListEvent) => void` instead.
- */ function useMediaQueryOld(query, defaultMatches, matchMedia, ssrMatchMedia, noSsr) {
-    const [match, setMatch] = _react.useState(()=>{
-        if (noSsr && matchMedia) return matchMedia(query).matches;
-        if (ssrMatchMedia) return ssrMatchMedia(query).matches;
-        // Once the component is mounted, we rely on the
-        // event listeners to return the correct matches value.
-        return defaultMatches;
-    });
-    (0, _useEnhancedEffectDefault.default)(()=>{
-        let active = true;
-        if (!matchMedia) return undefined;
-        const queryList = matchMedia(query);
-        const updateMatch = ()=>{
-            // Workaround Safari wrong implementation of matchMedia
-            // TODO can we remove it?
-            // https://github.com/mui/material-ui/pull/17315#issuecomment-528286677
-            if (active) setMatch(queryList.matches);
-        };
-        updateMatch();
-        // TODO: Use `addEventListener` once support for Safari < 14 is dropped
-        queryList.addListener(updateMatch);
-        return ()=>{
-            active = false;
-            queryList.removeListener(updateMatch);
-        };
-    }, [
-        query,
-        matchMedia
-    ]);
-    return match;
-}
-// eslint-disable-next-line no-useless-concat -- Workaround for https://github.com/webpack/webpack/issues/14814
-const maybeReactUseSyncExternalStore = _react["useSyncExternalStore"];
-function useMediaQueryNew(query, defaultMatches, matchMedia, ssrMatchMedia, noSsr) {
-    const getDefaultSnapshot = _react.useCallback(()=>defaultMatches, [
-        defaultMatches
-    ]);
-    const getServerSnapshot = _react.useMemo(()=>{
-        if (noSsr && matchMedia) return ()=>matchMedia(query).matches;
-        if (ssrMatchMedia !== null) {
-            const { matches } = ssrMatchMedia(query);
-            return ()=>matches;
-        }
-        return getDefaultSnapshot;
-    }, [
-        getDefaultSnapshot,
-        query,
-        ssrMatchMedia,
-        noSsr,
-        matchMedia
-    ]);
-    const [getSnapshot, subscribe] = _react.useMemo(()=>{
-        if (matchMedia === null) return [
-            getDefaultSnapshot,
-            ()=>()=>{}
-        ];
-        const mediaQueryList = matchMedia(query);
-        return [
-            ()=>mediaQueryList.matches,
-            (notify)=>{
-                // TODO: Use `addEventListener` once support for Safari < 14 is dropped
-                mediaQueryList.addListener(notify);
-                return ()=>{
-                    mediaQueryList.removeListener(notify);
-                };
-            }
-        ];
-    }, [
-        getDefaultSnapshot,
-        matchMedia,
-        query
-    ]);
-    const match = maybeReactUseSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-    return match;
-}
-function useMediaQuery(queryInput, options = {}) {
-    const theme = (0, _useThemeWithoutDefaultDefault.default)();
-    // Wait for jsdom to support the match media feature.
-    // All the browsers MUI support have this built-in.
-    // This defensive check is here for simplicity.
-    // Most of the time, the match media logic isn't central to people tests.
-    const supportMatchMedia = typeof window !== "undefined" && typeof window.matchMedia !== "undefined";
-    const { defaultMatches = false, matchMedia = supportMatchMedia ? window.matchMedia : null, ssrMatchMedia = null, noSsr = false } = (0, _useThemeProps.getThemeProps)({
-        name: "MuiUseMediaQuery",
-        props: options,
-        theme
-    });
-    if (typeof queryInput === "function" && theme === null) console.error([
-        "MUI: The `query` argument provided is invalid.",
-        "You are providing a function without a theme in the context.",
-        "One of the parent elements needs to use a ThemeProvider."
-    ].join("\n"));
-    let query = typeof queryInput === "function" ? queryInput(theme) : queryInput;
-    query = query.replace(/^@media( ?)/m, "");
-    // TODO: Drop `useMediaQueryOld` and use  `use-sync-external-store` shim in `useMediaQueryNew` once the package is stable
-    const useMediaQueryImplementation = maybeReactUseSyncExternalStore !== undefined ? useMediaQueryNew : useMediaQueryOld;
-    const match = useMediaQueryImplementation(query, defaultMatches, matchMedia, ssrMatchMedia, noSsr);
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    _react.useDebugValue({
-        query,
-        match
-    });
-    return match;
-}
 
-},{"react":"21dqq","@mui/utils/useEnhancedEffect":"b7XQB","../useThemeProps":"eZlKz","../useThemeWithoutDefault":"9Xcu1","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3m4WD":[function(require,module,exports) {
+},{"./Card":"7uU3h","./cardClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7uU3h":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "WorkspaceAddButton", ()=>WorkspaceAddButton);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
+var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
 var _react = require("react");
-var _fab = require("@mui/material/Fab");
-var _fabDefault = parcelHelpers.interopDefault(_fab);
-var _tooltip = require("@mui/material/Tooltip");
-var _tooltipDefault = parcelHelpers.interopDefault(_tooltip);
-var _addSharp = require("@mui/icons-material/AddSharp");
-var _addSharpDefault = parcelHelpers.interopDefault(_addSharp);
-var _closeSharp = require("@mui/icons-material/CloseSharp");
-var _closeSharpDefault = parcelHelpers.interopDefault(_closeSharp);
-var _styles = require("@mui/material/styles");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _clsx = require("clsx");
+var _clsxDefault = parcelHelpers.interopDefault(_clsx);
+var _chainPropTypes = require("@mui/utils/chainPropTypes");
+var _chainPropTypesDefault = parcelHelpers.interopDefault(_chainPropTypes);
+var _composeClasses = require("@mui/utils/composeClasses");
+var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
+var _styled = require("../styles/styled");
+var _styledDefault = parcelHelpers.interopDefault(_styled);
+var _useThemeProps = require("../styles/useThemeProps");
+var _useThemePropsDefault = parcelHelpers.interopDefault(_useThemeProps);
+var _paper = require("../Paper");
+var _paperDefault = parcelHelpers.interopDefault(_paper);
+var _cardClasses = require("./cardClasses");
 var _jsxRuntime = require("react/jsx-runtime");
-function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) throw new TypeError("Cannot call a class as a function");
-}
-function _defineProperties(target, props) {
-    for(var i = 0; i < props.length; i++){
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true;
-        if ("value" in descriptor) descriptor.writable = true;
-        Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
-    }
-}
-function _createClass(Constructor, protoProps, staticProps) {
-    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) _defineProperties(Constructor, staticProps);
-    Object.defineProperty(Constructor, "prototype", {
-        writable: false
-    });
-    return Constructor;
-}
-function _toPropertyKey(t) {
-    var i = _toPrimitive(t, "string");
-    return "symbol" == typeof i ? i : String(i);
-}
-function _toPrimitive(t, r) {
-    if ("object" != typeof t || !t) return t;
-    var e = t[Symbol.toPrimitive];
-    if (void 0 !== e) {
-        var i = e.call(t, r || "default");
-        if ("object" != typeof i) return i;
-        throw new TypeError("@@toPrimitive must return a primitive value.");
-    }
-    return ("string" === r ? String : Number)(t);
-}
-function _callSuper(t, o, e) {
-    return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e));
-}
-function _possibleConstructorReturn(self, call) {
-    if (call && (typeof call === "object" || typeof call === "function")) return call;
-    else if (call !== void 0) throw new TypeError("Derived constructors may only return object or undefined");
-    return _assertThisInitialized(self);
-}
-function _assertThisInitialized(self) {
-    if (self === void 0) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    return self;
-}
-function _isNativeReflectConstruct() {
-    try {
-        var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {}));
-    } catch (t) {}
-    return (_isNativeReflectConstruct = function _isNativeReflectConstruct() {
-        return !!t;
-    })();
-}
-function _getPrototypeOf(o) {
-    _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
-        return o.__proto__ || Object.getPrototypeOf(o);
+"use client";
+const _excluded = [
+    "className",
+    "raised"
+];
+const useUtilityClasses = (ownerState)=>{
+    const { classes } = ownerState;
+    const slots = {
+        root: [
+            "root"
+        ]
     };
-    return _getPrototypeOf(o);
-}
-function _inherits(subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) throw new TypeError("Super expression must either be null or a function");
-    subClass.prototype = Object.create(superClass && superClass.prototype, {
-        constructor: {
-            value: subClass,
-            writable: true,
-            configurable: true
-        }
-    });
-    Object.defineProperty(subClass, "prototype", {
-        writable: false
-    });
-    if (superClass) _setPrototypeOf(subClass, superClass);
-}
-function _setPrototypeOf(o, p) {
-    _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
-        o.__proto__ = p;
-        return o;
-    };
-    return _setPrototypeOf(o, p);
-}
-var Root = (0, _styles.styled)((0, _fabDefault.default), {
-    name: "WorkspaceAddButton",
-    slot: "root"
-})(function(_ref) {
-    var theme = _ref.theme;
+    return (0, _composeClassesDefault.default)(slots, (0, _cardClasses.getCardUtilityClass), classes);
+};
+const CardRoot = (0, _styledDefault.default)((0, _paperDefault.default), {
+    name: "MuiCard",
+    slot: "Root",
+    overridesResolver: (props, styles)=>styles.root
+})(()=>{
     return {
-        marginBottom: theme.spacing(1)
+        overflow: "hidden"
     };
 });
-var WorkspaceAddButton = /*#__PURE__*/ function(_Component) {
-    _inherits(WorkspaceAddButton, _Component);
-    function WorkspaceAddButton() {
-        _classCallCheck(this, WorkspaceAddButton);
-        return _callSuper(this, WorkspaceAddButton, arguments);
-    }
-    _createClass(WorkspaceAddButton, [
-        {
-            key: "render",
-            value: /**
-     * render
-     * @return
-     */ function render() {
-                var _this$props = this.props, t = _this$props.t, setWorkspaceAddVisibility = _this$props.setWorkspaceAddVisibility, isWorkspaceAddVisible = _this$props.isWorkspaceAddVisible, useExtendedFab = _this$props.useExtendedFab;
-                return /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _tooltipDefault.default), {
-                    title: isWorkspaceAddVisible ? t("closeAddResourceMenu") : t("addResource"),
-                    children: /*#__PURE__*/ (0, _jsxRuntime.jsxs)(Root, {
-                        size: "medium",
-                        color: "primary",
-                        id: "addBtn",
-                        "aria-label": isWorkspaceAddVisible ? t("closeAddResourceMenu") : useExtendedFab && t("startHere") || t("addResource"),
-                        variant: useExtendedFab ? "extended" : "circular",
-                        onClick: function onClick() {
-                            setWorkspaceAddVisibility(!isWorkspaceAddVisible);
-                        },
-                        children: [
-                            isWorkspaceAddVisible ? /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _closeSharpDefault.default), {}) : /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _addSharpDefault.default), {}),
-                            useExtendedFab && t("startHere")
-                        ]
-                    })
-                });
-            }
-        }
-    ]);
-    return WorkspaceAddButton;
-}((0, _react.Component));
-WorkspaceAddButton.defaultProps = {
-    isWorkspaceAddVisible: false,
-    t: function t(key) {
-        return key;
-    }
+const Card = /*#__PURE__*/ _react.forwardRef(function Card(inProps, ref) {
+    const props = (0, _useThemePropsDefault.default)({
+        props: inProps,
+        name: "MuiCard"
+    });
+    const { className, raised = false } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
+    const ownerState = (0, _extendsDefault.default)({}, props, {
+        raised
+    });
+    const classes = useUtilityClasses(ownerState);
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(CardRoot, (0, _extendsDefault.default)({
+        className: (0, _clsxDefault.default)(classes.root, className),
+        elevation: raised ? 8 : undefined,
+        ref: ref,
+        ownerState: ownerState
+    }, other));
+});
+Card.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * The content of the component.
+   */ children: (0, _propTypesDefault.default).node,
+    /**
+   * Override or extend the styles applied to the component.
+   */ classes: (0, _propTypesDefault.default).object,
+    /**
+   * @ignore
+   */ className: (0, _propTypesDefault.default).string,
+    /**
+   * If `true`, the card will use raised styling.
+   * @default false
+   */ raised: (0, _chainPropTypesDefault.default)((0, _propTypesDefault.default).bool, (props)=>{
+        if (props.raised && props.variant === "outlined") return new Error('MUI: Combining `raised={true}` with `variant="outlined"` has no effect.');
+        return null;
+    }),
+    /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */ sx: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object,
+            (0, _propTypesDefault.default).bool
+        ])),
+        (0, _propTypesDefault.default).func,
+        (0, _propTypesDefault.default).object
+    ])
 };
+exports.default = Card;
 
-},{"react":"21dqq","@mui/material/Fab":"bL0iw","@mui/material/Tooltip":"5uL59","@mui/icons-material/AddSharp":"do4Wf","@mui/icons-material/CloseSharp":"hYBf6","@mui/material/styles":"1lzai","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bL0iw":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/extends":"fTBFS","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","react":"21dqq","prop-types":"7wKI2","clsx":"G7PIs","@mui/utils/chainPropTypes":"d7DEu","@mui/utils/composeClasses":"4kKno","../styles/styled":"32xTg","../styles/useThemeProps":"dewuS","../Paper":"6IiTP","./cardClasses":"bATNQ","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bATNQ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getCardUtilityClass", ()=>getCardUtilityClass);
+var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
+var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
+var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
+var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
+function getCardUtilityClass(slot) {
+    return (0, _generateUtilityClassDefault.default)("MuiCard", slot);
+}
+const cardClasses = (0, _generateUtilityClassesDefault.default)("MuiCard", [
+    "root"
+]);
+exports.default = cardClasses;
+
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lVecn":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _cardContentDefault.default));
+parcelHelpers.export(exports, "cardContentClasses", ()=>(0, _cardContentClassesDefault.default));
+var _cardContent = require("./CardContent");
+var _cardContentDefault = parcelHelpers.interopDefault(_cardContent);
+var _cardContentClasses = require("./cardContentClasses");
+var _cardContentClassesDefault = parcelHelpers.interopDefault(_cardContentClasses);
+parcelHelpers.exportAll(_cardContentClasses, exports);
+"use client";
+
+},{"./CardContent":"1IjsV","./cardContentClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1IjsV":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
+var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
+var _react = require("react");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _clsx = require("clsx");
+var _clsxDefault = parcelHelpers.interopDefault(_clsx);
+var _composeClasses = require("@mui/utils/composeClasses");
+var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
+var _styled = require("../styles/styled");
+var _styledDefault = parcelHelpers.interopDefault(_styled);
+var _useThemeProps = require("../styles/useThemeProps");
+var _useThemePropsDefault = parcelHelpers.interopDefault(_useThemeProps);
+var _cardContentClasses = require("./cardContentClasses");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const _excluded = [
+    "className",
+    "component"
+];
+const useUtilityClasses = (ownerState)=>{
+    const { classes } = ownerState;
+    const slots = {
+        root: [
+            "root"
+        ]
+    };
+    return (0, _composeClassesDefault.default)(slots, (0, _cardContentClasses.getCardContentUtilityClass), classes);
+};
+const CardContentRoot = (0, _styledDefault.default)("div", {
+    name: "MuiCardContent",
+    slot: "Root",
+    overridesResolver: (props, styles)=>styles.root
+})(()=>{
+    return {
+        padding: 16,
+        "&:last-child": {
+            paddingBottom: 24
+        }
+    };
+});
+const CardContent = /*#__PURE__*/ _react.forwardRef(function CardContent(inProps, ref) {
+    const props = (0, _useThemePropsDefault.default)({
+        props: inProps,
+        name: "MuiCardContent"
+    });
+    const { className, component = "div" } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
+    const ownerState = (0, _extendsDefault.default)({}, props, {
+        component
+    });
+    const classes = useUtilityClasses(ownerState);
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(CardContentRoot, (0, _extendsDefault.default)({
+        as: component,
+        className: (0, _clsxDefault.default)(classes.root, className),
+        ownerState: ownerState,
+        ref: ref
+    }, other));
+});
+CardContent.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * The content of the component.
+   */ children: (0, _propTypesDefault.default).node,
+    /**
+   * Override or extend the styles applied to the component.
+   */ classes: (0, _propTypesDefault.default).object,
+    /**
+   * @ignore
+   */ className: (0, _propTypesDefault.default).string,
+    /**
+   * The component used for the root node.
+   * Either a string to use a HTML element or a component.
+   */ component: (0, _propTypesDefault.default).elementType,
+    /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */ sx: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object,
+            (0, _propTypesDefault.default).bool
+        ])),
+        (0, _propTypesDefault.default).func,
+        (0, _propTypesDefault.default).object
+    ])
+};
+exports.default = CardContent;
+
+},{"@babel/runtime/helpers/esm/extends":"fTBFS","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","react":"21dqq","prop-types":"7wKI2","clsx":"G7PIs","@mui/utils/composeClasses":"4kKno","../styles/styled":"32xTg","../styles/useThemeProps":"dewuS","./cardContentClasses":"1cKja","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1cKja":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getCardContentUtilityClass", ()=>getCardContentUtilityClass);
+var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
+var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
+var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
+var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
+function getCardContentUtilityClass(slot) {
+    return (0, _generateUtilityClassDefault.default)("MuiCardContent", slot);
+}
+const cardContentClasses = (0, _generateUtilityClassesDefault.default)("MuiCardContent", [
+    "root"
+]);
+exports.default = cardContentClasses;
+
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"25Z2G":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _dialogActionsDefault.default));
+parcelHelpers.export(exports, "dialogActionsClasses", ()=>(0, _dialogActionsClassesDefault.default));
+var _dialogActions = require("./DialogActions");
+var _dialogActionsDefault = parcelHelpers.interopDefault(_dialogActions);
+var _dialogActionsClasses = require("./dialogActionsClasses");
+var _dialogActionsClassesDefault = parcelHelpers.interopDefault(_dialogActionsClasses);
+parcelHelpers.exportAll(_dialogActionsClasses, exports);
+"use client";
+
+},{"./DialogActions":"4xGCu","./dialogActionsClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4xGCu":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
+var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+var _react = require("react");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _clsx = require("clsx");
+var _clsxDefault = parcelHelpers.interopDefault(_clsx);
+var _composeClasses = require("@mui/utils/composeClasses");
+var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
+var _styled = require("../styles/styled");
+var _styledDefault = parcelHelpers.interopDefault(_styled);
+var _useThemeProps = require("../styles/useThemeProps");
+var _useThemePropsDefault = parcelHelpers.interopDefault(_useThemeProps);
+var _dialogActionsClasses = require("./dialogActionsClasses");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const _excluded = [
+    "className",
+    "disableSpacing"
+];
+const useUtilityClasses = (ownerState)=>{
+    const { classes, disableSpacing } = ownerState;
+    const slots = {
+        root: [
+            "root",
+            !disableSpacing && "spacing"
+        ]
+    };
+    return (0, _composeClassesDefault.default)(slots, (0, _dialogActionsClasses.getDialogActionsUtilityClass), classes);
+};
+const DialogActionsRoot = (0, _styledDefault.default)("div", {
+    name: "MuiDialogActions",
+    slot: "Root",
+    overridesResolver: (props, styles)=>{
+        const { ownerState } = props;
+        return [
+            styles.root,
+            !ownerState.disableSpacing && styles.spacing
+        ];
+    }
+})(({ ownerState })=>(0, _extendsDefault.default)({
+        display: "flex",
+        alignItems: "center",
+        padding: 8,
+        justifyContent: "flex-end",
+        flex: "0 0 auto"
+    }, !ownerState.disableSpacing && {
+        "& > :not(style) ~ :not(style)": {
+            marginLeft: 8
+        }
+    }));
+const DialogActions = /*#__PURE__*/ _react.forwardRef(function DialogActions(inProps, ref) {
+    const props = (0, _useThemePropsDefault.default)({
+        props: inProps,
+        name: "MuiDialogActions"
+    });
+    const { className, disableSpacing = false } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
+    const ownerState = (0, _extendsDefault.default)({}, props, {
+        disableSpacing
+    });
+    const classes = useUtilityClasses(ownerState);
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(DialogActionsRoot, (0, _extendsDefault.default)({
+        className: (0, _clsxDefault.default)(classes.root, className),
+        ownerState: ownerState,
+        ref: ref
+    }, other));
+});
+DialogActions.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * The content of the component.
+   */ children: (0, _propTypesDefault.default).node,
+    /**
+   * Override or extend the styles applied to the component.
+   */ classes: (0, _propTypesDefault.default).object,
+    /**
+   * @ignore
+   */ className: (0, _propTypesDefault.default).string,
+    /**
+   * If `true`, the actions do not have additional margin.
+   * @default false
+   */ disableSpacing: (0, _propTypesDefault.default).bool,
+    /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */ sx: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object,
+            (0, _propTypesDefault.default).bool
+        ])),
+        (0, _propTypesDefault.default).func,
+        (0, _propTypesDefault.default).object
+    ])
+};
+exports.default = DialogActions;
+
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"G7PIs","@mui/utils/composeClasses":"4kKno","../styles/styled":"32xTg","../styles/useThemeProps":"dewuS","./dialogActionsClasses":"gaH17","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gaH17":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getDialogActionsUtilityClass", ()=>getDialogActionsUtilityClass);
+var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
+var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
+var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
+var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
+function getDialogActionsUtilityClass(slot) {
+    return (0, _generateUtilityClassDefault.default)("MuiDialogActions", slot);
+}
+const dialogActionsClasses = (0, _generateUtilityClassesDefault.default)("MuiDialogActions", [
+    "root",
+    "spacing"
+]);
+exports.default = dialogActionsClasses;
+
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iLsKC":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _dialogContentTextDefault.default));
+parcelHelpers.export(exports, "dialogContentTextClasses", ()=>(0, _dialogContentTextClassesDefault.default));
+var _dialogContentText = require("./DialogContentText");
+var _dialogContentTextDefault = parcelHelpers.interopDefault(_dialogContentText);
+var _dialogContentTextClasses = require("./dialogContentTextClasses");
+var _dialogContentTextClassesDefault = parcelHelpers.interopDefault(_dialogContentTextClasses);
+parcelHelpers.exportAll(_dialogContentTextClasses, exports);
+"use client";
+
+},{"./DialogContentText":"5y8bD","./dialogContentTextClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5y8bD":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
+var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+var _react = require("react");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _clsx = require("clsx");
+var _clsxDefault = parcelHelpers.interopDefault(_clsx);
+var _composeClasses = require("@mui/utils/composeClasses");
+var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
+var _styled = require("../styles/styled");
+var _styledDefault = parcelHelpers.interopDefault(_styled);
+var _useThemeProps = require("../styles/useThemeProps");
+var _useThemePropsDefault = parcelHelpers.interopDefault(_useThemeProps);
+var _typography = require("../Typography");
+var _typographyDefault = parcelHelpers.interopDefault(_typography);
+var _dialogContentTextClasses = require("./dialogContentTextClasses");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const _excluded = [
+    "children",
+    "className"
+];
+const useUtilityClasses = (ownerState)=>{
+    const { classes } = ownerState;
+    const slots = {
+        root: [
+            "root"
+        ]
+    };
+    const composedClasses = (0, _composeClassesDefault.default)(slots, (0, _dialogContentTextClasses.getDialogContentTextUtilityClass), classes);
+    return (0, _extendsDefault.default)({}, classes, composedClasses);
+};
+const DialogContentTextRoot = (0, _styledDefault.default)((0, _typographyDefault.default), {
+    shouldForwardProp: (prop)=>(0, _styled.rootShouldForwardProp)(prop) || prop === "classes",
+    name: "MuiDialogContentText",
+    slot: "Root",
+    overridesResolver: (props, styles)=>styles.root
+})({});
+const DialogContentText = /*#__PURE__*/ _react.forwardRef(function DialogContentText(inProps, ref) {
+    const props = (0, _useThemePropsDefault.default)({
+        props: inProps,
+        name: "MuiDialogContentText"
+    });
+    const { className } = props, ownerState = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
+    const classes = useUtilityClasses(ownerState);
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(DialogContentTextRoot, (0, _extendsDefault.default)({
+        component: "p",
+        variant: "body1",
+        color: "text.secondary",
+        ref: ref,
+        ownerState: ownerState,
+        className: (0, _clsxDefault.default)(classes.root, className)
+    }, props, {
+        classes: classes
+    }));
+});
+DialogContentText.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * The content of the component.
+   */ children: (0, _propTypesDefault.default).node,
+    /**
+   * Override or extend the styles applied to the component.
+   */ classes: (0, _propTypesDefault.default).object,
+    /**
+   * @ignore
+   */ className: (0, _propTypesDefault.default).string,
+    /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */ sx: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object,
+            (0, _propTypesDefault.default).bool
+        ])),
+        (0, _propTypesDefault.default).func,
+        (0, _propTypesDefault.default).object
+    ])
+};
+exports.default = DialogContentText;
+
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"G7PIs","@mui/utils/composeClasses":"4kKno","../styles/styled":"32xTg","../styles/useThemeProps":"dewuS","../Typography":"faxSz","./dialogContentTextClasses":"jB1AN","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jB1AN":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getDialogContentTextUtilityClass", ()=>getDialogContentTextUtilityClass);
+var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
+var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
+var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
+var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
+function getDialogContentTextUtilityClass(slot) {
+    return (0, _generateUtilityClassDefault.default)("MuiDialogContentText", slot);
+}
+const dialogContentTextClasses = (0, _generateUtilityClassesDefault.default)("MuiDialogContentText", [
+    "root"
+]);
+exports.default = dialogContentTextClasses;
+
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hMEec":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _drawerDefault.default));
+parcelHelpers.export(exports, "drawerClasses", ()=>(0, _drawerClassesDefault.default));
+var _drawer = require("./Drawer");
+var _drawerDefault = parcelHelpers.interopDefault(_drawer);
+var _drawerClasses = require("./drawerClasses");
+var _drawerClassesDefault = parcelHelpers.interopDefault(_drawerClasses);
+parcelHelpers.exportAll(_drawerClasses, exports);
+"use client";
+
+},{"./Drawer":"cLVEp","./drawerClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cLVEp":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "isHorizontal", ()=>isHorizontal);
+parcelHelpers.export(exports, "getAnchor", ()=>getAnchor);
+var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
+var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+var _react = require("react");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _clsx = require("clsx");
+var _clsxDefault = parcelHelpers.interopDefault(_clsx);
+var _integerPropType = require("@mui/utils/integerPropType");
+var _integerPropTypeDefault = parcelHelpers.interopDefault(_integerPropType);
+var _composeClasses = require("@mui/utils/composeClasses");
+var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
+var _rtlProvider = require("@mui/system/RtlProvider");
+var _modal = require("../Modal");
+var _modalDefault = parcelHelpers.interopDefault(_modal);
+var _slide = require("../Slide");
+var _slideDefault = parcelHelpers.interopDefault(_slide);
+var _paper = require("../Paper");
+var _paperDefault = parcelHelpers.interopDefault(_paper);
+var _capitalize = require("../utils/capitalize");
+var _capitalizeDefault = parcelHelpers.interopDefault(_capitalize);
+var _useTheme = require("../styles/useTheme");
+var _useThemeDefault = parcelHelpers.interopDefault(_useTheme);
+var _useThemeProps = require("../styles/useThemeProps");
+var _useThemePropsDefault = parcelHelpers.interopDefault(_useThemeProps);
+var _styled = require("../styles/styled");
+var _styledDefault = parcelHelpers.interopDefault(_styled);
+var _drawerClasses = require("./drawerClasses");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const _excluded = [
+    "BackdropProps"
+], _excluded2 = [
+    "anchor",
+    "BackdropProps",
+    "children",
+    "className",
+    "elevation",
+    "hideBackdrop",
+    "ModalProps",
+    "onClose",
+    "open",
+    "PaperProps",
+    "SlideProps",
+    "TransitionComponent",
+    "transitionDuration",
+    "variant"
+];
+const overridesResolver = (props, styles)=>{
+    const { ownerState } = props;
+    return [
+        styles.root,
+        (ownerState.variant === "permanent" || ownerState.variant === "persistent") && styles.docked,
+        styles.modal
+    ];
+};
+const useUtilityClasses = (ownerState)=>{
+    const { classes, anchor, variant } = ownerState;
+    const slots = {
+        root: [
+            "root"
+        ],
+        docked: [
+            (variant === "permanent" || variant === "persistent") && "docked"
+        ],
+        modal: [
+            "modal"
+        ],
+        paper: [
+            "paper",
+            `paperAnchor${(0, _capitalizeDefault.default)(anchor)}`,
+            variant !== "temporary" && `paperAnchorDocked${(0, _capitalizeDefault.default)(anchor)}`
+        ]
+    };
+    return (0, _composeClassesDefault.default)(slots, (0, _drawerClasses.getDrawerUtilityClass), classes);
+};
+const DrawerRoot = (0, _styledDefault.default)((0, _modalDefault.default), {
+    name: "MuiDrawer",
+    slot: "Root",
+    overridesResolver
+})(({ theme })=>({
+        zIndex: (theme.vars || theme).zIndex.drawer
+    }));
+const DrawerDockedRoot = (0, _styledDefault.default)("div", {
+    shouldForwardProp: (0, _styled.rootShouldForwardProp),
+    name: "MuiDrawer",
+    slot: "Docked",
+    skipVariantsResolver: false,
+    overridesResolver
+})({
+    flex: "0 0 auto"
+});
+const DrawerPaper = (0, _styledDefault.default)((0, _paperDefault.default), {
+    name: "MuiDrawer",
+    slot: "Paper",
+    overridesResolver: (props, styles)=>{
+        const { ownerState } = props;
+        return [
+            styles.paper,
+            styles[`paperAnchor${(0, _capitalizeDefault.default)(ownerState.anchor)}`],
+            ownerState.variant !== "temporary" && styles[`paperAnchorDocked${(0, _capitalizeDefault.default)(ownerState.anchor)}`]
+        ];
+    }
+})(({ theme, ownerState })=>(0, _extendsDefault.default)({
+        overflowY: "auto",
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        flex: "1 0 auto",
+        zIndex: (theme.vars || theme).zIndex.drawer,
+        // Add iOS momentum scrolling for iOS < 13.0
+        WebkitOverflowScrolling: "touch",
+        // temporary style
+        position: "fixed",
+        top: 0,
+        // We disable the focus ring for mouse, touch and keyboard users.
+        // At some point, it would be better to keep it for keyboard users.
+        // :focus-ring CSS pseudo-class will help.
+        outline: 0
+    }, ownerState.anchor === "left" && {
+        left: 0
+    }, ownerState.anchor === "top" && {
+        top: 0,
+        left: 0,
+        right: 0,
+        height: "auto",
+        maxHeight: "100%"
+    }, ownerState.anchor === "right" && {
+        right: 0
+    }, ownerState.anchor === "bottom" && {
+        top: "auto",
+        left: 0,
+        bottom: 0,
+        right: 0,
+        height: "auto",
+        maxHeight: "100%"
+    }, ownerState.anchor === "left" && ownerState.variant !== "temporary" && {
+        borderRight: `1px solid ${(theme.vars || theme).palette.divider}`
+    }, ownerState.anchor === "top" && ownerState.variant !== "temporary" && {
+        borderBottom: `1px solid ${(theme.vars || theme).palette.divider}`
+    }, ownerState.anchor === "right" && ownerState.variant !== "temporary" && {
+        borderLeft: `1px solid ${(theme.vars || theme).palette.divider}`
+    }, ownerState.anchor === "bottom" && ownerState.variant !== "temporary" && {
+        borderTop: `1px solid ${(theme.vars || theme).palette.divider}`
+    }));
+const oppositeDirection = {
+    left: "right",
+    right: "left",
+    top: "down",
+    bottom: "up"
+};
+function isHorizontal(anchor) {
+    return [
+        "left",
+        "right"
+    ].indexOf(anchor) !== -1;
+}
+function getAnchor({ direction }, anchor) {
+    return direction === "rtl" && isHorizontal(anchor) ? oppositeDirection[anchor] : anchor;
+}
+/**
+ * The props of the [Modal](/material-ui/api/modal/) component are available
+ * when `variant="temporary"` is set.
+ */ const Drawer = /*#__PURE__*/ _react.forwardRef(function Drawer(inProps, ref) {
+    const props = (0, _useThemePropsDefault.default)({
+        props: inProps,
+        name: "MuiDrawer"
+    });
+    const theme = (0, _useThemeDefault.default)();
+    const isRtl = (0, _rtlProvider.useRtl)();
+    const defaultTransitionDuration = {
+        enter: theme.transitions.duration.enteringScreen,
+        exit: theme.transitions.duration.leavingScreen
+    };
+    const { anchor: anchorProp = "left", BackdropProps, children, className, elevation = 16, hideBackdrop = false, ModalProps: { BackdropProps: BackdropPropsProp } = {}, onClose, open = false, PaperProps = {}, SlideProps, // eslint-disable-next-line react/prop-types
+    TransitionComponent = (0, _slideDefault.default), transitionDuration = defaultTransitionDuration, variant = "temporary" } = props, ModalProps = (0, _objectWithoutPropertiesLooseDefault.default)(props.ModalProps, _excluded), other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded2);
+    // Let's assume that the Drawer will always be rendered on user space.
+    // We use this state is order to skip the appear transition during the
+    // initial mount of the component.
+    const mounted = _react.useRef(false);
+    _react.useEffect(()=>{
+        mounted.current = true;
+    }, []);
+    const anchorInvariant = getAnchor({
+        direction: isRtl ? "rtl" : "ltr"
+    }, anchorProp);
+    const anchor = anchorProp;
+    const ownerState = (0, _extendsDefault.default)({}, props, {
+        anchor,
+        elevation,
+        open,
+        variant
+    }, other);
+    const classes = useUtilityClasses(ownerState);
+    const drawer = /*#__PURE__*/ (0, _jsxRuntime.jsx)(DrawerPaper, (0, _extendsDefault.default)({
+        elevation: variant === "temporary" ? elevation : 0,
+        square: true
+    }, PaperProps, {
+        className: (0, _clsxDefault.default)(classes.paper, PaperProps.className),
+        ownerState: ownerState,
+        children: children
+    }));
+    if (variant === "permanent") return /*#__PURE__*/ (0, _jsxRuntime.jsx)(DrawerDockedRoot, (0, _extendsDefault.default)({
+        className: (0, _clsxDefault.default)(classes.root, classes.docked, className),
+        ownerState: ownerState,
+        ref: ref
+    }, other, {
+        children: drawer
+    }));
+    const slidingDrawer = /*#__PURE__*/ (0, _jsxRuntime.jsx)(TransitionComponent, (0, _extendsDefault.default)({
+        in: open,
+        direction: oppositeDirection[anchorInvariant],
+        timeout: transitionDuration,
+        appear: mounted.current
+    }, SlideProps, {
+        children: drawer
+    }));
+    if (variant === "persistent") return /*#__PURE__*/ (0, _jsxRuntime.jsx)(DrawerDockedRoot, (0, _extendsDefault.default)({
+        className: (0, _clsxDefault.default)(classes.root, classes.docked, className),
+        ownerState: ownerState,
+        ref: ref
+    }, other, {
+        children: slidingDrawer
+    }));
+    // variant === temporary
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(DrawerRoot, (0, _extendsDefault.default)({
+        BackdropProps: (0, _extendsDefault.default)({}, BackdropProps, BackdropPropsProp, {
+            transitionDuration
+        }),
+        className: (0, _clsxDefault.default)(classes.root, classes.modal, className),
+        open: open,
+        ownerState: ownerState,
+        onClose: onClose,
+        hideBackdrop: hideBackdrop,
+        ref: ref
+    }, other, ModalProps, {
+        children: slidingDrawer
+    }));
+});
+Drawer.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * Side from which the drawer will appear.
+   * @default 'left'
+   */ anchor: (0, _propTypesDefault.default).oneOf([
+        "bottom",
+        "left",
+        "right",
+        "top"
+    ]),
+    /**
+   * @ignore
+   */ BackdropProps: (0, _propTypesDefault.default).object,
+    /**
+   * The content of the component.
+   */ children: (0, _propTypesDefault.default).node,
+    /**
+   * Override or extend the styles applied to the component.
+   */ classes: (0, _propTypesDefault.default).object,
+    /**
+   * @ignore
+   */ className: (0, _propTypesDefault.default).string,
+    /**
+   * The elevation of the drawer.
+   * @default 16
+   */ elevation: (0, _integerPropTypeDefault.default),
+    /**
+   * If `true`, the backdrop is not rendered.
+   * @default false
+   */ hideBackdrop: (0, _propTypesDefault.default).bool,
+    /**
+   * Props applied to the [`Modal`](/material-ui/api/modal/) element.
+   * @default {}
+   */ ModalProps: (0, _propTypesDefault.default).object,
+    /**
+   * Callback fired when the component requests to be closed.
+   * The `reason` parameter can optionally be used to control the response to `onClose`.
+   *
+   * @param {object} event The event source of the callback.
+   * @param {string} reason Can be: `"escapeKeyDown"`, `"backdropClick"`.
+   */ onClose: (0, _propTypesDefault.default).func,
+    /**
+   * If `true`, the component is shown.
+   * @default false
+   */ open: (0, _propTypesDefault.default).bool,
+    /**
+   * Props applied to the [`Paper`](/material-ui/api/paper/) element.
+   * @default {}
+   */ PaperProps: (0, _propTypesDefault.default).object,
+    /**
+   * Props applied to the [`Slide`](/material-ui/api/slide/) element.
+   */ SlideProps: (0, _propTypesDefault.default).object,
+    /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */ sx: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object,
+            (0, _propTypesDefault.default).bool
+        ])),
+        (0, _propTypesDefault.default).func,
+        (0, _propTypesDefault.default).object
+    ]),
+    /**
+   * The duration for the transition, in milliseconds.
+   * You may specify a single timeout for all transitions, or individually with an object.
+   * @default {
+   *   enter: theme.transitions.duration.enteringScreen,
+   *   exit: theme.transitions.duration.leavingScreen,
+   * }
+   */ transitionDuration: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).shape({
+            appear: (0, _propTypesDefault.default).number,
+            enter: (0, _propTypesDefault.default).number,
+            exit: (0, _propTypesDefault.default).number
+        })
+    ]),
+    /**
+   * The variant to use.
+   * @default 'temporary'
+   */ variant: (0, _propTypesDefault.default).oneOf([
+        "permanent",
+        "persistent",
+        "temporary"
+    ])
+};
+exports.default = Drawer;
+
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"G7PIs","@mui/utils/integerPropType":"T93rM","@mui/utils/composeClasses":"4kKno","@mui/system/RtlProvider":"4iqca","../Modal":"lSUh1","../Slide":"fZVcF","../Paper":"6IiTP","../utils/capitalize":"lwNtZ","../styles/useTheme":"5nWMX","../styles/useThemeProps":"dewuS","../styles/styled":"32xTg","./drawerClasses":"aFQC1","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fZVcF":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _slideDefault.default));
+var _slide = require("./Slide");
+var _slideDefault = parcelHelpers.interopDefault(_slide);
+"use client";
+
+},{"./Slide":"eCirY","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eCirY":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "setTranslateValue", ()=>setTranslateValue);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
+var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
+var _react = require("react");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _reactTransitionGroup = require("react-transition-group");
+var _chainPropTypes = require("@mui/utils/chainPropTypes");
+var _chainPropTypesDefault = parcelHelpers.interopDefault(_chainPropTypes);
+var _htmlelementType = require("@mui/utils/HTMLElementType");
+var _htmlelementTypeDefault = parcelHelpers.interopDefault(_htmlelementType);
+var _elementAcceptingRef = require("@mui/utils/elementAcceptingRef");
+var _elementAcceptingRefDefault = parcelHelpers.interopDefault(_elementAcceptingRef);
+var _debounce = require("../utils/debounce");
+var _debounceDefault = parcelHelpers.interopDefault(_debounce);
+var _useForkRef = require("../utils/useForkRef");
+var _useForkRefDefault = parcelHelpers.interopDefault(_useForkRef);
+var _useTheme = require("../styles/useTheme");
+var _useThemeDefault = parcelHelpers.interopDefault(_useTheme);
+var _utils = require("../transitions/utils");
+var _utils1 = require("../utils");
+// Translate the node so it can't be seen on the screen.
+// Later, we're going to translate the node back to its original location with `none`.
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const _excluded = [
+    "addEndListener",
+    "appear",
+    "children",
+    "container",
+    "direction",
+    "easing",
+    "in",
+    "onEnter",
+    "onEntered",
+    "onEntering",
+    "onExit",
+    "onExited",
+    "onExiting",
+    "style",
+    "timeout",
+    "TransitionComponent"
+];
+function getTranslateValue(direction, node, resolvedContainer) {
+    const rect = node.getBoundingClientRect();
+    const containerRect = resolvedContainer && resolvedContainer.getBoundingClientRect();
+    const containerWindow = (0, _utils1.ownerWindow)(node);
+    let transform;
+    if (node.fakeTransform) transform = node.fakeTransform;
+    else {
+        const computedStyle = containerWindow.getComputedStyle(node);
+        transform = computedStyle.getPropertyValue("-webkit-transform") || computedStyle.getPropertyValue("transform");
+    }
+    let offsetX = 0;
+    let offsetY = 0;
+    if (transform && transform !== "none" && typeof transform === "string") {
+        const transformValues = transform.split("(")[1].split(")")[0].split(",");
+        offsetX = parseInt(transformValues[4], 10);
+        offsetY = parseInt(transformValues[5], 10);
+    }
+    if (direction === "left") {
+        if (containerRect) return `translateX(${containerRect.right + offsetX - rect.left}px)`;
+        return `translateX(${containerWindow.innerWidth + offsetX - rect.left}px)`;
+    }
+    if (direction === "right") {
+        if (containerRect) return `translateX(-${rect.right - containerRect.left - offsetX}px)`;
+        return `translateX(-${rect.left + rect.width - offsetX}px)`;
+    }
+    if (direction === "up") {
+        if (containerRect) return `translateY(${containerRect.bottom + offsetY - rect.top}px)`;
+        return `translateY(${containerWindow.innerHeight + offsetY - rect.top}px)`;
+    }
+    // direction === 'down'
+    if (containerRect) return `translateY(-${rect.top - containerRect.top + rect.height - offsetY}px)`;
+    return `translateY(-${rect.top + rect.height - offsetY}px)`;
+}
+function resolveContainer(containerPropProp) {
+    return typeof containerPropProp === "function" ? containerPropProp() : containerPropProp;
+}
+function setTranslateValue(direction, node, containerProp) {
+    const resolvedContainer = resolveContainer(containerProp);
+    const transform = getTranslateValue(direction, node, resolvedContainer);
+    if (transform) {
+        node.style.webkitTransform = transform;
+        node.style.transform = transform;
+    }
+}
+/**
+ * The Slide transition is used by the [Drawer](/material-ui/react-drawer/) component.
+ * It uses [react-transition-group](https://github.com/reactjs/react-transition-group) internally.
+ */ const Slide = /*#__PURE__*/ _react.forwardRef(function Slide(props, ref) {
+    const theme = (0, _useThemeDefault.default)();
+    const defaultEasing = {
+        enter: theme.transitions.easing.easeOut,
+        exit: theme.transitions.easing.sharp
+    };
+    const defaultTimeout = {
+        enter: theme.transitions.duration.enteringScreen,
+        exit: theme.transitions.duration.leavingScreen
+    };
+    const { addEndListener, appear = true, children, container: containerProp, direction = "down", easing: easingProp = defaultEasing, in: inProp, onEnter, onEntered, onEntering, onExit, onExited, onExiting, style, timeout = defaultTimeout, // eslint-disable-next-line react/prop-types
+    TransitionComponent = (0, _reactTransitionGroup.Transition) } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
+    const childrenRef = _react.useRef(null);
+    const handleRef = (0, _useForkRefDefault.default)(children.ref, childrenRef, ref);
+    const normalizedTransitionCallback = (callback)=>(isAppearing)=>{
+            if (callback) {
+                // onEnterXxx and onExitXxx callbacks have a different arguments.length value.
+                if (isAppearing === undefined) callback(childrenRef.current);
+                else callback(childrenRef.current, isAppearing);
+            }
+        };
+    const handleEnter = normalizedTransitionCallback((node, isAppearing)=>{
+        setTranslateValue(direction, node, containerProp);
+        (0, _utils.reflow)(node);
+        if (onEnter) onEnter(node, isAppearing);
+    });
+    const handleEntering = normalizedTransitionCallback((node, isAppearing)=>{
+        const transitionProps = (0, _utils.getTransitionProps)({
+            timeout,
+            style,
+            easing: easingProp
+        }, {
+            mode: "enter"
+        });
+        node.style.webkitTransition = theme.transitions.create("-webkit-transform", (0, _extendsDefault.default)({}, transitionProps));
+        node.style.transition = theme.transitions.create("transform", (0, _extendsDefault.default)({}, transitionProps));
+        node.style.webkitTransform = "none";
+        node.style.transform = "none";
+        if (onEntering) onEntering(node, isAppearing);
+    });
+    const handleEntered = normalizedTransitionCallback(onEntered);
+    const handleExiting = normalizedTransitionCallback(onExiting);
+    const handleExit = normalizedTransitionCallback((node)=>{
+        const transitionProps = (0, _utils.getTransitionProps)({
+            timeout,
+            style,
+            easing: easingProp
+        }, {
+            mode: "exit"
+        });
+        node.style.webkitTransition = theme.transitions.create("-webkit-transform", transitionProps);
+        node.style.transition = theme.transitions.create("transform", transitionProps);
+        setTranslateValue(direction, node, containerProp);
+        if (onExit) onExit(node);
+    });
+    const handleExited = normalizedTransitionCallback((node)=>{
+        // No need for transitions when the component is hidden
+        node.style.webkitTransition = "";
+        node.style.transition = "";
+        if (onExited) onExited(node);
+    });
+    const handleAddEndListener = (next)=>{
+        if (addEndListener) // Old call signature before `react-transition-group` implemented `nodeRef`
+        addEndListener(childrenRef.current, next);
+    };
+    const updatePosition = _react.useCallback(()=>{
+        if (childrenRef.current) setTranslateValue(direction, childrenRef.current, containerProp);
+    }, [
+        direction,
+        containerProp
+    ]);
+    _react.useEffect(()=>{
+        // Skip configuration where the position is screen size invariant.
+        if (inProp || direction === "down" || direction === "right") return undefined;
+        const handleResize = (0, _debounceDefault.default)(()=>{
+            if (childrenRef.current) setTranslateValue(direction, childrenRef.current, containerProp);
+        });
+        const containerWindow = (0, _utils1.ownerWindow)(childrenRef.current);
+        containerWindow.addEventListener("resize", handleResize);
+        return ()=>{
+            handleResize.clear();
+            containerWindow.removeEventListener("resize", handleResize);
+        };
+    }, [
+        direction,
+        inProp,
+        containerProp
+    ]);
+    _react.useEffect(()=>{
+        if (!inProp) // We need to update the position of the drawer when the direction change and
+        // when it's hidden.
+        updatePosition();
+    }, [
+        inProp,
+        updatePosition
+    ]);
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(TransitionComponent, (0, _extendsDefault.default)({
+        nodeRef: childrenRef,
+        onEnter: handleEnter,
+        onEntered: handleEntered,
+        onEntering: handleEntering,
+        onExit: handleExit,
+        onExited: handleExited,
+        onExiting: handleExiting,
+        addEndListener: handleAddEndListener,
+        appear: appear,
+        in: inProp,
+        timeout: timeout
+    }, other, {
+        children: (state, childProps)=>{
+            return /*#__PURE__*/ _react.cloneElement(children, (0, _extendsDefault.default)({
+                ref: handleRef,
+                style: (0, _extendsDefault.default)({
+                    visibility: state === "exited" && !inProp ? "hidden" : undefined
+                }, style, children.props.style)
+            }, childProps));
+        }
+    }));
+});
+Slide.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * Add a custom transition end trigger. Called with the transitioning DOM
+   * node and a done callback. Allows for more fine grained transition end
+   * logic. Note: Timeouts are still used as a fallback if provided.
+   */ addEndListener: (0, _propTypesDefault.default).func,
+    /**
+   * Perform the enter transition when it first mounts if `in` is also `true`.
+   * Set this to `false` to disable this behavior.
+   * @default true
+   */ appear: (0, _propTypesDefault.default).bool,
+    /**
+   * A single child content element.
+   */ children: (0, _elementAcceptingRefDefault.default).isRequired,
+    /**
+   * An HTML element, or a function that returns one.
+   * It's used to set the container the Slide is transitioning from.
+   */ container: (0, _chainPropTypesDefault.default)((0, _propTypesDefault.default).oneOfType([
+        (0, _htmlelementTypeDefault.default),
+        (0, _propTypesDefault.default).func
+    ]), (props)=>{
+        if (props.open) {
+            const resolvedContainer = resolveContainer(props.container);
+            if (resolvedContainer && resolvedContainer.nodeType === 1) {
+                const box = resolvedContainer.getBoundingClientRect();
+                if (box.top === 0 && box.left === 0 && box.right === 0 && box.bottom === 0) return new Error([
+                    "MUI: The `container` prop provided to the component is invalid.",
+                    "The anchor element should be part of the document layout.",
+                    "Make sure the element is present in the document or that it's not display none."
+                ].join("\n"));
+            } else if (!resolvedContainer || typeof resolvedContainer.getBoundingClientRect !== "function" || resolvedContainer.contextElement != null && resolvedContainer.contextElement.nodeType !== 1) return new Error([
+                "MUI: The `container` prop provided to the component is invalid.",
+                "It should be an HTML element instance."
+            ].join("\n"));
+        }
+        return null;
+    }),
+    /**
+   * Direction the child node will enter from.
+   * @default 'down'
+   */ direction: (0, _propTypesDefault.default).oneOf([
+        "down",
+        "left",
+        "right",
+        "up"
+    ]),
+    /**
+   * The transition timing function.
+   * You may specify a single easing or a object containing enter and exit values.
+   * @default {
+   *   enter: theme.transitions.easing.easeOut,
+   *   exit: theme.transitions.easing.sharp,
+   * }
+   */ easing: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).shape({
+            enter: (0, _propTypesDefault.default).string,
+            exit: (0, _propTypesDefault.default).string
+        }),
+        (0, _propTypesDefault.default).string
+    ]),
+    /**
+   * If `true`, the component will transition in.
+   */ in: (0, _propTypesDefault.default).bool,
+    /**
+   * @ignore
+   */ onEnter: (0, _propTypesDefault.default).func,
+    /**
+   * @ignore
+   */ onEntered: (0, _propTypesDefault.default).func,
+    /**
+   * @ignore
+   */ onEntering: (0, _propTypesDefault.default).func,
+    /**
+   * @ignore
+   */ onExit: (0, _propTypesDefault.default).func,
+    /**
+   * @ignore
+   */ onExited: (0, _propTypesDefault.default).func,
+    /**
+   * @ignore
+   */ onExiting: (0, _propTypesDefault.default).func,
+    /**
+   * @ignore
+   */ style: (0, _propTypesDefault.default).object,
+    /**
+   * The duration for the transition, in milliseconds.
+   * You may specify a single timeout for all transitions, or individually with an object.
+   * @default {
+   *   enter: theme.transitions.duration.enteringScreen,
+   *   exit: theme.transitions.duration.leavingScreen,
+   * }
+   */ timeout: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).shape({
+            appear: (0, _propTypesDefault.default).number,
+            enter: (0, _propTypesDefault.default).number,
+            exit: (0, _propTypesDefault.default).number
+        })
+    ])
+};
+exports.default = Slide;
+
+},{"@babel/runtime/helpers/esm/extends":"fTBFS","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","react":"21dqq","prop-types":"7wKI2","react-transition-group":"fZSkB","@mui/utils/chainPropTypes":"d7DEu","@mui/utils/HTMLElementType":"kvNNC","@mui/utils/elementAcceptingRef":"jxtYN","../utils/debounce":"aggDu","../utils/useForkRef":"Q1vCZ","../styles/useTheme":"5nWMX","../transitions/utils":"bSIvX","../utils":"9bp9M","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aFQC1":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getDrawerUtilityClass", ()=>getDrawerUtilityClass);
+var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
+var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
+var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
+var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
+function getDrawerUtilityClass(slot) {
+    return (0, _generateUtilityClassDefault.default)("MuiDrawer", slot);
+}
+const drawerClasses = (0, _generateUtilityClassesDefault.default)("MuiDrawer", [
+    "root",
+    "docked",
+    "paper",
+    "paperAnchorLeft",
+    "paperAnchorRight",
+    "paperAnchorTop",
+    "paperAnchorBottom",
+    "paperAnchorDockedLeft",
+    "paperAnchorDockedRight",
+    "paperAnchorDockedTop",
+    "paperAnchorDockedBottom",
+    "modal"
+]);
+exports.default = drawerClasses;
+
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bL0iw":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _fabDefault.default));
@@ -2244,7 +4891,2601 @@ const fabClasses = (0, _generateUtilityClassesDefault.default)("MuiFab", [
 ]);
 exports.default = fabClasses;
 
-},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"do4Wf":[function(require,module,exports) {
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gbxlC":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _formControlLabelDefault.default));
+parcelHelpers.export(exports, "formControlLabelClasses", ()=>(0, _formControlLabelClassesDefault.default));
+var _formControlLabel = require("./FormControlLabel");
+var _formControlLabelDefault = parcelHelpers.interopDefault(_formControlLabel);
+var _formControlLabelClasses = require("./formControlLabelClasses");
+var _formControlLabelClassesDefault = parcelHelpers.interopDefault(_formControlLabelClasses);
+parcelHelpers.exportAll(_formControlLabelClasses, exports);
+"use client";
+
+},{"./FormControlLabel":"5h0NR","./formControlLabelClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5h0NR":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "FormControlLabelRoot", ()=>FormControlLabelRoot);
+var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
+var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+var _react = require("react");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _clsx = require("clsx");
+var _clsxDefault = parcelHelpers.interopDefault(_clsx);
+var _refType = require("@mui/utils/refType");
+var _refTypeDefault = parcelHelpers.interopDefault(_refType);
+var _composeClasses = require("@mui/utils/composeClasses");
+var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
+var _formControl = require("../FormControl");
+var _stack = require("../Stack");
+var _stackDefault = parcelHelpers.interopDefault(_stack);
+var _typography = require("../Typography");
+var _typographyDefault = parcelHelpers.interopDefault(_typography);
+var _capitalize = require("../utils/capitalize");
+var _capitalizeDefault = parcelHelpers.interopDefault(_capitalize);
+var _styled = require("../styles/styled");
+var _styledDefault = parcelHelpers.interopDefault(_styled);
+var _useThemeProps = require("../styles/useThemeProps");
+var _useThemePropsDefault = parcelHelpers.interopDefault(_useThemeProps);
+var _formControlLabelClasses = require("./formControlLabelClasses");
+var _formControlLabelClassesDefault = parcelHelpers.interopDefault(_formControlLabelClasses);
+var _formControlState = require("../FormControl/formControlState");
+var _formControlStateDefault = parcelHelpers.interopDefault(_formControlState);
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const _excluded = [
+    "checked",
+    "className",
+    "componentsProps",
+    "control",
+    "disabled",
+    "disableTypography",
+    "inputRef",
+    "label",
+    "labelPlacement",
+    "name",
+    "onChange",
+    "required",
+    "slotProps",
+    "value"
+];
+const useUtilityClasses = (ownerState)=>{
+    const { classes, disabled, labelPlacement, error, required } = ownerState;
+    const slots = {
+        root: [
+            "root",
+            disabled && "disabled",
+            `labelPlacement${(0, _capitalizeDefault.default)(labelPlacement)}`,
+            error && "error",
+            required && "required"
+        ],
+        label: [
+            "label",
+            disabled && "disabled"
+        ],
+        asterisk: [
+            "asterisk",
+            error && "error"
+        ]
+    };
+    return (0, _composeClassesDefault.default)(slots, (0, _formControlLabelClasses.getFormControlLabelUtilityClasses), classes);
+};
+const FormControlLabelRoot = (0, _styledDefault.default)("label", {
+    name: "MuiFormControlLabel",
+    slot: "Root",
+    overridesResolver: (props, styles)=>{
+        const { ownerState } = props;
+        return [
+            {
+                [`& .${(0, _formControlLabelClassesDefault.default).label}`]: styles.label
+            },
+            styles.root,
+            styles[`labelPlacement${(0, _capitalizeDefault.default)(ownerState.labelPlacement)}`]
+        ];
+    }
+})(({ theme, ownerState })=>(0, _extendsDefault.default)({
+        display: "inline-flex",
+        alignItems: "center",
+        cursor: "pointer",
+        // For correct alignment with the text.
+        verticalAlign: "middle",
+        WebkitTapHighlightColor: "transparent",
+        marginLeft: -11,
+        marginRight: 16,
+        // used for row presentation of radio/checkbox
+        [`&.${(0, _formControlLabelClassesDefault.default).disabled}`]: {
+            cursor: "default"
+        }
+    }, ownerState.labelPlacement === "start" && {
+        flexDirection: "row-reverse",
+        marginLeft: 16,
+        // used for row presentation of radio/checkbox
+        marginRight: -11
+    }, ownerState.labelPlacement === "top" && {
+        flexDirection: "column-reverse",
+        marginLeft: 16
+    }, ownerState.labelPlacement === "bottom" && {
+        flexDirection: "column",
+        marginLeft: 16
+    }, {
+        [`& .${(0, _formControlLabelClassesDefault.default).label}`]: {
+            [`&.${(0, _formControlLabelClassesDefault.default).disabled}`]: {
+                color: (theme.vars || theme).palette.text.disabled
+            }
+        }
+    }));
+const AsteriskComponent = (0, _styledDefault.default)("span", {
+    name: "MuiFormControlLabel",
+    slot: "Asterisk",
+    overridesResolver: (props, styles)=>styles.asterisk
+})(({ theme })=>({
+        [`&.${(0, _formControlLabelClassesDefault.default).error}`]: {
+            color: (theme.vars || theme).palette.error.main
+        }
+    }));
+/**
+ * Drop-in replacement of the `Radio`, `Switch` and `Checkbox` component.
+ * Use this component if you want to display an extra label.
+ */ const FormControlLabel = /*#__PURE__*/ _react.forwardRef(function FormControlLabel(inProps, ref) {
+    var _ref, _slotProps$typography;
+    const props = (0, _useThemePropsDefault.default)({
+        props: inProps,
+        name: "MuiFormControlLabel"
+    });
+    const { className, componentsProps = {}, control, disabled: disabledProp, disableTypography, label: labelProp, labelPlacement = "end", required: requiredProp, slotProps = {} } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
+    const muiFormControl = (0, _formControl.useFormControl)();
+    const disabled = (_ref = disabledProp != null ? disabledProp : control.props.disabled) != null ? _ref : muiFormControl == null ? void 0 : muiFormControl.disabled;
+    const required = requiredProp != null ? requiredProp : control.props.required;
+    const controlProps = {
+        disabled,
+        required
+    };
+    [
+        "checked",
+        "name",
+        "onChange",
+        "value",
+        "inputRef"
+    ].forEach((key)=>{
+        if (typeof control.props[key] === "undefined" && typeof props[key] !== "undefined") controlProps[key] = props[key];
+    });
+    const fcs = (0, _formControlStateDefault.default)({
+        props,
+        muiFormControl,
+        states: [
+            "error"
+        ]
+    });
+    const ownerState = (0, _extendsDefault.default)({}, props, {
+        disabled,
+        labelPlacement,
+        required,
+        error: fcs.error
+    });
+    const classes = useUtilityClasses(ownerState);
+    const typographySlotProps = (_slotProps$typography = slotProps.typography) != null ? _slotProps$typography : componentsProps.typography;
+    let label = labelProp;
+    if (label != null && label.type !== (0, _typographyDefault.default) && !disableTypography) label = /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _typographyDefault.default), (0, _extendsDefault.default)({
+        component: "span"
+    }, typographySlotProps, {
+        className: (0, _clsxDefault.default)(classes.label, typographySlotProps == null ? void 0 : typographySlotProps.className),
+        children: label
+    }));
+    return /*#__PURE__*/ (0, _jsxRuntime.jsxs)(FormControlLabelRoot, (0, _extendsDefault.default)({
+        className: (0, _clsxDefault.default)(classes.root, className),
+        ownerState: ownerState,
+        ref: ref
+    }, other, {
+        children: [
+            /*#__PURE__*/ _react.cloneElement(control, controlProps),
+            required ? /*#__PURE__*/ (0, _jsxRuntime.jsxs)((0, _stackDefault.default), {
+                display: "block",
+                children: [
+                    label,
+                    /*#__PURE__*/ (0, _jsxRuntime.jsxs)(AsteriskComponent, {
+                        ownerState: ownerState,
+                        "aria-hidden": true,
+                        className: classes.asterisk,
+                        children: [
+                            "\u2009",
+                            "*"
+                        ]
+                    })
+                ]
+            }) : label
+        ]
+    }));
+});
+FormControlLabel.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * If `true`, the component appears selected.
+   */ checked: (0, _propTypesDefault.default).bool,
+    /**
+   * Override or extend the styles applied to the component.
+   */ classes: (0, _propTypesDefault.default).object,
+    /**
+   * @ignore
+   */ className: (0, _propTypesDefault.default).string,
+    /**
+   * The props used for each slot inside.
+   * @default {}
+   */ componentsProps: (0, _propTypesDefault.default).shape({
+        typography: (0, _propTypesDefault.default).object
+    }),
+    /**
+   * A control element. For instance, it can be a `Radio`, a `Switch` or a `Checkbox`.
+   */ control: (0, _propTypesDefault.default).element.isRequired,
+    /**
+   * If `true`, the control is disabled.
+   */ disabled: (0, _propTypesDefault.default).bool,
+    /**
+   * If `true`, the label is rendered as it is passed without an additional typography node.
+   */ disableTypography: (0, _propTypesDefault.default).bool,
+    /**
+   * Pass a ref to the `input` element.
+   */ inputRef: (0, _refTypeDefault.default),
+    /**
+   * A text or an element to be used in an enclosing label element.
+   */ label: (0, _propTypesDefault.default).node,
+    /**
+   * The position of the label.
+   * @default 'end'
+   */ labelPlacement: (0, _propTypesDefault.default).oneOf([
+        "bottom",
+        "end",
+        "start",
+        "top"
+    ]),
+    /**
+   * @ignore
+   */ name: (0, _propTypesDefault.default).string,
+    /**
+   * Callback fired when the state is changed.
+   *
+   * @param {React.SyntheticEvent} event The event source of the callback.
+   * You can pull out the new checked state by accessing `event.target.checked` (boolean).
+   */ onChange: (0, _propTypesDefault.default).func,
+    /**
+   * If `true`, the label will indicate that the `input` is required.
+   */ required: (0, _propTypesDefault.default).bool,
+    /**
+   * The props used for each slot inside.
+   * @default {}
+   */ slotProps: (0, _propTypesDefault.default).shape({
+        typography: (0, _propTypesDefault.default).object
+    }),
+    /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */ sx: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object,
+            (0, _propTypesDefault.default).bool
+        ])),
+        (0, _propTypesDefault.default).func,
+        (0, _propTypesDefault.default).object
+    ]),
+    /**
+   * The value of the component.
+   */ value: (0, _propTypesDefault.default).any
+};
+exports.default = FormControlLabel;
+
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"G7PIs","@mui/utils/refType":"cNuf9","@mui/utils/composeClasses":"4kKno","../FormControl":"2FZGq","../Stack":"cuThX","../Typography":"faxSz","../utils/capitalize":"lwNtZ","../styles/styled":"32xTg","../styles/useThemeProps":"dewuS","./formControlLabelClasses":"2PiDA","../FormControl/formControlState":"7wKpz","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cuThX":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _stackDefault.default));
+parcelHelpers.export(exports, "stackClasses", ()=>(0, _stackClassesDefault.default));
+var _stack = require("./Stack");
+var _stackDefault = parcelHelpers.interopDefault(_stack);
+var _stackClasses = require("./stackClasses");
+var _stackClassesDefault = parcelHelpers.interopDefault(_stackClasses);
+"use client";
+
+},{"./Stack":"dAbfF","./stackClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dAbfF":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _system = require("@mui/system");
+var _styled = require("../styles/styled");
+var _styledDefault = parcelHelpers.interopDefault(_styled);
+var _useThemeProps = require("../styles/useThemeProps");
+var _useThemePropsDefault = parcelHelpers.interopDefault(_useThemeProps);
+"use client";
+const Stack = (0, _system.createStack)({
+    createStyledComponent: (0, _styledDefault.default)("div", {
+        name: "MuiStack",
+        slot: "Root",
+        overridesResolver: (props, styles)=>styles.root
+    }),
+    useThemeProps: (inProps)=>(0, _useThemePropsDefault.default)({
+            props: inProps,
+            name: "MuiStack"
+        })
+});
+Stack.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * The content of the component.
+   */ children: (0, _propTypesDefault.default).node,
+    /**
+   * The component used for the root node.
+   * Either a string to use a HTML element or a component.
+   */ component: (0, _propTypesDefault.default).elementType,
+    /**
+   * Defines the `flex-direction` style property.
+   * It is applied for all screen sizes.
+   * @default 'column'
+   */ direction: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).oneOf([
+            "column-reverse",
+            "column",
+            "row-reverse",
+            "row"
+        ]),
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOf([
+            "column-reverse",
+            "column",
+            "row-reverse",
+            "row"
+        ])),
+        (0, _propTypesDefault.default).object
+    ]),
+    /**
+   * Add an element between each child.
+   */ divider: (0, _propTypesDefault.default).node,
+    /**
+   * Defines the space between immediate children.
+   * @default 0
+   */ spacing: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).number,
+            (0, _propTypesDefault.default).string
+        ])),
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).object,
+        (0, _propTypesDefault.default).string
+    ]),
+    /**
+   * The system prop, which allows defining system overrides as well as additional CSS styles.
+   */ sx: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object,
+            (0, _propTypesDefault.default).bool
+        ])),
+        (0, _propTypesDefault.default).func,
+        (0, _propTypesDefault.default).object
+    ]),
+    /**
+   * If `true`, the CSS flexbox `gap` is used instead of applying `margin` to children.
+   *
+   * While CSS `gap` removes the [known limitations](https://mui.com/joy-ui/react-stack/#limitations),
+   * it is not fully supported in some browsers. We recommend checking https://caniuse.com/?search=flex%20gap before using this flag.
+   *
+   * To enable this flag globally, follow the [theme's default props](https://mui.com/material-ui/customization/theme-components/#default-props) configuration.
+   * @default false
+   */ useFlexGap: (0, _propTypesDefault.default).bool
+};
+exports.default = Stack;
+
+},{"prop-types":"7wKI2","@mui/system":"Q0Zql","../styles/styled":"32xTg","../styles/useThemeProps":"dewuS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2PiDA":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getFormControlLabelUtilityClasses", ()=>getFormControlLabelUtilityClasses);
+var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
+var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
+var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
+var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
+function getFormControlLabelUtilityClasses(slot) {
+    return (0, _generateUtilityClassDefault.default)("MuiFormControlLabel", slot);
+}
+const formControlLabelClasses = (0, _generateUtilityClassesDefault.default)("MuiFormControlLabel", [
+    "root",
+    "labelPlacementStart",
+    "labelPlacementTop",
+    "labelPlacementBottom",
+    "disabled",
+    "label",
+    "error",
+    "required",
+    "asterisk"
+]);
+exports.default = formControlLabelClasses;
+
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"c17UE":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _gridDefault.default));
+parcelHelpers.export(exports, "gridClasses", ()=>(0, _gridClassesDefault.default));
+var _grid = require("./Grid");
+var _gridDefault = parcelHelpers.interopDefault(_grid);
+var _gridClasses = require("./gridClasses");
+var _gridClassesDefault = parcelHelpers.interopDefault(_gridClasses);
+parcelHelpers.exportAll(_gridClasses, exports);
+"use client";
+
+},{"./Grid":"60L6y","./gridClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"60L6y":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "generateGrid", ()=>generateGrid);
+parcelHelpers.export(exports, "generateDirection", ()=>generateDirection);
+parcelHelpers.export(exports, "generateRowGap", ()=>generateRowGap);
+parcelHelpers.export(exports, "generateColumnGap", ()=>generateColumnGap);
+parcelHelpers.export(exports, "resolveSpacingStyles", ()=>resolveSpacingStyles);
+parcelHelpers.export(exports, "resolveSpacingClasses", ()=>resolveSpacingClasses);
+// A grid component using the following libs as inspiration.
+//
+// For the implementation:
+// - https://getbootstrap.com/docs/4.3/layout/grid/
+// - https://github.com/kristoferjoseph/flexboxgrid/blob/master/src/css/flexboxgrid.css
+// - https://github.com/roylee0704/react-flexbox-grid
+// - https://material.angularjs.org/latest/layout/introduction
+//
+// Follow this flexbox Guide to better understand the underlying model:
+// - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
+var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+var _react = require("react");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _clsx = require("clsx");
+var _clsxDefault = parcelHelpers.interopDefault(_clsx);
+var _system = require("@mui/system");
+var _styleFunctionSx = require("@mui/system/styleFunctionSx");
+var _composeClasses = require("@mui/utils/composeClasses");
+var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
+var _requirePropFactory = require("../utils/requirePropFactory");
+var _requirePropFactoryDefault = parcelHelpers.interopDefault(_requirePropFactory);
+var _styled = require("../styles/styled");
+var _styledDefault = parcelHelpers.interopDefault(_styled);
+var _useThemeProps = require("../styles/useThemeProps");
+var _useThemePropsDefault = parcelHelpers.interopDefault(_useThemeProps);
+var _useTheme = require("../styles/useTheme");
+var _useThemeDefault = parcelHelpers.interopDefault(_useTheme);
+var _gridContext = require("./GridContext");
+var _gridContextDefault = parcelHelpers.interopDefault(_gridContext);
+var _gridClasses = require("./gridClasses");
+var _gridClassesDefault = parcelHelpers.interopDefault(_gridClasses);
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const _excluded = [
+    "className",
+    "columns",
+    "columnSpacing",
+    "component",
+    "container",
+    "direction",
+    "item",
+    "rowSpacing",
+    "spacing",
+    "wrap",
+    "zeroMinWidth"
+];
+function getOffset(val) {
+    const parse = parseFloat(val);
+    return `${parse}${String(val).replace(String(parse), "") || "px"}`;
+}
+function generateGrid({ theme, ownerState }) {
+    let size;
+    return theme.breakpoints.keys.reduce((globalStyles, breakpoint)=>{
+        // Use side effect over immutability for better performance.
+        let styles = {};
+        if (ownerState[breakpoint]) size = ownerState[breakpoint];
+        if (!size) return globalStyles;
+        if (size === true) // For the auto layouting
+        styles = {
+            flexBasis: 0,
+            flexGrow: 1,
+            maxWidth: "100%"
+        };
+        else if (size === "auto") styles = {
+            flexBasis: "auto",
+            flexGrow: 0,
+            flexShrink: 0,
+            maxWidth: "none",
+            width: "auto"
+        };
+        else {
+            const columnsBreakpointValues = (0, _system.unstable_resolveBreakpointValues)({
+                values: ownerState.columns,
+                breakpoints: theme.breakpoints.values
+            });
+            const columnValue = typeof columnsBreakpointValues === "object" ? columnsBreakpointValues[breakpoint] : columnsBreakpointValues;
+            if (columnValue === undefined || columnValue === null) return globalStyles;
+            // Keep 7 significant numbers.
+            const width = `${Math.round(size / columnValue * 10e7) / 10e5}%`;
+            let more = {};
+            if (ownerState.container && ownerState.item && ownerState.columnSpacing !== 0) {
+                const themeSpacing = theme.spacing(ownerState.columnSpacing);
+                if (themeSpacing !== "0px") {
+                    const fullWidth = `calc(${width} + ${getOffset(themeSpacing)})`;
+                    more = {
+                        flexBasis: fullWidth,
+                        maxWidth: fullWidth
+                    };
+                }
+            }
+            // Close to the bootstrap implementation:
+            // https://github.com/twbs/bootstrap/blob/8fccaa2439e97ec72a4b7dc42ccc1f649790adb0/scss/mixins/_grid.scss#L41
+            styles = (0, _extendsDefault.default)({
+                flexBasis: width,
+                flexGrow: 0,
+                maxWidth: width
+            }, more);
+        }
+        // No need for a media query for the first size.
+        if (theme.breakpoints.values[breakpoint] === 0) Object.assign(globalStyles, styles);
+        else globalStyles[theme.breakpoints.up(breakpoint)] = styles;
+        return globalStyles;
+    }, {});
+}
+function generateDirection({ theme, ownerState }) {
+    const directionValues = (0, _system.unstable_resolveBreakpointValues)({
+        values: ownerState.direction,
+        breakpoints: theme.breakpoints.values
+    });
+    return (0, _system.handleBreakpoints)({
+        theme
+    }, directionValues, (propValue)=>{
+        const output = {
+            flexDirection: propValue
+        };
+        if (propValue.indexOf("column") === 0) output[`& > .${(0, _gridClassesDefault.default).item}`] = {
+            maxWidth: "none"
+        };
+        return output;
+    });
+}
+/**
+ * Extracts zero value breakpoint keys before a non-zero value breakpoint key.
+ * @example { xs: 0, sm: 0, md: 2, lg: 0, xl: 0 } or [0, 0, 2, 0, 0]
+ * @returns [xs, sm]
+ */ function extractZeroValueBreakpointKeys({ breakpoints, values }) {
+    let nonZeroKey = "";
+    Object.keys(values).forEach((key)=>{
+        if (nonZeroKey !== "") return;
+        if (values[key] !== 0) nonZeroKey = key;
+    });
+    const sortedBreakpointKeysByValue = Object.keys(breakpoints).sort((a, b)=>{
+        return breakpoints[a] - breakpoints[b];
+    });
+    return sortedBreakpointKeysByValue.slice(0, sortedBreakpointKeysByValue.indexOf(nonZeroKey));
+}
+function generateRowGap({ theme, ownerState }) {
+    const { container, rowSpacing } = ownerState;
+    let styles = {};
+    if (container && rowSpacing !== 0) {
+        const rowSpacingValues = (0, _system.unstable_resolveBreakpointValues)({
+            values: rowSpacing,
+            breakpoints: theme.breakpoints.values
+        });
+        let zeroValueBreakpointKeys;
+        if (typeof rowSpacingValues === "object") zeroValueBreakpointKeys = extractZeroValueBreakpointKeys({
+            breakpoints: theme.breakpoints.values,
+            values: rowSpacingValues
+        });
+        styles = (0, _system.handleBreakpoints)({
+            theme
+        }, rowSpacingValues, (propValue, breakpoint)=>{
+            var _zeroValueBreakpointK;
+            const themeSpacing = theme.spacing(propValue);
+            if (themeSpacing !== "0px") return {
+                marginTop: `-${getOffset(themeSpacing)}`,
+                [`& > .${(0, _gridClassesDefault.default).item}`]: {
+                    paddingTop: getOffset(themeSpacing)
+                }
+            };
+            if ((_zeroValueBreakpointK = zeroValueBreakpointKeys) != null && _zeroValueBreakpointK.includes(breakpoint)) return {};
+            return {
+                marginTop: 0,
+                [`& > .${(0, _gridClassesDefault.default).item}`]: {
+                    paddingTop: 0
+                }
+            };
+        });
+    }
+    return styles;
+}
+function generateColumnGap({ theme, ownerState }) {
+    const { container, columnSpacing } = ownerState;
+    let styles = {};
+    if (container && columnSpacing !== 0) {
+        const columnSpacingValues = (0, _system.unstable_resolveBreakpointValues)({
+            values: columnSpacing,
+            breakpoints: theme.breakpoints.values
+        });
+        let zeroValueBreakpointKeys;
+        if (typeof columnSpacingValues === "object") zeroValueBreakpointKeys = extractZeroValueBreakpointKeys({
+            breakpoints: theme.breakpoints.values,
+            values: columnSpacingValues
+        });
+        styles = (0, _system.handleBreakpoints)({
+            theme
+        }, columnSpacingValues, (propValue, breakpoint)=>{
+            var _zeroValueBreakpointK2;
+            const themeSpacing = theme.spacing(propValue);
+            if (themeSpacing !== "0px") return {
+                width: `calc(100% + ${getOffset(themeSpacing)})`,
+                marginLeft: `-${getOffset(themeSpacing)}`,
+                [`& > .${(0, _gridClassesDefault.default).item}`]: {
+                    paddingLeft: getOffset(themeSpacing)
+                }
+            };
+            if ((_zeroValueBreakpointK2 = zeroValueBreakpointKeys) != null && _zeroValueBreakpointK2.includes(breakpoint)) return {};
+            return {
+                width: "100%",
+                marginLeft: 0,
+                [`& > .${(0, _gridClassesDefault.default).item}`]: {
+                    paddingLeft: 0
+                }
+            };
+        });
+    }
+    return styles;
+}
+function resolveSpacingStyles(spacing, breakpoints, styles = {}) {
+    // undefined/null or `spacing` <= 0
+    if (!spacing || spacing <= 0) return [];
+    // in case of string/number `spacing`
+    if (typeof spacing === "string" && !Number.isNaN(Number(spacing)) || typeof spacing === "number") return [
+        styles[`spacing-xs-${String(spacing)}`]
+    ];
+    // in case of object `spacing`
+    const spacingStyles = [];
+    breakpoints.forEach((breakpoint)=>{
+        const value = spacing[breakpoint];
+        if (Number(value) > 0) spacingStyles.push(styles[`spacing-${breakpoint}-${String(value)}`]);
+    });
+    return spacingStyles;
+}
+// Default CSS values
+// flex: '0 1 auto',
+// flexDirection: 'row',
+// alignItems: 'flex-start',
+// flexWrap: 'nowrap',
+// justifyContent: 'flex-start',
+const GridRoot = (0, _styledDefault.default)("div", {
+    name: "MuiGrid",
+    slot: "Root",
+    overridesResolver: (props, styles)=>{
+        const { ownerState } = props;
+        const { container, direction, item, spacing, wrap, zeroMinWidth, breakpoints } = ownerState;
+        let spacingStyles = [];
+        // in case of grid item
+        if (container) spacingStyles = resolveSpacingStyles(spacing, breakpoints, styles);
+        const breakpointsStyles = [];
+        breakpoints.forEach((breakpoint)=>{
+            const value = ownerState[breakpoint];
+            if (value) breakpointsStyles.push(styles[`grid-${breakpoint}-${String(value)}`]);
+        });
+        return [
+            styles.root,
+            container && styles.container,
+            item && styles.item,
+            zeroMinWidth && styles.zeroMinWidth,
+            ...spacingStyles,
+            direction !== "row" && styles[`direction-xs-${String(direction)}`],
+            wrap !== "wrap" && styles[`wrap-xs-${String(wrap)}`],
+            ...breakpointsStyles
+        ];
+    }
+})(({ ownerState })=>(0, _extendsDefault.default)({
+        boxSizing: "border-box"
+    }, ownerState.container && {
+        display: "flex",
+        flexWrap: "wrap",
+        width: "100%"
+    }, ownerState.item && {
+        margin: 0 // For instance, it's useful when used with a `figure` element.
+    }, ownerState.zeroMinWidth && {
+        minWidth: 0
+    }, ownerState.wrap !== "wrap" && {
+        flexWrap: ownerState.wrap
+    }), generateDirection, generateRowGap, generateColumnGap, generateGrid);
+function resolveSpacingClasses(spacing, breakpoints) {
+    // undefined/null or `spacing` <= 0
+    if (!spacing || spacing <= 0) return [];
+    // in case of string/number `spacing`
+    if (typeof spacing === "string" && !Number.isNaN(Number(spacing)) || typeof spacing === "number") return [
+        `spacing-xs-${String(spacing)}`
+    ];
+    // in case of object `spacing`
+    const classes = [];
+    breakpoints.forEach((breakpoint)=>{
+        const value = spacing[breakpoint];
+        if (Number(value) > 0) {
+            const className = `spacing-${breakpoint}-${String(value)}`;
+            classes.push(className);
+        }
+    });
+    return classes;
+}
+const useUtilityClasses = (ownerState)=>{
+    const { classes, container, direction, item, spacing, wrap, zeroMinWidth, breakpoints } = ownerState;
+    let spacingClasses = [];
+    // in case of grid item
+    if (container) spacingClasses = resolveSpacingClasses(spacing, breakpoints);
+    const breakpointsClasses = [];
+    breakpoints.forEach((breakpoint)=>{
+        const value = ownerState[breakpoint];
+        if (value) breakpointsClasses.push(`grid-${breakpoint}-${String(value)}`);
+    });
+    const slots = {
+        root: [
+            "root",
+            container && "container",
+            item && "item",
+            zeroMinWidth && "zeroMinWidth",
+            ...spacingClasses,
+            direction !== "row" && `direction-xs-${String(direction)}`,
+            wrap !== "wrap" && `wrap-xs-${String(wrap)}`,
+            ...breakpointsClasses
+        ]
+    };
+    return (0, _composeClassesDefault.default)(slots, (0, _gridClasses.getGridUtilityClass), classes);
+};
+const Grid = /*#__PURE__*/ _react.forwardRef(function Grid(inProps, ref) {
+    const themeProps = (0, _useThemePropsDefault.default)({
+        props: inProps,
+        name: "MuiGrid"
+    });
+    const { breakpoints } = (0, _useThemeDefault.default)();
+    const props = (0, _styleFunctionSx.extendSxProp)(themeProps);
+    const { className, columns: columnsProp, columnSpacing: columnSpacingProp, component = "div", container = false, direction = "row", item = false, rowSpacing: rowSpacingProp, spacing = 0, wrap = "wrap", zeroMinWidth = false } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
+    const rowSpacing = rowSpacingProp || spacing;
+    const columnSpacing = columnSpacingProp || spacing;
+    const columnsContext = _react.useContext((0, _gridContextDefault.default));
+    // columns set with default breakpoint unit of 12
+    const columns = container ? columnsProp || 12 : columnsContext;
+    const breakpointsValues = {};
+    const otherFiltered = (0, _extendsDefault.default)({}, other);
+    breakpoints.keys.forEach((breakpoint)=>{
+        if (other[breakpoint] != null) {
+            breakpointsValues[breakpoint] = other[breakpoint];
+            delete otherFiltered[breakpoint];
+        }
+    });
+    const ownerState = (0, _extendsDefault.default)({}, props, {
+        columns,
+        container,
+        direction,
+        item,
+        rowSpacing,
+        columnSpacing,
+        wrap,
+        zeroMinWidth,
+        spacing
+    }, breakpointsValues, {
+        breakpoints: breakpoints.keys
+    });
+    const classes = useUtilityClasses(ownerState);
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _gridContextDefault.default).Provider, {
+        value: columns,
+        children: /*#__PURE__*/ (0, _jsxRuntime.jsx)(GridRoot, (0, _extendsDefault.default)({
+            ownerState: ownerState,
+            className: (0, _clsxDefault.default)(classes.root, className),
+            as: component,
+            ref: ref
+        }, otherFiltered))
+    });
+});
+Grid.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * The content of the component.
+   */ children: (0, _propTypesDefault.default).node,
+    /**
+   * Override or extend the styles applied to the component.
+   */ classes: (0, _propTypesDefault.default).object,
+    /**
+   * @ignore
+   */ className: (0, _propTypesDefault.default).string,
+    /**
+   * The number of columns.
+   * @default 12
+   */ columns: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).number),
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).object
+    ]),
+    /**
+   * Defines the horizontal space between the type `item` components.
+   * It overrides the value of the `spacing` prop.
+   */ columnSpacing: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).number,
+            (0, _propTypesDefault.default).string
+        ])),
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).object,
+        (0, _propTypesDefault.default).string
+    ]),
+    /**
+   * The component used for the root node.
+   * Either a string to use a HTML element or a component.
+   */ component: (0, _propTypesDefault.default).elementType,
+    /**
+   * If `true`, the component will have the flex *container* behavior.
+   * You should be wrapping *items* with a *container*.
+   * @default false
+   */ container: (0, _propTypesDefault.default).bool,
+    /**
+   * Defines the `flex-direction` style property.
+   * It is applied for all screen sizes.
+   * @default 'row'
+   */ direction: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).oneOf([
+            "column-reverse",
+            "column",
+            "row-reverse",
+            "row"
+        ]),
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOf([
+            "column-reverse",
+            "column",
+            "row-reverse",
+            "row"
+        ])),
+        (0, _propTypesDefault.default).object
+    ]),
+    /**
+   * If `true`, the component will have the flex *item* behavior.
+   * You should be wrapping *items* with a *container*.
+   * @default false
+   */ item: (0, _propTypesDefault.default).bool,
+    /**
+   * If a number, it sets the number of columns the grid item uses.
+   * It can't be greater than the total number of columns of the container (12 by default).
+   * If 'auto', the grid item's width matches its content.
+   * If false, the prop is ignored.
+   * If true, the grid item's width grows to use the space available in the grid container.
+   * The value is applied for the `lg` breakpoint and wider screens if not overridden.
+   * @default false
+   */ lg: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).oneOf([
+            "auto"
+        ]),
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).bool
+    ]),
+    /**
+   * If a number, it sets the number of columns the grid item uses.
+   * It can't be greater than the total number of columns of the container (12 by default).
+   * If 'auto', the grid item's width matches its content.
+   * If false, the prop is ignored.
+   * If true, the grid item's width grows to use the space available in the grid container.
+   * The value is applied for the `md` breakpoint and wider screens if not overridden.
+   * @default false
+   */ md: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).oneOf([
+            "auto"
+        ]),
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).bool
+    ]),
+    /**
+   * Defines the vertical space between the type `item` components.
+   * It overrides the value of the `spacing` prop.
+   */ rowSpacing: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).number,
+            (0, _propTypesDefault.default).string
+        ])),
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).object,
+        (0, _propTypesDefault.default).string
+    ]),
+    /**
+   * If a number, it sets the number of columns the grid item uses.
+   * It can't be greater than the total number of columns of the container (12 by default).
+   * If 'auto', the grid item's width matches its content.
+   * If false, the prop is ignored.
+   * If true, the grid item's width grows to use the space available in the grid container.
+   * The value is applied for the `sm` breakpoint and wider screens if not overridden.
+   * @default false
+   */ sm: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).oneOf([
+            "auto"
+        ]),
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).bool
+    ]),
+    /**
+   * Defines the space between the type `item` components.
+   * It can only be used on a type `container` component.
+   * @default 0
+   */ spacing: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).number,
+            (0, _propTypesDefault.default).string
+        ])),
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).object,
+        (0, _propTypesDefault.default).string
+    ]),
+    /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */ sx: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object,
+            (0, _propTypesDefault.default).bool
+        ])),
+        (0, _propTypesDefault.default).func,
+        (0, _propTypesDefault.default).object
+    ]),
+    /**
+   * Defines the `flex-wrap` style property.
+   * It's applied for all screen sizes.
+   * @default 'wrap'
+   */ wrap: (0, _propTypesDefault.default).oneOf([
+        "nowrap",
+        "wrap-reverse",
+        "wrap"
+    ]),
+    /**
+   * If a number, it sets the number of columns the grid item uses.
+   * It can't be greater than the total number of columns of the container (12 by default).
+   * If 'auto', the grid item's width matches its content.
+   * If false, the prop is ignored.
+   * If true, the grid item's width grows to use the space available in the grid container.
+   * The value is applied for the `xl` breakpoint and wider screens if not overridden.
+   * @default false
+   */ xl: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).oneOf([
+            "auto"
+        ]),
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).bool
+    ]),
+    /**
+   * If a number, it sets the number of columns the grid item uses.
+   * It can't be greater than the total number of columns of the container (12 by default).
+   * If 'auto', the grid item's width matches its content.
+   * If false, the prop is ignored.
+   * If true, the grid item's width grows to use the space available in the grid container.
+   * The value is applied for all the screen sizes with the lowest priority.
+   * @default false
+   */ xs: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).oneOf([
+            "auto"
+        ]),
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).bool
+    ]),
+    /**
+   * If `true`, it sets `min-width: 0` on the item.
+   * Refer to the limitations section of the documentation to better understand the use case.
+   * @default false
+   */ zeroMinWidth: (0, _propTypesDefault.default).bool
+};
+{
+    const requireProp = (0, _requirePropFactoryDefault.default)("Grid", Grid);
+    // eslint-disable-next-line no-useless-concat
+    Grid["propTypes"] = (0, _extendsDefault.default)({}, Grid.propTypes, {
+        direction: requireProp("container"),
+        lg: requireProp("item"),
+        md: requireProp("item"),
+        sm: requireProp("item"),
+        spacing: requireProp("container"),
+        wrap: requireProp("container"),
+        xs: requireProp("item"),
+        zeroMinWidth: requireProp("item")
+    });
+}exports.default = Grid;
+
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"G7PIs","@mui/system":"Q0Zql","@mui/system/styleFunctionSx":"bRwpN","@mui/utils/composeClasses":"4kKno","../utils/requirePropFactory":"gQOX7","../styles/styled":"32xTg","../styles/useThemeProps":"dewuS","../styles/useTheme":"5nWMX","./GridContext":"ghr8E","./gridClasses":"iRwNS","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ghr8E":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+"use client";
+/**
+ * @ignore - internal component.
+ */ const GridContext = /*#__PURE__*/ _react.createContext();
+GridContext.displayName = "GridContext";
+exports.default = GridContext;
+
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iRwNS":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getGridUtilityClass", ()=>getGridUtilityClass);
+var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
+var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
+var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
+var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
+function getGridUtilityClass(slot) {
+    return (0, _generateUtilityClassDefault.default)("MuiGrid", slot);
+}
+const SPACINGS = [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+];
+const DIRECTIONS = [
+    "column-reverse",
+    "column",
+    "row-reverse",
+    "row"
+];
+const WRAPS = [
+    "nowrap",
+    "wrap-reverse",
+    "wrap"
+];
+const GRID_SIZES = [
+    "auto",
+    true,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+];
+const gridClasses = (0, _generateUtilityClassesDefault.default)("MuiGrid", [
+    "root",
+    "container",
+    "item",
+    "zeroMinWidth",
+    // spacings
+    ...SPACINGS.map((spacing)=>`spacing-xs-${spacing}`),
+    // direction values
+    ...DIRECTIONS.map((direction)=>`direction-xs-${direction}`),
+    // wrap values
+    ...WRAPS.map((wrap)=>`wrap-xs-${wrap}`),
+    // grid sizes for all breakpoints
+    ...GRID_SIZES.map((size)=>`grid-xs-${size}`),
+    ...GRID_SIZES.map((size)=>`grid-sm-${size}`),
+    ...GRID_SIZES.map((size)=>`grid-md-${size}`),
+    ...GRID_SIZES.map((size)=>`grid-lg-${size}`),
+    ...GRID_SIZES.map((size)=>`grid-xl-${size}`)
+]);
+exports.default = gridClasses;
+
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dOURT":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _menuDefault.default));
+parcelHelpers.export(exports, "menuClasses", ()=>(0, _menuClassesDefault.default));
+var _menu = require("./Menu");
+var _menuDefault = parcelHelpers.interopDefault(_menu);
+var _menuClasses = require("./menuClasses");
+var _menuClassesDefault = parcelHelpers.interopDefault(_menuClasses);
+parcelHelpers.exportAll(_menuClasses, exports);
+"use client";
+
+},{"./Menu":"bQNbu","./menuClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"25Fj7":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _snackbarDefault.default));
+parcelHelpers.export(exports, "snackbarClasses", ()=>(0, _snackbarClassesDefault.default));
+var _snackbar = require("./Snackbar");
+var _snackbarDefault = parcelHelpers.interopDefault(_snackbar);
+var _snackbarClasses = require("./snackbarClasses");
+var _snackbarClassesDefault = parcelHelpers.interopDefault(_snackbarClasses);
+parcelHelpers.exportAll(_snackbarClasses, exports);
+"use client";
+
+},{"./Snackbar":"6cpAR","./snackbarClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6cpAR":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
+var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+var _react = require("react");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _utils = require("@mui/base/utils");
+var _composeClasses = require("@mui/utils/composeClasses");
+var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
+var _clickAwayListener = require("@mui/base/ClickAwayListener");
+var _useSnackbar = require("@mui/base/useSnackbar");
+var _styled = require("../styles/styled");
+var _styledDefault = parcelHelpers.interopDefault(_styled);
+var _useTheme = require("../styles/useTheme");
+var _useThemeDefault = parcelHelpers.interopDefault(_useTheme);
+var _useThemeProps = require("../styles/useThemeProps");
+var _useThemePropsDefault = parcelHelpers.interopDefault(_useThemeProps);
+var _capitalize = require("../utils/capitalize");
+var _capitalizeDefault = parcelHelpers.interopDefault(_capitalize);
+var _grow = require("../Grow");
+var _growDefault = parcelHelpers.interopDefault(_grow);
+var _snackbarContent = require("../SnackbarContent");
+var _snackbarContentDefault = parcelHelpers.interopDefault(_snackbarContent);
+var _snackbarClasses = require("./snackbarClasses");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const _excluded = [
+    "onEnter",
+    "onExited"
+], _excluded2 = [
+    "action",
+    "anchorOrigin",
+    "autoHideDuration",
+    "children",
+    "className",
+    "ClickAwayListenerProps",
+    "ContentProps",
+    "disableWindowBlurListener",
+    "message",
+    "onBlur",
+    "onClose",
+    "onFocus",
+    "onMouseEnter",
+    "onMouseLeave",
+    "open",
+    "resumeHideDuration",
+    "TransitionComponent",
+    "transitionDuration",
+    "TransitionProps"
+];
+const useUtilityClasses = (ownerState)=>{
+    const { classes, anchorOrigin } = ownerState;
+    const slots = {
+        root: [
+            "root",
+            `anchorOrigin${(0, _capitalizeDefault.default)(anchorOrigin.vertical)}${(0, _capitalizeDefault.default)(anchorOrigin.horizontal)}`
+        ]
+    };
+    return (0, _composeClassesDefault.default)(slots, (0, _snackbarClasses.getSnackbarUtilityClass), classes);
+};
+const SnackbarRoot = (0, _styledDefault.default)("div", {
+    name: "MuiSnackbar",
+    slot: "Root",
+    overridesResolver: (props, styles)=>{
+        const { ownerState } = props;
+        return [
+            styles.root,
+            styles[`anchorOrigin${(0, _capitalizeDefault.default)(ownerState.anchorOrigin.vertical)}${(0, _capitalizeDefault.default)(ownerState.anchorOrigin.horizontal)}`]
+        ];
+    }
+})(({ theme, ownerState })=>{
+    const center = {
+        left: "50%",
+        right: "auto",
+        transform: "translateX(-50%)"
+    };
+    return (0, _extendsDefault.default)({
+        zIndex: (theme.vars || theme).zIndex.snackbar,
+        position: "fixed",
+        display: "flex",
+        left: 8,
+        right: 8,
+        justifyContent: "center",
+        alignItems: "center"
+    }, ownerState.anchorOrigin.vertical === "top" ? {
+        top: 8
+    } : {
+        bottom: 8
+    }, ownerState.anchorOrigin.horizontal === "left" && {
+        justifyContent: "flex-start"
+    }, ownerState.anchorOrigin.horizontal === "right" && {
+        justifyContent: "flex-end"
+    }, {
+        [theme.breakpoints.up("sm")]: (0, _extendsDefault.default)({}, ownerState.anchorOrigin.vertical === "top" ? {
+            top: 24
+        } : {
+            bottom: 24
+        }, ownerState.anchorOrigin.horizontal === "center" && center, ownerState.anchorOrigin.horizontal === "left" && {
+            left: 24,
+            right: "auto"
+        }, ownerState.anchorOrigin.horizontal === "right" && {
+            right: 24,
+            left: "auto"
+        })
+    });
+});
+const Snackbar = /*#__PURE__*/ _react.forwardRef(function Snackbar(inProps, ref) {
+    const props = (0, _useThemePropsDefault.default)({
+        props: inProps,
+        name: "MuiSnackbar"
+    });
+    const theme = (0, _useThemeDefault.default)();
+    const defaultTransitionDuration = {
+        enter: theme.transitions.duration.enteringScreen,
+        exit: theme.transitions.duration.leavingScreen
+    };
+    const { action, anchorOrigin: { vertical, horizontal } = {
+        vertical: "bottom",
+        horizontal: "left"
+    }, autoHideDuration = null, children, className, ClickAwayListenerProps, ContentProps, disableWindowBlurListener = false, message, open, TransitionComponent = (0, _growDefault.default), transitionDuration = defaultTransitionDuration, TransitionProps: { onEnter, onExited } = {} } = props, TransitionProps = (0, _objectWithoutPropertiesLooseDefault.default)(props.TransitionProps, _excluded), other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded2);
+    const ownerState = (0, _extendsDefault.default)({}, props, {
+        anchorOrigin: {
+            vertical,
+            horizontal
+        },
+        autoHideDuration,
+        disableWindowBlurListener,
+        TransitionComponent,
+        transitionDuration
+    });
+    const classes = useUtilityClasses(ownerState);
+    const { getRootProps, onClickAway } = (0, _useSnackbar.useSnackbar)((0, _extendsDefault.default)({}, ownerState));
+    const [exited, setExited] = _react.useState(true);
+    const rootProps = (0, _utils.useSlotProps)({
+        elementType: SnackbarRoot,
+        getSlotProps: getRootProps,
+        externalForwardedProps: other,
+        ownerState,
+        additionalProps: {
+            ref
+        },
+        className: [
+            classes.root,
+            className
+        ]
+    });
+    const handleExited = (node)=>{
+        setExited(true);
+        if (onExited) onExited(node);
+    };
+    const handleEnter = (node, isAppearing)=>{
+        setExited(false);
+        if (onEnter) onEnter(node, isAppearing);
+    };
+    // So we only render active snackbars.
+    if (!open && exited) return null;
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _clickAwayListener.ClickAwayListener), (0, _extendsDefault.default)({
+        onClickAway: onClickAway
+    }, ClickAwayListenerProps, {
+        children: /*#__PURE__*/ (0, _jsxRuntime.jsx)(SnackbarRoot, (0, _extendsDefault.default)({}, rootProps, {
+            children: /*#__PURE__*/ (0, _jsxRuntime.jsx)(TransitionComponent, (0, _extendsDefault.default)({
+                appear: true,
+                in: open,
+                timeout: transitionDuration,
+                direction: vertical === "top" ? "down" : "up",
+                onEnter: handleEnter,
+                onExited: handleExited
+            }, TransitionProps, {
+                children: children || /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _snackbarContentDefault.default), (0, _extendsDefault.default)({
+                    message: message,
+                    action: action
+                }, ContentProps))
+            }))
+        }))
+    }));
+});
+Snackbar.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * The action to display. It renders after the message, at the end of the snackbar.
+   */ action: (0, _propTypesDefault.default).node,
+    /**
+   * The anchor of the `Snackbar`.
+   * On smaller screens, the component grows to occupy all the available width,
+   * the horizontal alignment is ignored.
+   * @default { vertical: 'bottom', horizontal: 'left' }
+   */ anchorOrigin: (0, _propTypesDefault.default).shape({
+        horizontal: (0, _propTypesDefault.default).oneOf([
+            "center",
+            "left",
+            "right"
+        ]).isRequired,
+        vertical: (0, _propTypesDefault.default).oneOf([
+            "bottom",
+            "top"
+        ]).isRequired
+    }),
+    /**
+   * The number of milliseconds to wait before automatically calling the
+   * `onClose` function. `onClose` should then set the state of the `open`
+   * prop to hide the Snackbar. This behavior is disabled by default with
+   * the `null` value.
+   * @default null
+   */ autoHideDuration: (0, _propTypesDefault.default).number,
+    /**
+   * Replace the `SnackbarContent` component.
+   */ children: (0, _propTypesDefault.default).element,
+    /**
+   * Override or extend the styles applied to the component.
+   */ classes: (0, _propTypesDefault.default).object,
+    /**
+   * @ignore
+   */ className: (0, _propTypesDefault.default).string,
+    /**
+   * Props applied to the `ClickAwayListener` element.
+   */ ClickAwayListenerProps: (0, _propTypesDefault.default).object,
+    /**
+   * Props applied to the [`SnackbarContent`](/material-ui/api/snackbar-content/) element.
+   */ ContentProps: (0, _propTypesDefault.default).object,
+    /**
+   * If `true`, the `autoHideDuration` timer will expire even if the window is not focused.
+   * @default false
+   */ disableWindowBlurListener: (0, _propTypesDefault.default).bool,
+    /**
+   * When displaying multiple consecutive snackbars using a single parent-rendered
+   * `<Snackbar/>`, add the `key` prop to ensure independent treatment of each message.
+   * For instance, use `<Snackbar key={message} />`. Otherwise, messages might update
+   * in place, and features like `autoHideDuration` could be affected.
+   */ key: ()=>null,
+    /**
+   * The message to display.
+   */ message: (0, _propTypesDefault.default).node,
+    /**
+   * @ignore
+   */ onBlur: (0, _propTypesDefault.default).func,
+    /**
+   * Callback fired when the component requests to be closed.
+   * Typically `onClose` is used to set state in the parent component,
+   * which is used to control the `Snackbar` `open` prop.
+   * The `reason` parameter can optionally be used to control the response to `onClose`,
+   * for example ignoring `clickaway`.
+   *
+   * @param {React.SyntheticEvent<any> | Event} event The event source of the callback.
+   * @param {string} reason Can be: `"timeout"` (`autoHideDuration` expired), `"clickaway"`, or `"escapeKeyDown"`.
+   */ onClose: (0, _propTypesDefault.default).func,
+    /**
+   * @ignore
+   */ onFocus: (0, _propTypesDefault.default).func,
+    /**
+   * @ignore
+   */ onMouseEnter: (0, _propTypesDefault.default).func,
+    /**
+   * @ignore
+   */ onMouseLeave: (0, _propTypesDefault.default).func,
+    /**
+   * If `true`, the component is shown.
+   */ open: (0, _propTypesDefault.default).bool,
+    /**
+   * The number of milliseconds to wait before dismissing after user interaction.
+   * If `autoHideDuration` prop isn't specified, it does nothing.
+   * If `autoHideDuration` prop is specified but `resumeHideDuration` isn't,
+   * we default to `autoHideDuration / 2` ms.
+   */ resumeHideDuration: (0, _propTypesDefault.default).number,
+    /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */ sx: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object,
+            (0, _propTypesDefault.default).bool
+        ])),
+        (0, _propTypesDefault.default).func,
+        (0, _propTypesDefault.default).object
+    ]),
+    /**
+   * The component used for the transition.
+   * [Follow this guide](/material-ui/transitions/#transitioncomponent-prop) to learn more about the requirements for this component.
+   * @default Grow
+   */ TransitionComponent: (0, _propTypesDefault.default).elementType,
+    /**
+   * The duration for the transition, in milliseconds.
+   * You may specify a single timeout for all transitions, or individually with an object.
+   * @default {
+   *   enter: theme.transitions.duration.enteringScreen,
+   *   exit: theme.transitions.duration.leavingScreen,
+   * }
+   */ transitionDuration: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).shape({
+            appear: (0, _propTypesDefault.default).number,
+            enter: (0, _propTypesDefault.default).number,
+            exit: (0, _propTypesDefault.default).number
+        })
+    ]),
+    /**
+   * Props applied to the transition element.
+   * By default, the element is based on this [`Transition`](https://reactcommunity.org/react-transition-group/transition/) component.
+   * @default {}
+   */ TransitionProps: (0, _propTypesDefault.default).object
+};
+exports.default = Snackbar;
+
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","@mui/base/utils":"cgIce","@mui/utils/composeClasses":"4kKno","@mui/base/ClickAwayListener":"lOwtq","@mui/base/useSnackbar":"fR2pz","../styles/styled":"32xTg","../styles/useTheme":"5nWMX","../styles/useThemeProps":"dewuS","../utils/capitalize":"lwNtZ","../Grow":"9py3h","../SnackbarContent":"5HymQ","./snackbarClasses":"i87x2","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lOwtq":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _clickAwayListener = require("./ClickAwayListener");
+parcelHelpers.exportAll(_clickAwayListener, exports);
+
+},{"./ClickAwayListener":"65ttv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"65ttv":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "ClickAwayListener", ()=>ClickAwayListener);
+var _react = require("react");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _utils = require("@mui/utils");
+// TODO: return `EventHandlerName extends `on${infer EventName}` ? Lowercase<EventName> : never` once generatePropTypes runs with TS 4.1
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+function mapEventPropToEvent(eventProp) {
+    return eventProp.substring(2).toLowerCase();
+}
+function clickedRootScrollbar(event, doc) {
+    return doc.documentElement.clientWidth < event.clientX || doc.documentElement.clientHeight < event.clientY;
+}
+/**
+ * Listen for click events that occur somewhere in the document, outside of the element itself.
+ * For instance, if you need to hide a menu when people click anywhere else on your page.
+ *
+ * Demos:
+ *
+ * - [Click-Away Listener](https://mui.com/base-ui/react-click-away-listener/)
+ *
+ * API:
+ *
+ * - [ClickAwayListener API](https://mui.com/base-ui/react-click-away-listener/components-api/#click-away-listener)
+ */ function ClickAwayListener(props) {
+    const { children, disableReactTree = false, mouseEvent = "onClick", onClickAway, touchEvent = "onTouchEnd" } = props;
+    const movedRef = _react.useRef(false);
+    const nodeRef = _react.useRef(null);
+    const activatedRef = _react.useRef(false);
+    const syntheticEventRef = _react.useRef(false);
+    _react.useEffect(()=>{
+        // Ensure that this component is not "activated" synchronously.
+        // https://github.com/facebook/react/issues/20074
+        setTimeout(()=>{
+            activatedRef.current = true;
+        }, 0);
+        return ()=>{
+            activatedRef.current = false;
+        };
+    }, []);
+    const handleRef = (0, _utils.unstable_useForkRef)(// @ts-expect-error TODO upstream fix
+    children.ref, nodeRef);
+    // The handler doesn't take event.defaultPrevented into account:
+    //
+    // event.preventDefault() is meant to stop default behaviors like
+    // clicking a checkbox to check it, hitting a button to submit a form,
+    // and hitting left arrow to move the cursor in a text input etc.
+    // Only special HTML elements have these default behaviors.
+    const handleClickAway = (0, _utils.unstable_useEventCallback)((event)=>{
+        // Given developers can stop the propagation of the synthetic event,
+        // we can only be confident with a positive value.
+        const insideReactTree = syntheticEventRef.current;
+        syntheticEventRef.current = false;
+        const doc = (0, _utils.unstable_ownerDocument)(nodeRef.current);
+        // 1. IE11 support, which trigger the handleClickAway even after the unbind
+        // 2. The child might render null.
+        // 3. Behave like a blur listener.
+        if (!activatedRef.current || !nodeRef.current || "clientX" in event && clickedRootScrollbar(event, doc)) return;
+        // Do not act if user performed touchmove
+        if (movedRef.current) {
+            movedRef.current = false;
+            return;
+        }
+        let insideDOM;
+        // If not enough, can use https://github.com/DieterHolvoet/event-propagation-path/blob/master/propagationPath.js
+        if (event.composedPath) insideDOM = event.composedPath().indexOf(nodeRef.current) > -1;
+        else insideDOM = !doc.documentElement.contains(// @ts-expect-error returns `false` as intended when not dispatched from a Node
+        event.target) || nodeRef.current.contains(// @ts-expect-error returns `false` as intended when not dispatched from a Node
+        event.target);
+        if (!insideDOM && (disableReactTree || !insideReactTree)) onClickAway(event);
+    });
+    // Keep track of mouse/touch events that bubbled up through the portal.
+    const createHandleSynthetic = (handlerName)=>(event)=>{
+            syntheticEventRef.current = true;
+            const childrenPropsHandler = children.props[handlerName];
+            if (childrenPropsHandler) childrenPropsHandler(event);
+        };
+    const childrenProps = {
+        ref: handleRef
+    };
+    if (touchEvent !== false) childrenProps[touchEvent] = createHandleSynthetic(touchEvent);
+    _react.useEffect(()=>{
+        if (touchEvent !== false) {
+            const mappedTouchEvent = mapEventPropToEvent(touchEvent);
+            const doc = (0, _utils.unstable_ownerDocument)(nodeRef.current);
+            const handleTouchMove = ()=>{
+                movedRef.current = true;
+            };
+            doc.addEventListener(mappedTouchEvent, handleClickAway);
+            doc.addEventListener("touchmove", handleTouchMove);
+            return ()=>{
+                doc.removeEventListener(mappedTouchEvent, handleClickAway);
+                doc.removeEventListener("touchmove", handleTouchMove);
+            };
+        }
+        return undefined;
+    }, [
+        handleClickAway,
+        touchEvent
+    ]);
+    if (mouseEvent !== false) childrenProps[mouseEvent] = createHandleSynthetic(mouseEvent);
+    _react.useEffect(()=>{
+        if (mouseEvent !== false) {
+            const mappedMouseEvent = mapEventPropToEvent(mouseEvent);
+            const doc = (0, _utils.unstable_ownerDocument)(nodeRef.current);
+            doc.addEventListener(mappedMouseEvent, handleClickAway);
+            return ()=>{
+                doc.removeEventListener(mappedMouseEvent, handleClickAway);
+            };
+        }
+        return undefined;
+    }, [
+        handleClickAway,
+        mouseEvent
+    ]);
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(_react.Fragment, {
+        children: /*#__PURE__*/ _react.cloneElement(children, childrenProps)
+    });
+}
+ClickAwayListener.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │ To update them, edit the TypeScript types and run `pnpm proptypes`. │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * The wrapped element.
+   */ children: (0, _utils.elementAcceptingRef).isRequired,
+    /**
+   * If `true`, the React tree is ignored and only the DOM tree is considered.
+   * This prop changes how portaled elements are handled.
+   * @default false
+   */ disableReactTree: (0, _propTypesDefault.default).bool,
+    /**
+   * The mouse event to listen to. You can disable the listener by providing `false`.
+   * @default 'onClick'
+   */ mouseEvent: (0, _propTypesDefault.default).oneOf([
+        "onClick",
+        "onMouseDown",
+        "onMouseUp",
+        "onPointerDown",
+        "onPointerUp",
+        false
+    ]),
+    /**
+   * Callback fired when a "click away" event is detected.
+   */ onClickAway: (0, _propTypesDefault.default).func.isRequired,
+    /**
+   * The touch event to listen to. You can disable the listener by providing `false`.
+   * @default 'onTouchEnd'
+   */ touchEvent: (0, _propTypesDefault.default).oneOf([
+        "onTouchEnd",
+        "onTouchStart",
+        false
+    ])
+};
+// eslint-disable-next-line
+ClickAwayListener["propTypes"] = (0, _utils.exactProp)(ClickAwayListener.propTypes);
+
+},{"react":"21dqq","prop-types":"7wKI2","@mui/utils":"iivny","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fR2pz":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "useSnackbar", ()=>(0, _useSnackbar.useSnackbar));
+var _useSnackbar = require("./useSnackbar");
+var _useSnackbarTypes = require("./useSnackbar.types");
+parcelHelpers.exportAll(_useSnackbarTypes, exports);
+"use client";
+
+},{"./useSnackbar":"d3ynE","./useSnackbar.types":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d3ynE":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+/**
+ * The basic building block for creating custom snackbar.
+ *
+ * Demos:
+ *
+ * - [Snackbar](https://mui.com/base-ui/react-snackbar/#hook)
+ *
+ * API:
+ *
+ * - [useSnackbar API](https://mui.com/base-ui/react-snackbar/hooks-api/#use-snackbar)
+ */ parcelHelpers.export(exports, "useSnackbar", ()=>useSnackbar);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+var _react = require("react");
+var _utils = require("@mui/utils");
+var _extractEventHandlers = require("../utils/extractEventHandlers");
+"use client";
+function useSnackbar(parameters = {}) {
+    const { autoHideDuration = null, disableWindowBlurListener = false, onClose, open, resumeHideDuration } = parameters;
+    const timerAutoHide = (0, _utils.unstable_useTimeout)();
+    _react.useEffect(()=>{
+        if (!open) return undefined;
+        /**
+     * @param {KeyboardEvent} nativeEvent
+     */ function handleKeyDown(nativeEvent) {
+            if (!nativeEvent.defaultPrevented) // IE11, Edge (prior to using Blink?) use 'Esc'
+            {
+                if (nativeEvent.key === "Escape" || nativeEvent.key === "Esc") // not calling `preventDefault` since we don't know if people may ignore this event e.g. a permanently open snackbar
+                onClose == null || onClose(nativeEvent, "escapeKeyDown");
+            }
+        }
+        document.addEventListener("keydown", handleKeyDown);
+        return ()=>{
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [
+        open,
+        onClose
+    ]);
+    const handleClose = (0, _utils.unstable_useEventCallback)((event, reason)=>{
+        onClose == null || onClose(event, reason);
+    });
+    const setAutoHideTimer = (0, _utils.unstable_useEventCallback)((autoHideDurationParam)=>{
+        if (!onClose || autoHideDurationParam == null) return;
+        timerAutoHide.start(autoHideDurationParam, ()=>{
+            handleClose(null, "timeout");
+        });
+    });
+    _react.useEffect(()=>{
+        if (open) setAutoHideTimer(autoHideDuration);
+        return timerAutoHide.clear;
+    }, [
+        open,
+        autoHideDuration,
+        setAutoHideTimer,
+        timerAutoHide
+    ]);
+    const handleClickAway = (event)=>{
+        onClose == null || onClose(event, "clickaway");
+    };
+    // Pause the timer when the user is interacting with the Snackbar
+    // or when the user hide the window.
+    const handlePause = timerAutoHide.clear;
+    // Restart the timer when the user is no longer interacting with the Snackbar
+    // or when the window is shown back.
+    const handleResume = _react.useCallback(()=>{
+        if (autoHideDuration != null) setAutoHideTimer(resumeHideDuration != null ? resumeHideDuration : autoHideDuration * 0.5);
+    }, [
+        autoHideDuration,
+        resumeHideDuration,
+        setAutoHideTimer
+    ]);
+    const createHandleBlur = (otherHandlers)=>(event)=>{
+            const onBlurCallback = otherHandlers.onBlur;
+            onBlurCallback == null || onBlurCallback(event);
+            handleResume();
+        };
+    const createHandleFocus = (otherHandlers)=>(event)=>{
+            const onFocusCallback = otherHandlers.onFocus;
+            onFocusCallback == null || onFocusCallback(event);
+            handlePause();
+        };
+    const createMouseEnter = (otherHandlers)=>(event)=>{
+            const onMouseEnterCallback = otherHandlers.onMouseEnter;
+            onMouseEnterCallback == null || onMouseEnterCallback(event);
+            handlePause();
+        };
+    const createMouseLeave = (otherHandlers)=>(event)=>{
+            const onMouseLeaveCallback = otherHandlers.onMouseLeave;
+            onMouseLeaveCallback == null || onMouseLeaveCallback(event);
+            handleResume();
+        };
+    _react.useEffect(()=>{
+        // TODO: window global should be refactored here
+        if (!disableWindowBlurListener && open) {
+            window.addEventListener("focus", handleResume);
+            window.addEventListener("blur", handlePause);
+            return ()=>{
+                window.removeEventListener("focus", handleResume);
+                window.removeEventListener("blur", handlePause);
+            };
+        }
+        return undefined;
+    }, [
+        disableWindowBlurListener,
+        open,
+        handleResume,
+        handlePause
+    ]);
+    const getRootProps = (externalProps = {})=>{
+        const externalEventHandlers = (0, _extendsDefault.default)({}, (0, _extractEventHandlers.extractEventHandlers)(parameters), (0, _extractEventHandlers.extractEventHandlers)(externalProps));
+        return (0, _extendsDefault.default)({
+            // ClickAwayListener adds an `onClick` prop which results in the alert not being announced.
+            // See https://github.com/mui/material-ui/issues/29080
+            role: "presentation"
+        }, externalProps, externalEventHandlers, {
+            onBlur: createHandleBlur(externalEventHandlers),
+            onFocus: createHandleFocus(externalEventHandlers),
+            onMouseEnter: createMouseEnter(externalEventHandlers),
+            onMouseLeave: createMouseLeave(externalEventHandlers)
+        });
+    };
+    return {
+        getRootProps,
+        onClickAway: handleClickAway
+    };
+}
+
+},{"@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","@mui/utils":"iivny","../utils/extractEventHandlers":"iYj1L","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5HymQ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _snackbarContentDefault.default));
+parcelHelpers.export(exports, "snackbarContentClasses", ()=>(0, _snackbarContentClassesDefault.default));
+var _snackbarContent = require("./SnackbarContent");
+var _snackbarContentDefault = parcelHelpers.interopDefault(_snackbarContent);
+var _snackbarContentClasses = require("./snackbarContentClasses");
+var _snackbarContentClassesDefault = parcelHelpers.interopDefault(_snackbarContentClasses);
+parcelHelpers.exportAll(_snackbarContentClasses, exports);
+"use client";
+
+},{"./SnackbarContent":"cULIz","./snackbarContentClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cULIz":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
+var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+var _react = require("react");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _clsx = require("clsx");
+var _clsxDefault = parcelHelpers.interopDefault(_clsx);
+var _composeClasses = require("@mui/utils/composeClasses");
+var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
+var _colorManipulator = require("@mui/system/colorManipulator");
+var _styled = require("../styles/styled");
+var _styledDefault = parcelHelpers.interopDefault(_styled);
+var _useThemeProps = require("../styles/useThemeProps");
+var _useThemePropsDefault = parcelHelpers.interopDefault(_useThemeProps);
+var _paper = require("../Paper");
+var _paperDefault = parcelHelpers.interopDefault(_paper);
+var _snackbarContentClasses = require("./snackbarContentClasses");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const _excluded = [
+    "action",
+    "className",
+    "message",
+    "role"
+];
+const useUtilityClasses = (ownerState)=>{
+    const { classes } = ownerState;
+    const slots = {
+        root: [
+            "root"
+        ],
+        action: [
+            "action"
+        ],
+        message: [
+            "message"
+        ]
+    };
+    return (0, _composeClassesDefault.default)(slots, (0, _snackbarContentClasses.getSnackbarContentUtilityClass), classes);
+};
+const SnackbarContentRoot = (0, _styledDefault.default)((0, _paperDefault.default), {
+    name: "MuiSnackbarContent",
+    slot: "Root",
+    overridesResolver: (props, styles)=>styles.root
+})(({ theme })=>{
+    const emphasis = theme.palette.mode === "light" ? 0.8 : 0.98;
+    const backgroundColor = (0, _colorManipulator.emphasize)(theme.palette.background.default, emphasis);
+    return (0, _extendsDefault.default)({}, theme.typography.body2, {
+        color: theme.vars ? theme.vars.palette.SnackbarContent.color : theme.palette.getContrastText(backgroundColor),
+        backgroundColor: theme.vars ? theme.vars.palette.SnackbarContent.bg : backgroundColor,
+        display: "flex",
+        alignItems: "center",
+        flexWrap: "wrap",
+        padding: "6px 16px",
+        borderRadius: (theme.vars || theme).shape.borderRadius,
+        flexGrow: 1,
+        [theme.breakpoints.up("sm")]: {
+            flexGrow: "initial",
+            minWidth: 288
+        }
+    });
+});
+const SnackbarContentMessage = (0, _styledDefault.default)("div", {
+    name: "MuiSnackbarContent",
+    slot: "Message",
+    overridesResolver: (props, styles)=>styles.message
+})({
+    padding: "8px 0"
+});
+const SnackbarContentAction = (0, _styledDefault.default)("div", {
+    name: "MuiSnackbarContent",
+    slot: "Action",
+    overridesResolver: (props, styles)=>styles.action
+})({
+    display: "flex",
+    alignItems: "center",
+    marginLeft: "auto",
+    paddingLeft: 16,
+    marginRight: -8
+});
+const SnackbarContent = /*#__PURE__*/ _react.forwardRef(function SnackbarContent(inProps, ref) {
+    const props = (0, _useThemePropsDefault.default)({
+        props: inProps,
+        name: "MuiSnackbarContent"
+    });
+    const { action, className, message, role = "alert" } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
+    const ownerState = props;
+    const classes = useUtilityClasses(ownerState);
+    return /*#__PURE__*/ (0, _jsxRuntime.jsxs)(SnackbarContentRoot, (0, _extendsDefault.default)({
+        role: role,
+        square: true,
+        elevation: 6,
+        className: (0, _clsxDefault.default)(classes.root, className),
+        ownerState: ownerState,
+        ref: ref
+    }, other, {
+        children: [
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)(SnackbarContentMessage, {
+                className: classes.message,
+                ownerState: ownerState,
+                children: message
+            }),
+            action ? /*#__PURE__*/ (0, _jsxRuntime.jsx)(SnackbarContentAction, {
+                className: classes.action,
+                ownerState: ownerState,
+                children: action
+            }) : null
+        ]
+    }));
+});
+SnackbarContent.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * The action to display. It renders after the message, at the end of the snackbar.
+   */ action: (0, _propTypesDefault.default).node,
+    /**
+   * Override or extend the styles applied to the component.
+   */ classes: (0, _propTypesDefault.default).object,
+    /**
+   * @ignore
+   */ className: (0, _propTypesDefault.default).string,
+    /**
+   * The message to display.
+   */ message: (0, _propTypesDefault.default).node,
+    /**
+   * The ARIA role attribute of the element.
+   * @default 'alert'
+   */ role: (0, _propTypesDefault.default /* @typescript-to-proptypes-ignore */ ).string,
+    /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */ sx: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object,
+            (0, _propTypesDefault.default).bool
+        ])),
+        (0, _propTypesDefault.default).func,
+        (0, _propTypesDefault.default).object
+    ])
+};
+exports.default = SnackbarContent;
+
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"G7PIs","@mui/utils/composeClasses":"4kKno","@mui/system/colorManipulator":"bO1j5","../styles/styled":"32xTg","../styles/useThemeProps":"dewuS","../Paper":"6IiTP","./snackbarContentClasses":"5uz3u","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5uz3u":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getSnackbarContentUtilityClass", ()=>getSnackbarContentUtilityClass);
+var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
+var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
+var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
+var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
+function getSnackbarContentUtilityClass(slot) {
+    return (0, _generateUtilityClassDefault.default)("MuiSnackbarContent", slot);
+}
+const snackbarContentClasses = (0, _generateUtilityClassesDefault.default)("MuiSnackbarContent", [
+    "root",
+    "message",
+    "action"
+]);
+exports.default = snackbarContentClasses;
+
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i87x2":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getSnackbarUtilityClass", ()=>getSnackbarUtilityClass);
+var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
+var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
+var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
+var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
+function getSnackbarUtilityClass(slot) {
+    return (0, _generateUtilityClassDefault.default)("MuiSnackbar", slot);
+}
+const snackbarClasses = (0, _generateUtilityClassesDefault.default)("MuiSnackbar", [
+    "root",
+    "anchorOriginTopCenter",
+    "anchorOriginBottomCenter",
+    "anchorOriginTopRight",
+    "anchorOriginBottomRight",
+    "anchorOriginTopLeft",
+    "anchorOriginBottomLeft"
+]);
+exports.default = snackbarClasses;
+
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eeOzk":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _useMediaQueryDefault.default));
+var _useMediaQuery = require("@mui/system/useMediaQuery");
+var _useMediaQueryDefault = parcelHelpers.interopDefault(_useMediaQuery);
+
+},{"@mui/system/useMediaQuery":"7wuR6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7wuR6":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _useMediaQueryDefault.default));
+var _useMediaQuery = require("./useMediaQuery");
+var _useMediaQueryDefault = parcelHelpers.interopDefault(_useMediaQuery);
+parcelHelpers.exportAll(_useMediaQuery, exports);
+
+},{"./useMediaQuery":"hFMec","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hFMec":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>useMediaQuery);
+var _react = require("react");
+var _useEnhancedEffect = require("@mui/utils/useEnhancedEffect");
+var _useEnhancedEffectDefault = parcelHelpers.interopDefault(_useEnhancedEffect);
+var _useThemeProps = require("../useThemeProps");
+var _useThemeWithoutDefault = require("../useThemeWithoutDefault");
+var _useThemeWithoutDefaultDefault = parcelHelpers.interopDefault(_useThemeWithoutDefault);
+"use client";
+/**
+ * @deprecated Not used internally. Use `MediaQueryListEvent` from lib.dom.d.ts instead.
+ */ /**
+ * @deprecated Not used internally. Use `MediaQueryList` from lib.dom.d.ts instead.
+ */ /**
+ * @deprecated Not used internally. Use `(event: MediaQueryListEvent) => void` instead.
+ */ function useMediaQueryOld(query, defaultMatches, matchMedia, ssrMatchMedia, noSsr) {
+    const [match, setMatch] = _react.useState(()=>{
+        if (noSsr && matchMedia) return matchMedia(query).matches;
+        if (ssrMatchMedia) return ssrMatchMedia(query).matches;
+        // Once the component is mounted, we rely on the
+        // event listeners to return the correct matches value.
+        return defaultMatches;
+    });
+    (0, _useEnhancedEffectDefault.default)(()=>{
+        let active = true;
+        if (!matchMedia) return undefined;
+        const queryList = matchMedia(query);
+        const updateMatch = ()=>{
+            // Workaround Safari wrong implementation of matchMedia
+            // TODO can we remove it?
+            // https://github.com/mui/material-ui/pull/17315#issuecomment-528286677
+            if (active) setMatch(queryList.matches);
+        };
+        updateMatch();
+        // TODO: Use `addEventListener` once support for Safari < 14 is dropped
+        queryList.addListener(updateMatch);
+        return ()=>{
+            active = false;
+            queryList.removeListener(updateMatch);
+        };
+    }, [
+        query,
+        matchMedia
+    ]);
+    return match;
+}
+// eslint-disable-next-line no-useless-concat -- Workaround for https://github.com/webpack/webpack/issues/14814
+const maybeReactUseSyncExternalStore = _react["useSyncExternalStore"];
+function useMediaQueryNew(query, defaultMatches, matchMedia, ssrMatchMedia, noSsr) {
+    const getDefaultSnapshot = _react.useCallback(()=>defaultMatches, [
+        defaultMatches
+    ]);
+    const getServerSnapshot = _react.useMemo(()=>{
+        if (noSsr && matchMedia) return ()=>matchMedia(query).matches;
+        if (ssrMatchMedia !== null) {
+            const { matches } = ssrMatchMedia(query);
+            return ()=>matches;
+        }
+        return getDefaultSnapshot;
+    }, [
+        getDefaultSnapshot,
+        query,
+        ssrMatchMedia,
+        noSsr,
+        matchMedia
+    ]);
+    const [getSnapshot, subscribe] = _react.useMemo(()=>{
+        if (matchMedia === null) return [
+            getDefaultSnapshot,
+            ()=>()=>{}
+        ];
+        const mediaQueryList = matchMedia(query);
+        return [
+            ()=>mediaQueryList.matches,
+            (notify)=>{
+                // TODO: Use `addEventListener` once support for Safari < 14 is dropped
+                mediaQueryList.addListener(notify);
+                return ()=>{
+                    mediaQueryList.removeListener(notify);
+                };
+            }
+        ];
+    }, [
+        getDefaultSnapshot,
+        matchMedia,
+        query
+    ]);
+    const match = maybeReactUseSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+    return match;
+}
+function useMediaQuery(queryInput, options = {}) {
+    const theme = (0, _useThemeWithoutDefaultDefault.default)();
+    // Wait for jsdom to support the match media feature.
+    // All the browsers MUI support have this built-in.
+    // This defensive check is here for simplicity.
+    // Most of the time, the match media logic isn't central to people tests.
+    const supportMatchMedia = typeof window !== "undefined" && typeof window.matchMedia !== "undefined";
+    const { defaultMatches = false, matchMedia = supportMatchMedia ? window.matchMedia : null, ssrMatchMedia = null, noSsr = false } = (0, _useThemeProps.getThemeProps)({
+        name: "MuiUseMediaQuery",
+        props: options,
+        theme
+    });
+    if (typeof queryInput === "function" && theme === null) console.error([
+        "MUI: The `query` argument provided is invalid.",
+        "You are providing a function without a theme in the context.",
+        "One of the parent elements needs to use a ThemeProvider."
+    ].join("\n"));
+    let query = typeof queryInput === "function" ? queryInput(theme) : queryInput;
+    query = query.replace(/^@media( ?)/m, "");
+    // TODO: Drop `useMediaQueryOld` and use  `use-sync-external-store` shim in `useMediaQueryNew` once the package is stable
+    const useMediaQueryImplementation = maybeReactUseSyncExternalStore !== undefined ? useMediaQueryNew : useMediaQueryOld;
+    const match = useMediaQueryImplementation(query, defaultMatches, matchMedia, ssrMatchMedia, noSsr);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    _react.useDebugValue({
+        query,
+        match
+    });
+    return match;
+}
+
+},{"react":"21dqq","@mui/utils/useEnhancedEffect":"b7XQB","../useThemeProps":"eZlKz","../useThemeWithoutDefault":"9Xcu1","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"16sup":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _redux = require("redux");
+var _reactI18Next = require("react-i18next");
+var _withPlugins = require("../extend/withPlugins");
+var _workspaceControlPanel = require("../components/WorkspaceControlPanel");
+var enhance = (0, _redux.compose)((0, _reactI18Next.withTranslation)(), (0, _withPlugins.withPlugins)("WorkspaceControlPanel"));
+exports.default = enhance((0, _workspaceControlPanel.WorkspaceControlPanel));
+
+},{"redux":"anWnS","react-i18next":"faThV","../extend/withPlugins":"8qYrm","../components/WorkspaceControlPanel":"5jNrM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5jNrM":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "WorkspaceControlPanel", ()=>WorkspaceControlPanel);
+var _react = require("react");
+var _styles = require("@mui/material/styles");
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _appBar = require("@mui/material/AppBar");
+var _appBarDefault = parcelHelpers.interopDefault(_appBar);
+var _toolbar = require("@mui/material/Toolbar");
+var _toolbarDefault = parcelHelpers.interopDefault(_toolbar);
+var _workspaceAddButton = require("../containers/WorkspaceAddButton");
+var _workspaceAddButtonDefault = parcelHelpers.interopDefault(_workspaceAddButton);
+var _workspaceControlPanelButtons = require("../containers/WorkspaceControlPanelButtons");
+var _workspaceControlPanelButtonsDefault = parcelHelpers.interopDefault(_workspaceControlPanelButtons);
+var _branding = require("../containers/Branding");
+var _brandingDefault = parcelHelpers.interopDefault(_branding);
+var _cssNs = require("../config/css-ns");
+var _cssNsDefault = parcelHelpers.interopDefault(_cssNs);
+var _jsxRuntime = require("react/jsx-runtime");
+function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) throw new TypeError("Cannot call a class as a function");
+}
+function _defineProperties(target, props) {
+    for(var i = 0; i < props.length; i++){
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
+    }
+}
+function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    Object.defineProperty(Constructor, "prototype", {
+        writable: false
+    });
+    return Constructor;
+}
+function _callSuper(t, o, e) {
+    return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e));
+}
+function _possibleConstructorReturn(self, call) {
+    if (call && (typeof call === "object" || typeof call === "function")) return call;
+    else if (call !== void 0) throw new TypeError("Derived constructors may only return object or undefined");
+    return _assertThisInitialized(self);
+}
+function _assertThisInitialized(self) {
+    if (self === void 0) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    return self;
+}
+function _isNativeReflectConstruct() {
+    try {
+        var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {}));
+    } catch (t) {}
+    return (_isNativeReflectConstruct = function _isNativeReflectConstruct() {
+        return !!t;
+    })();
+}
+function _getPrototypeOf(o) {
+    _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
+        return o.__proto__ || Object.getPrototypeOf(o);
+    };
+    return _getPrototypeOf(o);
+}
+function _inherits(subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) throw new TypeError("Super expression must either be null or a function");
+    subClass.prototype = Object.create(superClass && superClass.prototype, {
+        constructor: {
+            value: subClass,
+            writable: true,
+            configurable: true
+        }
+    });
+    Object.defineProperty(subClass, "prototype", {
+        writable: false
+    });
+    if (superClass) _setPrototypeOf(subClass, superClass);
+}
+function _setPrototypeOf(o, p) {
+    _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
+        o.__proto__ = p;
+        return o;
+    };
+    return _setPrototypeOf(o, p);
+}
+function ownKeys(e, r) {
+    var t = Object.keys(e);
+    if (Object.getOwnPropertySymbols) {
+        var o = Object.getOwnPropertySymbols(e);
+        r && (o = o.filter(function(r) {
+            return Object.getOwnPropertyDescriptor(e, r).enumerable;
+        })), t.push.apply(t, o);
+    }
+    return t;
+}
+function _objectSpread(e) {
+    for(var r = 1; r < arguments.length; r++){
+        var t = null != arguments[r] ? arguments[r] : {};
+        r % 2 ? ownKeys(Object(t), !0).forEach(function(r) {
+            _defineProperty(e, r, t[r]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r) {
+            Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r));
+        });
+    }
+    return e;
+}
+function _defineProperty(obj, key, value) {
+    key = _toPropertyKey(key);
+    if (key in obj) Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+    });
+    else obj[key] = value;
+    return obj;
+}
+function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : String(i);
+}
+function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+        var i = e.call(t, r || "default");
+        if ("object" != typeof i) return i;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+}
+var Root = (0, _styles.styled)((0, _appBarDefault.default), {
+    name: "WorkspaceControlPanel",
+    slot: "root"
+})(function(_ref) {
+    var ownerState = _ref.ownerState, theme = _ref.theme;
+    return _objectSpread(_defineProperty({
+        display: "flex",
+        height: 64,
+        padding: theme.spacing(1),
+        paddingBottom: 0,
+        position: "relative"
+    }, theme.breakpoints.up("sm"), {
+        height: "auto",
+        width: ownerState.variant === "wide" ? "auto" : 64
+    }), ownerState.variant === "wide" && {
+        width: "auto"
+    });
+});
+var StyledToolbar = (0, _styles.styled)((0, _toolbarDefault.default), {
+    name: "WorkspaceControlPanel",
+    slot: "toolbar"
+})(function(_ref2) {
+    var theme = _ref2.theme;
+    return _defineProperty({
+        display: "flex",
+        flexGrow: 1,
+        justifyContent: "space-between"
+    }, theme.breakpoints.up("sm"), {
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        minHeight: 0
+    });
+});
+var StyledWorkspaceButtons = (0, _styles.styled)("div", {
+    name: "WorkspaceControlPanel",
+    slot: "buttonArea"
+})(function(_ref4) {
+    var theme = _ref4.theme;
+    return _defineProperty({}, theme.breakpoints.up("sm"), {
+        display: "flex",
+        flexDirection: "column",
+        gap: theme.spacing(2),
+        marginBottom: theme.spacing(1),
+        marginTop: theme.spacing(1)
+    });
+});
+var StyledBranding = (0, _styles.styled)((0, _brandingDefault.default), {
+    name: "WorkspaceControlPanel",
+    slot: "branding"
+})(function(_ref6) {
+    var theme = _ref6.theme;
+    return _defineProperty(_defineProperty({}, theme.breakpoints.up("xs"), {
+        display: "none"
+    }), theme.breakpoints.up("sm"), {
+        display: "flex"
+    });
+});
+var WorkspaceControlPanel = /*#__PURE__*/ function(_Component) {
+    _inherits(WorkspaceControlPanel, _Component);
+    function WorkspaceControlPanel() {
+        _classCallCheck(this, WorkspaceControlPanel);
+        return _callSuper(this, WorkspaceControlPanel, arguments);
+    }
+    _createClass(WorkspaceControlPanel, [
+        {
+            key: "render",
+            value: /**
+     * render
+     * @return {String} - HTML markup for the component
+     */ function render() {
+                var _this$props = this.props, t = _this$props.t, variant = _this$props.variant;
+                return /*#__PURE__*/ (0, _jsxRuntime.jsxs)(Root, {
+                    ownerState: this.props,
+                    className: (0, _classnamesDefault.default)((0, _cssNsDefault.default)("workspace-control-panel")),
+                    color: "default",
+                    enableColorOnDark: true,
+                    position: "absolute",
+                    component: "nav",
+                    "aria-label": t("workspaceNavigation"),
+                    children: [
+                        /*#__PURE__*/ (0, _jsxRuntime.jsxs)(StyledToolbar, {
+                            disableGutters: true,
+                            children: [
+                                /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _workspaceAddButtonDefault.default), {}),
+                                /*#__PURE__*/ (0, _jsxRuntime.jsx)(StyledWorkspaceButtons, {
+                                    children: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _workspaceControlPanelButtonsDefault.default), {})
+                                })
+                            ]
+                        }),
+                        /*#__PURE__*/ (0, _jsxRuntime.jsx)(StyledBranding, {
+                            t: t,
+                            variant: variant
+                        })
+                    ]
+                });
+            }
+        }
+    ]);
+    return WorkspaceControlPanel;
+}((0, _react.Component));
+WorkspaceControlPanel.defaultProps = {
+    variant: "default"
+};
+
+},{"react":"21dqq","@mui/material/styles":"1lzai","classnames":"jocGM","@mui/material/AppBar":"c3vaq","@mui/material/Toolbar":"h8rSE","../containers/WorkspaceAddButton":"iqWQe","../containers/WorkspaceControlPanelButtons":"dVM27","../containers/Branding":"drvqa","../config/css-ns":"7FzFf","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iqWQe":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _reactRedux = require("react-redux");
+var _redux = require("redux");
+var _reactI18Next = require("react-i18next");
+var _styles = require("@mui/material/styles");
+var _useMediaQuery = require("@mui/material/useMediaQuery");
+var _useMediaQueryDefault = parcelHelpers.interopDefault(_useMediaQuery);
+var _withPlugins = require("../extend/withPlugins");
+var _actions = require("../state/actions");
+var _selectors = require("../state/selectors");
+var _workspaceAddButton = require("../components/WorkspaceAddButton");
+/**
+ * Be careful using this hook. It only works because the number of
+ * breakpoints in theme is static. It will break once you change the number of
+ * breakpoints. See https://legacy.reactjs.org/docs/hooks-rules.html#only-call-hooks-at-the-top-level
+ */ var _jsxRuntime = require("react/jsx-runtime");
+function ownKeys(e, r) {
+    var t = Object.keys(e);
+    if (Object.getOwnPropertySymbols) {
+        var o = Object.getOwnPropertySymbols(e);
+        r && (o = o.filter(function(r) {
+            return Object.getOwnPropertyDescriptor(e, r).enumerable;
+        })), t.push.apply(t, o);
+    }
+    return t;
+}
+function _objectSpread(e) {
+    for(var r = 1; r < arguments.length; r++){
+        var t = null != arguments[r] ? arguments[r] : {};
+        r % 2 ? ownKeys(Object(t), !0).forEach(function(r) {
+            _defineProperty(e, r, t[r]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r) {
+            Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r));
+        });
+    }
+    return e;
+}
+function _defineProperty(obj, key, value) {
+    key = _toPropertyKey(key);
+    if (key in obj) Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+    });
+    else obj[key] = value;
+    return obj;
+}
+function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : String(i);
+}
+function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+        var i = e.call(t, r || "default");
+        if ("object" != typeof i) return i;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+}
+function _toConsumableArray(arr) {
+    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+}
+function _nonIterableSpread() {
+    throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _unsupportedIterableToArray(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(o);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+function _iterableToArray(iter) {
+    if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+}
+function _arrayWithoutHoles(arr) {
+    if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+}
+function _arrayLikeToArray(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
+    return arr2;
+}
+function useWidth() {
+    var theme = (0, _styles.useTheme)();
+    var keys = _toConsumableArray(theme.breakpoints.keys).reverse();
+    return keys.reduce(function(output, key) {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        var matches = (0, _useMediaQueryDefault.default)(theme.breakpoints.up(key));
+        return !output && matches ? key : output;
+    }, null) || "xs";
+}
+/**
+ * withWidth
+ * @memberof WorkspaceControlPanel
+ * @private
+ */ var withWidth = function withWidth() {
+    return function(WrappedComponent) {
+        return function(props) {
+            return /*#__PURE__*/ (0, _jsxRuntime.jsx)(WrappedComponent, _objectSpread(_objectSpread({}, props), {}, {
+                width: useWidth()
+            }));
+        };
+    };
+};
+/**
+ * mapStateToProps - to hook up connect
+ * @memberof WorkspaceControlPanel
+ * @private
+ */ var mapStateToProps = function mapStateToProps(state, _ref) {
+    var width = _ref.width;
+    var _getWorkspace = (0, _selectors.getWorkspace)(state), isWorkspaceAddVisible = _getWorkspace.isWorkspaceAddVisible;
+    return {
+        isWorkspaceAddVisible: isWorkspaceAddVisible,
+        useExtendedFab: width !== "xs" && !isWorkspaceAddVisible && (0, _selectors.getWindowIds)(state).length === 0
+    };
+};
+/**
+ * mapDispatchToProps - used to hook up connect to action creators
+ * @memberof Workspace
+ * @private
+ */ var mapDispatchToProps = {
+    setWorkspaceAddVisibility: _actions.setWorkspaceAddVisibility
+};
+var enhance = (0, _redux.compose)((0, _reactI18Next.withTranslation)(), withWidth({
+    initialWidth: "xs"
+}), (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps), (0, _withPlugins.withPlugins)("WorkspaceAddButton"));
+exports.default = enhance((0, _workspaceAddButton.WorkspaceAddButton));
+
+},{"react-redux":"62sf7","redux":"anWnS","react-i18next":"faThV","@mui/material/styles":"1lzai","@mui/material/useMediaQuery":"eeOzk","../extend/withPlugins":"8qYrm","../state/actions":"bqnXe","../state/selectors":"5r9Wj","../components/WorkspaceAddButton":"3m4WD","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3m4WD":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "WorkspaceAddButton", ()=>WorkspaceAddButton);
+var _react = require("react");
+var _fab = require("@mui/material/Fab");
+var _fabDefault = parcelHelpers.interopDefault(_fab);
+var _tooltip = require("@mui/material/Tooltip");
+var _tooltipDefault = parcelHelpers.interopDefault(_tooltip);
+var _addSharp = require("@mui/icons-material/AddSharp");
+var _addSharpDefault = parcelHelpers.interopDefault(_addSharp);
+var _closeSharp = require("@mui/icons-material/CloseSharp");
+var _closeSharpDefault = parcelHelpers.interopDefault(_closeSharp);
+var _styles = require("@mui/material/styles");
+var _jsxRuntime = require("react/jsx-runtime");
+function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) throw new TypeError("Cannot call a class as a function");
+}
+function _defineProperties(target, props) {
+    for(var i = 0; i < props.length; i++){
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
+    }
+}
+function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    Object.defineProperty(Constructor, "prototype", {
+        writable: false
+    });
+    return Constructor;
+}
+function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : String(i);
+}
+function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+        var i = e.call(t, r || "default");
+        if ("object" != typeof i) return i;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+}
+function _callSuper(t, o, e) {
+    return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e));
+}
+function _possibleConstructorReturn(self, call) {
+    if (call && (typeof call === "object" || typeof call === "function")) return call;
+    else if (call !== void 0) throw new TypeError("Derived constructors may only return object or undefined");
+    return _assertThisInitialized(self);
+}
+function _assertThisInitialized(self) {
+    if (self === void 0) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    return self;
+}
+function _isNativeReflectConstruct() {
+    try {
+        var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {}));
+    } catch (t) {}
+    return (_isNativeReflectConstruct = function _isNativeReflectConstruct() {
+        return !!t;
+    })();
+}
+function _getPrototypeOf(o) {
+    _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
+        return o.__proto__ || Object.getPrototypeOf(o);
+    };
+    return _getPrototypeOf(o);
+}
+function _inherits(subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) throw new TypeError("Super expression must either be null or a function");
+    subClass.prototype = Object.create(superClass && superClass.prototype, {
+        constructor: {
+            value: subClass,
+            writable: true,
+            configurable: true
+        }
+    });
+    Object.defineProperty(subClass, "prototype", {
+        writable: false
+    });
+    if (superClass) _setPrototypeOf(subClass, superClass);
+}
+function _setPrototypeOf(o, p) {
+    _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
+        o.__proto__ = p;
+        return o;
+    };
+    return _setPrototypeOf(o, p);
+}
+var Root = (0, _styles.styled)((0, _fabDefault.default), {
+    name: "WorkspaceAddButton",
+    slot: "root"
+})(function(_ref) {
+    var theme = _ref.theme;
+    return {
+        marginBottom: theme.spacing(1)
+    };
+});
+var WorkspaceAddButton = /*#__PURE__*/ function(_Component) {
+    _inherits(WorkspaceAddButton, _Component);
+    function WorkspaceAddButton() {
+        _classCallCheck(this, WorkspaceAddButton);
+        return _callSuper(this, WorkspaceAddButton, arguments);
+    }
+    _createClass(WorkspaceAddButton, [
+        {
+            key: "render",
+            value: /**
+     * render
+     * @return
+     */ function render() {
+                var _this$props = this.props, t = _this$props.t, setWorkspaceAddVisibility = _this$props.setWorkspaceAddVisibility, isWorkspaceAddVisible = _this$props.isWorkspaceAddVisible, useExtendedFab = _this$props.useExtendedFab;
+                return /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _tooltipDefault.default), {
+                    title: isWorkspaceAddVisible ? t("closeAddResourceMenu") : t("addResource"),
+                    children: /*#__PURE__*/ (0, _jsxRuntime.jsxs)(Root, {
+                        size: "medium",
+                        color: "primary",
+                        id: "addBtn",
+                        "aria-label": isWorkspaceAddVisible ? t("closeAddResourceMenu") : useExtendedFab && t("startHere") || t("addResource"),
+                        variant: useExtendedFab ? "extended" : "circular",
+                        onClick: function onClick() {
+                            setWorkspaceAddVisibility(!isWorkspaceAddVisible);
+                        },
+                        children: [
+                            isWorkspaceAddVisible ? /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _closeSharpDefault.default), {}) : /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _addSharpDefault.default), {}),
+                            useExtendedFab && t("startHere")
+                        ]
+                    })
+                });
+            }
+        }
+    ]);
+    return WorkspaceAddButton;
+}((0, _react.Component));
+WorkspaceAddButton.defaultProps = {
+    isWorkspaceAddVisible: false,
+    t: function t(key) {
+        return key;
+    }
+};
+
+},{"react":"21dqq","@mui/material/Fab":"bL0iw","@mui/material/Tooltip":"5uL59","@mui/icons-material/AddSharp":"do4Wf","@mui/icons-material/CloseSharp":"hYBf6","@mui/material/styles":"1lzai","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"do4Wf":[function(require,module,exports) {
 "use strict";
 "use client";
 var _interopRequireDefault = require("41d445a6ffbbada8");
@@ -3152,19 +8393,7 @@ WorkspaceMenu.defaultProps = {
     toggleZoomControls: function toggleZoomControls() {}
 };
 
-},{"react":"21dqq","@mui/material/Menu":"dOURT","@mui/material/MenuItem":"6tZ4p","@mui/material/Typography":"faxSz","../containers/LanguageSettings":"iLSe4","./NestedMenu":"khY8Y","../containers/WorkspaceSelectionDialog":"hz6qh","../containers/ChangeThemeDialog":"iObE0","./PluginHook":"btJE7","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dOURT":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>(0, _menuDefault.default));
-parcelHelpers.export(exports, "menuClasses", ()=>(0, _menuClassesDefault.default));
-var _menu = require("./Menu");
-var _menuDefault = parcelHelpers.interopDefault(_menu);
-var _menuClasses = require("./menuClasses");
-var _menuClassesDefault = parcelHelpers.interopDefault(_menuClasses);
-parcelHelpers.exportAll(_menuClasses, exports);
-"use client";
-
-},{"./Menu":"bQNbu","./menuClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iLSe4":[function(require,module,exports) {
+},{"react":"21dqq","@mui/material/Menu":"dOURT","@mui/material/MenuItem":"6tZ4p","@mui/material/Typography":"faxSz","../containers/LanguageSettings":"iLSe4","./NestedMenu":"khY8Y","../containers/WorkspaceSelectionDialog":"hz6qh","../containers/ChangeThemeDialog":"iObE0","./PluginHook":"btJE7","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iLSe4":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _redux = require("redux");
@@ -5879,838 +11108,7 @@ WorkspaceExport.defaultProps = {
     }
 };
 
-},{"react":"21dqq","@mui/material/Button":"73csw","@mui/material/DialogActions":"25Z2G","@mui/material/DialogTitle":"642rE","@mui/material/DialogContent":"gZO7I","@mui/material/Typography":"faxSz","@mui/material/Snackbar":"25Fj7","@mui/material/IconButton":"38BrD","@mui/icons-material/ExpandMore":"7hPin","@mui/icons-material/Close":"2z2cd","@mui/material/Accordion":"fQZka","@mui/material/AccordionSummary":"0u6LC","@mui/material/AccordionDetails":"8mhf8","react-copy-to-clipboard":"anQWY","./WorkspaceDialog":"iuVcI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"25Fj7":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>(0, _snackbarDefault.default));
-parcelHelpers.export(exports, "snackbarClasses", ()=>(0, _snackbarClassesDefault.default));
-var _snackbar = require("./Snackbar");
-var _snackbarDefault = parcelHelpers.interopDefault(_snackbar);
-var _snackbarClasses = require("./snackbarClasses");
-var _snackbarClassesDefault = parcelHelpers.interopDefault(_snackbarClasses);
-parcelHelpers.exportAll(_snackbarClasses, exports);
-"use client";
-
-},{"./Snackbar":"6cpAR","./snackbarClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6cpAR":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
-var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
-var _extends = require("@babel/runtime/helpers/esm/extends");
-var _extendsDefault = parcelHelpers.interopDefault(_extends);
-var _react = require("react");
-var _propTypes = require("prop-types");
-var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _utils = require("@mui/base/utils");
-var _composeClasses = require("@mui/utils/composeClasses");
-var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
-var _clickAwayListener = require("@mui/base/ClickAwayListener");
-var _useSnackbar = require("@mui/base/useSnackbar");
-var _styled = require("../styles/styled");
-var _styledDefault = parcelHelpers.interopDefault(_styled);
-var _useTheme = require("../styles/useTheme");
-var _useThemeDefault = parcelHelpers.interopDefault(_useTheme);
-var _useThemeProps = require("../styles/useThemeProps");
-var _useThemePropsDefault = parcelHelpers.interopDefault(_useThemeProps);
-var _capitalize = require("../utils/capitalize");
-var _capitalizeDefault = parcelHelpers.interopDefault(_capitalize);
-var _grow = require("../Grow");
-var _growDefault = parcelHelpers.interopDefault(_grow);
-var _snackbarContent = require("../SnackbarContent");
-var _snackbarContentDefault = parcelHelpers.interopDefault(_snackbarContent);
-var _snackbarClasses = require("./snackbarClasses");
-var _jsxRuntime = require("react/jsx-runtime");
-"use client";
-const _excluded = [
-    "onEnter",
-    "onExited"
-], _excluded2 = [
-    "action",
-    "anchorOrigin",
-    "autoHideDuration",
-    "children",
-    "className",
-    "ClickAwayListenerProps",
-    "ContentProps",
-    "disableWindowBlurListener",
-    "message",
-    "onBlur",
-    "onClose",
-    "onFocus",
-    "onMouseEnter",
-    "onMouseLeave",
-    "open",
-    "resumeHideDuration",
-    "TransitionComponent",
-    "transitionDuration",
-    "TransitionProps"
-];
-const useUtilityClasses = (ownerState)=>{
-    const { classes, anchorOrigin } = ownerState;
-    const slots = {
-        root: [
-            "root",
-            `anchorOrigin${(0, _capitalizeDefault.default)(anchorOrigin.vertical)}${(0, _capitalizeDefault.default)(anchorOrigin.horizontal)}`
-        ]
-    };
-    return (0, _composeClassesDefault.default)(slots, (0, _snackbarClasses.getSnackbarUtilityClass), classes);
-};
-const SnackbarRoot = (0, _styledDefault.default)("div", {
-    name: "MuiSnackbar",
-    slot: "Root",
-    overridesResolver: (props, styles)=>{
-        const { ownerState } = props;
-        return [
-            styles.root,
-            styles[`anchorOrigin${(0, _capitalizeDefault.default)(ownerState.anchorOrigin.vertical)}${(0, _capitalizeDefault.default)(ownerState.anchorOrigin.horizontal)}`]
-        ];
-    }
-})(({ theme, ownerState })=>{
-    const center = {
-        left: "50%",
-        right: "auto",
-        transform: "translateX(-50%)"
-    };
-    return (0, _extendsDefault.default)({
-        zIndex: (theme.vars || theme).zIndex.snackbar,
-        position: "fixed",
-        display: "flex",
-        left: 8,
-        right: 8,
-        justifyContent: "center",
-        alignItems: "center"
-    }, ownerState.anchorOrigin.vertical === "top" ? {
-        top: 8
-    } : {
-        bottom: 8
-    }, ownerState.anchorOrigin.horizontal === "left" && {
-        justifyContent: "flex-start"
-    }, ownerState.anchorOrigin.horizontal === "right" && {
-        justifyContent: "flex-end"
-    }, {
-        [theme.breakpoints.up("sm")]: (0, _extendsDefault.default)({}, ownerState.anchorOrigin.vertical === "top" ? {
-            top: 24
-        } : {
-            bottom: 24
-        }, ownerState.anchorOrigin.horizontal === "center" && center, ownerState.anchorOrigin.horizontal === "left" && {
-            left: 24,
-            right: "auto"
-        }, ownerState.anchorOrigin.horizontal === "right" && {
-            right: 24,
-            left: "auto"
-        })
-    });
-});
-const Snackbar = /*#__PURE__*/ _react.forwardRef(function Snackbar(inProps, ref) {
-    const props = (0, _useThemePropsDefault.default)({
-        props: inProps,
-        name: "MuiSnackbar"
-    });
-    const theme = (0, _useThemeDefault.default)();
-    const defaultTransitionDuration = {
-        enter: theme.transitions.duration.enteringScreen,
-        exit: theme.transitions.duration.leavingScreen
-    };
-    const { action, anchorOrigin: { vertical, horizontal } = {
-        vertical: "bottom",
-        horizontal: "left"
-    }, autoHideDuration = null, children, className, ClickAwayListenerProps, ContentProps, disableWindowBlurListener = false, message, open, TransitionComponent = (0, _growDefault.default), transitionDuration = defaultTransitionDuration, TransitionProps: { onEnter, onExited } = {} } = props, TransitionProps = (0, _objectWithoutPropertiesLooseDefault.default)(props.TransitionProps, _excluded), other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded2);
-    const ownerState = (0, _extendsDefault.default)({}, props, {
-        anchorOrigin: {
-            vertical,
-            horizontal
-        },
-        autoHideDuration,
-        disableWindowBlurListener,
-        TransitionComponent,
-        transitionDuration
-    });
-    const classes = useUtilityClasses(ownerState);
-    const { getRootProps, onClickAway } = (0, _useSnackbar.useSnackbar)((0, _extendsDefault.default)({}, ownerState));
-    const [exited, setExited] = _react.useState(true);
-    const rootProps = (0, _utils.useSlotProps)({
-        elementType: SnackbarRoot,
-        getSlotProps: getRootProps,
-        externalForwardedProps: other,
-        ownerState,
-        additionalProps: {
-            ref
-        },
-        className: [
-            classes.root,
-            className
-        ]
-    });
-    const handleExited = (node)=>{
-        setExited(true);
-        if (onExited) onExited(node);
-    };
-    const handleEnter = (node, isAppearing)=>{
-        setExited(false);
-        if (onEnter) onEnter(node, isAppearing);
-    };
-    // So we only render active snackbars.
-    if (!open && exited) return null;
-    return /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _clickAwayListener.ClickAwayListener), (0, _extendsDefault.default)({
-        onClickAway: onClickAway
-    }, ClickAwayListenerProps, {
-        children: /*#__PURE__*/ (0, _jsxRuntime.jsx)(SnackbarRoot, (0, _extendsDefault.default)({}, rootProps, {
-            children: /*#__PURE__*/ (0, _jsxRuntime.jsx)(TransitionComponent, (0, _extendsDefault.default)({
-                appear: true,
-                in: open,
-                timeout: transitionDuration,
-                direction: vertical === "top" ? "down" : "up",
-                onEnter: handleEnter,
-                onExited: handleExited
-            }, TransitionProps, {
-                children: children || /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _snackbarContentDefault.default), (0, _extendsDefault.default)({
-                    message: message,
-                    action: action
-                }, ContentProps))
-            }))
-        }))
-    }));
-});
-Snackbar.propTypes /* remove-proptypes */  = {
-    // ┌────────────────────────────── Warning ──────────────────────────────┐
-    // │ These PropTypes are generated from the TypeScript type definitions. │
-    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
-    // └─────────────────────────────────────────────────────────────────────┘
-    /**
-   * The action to display. It renders after the message, at the end of the snackbar.
-   */ action: (0, _propTypesDefault.default).node,
-    /**
-   * The anchor of the `Snackbar`.
-   * On smaller screens, the component grows to occupy all the available width,
-   * the horizontal alignment is ignored.
-   * @default { vertical: 'bottom', horizontal: 'left' }
-   */ anchorOrigin: (0, _propTypesDefault.default).shape({
-        horizontal: (0, _propTypesDefault.default).oneOf([
-            "center",
-            "left",
-            "right"
-        ]).isRequired,
-        vertical: (0, _propTypesDefault.default).oneOf([
-            "bottom",
-            "top"
-        ]).isRequired
-    }),
-    /**
-   * The number of milliseconds to wait before automatically calling the
-   * `onClose` function. `onClose` should then set the state of the `open`
-   * prop to hide the Snackbar. This behavior is disabled by default with
-   * the `null` value.
-   * @default null
-   */ autoHideDuration: (0, _propTypesDefault.default).number,
-    /**
-   * Replace the `SnackbarContent` component.
-   */ children: (0, _propTypesDefault.default).element,
-    /**
-   * Override or extend the styles applied to the component.
-   */ classes: (0, _propTypesDefault.default).object,
-    /**
-   * @ignore
-   */ className: (0, _propTypesDefault.default).string,
-    /**
-   * Props applied to the `ClickAwayListener` element.
-   */ ClickAwayListenerProps: (0, _propTypesDefault.default).object,
-    /**
-   * Props applied to the [`SnackbarContent`](/material-ui/api/snackbar-content/) element.
-   */ ContentProps: (0, _propTypesDefault.default).object,
-    /**
-   * If `true`, the `autoHideDuration` timer will expire even if the window is not focused.
-   * @default false
-   */ disableWindowBlurListener: (0, _propTypesDefault.default).bool,
-    /**
-   * When displaying multiple consecutive snackbars using a single parent-rendered
-   * `<Snackbar/>`, add the `key` prop to ensure independent treatment of each message.
-   * For instance, use `<Snackbar key={message} />`. Otherwise, messages might update
-   * in place, and features like `autoHideDuration` could be affected.
-   */ key: ()=>null,
-    /**
-   * The message to display.
-   */ message: (0, _propTypesDefault.default).node,
-    /**
-   * @ignore
-   */ onBlur: (0, _propTypesDefault.default).func,
-    /**
-   * Callback fired when the component requests to be closed.
-   * Typically `onClose` is used to set state in the parent component,
-   * which is used to control the `Snackbar` `open` prop.
-   * The `reason` parameter can optionally be used to control the response to `onClose`,
-   * for example ignoring `clickaway`.
-   *
-   * @param {React.SyntheticEvent<any> | Event} event The event source of the callback.
-   * @param {string} reason Can be: `"timeout"` (`autoHideDuration` expired), `"clickaway"`, or `"escapeKeyDown"`.
-   */ onClose: (0, _propTypesDefault.default).func,
-    /**
-   * @ignore
-   */ onFocus: (0, _propTypesDefault.default).func,
-    /**
-   * @ignore
-   */ onMouseEnter: (0, _propTypesDefault.default).func,
-    /**
-   * @ignore
-   */ onMouseLeave: (0, _propTypesDefault.default).func,
-    /**
-   * If `true`, the component is shown.
-   */ open: (0, _propTypesDefault.default).bool,
-    /**
-   * The number of milliseconds to wait before dismissing after user interaction.
-   * If `autoHideDuration` prop isn't specified, it does nothing.
-   * If `autoHideDuration` prop is specified but `resumeHideDuration` isn't,
-   * we default to `autoHideDuration / 2` ms.
-   */ resumeHideDuration: (0, _propTypesDefault.default).number,
-    /**
-   * The system prop that allows defining system overrides as well as additional CSS styles.
-   */ sx: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
-            (0, _propTypesDefault.default).func,
-            (0, _propTypesDefault.default).object,
-            (0, _propTypesDefault.default).bool
-        ])),
-        (0, _propTypesDefault.default).func,
-        (0, _propTypesDefault.default).object
-    ]),
-    /**
-   * The component used for the transition.
-   * [Follow this guide](/material-ui/transitions/#transitioncomponent-prop) to learn more about the requirements for this component.
-   * @default Grow
-   */ TransitionComponent: (0, _propTypesDefault.default).elementType,
-    /**
-   * The duration for the transition, in milliseconds.
-   * You may specify a single timeout for all transitions, or individually with an object.
-   * @default {
-   *   enter: theme.transitions.duration.enteringScreen,
-   *   exit: theme.transitions.duration.leavingScreen,
-   * }
-   */ transitionDuration: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).number,
-        (0, _propTypesDefault.default).shape({
-            appear: (0, _propTypesDefault.default).number,
-            enter: (0, _propTypesDefault.default).number,
-            exit: (0, _propTypesDefault.default).number
-        })
-    ]),
-    /**
-   * Props applied to the transition element.
-   * By default, the element is based on this [`Transition`](https://reactcommunity.org/react-transition-group/transition/) component.
-   * @default {}
-   */ TransitionProps: (0, _propTypesDefault.default).object
-};
-exports.default = Snackbar;
-
-},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","@mui/base/utils":"cgIce","@mui/utils/composeClasses":"4kKno","@mui/base/ClickAwayListener":"lOwtq","@mui/base/useSnackbar":"fR2pz","../styles/styled":"32xTg","../styles/useTheme":"5nWMX","../styles/useThemeProps":"dewuS","../utils/capitalize":"lwNtZ","../Grow":"9py3h","../SnackbarContent":"5HymQ","./snackbarClasses":"i87x2","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lOwtq":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _clickAwayListener = require("./ClickAwayListener");
-parcelHelpers.exportAll(_clickAwayListener, exports);
-
-},{"./ClickAwayListener":"65ttv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"65ttv":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "ClickAwayListener", ()=>ClickAwayListener);
-var _react = require("react");
-var _propTypes = require("prop-types");
-var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _utils = require("@mui/utils");
-// TODO: return `EventHandlerName extends `on${infer EventName}` ? Lowercase<EventName> : never` once generatePropTypes runs with TS 4.1
-var _jsxRuntime = require("react/jsx-runtime");
-"use client";
-function mapEventPropToEvent(eventProp) {
-    return eventProp.substring(2).toLowerCase();
-}
-function clickedRootScrollbar(event, doc) {
-    return doc.documentElement.clientWidth < event.clientX || doc.documentElement.clientHeight < event.clientY;
-}
-/**
- * Listen for click events that occur somewhere in the document, outside of the element itself.
- * For instance, if you need to hide a menu when people click anywhere else on your page.
- *
- * Demos:
- *
- * - [Click-Away Listener](https://mui.com/base-ui/react-click-away-listener/)
- *
- * API:
- *
- * - [ClickAwayListener API](https://mui.com/base-ui/react-click-away-listener/components-api/#click-away-listener)
- */ function ClickAwayListener(props) {
-    const { children, disableReactTree = false, mouseEvent = "onClick", onClickAway, touchEvent = "onTouchEnd" } = props;
-    const movedRef = _react.useRef(false);
-    const nodeRef = _react.useRef(null);
-    const activatedRef = _react.useRef(false);
-    const syntheticEventRef = _react.useRef(false);
-    _react.useEffect(()=>{
-        // Ensure that this component is not "activated" synchronously.
-        // https://github.com/facebook/react/issues/20074
-        setTimeout(()=>{
-            activatedRef.current = true;
-        }, 0);
-        return ()=>{
-            activatedRef.current = false;
-        };
-    }, []);
-    const handleRef = (0, _utils.unstable_useForkRef)(// @ts-expect-error TODO upstream fix
-    children.ref, nodeRef);
-    // The handler doesn't take event.defaultPrevented into account:
-    //
-    // event.preventDefault() is meant to stop default behaviors like
-    // clicking a checkbox to check it, hitting a button to submit a form,
-    // and hitting left arrow to move the cursor in a text input etc.
-    // Only special HTML elements have these default behaviors.
-    const handleClickAway = (0, _utils.unstable_useEventCallback)((event)=>{
-        // Given developers can stop the propagation of the synthetic event,
-        // we can only be confident with a positive value.
-        const insideReactTree = syntheticEventRef.current;
-        syntheticEventRef.current = false;
-        const doc = (0, _utils.unstable_ownerDocument)(nodeRef.current);
-        // 1. IE11 support, which trigger the handleClickAway even after the unbind
-        // 2. The child might render null.
-        // 3. Behave like a blur listener.
-        if (!activatedRef.current || !nodeRef.current || "clientX" in event && clickedRootScrollbar(event, doc)) return;
-        // Do not act if user performed touchmove
-        if (movedRef.current) {
-            movedRef.current = false;
-            return;
-        }
-        let insideDOM;
-        // If not enough, can use https://github.com/DieterHolvoet/event-propagation-path/blob/master/propagationPath.js
-        if (event.composedPath) insideDOM = event.composedPath().indexOf(nodeRef.current) > -1;
-        else insideDOM = !doc.documentElement.contains(// @ts-expect-error returns `false` as intended when not dispatched from a Node
-        event.target) || nodeRef.current.contains(// @ts-expect-error returns `false` as intended when not dispatched from a Node
-        event.target);
-        if (!insideDOM && (disableReactTree || !insideReactTree)) onClickAway(event);
-    });
-    // Keep track of mouse/touch events that bubbled up through the portal.
-    const createHandleSynthetic = (handlerName)=>(event)=>{
-            syntheticEventRef.current = true;
-            const childrenPropsHandler = children.props[handlerName];
-            if (childrenPropsHandler) childrenPropsHandler(event);
-        };
-    const childrenProps = {
-        ref: handleRef
-    };
-    if (touchEvent !== false) childrenProps[touchEvent] = createHandleSynthetic(touchEvent);
-    _react.useEffect(()=>{
-        if (touchEvent !== false) {
-            const mappedTouchEvent = mapEventPropToEvent(touchEvent);
-            const doc = (0, _utils.unstable_ownerDocument)(nodeRef.current);
-            const handleTouchMove = ()=>{
-                movedRef.current = true;
-            };
-            doc.addEventListener(mappedTouchEvent, handleClickAway);
-            doc.addEventListener("touchmove", handleTouchMove);
-            return ()=>{
-                doc.removeEventListener(mappedTouchEvent, handleClickAway);
-                doc.removeEventListener("touchmove", handleTouchMove);
-            };
-        }
-        return undefined;
-    }, [
-        handleClickAway,
-        touchEvent
-    ]);
-    if (mouseEvent !== false) childrenProps[mouseEvent] = createHandleSynthetic(mouseEvent);
-    _react.useEffect(()=>{
-        if (mouseEvent !== false) {
-            const mappedMouseEvent = mapEventPropToEvent(mouseEvent);
-            const doc = (0, _utils.unstable_ownerDocument)(nodeRef.current);
-            doc.addEventListener(mappedMouseEvent, handleClickAway);
-            return ()=>{
-                doc.removeEventListener(mappedMouseEvent, handleClickAway);
-            };
-        }
-        return undefined;
-    }, [
-        handleClickAway,
-        mouseEvent
-    ]);
-    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(_react.Fragment, {
-        children: /*#__PURE__*/ _react.cloneElement(children, childrenProps)
-    });
-}
-ClickAwayListener.propTypes /* remove-proptypes */  = {
-    // ┌────────────────────────────── Warning ──────────────────────────────┐
-    // │ These PropTypes are generated from the TypeScript type definitions. │
-    // │ To update them, edit the TypeScript types and run `pnpm proptypes`. │
-    // └─────────────────────────────────────────────────────────────────────┘
-    /**
-   * The wrapped element.
-   */ children: (0, _utils.elementAcceptingRef).isRequired,
-    /**
-   * If `true`, the React tree is ignored and only the DOM tree is considered.
-   * This prop changes how portaled elements are handled.
-   * @default false
-   */ disableReactTree: (0, _propTypesDefault.default).bool,
-    /**
-   * The mouse event to listen to. You can disable the listener by providing `false`.
-   * @default 'onClick'
-   */ mouseEvent: (0, _propTypesDefault.default).oneOf([
-        "onClick",
-        "onMouseDown",
-        "onMouseUp",
-        "onPointerDown",
-        "onPointerUp",
-        false
-    ]),
-    /**
-   * Callback fired when a "click away" event is detected.
-   */ onClickAway: (0, _propTypesDefault.default).func.isRequired,
-    /**
-   * The touch event to listen to. You can disable the listener by providing `false`.
-   * @default 'onTouchEnd'
-   */ touchEvent: (0, _propTypesDefault.default).oneOf([
-        "onTouchEnd",
-        "onTouchStart",
-        false
-    ])
-};
-// eslint-disable-next-line
-ClickAwayListener["propTypes"] = (0, _utils.exactProp)(ClickAwayListener.propTypes);
-
-},{"react":"21dqq","prop-types":"7wKI2","@mui/utils":"iivny","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fR2pz":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "useSnackbar", ()=>(0, _useSnackbar.useSnackbar));
-var _useSnackbar = require("./useSnackbar");
-var _useSnackbarTypes = require("./useSnackbar.types");
-parcelHelpers.exportAll(_useSnackbarTypes, exports);
-"use client";
-
-},{"./useSnackbar":"d3ynE","./useSnackbar.types":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d3ynE":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/**
- * The basic building block for creating custom snackbar.
- *
- * Demos:
- *
- * - [Snackbar](https://mui.com/base-ui/react-snackbar/#hook)
- *
- * API:
- *
- * - [useSnackbar API](https://mui.com/base-ui/react-snackbar/hooks-api/#use-snackbar)
- */ parcelHelpers.export(exports, "useSnackbar", ()=>useSnackbar);
-var _extends = require("@babel/runtime/helpers/esm/extends");
-var _extendsDefault = parcelHelpers.interopDefault(_extends);
-var _react = require("react");
-var _utils = require("@mui/utils");
-var _extractEventHandlers = require("../utils/extractEventHandlers");
-"use client";
-function useSnackbar(parameters = {}) {
-    const { autoHideDuration = null, disableWindowBlurListener = false, onClose, open, resumeHideDuration } = parameters;
-    const timerAutoHide = (0, _utils.unstable_useTimeout)();
-    _react.useEffect(()=>{
-        if (!open) return undefined;
-        /**
-     * @param {KeyboardEvent} nativeEvent
-     */ function handleKeyDown(nativeEvent) {
-            if (!nativeEvent.defaultPrevented) // IE11, Edge (prior to using Blink?) use 'Esc'
-            {
-                if (nativeEvent.key === "Escape" || nativeEvent.key === "Esc") // not calling `preventDefault` since we don't know if people may ignore this event e.g. a permanently open snackbar
-                onClose == null || onClose(nativeEvent, "escapeKeyDown");
-            }
-        }
-        document.addEventListener("keydown", handleKeyDown);
-        return ()=>{
-            document.removeEventListener("keydown", handleKeyDown);
-        };
-    }, [
-        open,
-        onClose
-    ]);
-    const handleClose = (0, _utils.unstable_useEventCallback)((event, reason)=>{
-        onClose == null || onClose(event, reason);
-    });
-    const setAutoHideTimer = (0, _utils.unstable_useEventCallback)((autoHideDurationParam)=>{
-        if (!onClose || autoHideDurationParam == null) return;
-        timerAutoHide.start(autoHideDurationParam, ()=>{
-            handleClose(null, "timeout");
-        });
-    });
-    _react.useEffect(()=>{
-        if (open) setAutoHideTimer(autoHideDuration);
-        return timerAutoHide.clear;
-    }, [
-        open,
-        autoHideDuration,
-        setAutoHideTimer,
-        timerAutoHide
-    ]);
-    const handleClickAway = (event)=>{
-        onClose == null || onClose(event, "clickaway");
-    };
-    // Pause the timer when the user is interacting with the Snackbar
-    // or when the user hide the window.
-    const handlePause = timerAutoHide.clear;
-    // Restart the timer when the user is no longer interacting with the Snackbar
-    // or when the window is shown back.
-    const handleResume = _react.useCallback(()=>{
-        if (autoHideDuration != null) setAutoHideTimer(resumeHideDuration != null ? resumeHideDuration : autoHideDuration * 0.5);
-    }, [
-        autoHideDuration,
-        resumeHideDuration,
-        setAutoHideTimer
-    ]);
-    const createHandleBlur = (otherHandlers)=>(event)=>{
-            const onBlurCallback = otherHandlers.onBlur;
-            onBlurCallback == null || onBlurCallback(event);
-            handleResume();
-        };
-    const createHandleFocus = (otherHandlers)=>(event)=>{
-            const onFocusCallback = otherHandlers.onFocus;
-            onFocusCallback == null || onFocusCallback(event);
-            handlePause();
-        };
-    const createMouseEnter = (otherHandlers)=>(event)=>{
-            const onMouseEnterCallback = otherHandlers.onMouseEnter;
-            onMouseEnterCallback == null || onMouseEnterCallback(event);
-            handlePause();
-        };
-    const createMouseLeave = (otherHandlers)=>(event)=>{
-            const onMouseLeaveCallback = otherHandlers.onMouseLeave;
-            onMouseLeaveCallback == null || onMouseLeaveCallback(event);
-            handleResume();
-        };
-    _react.useEffect(()=>{
-        // TODO: window global should be refactored here
-        if (!disableWindowBlurListener && open) {
-            window.addEventListener("focus", handleResume);
-            window.addEventListener("blur", handlePause);
-            return ()=>{
-                window.removeEventListener("focus", handleResume);
-                window.removeEventListener("blur", handlePause);
-            };
-        }
-        return undefined;
-    }, [
-        disableWindowBlurListener,
-        open,
-        handleResume,
-        handlePause
-    ]);
-    const getRootProps = (externalProps = {})=>{
-        const externalEventHandlers = (0, _extendsDefault.default)({}, (0, _extractEventHandlers.extractEventHandlers)(parameters), (0, _extractEventHandlers.extractEventHandlers)(externalProps));
-        return (0, _extendsDefault.default)({
-            // ClickAwayListener adds an `onClick` prop which results in the alert not being announced.
-            // See https://github.com/mui/material-ui/issues/29080
-            role: "presentation"
-        }, externalProps, externalEventHandlers, {
-            onBlur: createHandleBlur(externalEventHandlers),
-            onFocus: createHandleFocus(externalEventHandlers),
-            onMouseEnter: createMouseEnter(externalEventHandlers),
-            onMouseLeave: createMouseLeave(externalEventHandlers)
-        });
-    };
-    return {
-        getRootProps,
-        onClickAway: handleClickAway
-    };
-}
-
-},{"@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","@mui/utils":"iivny","../utils/extractEventHandlers":"iYj1L","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5HymQ":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>(0, _snackbarContentDefault.default));
-parcelHelpers.export(exports, "snackbarContentClasses", ()=>(0, _snackbarContentClassesDefault.default));
-var _snackbarContent = require("./SnackbarContent");
-var _snackbarContentDefault = parcelHelpers.interopDefault(_snackbarContent);
-var _snackbarContentClasses = require("./snackbarContentClasses");
-var _snackbarContentClassesDefault = parcelHelpers.interopDefault(_snackbarContentClasses);
-parcelHelpers.exportAll(_snackbarContentClasses, exports);
-"use client";
-
-},{"./SnackbarContent":"cULIz","./snackbarContentClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cULIz":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
-var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
-var _extends = require("@babel/runtime/helpers/esm/extends");
-var _extendsDefault = parcelHelpers.interopDefault(_extends);
-var _react = require("react");
-var _propTypes = require("prop-types");
-var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _clsx = require("clsx");
-var _clsxDefault = parcelHelpers.interopDefault(_clsx);
-var _composeClasses = require("@mui/utils/composeClasses");
-var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
-var _colorManipulator = require("@mui/system/colorManipulator");
-var _styled = require("../styles/styled");
-var _styledDefault = parcelHelpers.interopDefault(_styled);
-var _useThemeProps = require("../styles/useThemeProps");
-var _useThemePropsDefault = parcelHelpers.interopDefault(_useThemeProps);
-var _paper = require("../Paper");
-var _paperDefault = parcelHelpers.interopDefault(_paper);
-var _snackbarContentClasses = require("./snackbarContentClasses");
-var _jsxRuntime = require("react/jsx-runtime");
-"use client";
-const _excluded = [
-    "action",
-    "className",
-    "message",
-    "role"
-];
-const useUtilityClasses = (ownerState)=>{
-    const { classes } = ownerState;
-    const slots = {
-        root: [
-            "root"
-        ],
-        action: [
-            "action"
-        ],
-        message: [
-            "message"
-        ]
-    };
-    return (0, _composeClassesDefault.default)(slots, (0, _snackbarContentClasses.getSnackbarContentUtilityClass), classes);
-};
-const SnackbarContentRoot = (0, _styledDefault.default)((0, _paperDefault.default), {
-    name: "MuiSnackbarContent",
-    slot: "Root",
-    overridesResolver: (props, styles)=>styles.root
-})(({ theme })=>{
-    const emphasis = theme.palette.mode === "light" ? 0.8 : 0.98;
-    const backgroundColor = (0, _colorManipulator.emphasize)(theme.palette.background.default, emphasis);
-    return (0, _extendsDefault.default)({}, theme.typography.body2, {
-        color: theme.vars ? theme.vars.palette.SnackbarContent.color : theme.palette.getContrastText(backgroundColor),
-        backgroundColor: theme.vars ? theme.vars.palette.SnackbarContent.bg : backgroundColor,
-        display: "flex",
-        alignItems: "center",
-        flexWrap: "wrap",
-        padding: "6px 16px",
-        borderRadius: (theme.vars || theme).shape.borderRadius,
-        flexGrow: 1,
-        [theme.breakpoints.up("sm")]: {
-            flexGrow: "initial",
-            minWidth: 288
-        }
-    });
-});
-const SnackbarContentMessage = (0, _styledDefault.default)("div", {
-    name: "MuiSnackbarContent",
-    slot: "Message",
-    overridesResolver: (props, styles)=>styles.message
-})({
-    padding: "8px 0"
-});
-const SnackbarContentAction = (0, _styledDefault.default)("div", {
-    name: "MuiSnackbarContent",
-    slot: "Action",
-    overridesResolver: (props, styles)=>styles.action
-})({
-    display: "flex",
-    alignItems: "center",
-    marginLeft: "auto",
-    paddingLeft: 16,
-    marginRight: -8
-});
-const SnackbarContent = /*#__PURE__*/ _react.forwardRef(function SnackbarContent(inProps, ref) {
-    const props = (0, _useThemePropsDefault.default)({
-        props: inProps,
-        name: "MuiSnackbarContent"
-    });
-    const { action, className, message, role = "alert" } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
-    const ownerState = props;
-    const classes = useUtilityClasses(ownerState);
-    return /*#__PURE__*/ (0, _jsxRuntime.jsxs)(SnackbarContentRoot, (0, _extendsDefault.default)({
-        role: role,
-        square: true,
-        elevation: 6,
-        className: (0, _clsxDefault.default)(classes.root, className),
-        ownerState: ownerState,
-        ref: ref
-    }, other, {
-        children: [
-            /*#__PURE__*/ (0, _jsxRuntime.jsx)(SnackbarContentMessage, {
-                className: classes.message,
-                ownerState: ownerState,
-                children: message
-            }),
-            action ? /*#__PURE__*/ (0, _jsxRuntime.jsx)(SnackbarContentAction, {
-                className: classes.action,
-                ownerState: ownerState,
-                children: action
-            }) : null
-        ]
-    }));
-});
-SnackbarContent.propTypes /* remove-proptypes */  = {
-    // ┌────────────────────────────── Warning ──────────────────────────────┐
-    // │ These PropTypes are generated from the TypeScript type definitions. │
-    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
-    // └─────────────────────────────────────────────────────────────────────┘
-    /**
-   * The action to display. It renders after the message, at the end of the snackbar.
-   */ action: (0, _propTypesDefault.default).node,
-    /**
-   * Override or extend the styles applied to the component.
-   */ classes: (0, _propTypesDefault.default).object,
-    /**
-   * @ignore
-   */ className: (0, _propTypesDefault.default).string,
-    /**
-   * The message to display.
-   */ message: (0, _propTypesDefault.default).node,
-    /**
-   * The ARIA role attribute of the element.
-   * @default 'alert'
-   */ role: (0, _propTypesDefault.default /* @typescript-to-proptypes-ignore */ ).string,
-    /**
-   * The system prop that allows defining system overrides as well as additional CSS styles.
-   */ sx: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
-            (0, _propTypesDefault.default).func,
-            (0, _propTypesDefault.default).object,
-            (0, _propTypesDefault.default).bool
-        ])),
-        (0, _propTypesDefault.default).func,
-        (0, _propTypesDefault.default).object
-    ])
-};
-exports.default = SnackbarContent;
-
-},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"G7PIs","@mui/utils/composeClasses":"4kKno","@mui/system/colorManipulator":"bO1j5","../styles/styled":"32xTg","../styles/useThemeProps":"dewuS","../Paper":"6IiTP","./snackbarContentClasses":"5uz3u","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5uz3u":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "getSnackbarContentUtilityClass", ()=>getSnackbarContentUtilityClass);
-var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
-var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
-var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
-var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
-function getSnackbarContentUtilityClass(slot) {
-    return (0, _generateUtilityClassDefault.default)("MuiSnackbarContent", slot);
-}
-const snackbarContentClasses = (0, _generateUtilityClassesDefault.default)("MuiSnackbarContent", [
-    "root",
-    "message",
-    "action"
-]);
-exports.default = snackbarContentClasses;
-
-},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i87x2":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "getSnackbarUtilityClass", ()=>getSnackbarUtilityClass);
-var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
-var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
-var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
-var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
-function getSnackbarUtilityClass(slot) {
-    return (0, _generateUtilityClassDefault.default)("MuiSnackbar", slot);
-}
-const snackbarClasses = (0, _generateUtilityClassesDefault.default)("MuiSnackbar", [
-    "root",
-    "anchorOriginTopCenter",
-    "anchorOriginBottomCenter",
-    "anchorOriginTopRight",
-    "anchorOriginBottomRight",
-    "anchorOriginTopLeft",
-    "anchorOriginBottomLeft"
-]);
-exports.default = snackbarClasses;
-
-},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2z2cd":[function(require,module,exports) {
+},{"react":"21dqq","@mui/material/Button":"73csw","@mui/material/DialogActions":"25Z2G","@mui/material/DialogTitle":"642rE","@mui/material/DialogContent":"gZO7I","@mui/material/Typography":"faxSz","@mui/material/Snackbar":"25Fj7","@mui/material/IconButton":"38BrD","@mui/icons-material/ExpandMore":"7hPin","@mui/icons-material/Close":"2z2cd","@mui/material/Accordion":"fQZka","@mui/material/AccordionSummary":"0u6LC","@mui/material/AccordionDetails":"8mhf8","react-copy-to-clipboard":"anQWY","./WorkspaceDialog":"iuVcI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2z2cd":[function(require,module,exports) {
 "use strict";
 "use client";
 var _interopRequireDefault = require("239535702eb5ed24");
@@ -7965,109 +12363,7 @@ Branding.defaultProps = {
     variant: "default"
 };
 
-},{"react":"21dqq","@mui/material/IconButton":"38BrD","@mui/material/Typography":"faxSz","@mui/material/Stack":"cuThX","./icons/MiradorIcon":"eK2vp","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cuThX":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>(0, _stackDefault.default));
-parcelHelpers.export(exports, "stackClasses", ()=>(0, _stackClassesDefault.default));
-var _stack = require("./Stack");
-var _stackDefault = parcelHelpers.interopDefault(_stack);
-var _stackClasses = require("./stackClasses");
-var _stackClassesDefault = parcelHelpers.interopDefault(_stackClasses);
-"use client";
-
-},{"./Stack":"dAbfF","./stackClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dAbfF":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _propTypes = require("prop-types");
-var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _system = require("@mui/system");
-var _styled = require("../styles/styled");
-var _styledDefault = parcelHelpers.interopDefault(_styled);
-var _useThemeProps = require("../styles/useThemeProps");
-var _useThemePropsDefault = parcelHelpers.interopDefault(_useThemeProps);
-"use client";
-const Stack = (0, _system.createStack)({
-    createStyledComponent: (0, _styledDefault.default)("div", {
-        name: "MuiStack",
-        slot: "Root",
-        overridesResolver: (props, styles)=>styles.root
-    }),
-    useThemeProps: (inProps)=>(0, _useThemePropsDefault.default)({
-            props: inProps,
-            name: "MuiStack"
-        })
-});
-Stack.propTypes /* remove-proptypes */  = {
-    // ┌────────────────────────────── Warning ──────────────────────────────┐
-    // │ These PropTypes are generated from the TypeScript type definitions. │
-    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
-    // └─────────────────────────────────────────────────────────────────────┘
-    /**
-   * The content of the component.
-   */ children: (0, _propTypesDefault.default).node,
-    /**
-   * The component used for the root node.
-   * Either a string to use a HTML element or a component.
-   */ component: (0, _propTypesDefault.default).elementType,
-    /**
-   * Defines the `flex-direction` style property.
-   * It is applied for all screen sizes.
-   * @default 'column'
-   */ direction: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).oneOf([
-            "column-reverse",
-            "column",
-            "row-reverse",
-            "row"
-        ]),
-        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOf([
-            "column-reverse",
-            "column",
-            "row-reverse",
-            "row"
-        ])),
-        (0, _propTypesDefault.default).object
-    ]),
-    /**
-   * Add an element between each child.
-   */ divider: (0, _propTypesDefault.default).node,
-    /**
-   * Defines the space between immediate children.
-   * @default 0
-   */ spacing: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
-            (0, _propTypesDefault.default).number,
-            (0, _propTypesDefault.default).string
-        ])),
-        (0, _propTypesDefault.default).number,
-        (0, _propTypesDefault.default).object,
-        (0, _propTypesDefault.default).string
-    ]),
-    /**
-   * The system prop, which allows defining system overrides as well as additional CSS styles.
-   */ sx: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
-            (0, _propTypesDefault.default).func,
-            (0, _propTypesDefault.default).object,
-            (0, _propTypesDefault.default).bool
-        ])),
-        (0, _propTypesDefault.default).func,
-        (0, _propTypesDefault.default).object
-    ]),
-    /**
-   * If `true`, the CSS flexbox `gap` is used instead of applying `margin` to children.
-   *
-   * While CSS `gap` removes the [known limitations](https://mui.com/joy-ui/react-stack/#limitations),
-   * it is not fully supported in some browsers. We recommend checking https://caniuse.com/?search=flex%20gap before using this flag.
-   *
-   * To enable this flag globally, follow the [theme's default props](https://mui.com/material-ui/customization/theme-components/#default-props) configuration.
-   * @default false
-   */ useFlexGap: (0, _propTypesDefault.default).bool
-};
-exports.default = Stack;
-
-},{"prop-types":"7wKI2","@mui/system":"Q0Zql","../styles/styled":"32xTg","../styles/useThemeProps":"dewuS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eK2vp":[function(require,module,exports) {
+},{"react":"21dqq","@mui/material/IconButton":"38BrD","@mui/material/Typography":"faxSz","@mui/material/Stack":"cuThX","./icons/MiradorIcon":"eK2vp","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eK2vp":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>MiradorIcon);
@@ -8406,676 +12702,7 @@ Workspace.defaultProps = {
     windowIds: []
 };
 
-},{"react":"21dqq","@mui/material/styles":"1lzai","classnames":"jocGM","@mui/material/Grid":"c17UE","@mui/material/Typography":"faxSz","@mui/utils":"iivny","../containers/Window":"jga6S","../containers/WorkspaceMosaic":"cGhqm","../containers/WorkspaceElastic":"bqRF4","../config/css-ns":"7FzFf","./IIIFDropTarget":"9AiKN","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"c17UE":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>(0, _gridDefault.default));
-parcelHelpers.export(exports, "gridClasses", ()=>(0, _gridClassesDefault.default));
-var _grid = require("./Grid");
-var _gridDefault = parcelHelpers.interopDefault(_grid);
-var _gridClasses = require("./gridClasses");
-var _gridClassesDefault = parcelHelpers.interopDefault(_gridClasses);
-parcelHelpers.exportAll(_gridClasses, exports);
-"use client";
-
-},{"./Grid":"60L6y","./gridClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"60L6y":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "generateGrid", ()=>generateGrid);
-parcelHelpers.export(exports, "generateDirection", ()=>generateDirection);
-parcelHelpers.export(exports, "generateRowGap", ()=>generateRowGap);
-parcelHelpers.export(exports, "generateColumnGap", ()=>generateColumnGap);
-parcelHelpers.export(exports, "resolveSpacingStyles", ()=>resolveSpacingStyles);
-parcelHelpers.export(exports, "resolveSpacingClasses", ()=>resolveSpacingClasses);
-// A grid component using the following libs as inspiration.
-//
-// For the implementation:
-// - https://getbootstrap.com/docs/4.3/layout/grid/
-// - https://github.com/kristoferjoseph/flexboxgrid/blob/master/src/css/flexboxgrid.css
-// - https://github.com/roylee0704/react-flexbox-grid
-// - https://material.angularjs.org/latest/layout/introduction
-//
-// Follow this flexbox Guide to better understand the underlying model:
-// - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
-var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
-var _extends = require("@babel/runtime/helpers/esm/extends");
-var _extendsDefault = parcelHelpers.interopDefault(_extends);
-var _react = require("react");
-var _propTypes = require("prop-types");
-var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _clsx = require("clsx");
-var _clsxDefault = parcelHelpers.interopDefault(_clsx);
-var _system = require("@mui/system");
-var _styleFunctionSx = require("@mui/system/styleFunctionSx");
-var _composeClasses = require("@mui/utils/composeClasses");
-var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
-var _requirePropFactory = require("../utils/requirePropFactory");
-var _requirePropFactoryDefault = parcelHelpers.interopDefault(_requirePropFactory);
-var _styled = require("../styles/styled");
-var _styledDefault = parcelHelpers.interopDefault(_styled);
-var _useThemeProps = require("../styles/useThemeProps");
-var _useThemePropsDefault = parcelHelpers.interopDefault(_useThemeProps);
-var _useTheme = require("../styles/useTheme");
-var _useThemeDefault = parcelHelpers.interopDefault(_useTheme);
-var _gridContext = require("./GridContext");
-var _gridContextDefault = parcelHelpers.interopDefault(_gridContext);
-var _gridClasses = require("./gridClasses");
-var _gridClassesDefault = parcelHelpers.interopDefault(_gridClasses);
-var _jsxRuntime = require("react/jsx-runtime");
-"use client";
-const _excluded = [
-    "className",
-    "columns",
-    "columnSpacing",
-    "component",
-    "container",
-    "direction",
-    "item",
-    "rowSpacing",
-    "spacing",
-    "wrap",
-    "zeroMinWidth"
-];
-function getOffset(val) {
-    const parse = parseFloat(val);
-    return `${parse}${String(val).replace(String(parse), "") || "px"}`;
-}
-function generateGrid({ theme, ownerState }) {
-    let size;
-    return theme.breakpoints.keys.reduce((globalStyles, breakpoint)=>{
-        // Use side effect over immutability for better performance.
-        let styles = {};
-        if (ownerState[breakpoint]) size = ownerState[breakpoint];
-        if (!size) return globalStyles;
-        if (size === true) // For the auto layouting
-        styles = {
-            flexBasis: 0,
-            flexGrow: 1,
-            maxWidth: "100%"
-        };
-        else if (size === "auto") styles = {
-            flexBasis: "auto",
-            flexGrow: 0,
-            flexShrink: 0,
-            maxWidth: "none",
-            width: "auto"
-        };
-        else {
-            const columnsBreakpointValues = (0, _system.unstable_resolveBreakpointValues)({
-                values: ownerState.columns,
-                breakpoints: theme.breakpoints.values
-            });
-            const columnValue = typeof columnsBreakpointValues === "object" ? columnsBreakpointValues[breakpoint] : columnsBreakpointValues;
-            if (columnValue === undefined || columnValue === null) return globalStyles;
-            // Keep 7 significant numbers.
-            const width = `${Math.round(size / columnValue * 10e7) / 10e5}%`;
-            let more = {};
-            if (ownerState.container && ownerState.item && ownerState.columnSpacing !== 0) {
-                const themeSpacing = theme.spacing(ownerState.columnSpacing);
-                if (themeSpacing !== "0px") {
-                    const fullWidth = `calc(${width} + ${getOffset(themeSpacing)})`;
-                    more = {
-                        flexBasis: fullWidth,
-                        maxWidth: fullWidth
-                    };
-                }
-            }
-            // Close to the bootstrap implementation:
-            // https://github.com/twbs/bootstrap/blob/8fccaa2439e97ec72a4b7dc42ccc1f649790adb0/scss/mixins/_grid.scss#L41
-            styles = (0, _extendsDefault.default)({
-                flexBasis: width,
-                flexGrow: 0,
-                maxWidth: width
-            }, more);
-        }
-        // No need for a media query for the first size.
-        if (theme.breakpoints.values[breakpoint] === 0) Object.assign(globalStyles, styles);
-        else globalStyles[theme.breakpoints.up(breakpoint)] = styles;
-        return globalStyles;
-    }, {});
-}
-function generateDirection({ theme, ownerState }) {
-    const directionValues = (0, _system.unstable_resolveBreakpointValues)({
-        values: ownerState.direction,
-        breakpoints: theme.breakpoints.values
-    });
-    return (0, _system.handleBreakpoints)({
-        theme
-    }, directionValues, (propValue)=>{
-        const output = {
-            flexDirection: propValue
-        };
-        if (propValue.indexOf("column") === 0) output[`& > .${(0, _gridClassesDefault.default).item}`] = {
-            maxWidth: "none"
-        };
-        return output;
-    });
-}
-/**
- * Extracts zero value breakpoint keys before a non-zero value breakpoint key.
- * @example { xs: 0, sm: 0, md: 2, lg: 0, xl: 0 } or [0, 0, 2, 0, 0]
- * @returns [xs, sm]
- */ function extractZeroValueBreakpointKeys({ breakpoints, values }) {
-    let nonZeroKey = "";
-    Object.keys(values).forEach((key)=>{
-        if (nonZeroKey !== "") return;
-        if (values[key] !== 0) nonZeroKey = key;
-    });
-    const sortedBreakpointKeysByValue = Object.keys(breakpoints).sort((a, b)=>{
-        return breakpoints[a] - breakpoints[b];
-    });
-    return sortedBreakpointKeysByValue.slice(0, sortedBreakpointKeysByValue.indexOf(nonZeroKey));
-}
-function generateRowGap({ theme, ownerState }) {
-    const { container, rowSpacing } = ownerState;
-    let styles = {};
-    if (container && rowSpacing !== 0) {
-        const rowSpacingValues = (0, _system.unstable_resolveBreakpointValues)({
-            values: rowSpacing,
-            breakpoints: theme.breakpoints.values
-        });
-        let zeroValueBreakpointKeys;
-        if (typeof rowSpacingValues === "object") zeroValueBreakpointKeys = extractZeroValueBreakpointKeys({
-            breakpoints: theme.breakpoints.values,
-            values: rowSpacingValues
-        });
-        styles = (0, _system.handleBreakpoints)({
-            theme
-        }, rowSpacingValues, (propValue, breakpoint)=>{
-            var _zeroValueBreakpointK;
-            const themeSpacing = theme.spacing(propValue);
-            if (themeSpacing !== "0px") return {
-                marginTop: `-${getOffset(themeSpacing)}`,
-                [`& > .${(0, _gridClassesDefault.default).item}`]: {
-                    paddingTop: getOffset(themeSpacing)
-                }
-            };
-            if ((_zeroValueBreakpointK = zeroValueBreakpointKeys) != null && _zeroValueBreakpointK.includes(breakpoint)) return {};
-            return {
-                marginTop: 0,
-                [`& > .${(0, _gridClassesDefault.default).item}`]: {
-                    paddingTop: 0
-                }
-            };
-        });
-    }
-    return styles;
-}
-function generateColumnGap({ theme, ownerState }) {
-    const { container, columnSpacing } = ownerState;
-    let styles = {};
-    if (container && columnSpacing !== 0) {
-        const columnSpacingValues = (0, _system.unstable_resolveBreakpointValues)({
-            values: columnSpacing,
-            breakpoints: theme.breakpoints.values
-        });
-        let zeroValueBreakpointKeys;
-        if (typeof columnSpacingValues === "object") zeroValueBreakpointKeys = extractZeroValueBreakpointKeys({
-            breakpoints: theme.breakpoints.values,
-            values: columnSpacingValues
-        });
-        styles = (0, _system.handleBreakpoints)({
-            theme
-        }, columnSpacingValues, (propValue, breakpoint)=>{
-            var _zeroValueBreakpointK2;
-            const themeSpacing = theme.spacing(propValue);
-            if (themeSpacing !== "0px") return {
-                width: `calc(100% + ${getOffset(themeSpacing)})`,
-                marginLeft: `-${getOffset(themeSpacing)}`,
-                [`& > .${(0, _gridClassesDefault.default).item}`]: {
-                    paddingLeft: getOffset(themeSpacing)
-                }
-            };
-            if ((_zeroValueBreakpointK2 = zeroValueBreakpointKeys) != null && _zeroValueBreakpointK2.includes(breakpoint)) return {};
-            return {
-                width: "100%",
-                marginLeft: 0,
-                [`& > .${(0, _gridClassesDefault.default).item}`]: {
-                    paddingLeft: 0
-                }
-            };
-        });
-    }
-    return styles;
-}
-function resolveSpacingStyles(spacing, breakpoints, styles = {}) {
-    // undefined/null or `spacing` <= 0
-    if (!spacing || spacing <= 0) return [];
-    // in case of string/number `spacing`
-    if (typeof spacing === "string" && !Number.isNaN(Number(spacing)) || typeof spacing === "number") return [
-        styles[`spacing-xs-${String(spacing)}`]
-    ];
-    // in case of object `spacing`
-    const spacingStyles = [];
-    breakpoints.forEach((breakpoint)=>{
-        const value = spacing[breakpoint];
-        if (Number(value) > 0) spacingStyles.push(styles[`spacing-${breakpoint}-${String(value)}`]);
-    });
-    return spacingStyles;
-}
-// Default CSS values
-// flex: '0 1 auto',
-// flexDirection: 'row',
-// alignItems: 'flex-start',
-// flexWrap: 'nowrap',
-// justifyContent: 'flex-start',
-const GridRoot = (0, _styledDefault.default)("div", {
-    name: "MuiGrid",
-    slot: "Root",
-    overridesResolver: (props, styles)=>{
-        const { ownerState } = props;
-        const { container, direction, item, spacing, wrap, zeroMinWidth, breakpoints } = ownerState;
-        let spacingStyles = [];
-        // in case of grid item
-        if (container) spacingStyles = resolveSpacingStyles(spacing, breakpoints, styles);
-        const breakpointsStyles = [];
-        breakpoints.forEach((breakpoint)=>{
-            const value = ownerState[breakpoint];
-            if (value) breakpointsStyles.push(styles[`grid-${breakpoint}-${String(value)}`]);
-        });
-        return [
-            styles.root,
-            container && styles.container,
-            item && styles.item,
-            zeroMinWidth && styles.zeroMinWidth,
-            ...spacingStyles,
-            direction !== "row" && styles[`direction-xs-${String(direction)}`],
-            wrap !== "wrap" && styles[`wrap-xs-${String(wrap)}`],
-            ...breakpointsStyles
-        ];
-    }
-})(({ ownerState })=>(0, _extendsDefault.default)({
-        boxSizing: "border-box"
-    }, ownerState.container && {
-        display: "flex",
-        flexWrap: "wrap",
-        width: "100%"
-    }, ownerState.item && {
-        margin: 0 // For instance, it's useful when used with a `figure` element.
-    }, ownerState.zeroMinWidth && {
-        minWidth: 0
-    }, ownerState.wrap !== "wrap" && {
-        flexWrap: ownerState.wrap
-    }), generateDirection, generateRowGap, generateColumnGap, generateGrid);
-function resolveSpacingClasses(spacing, breakpoints) {
-    // undefined/null or `spacing` <= 0
-    if (!spacing || spacing <= 0) return [];
-    // in case of string/number `spacing`
-    if (typeof spacing === "string" && !Number.isNaN(Number(spacing)) || typeof spacing === "number") return [
-        `spacing-xs-${String(spacing)}`
-    ];
-    // in case of object `spacing`
-    const classes = [];
-    breakpoints.forEach((breakpoint)=>{
-        const value = spacing[breakpoint];
-        if (Number(value) > 0) {
-            const className = `spacing-${breakpoint}-${String(value)}`;
-            classes.push(className);
-        }
-    });
-    return classes;
-}
-const useUtilityClasses = (ownerState)=>{
-    const { classes, container, direction, item, spacing, wrap, zeroMinWidth, breakpoints } = ownerState;
-    let spacingClasses = [];
-    // in case of grid item
-    if (container) spacingClasses = resolveSpacingClasses(spacing, breakpoints);
-    const breakpointsClasses = [];
-    breakpoints.forEach((breakpoint)=>{
-        const value = ownerState[breakpoint];
-        if (value) breakpointsClasses.push(`grid-${breakpoint}-${String(value)}`);
-    });
-    const slots = {
-        root: [
-            "root",
-            container && "container",
-            item && "item",
-            zeroMinWidth && "zeroMinWidth",
-            ...spacingClasses,
-            direction !== "row" && `direction-xs-${String(direction)}`,
-            wrap !== "wrap" && `wrap-xs-${String(wrap)}`,
-            ...breakpointsClasses
-        ]
-    };
-    return (0, _composeClassesDefault.default)(slots, (0, _gridClasses.getGridUtilityClass), classes);
-};
-const Grid = /*#__PURE__*/ _react.forwardRef(function Grid(inProps, ref) {
-    const themeProps = (0, _useThemePropsDefault.default)({
-        props: inProps,
-        name: "MuiGrid"
-    });
-    const { breakpoints } = (0, _useThemeDefault.default)();
-    const props = (0, _styleFunctionSx.extendSxProp)(themeProps);
-    const { className, columns: columnsProp, columnSpacing: columnSpacingProp, component = "div", container = false, direction = "row", item = false, rowSpacing: rowSpacingProp, spacing = 0, wrap = "wrap", zeroMinWidth = false } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
-    const rowSpacing = rowSpacingProp || spacing;
-    const columnSpacing = columnSpacingProp || spacing;
-    const columnsContext = _react.useContext((0, _gridContextDefault.default));
-    // columns set with default breakpoint unit of 12
-    const columns = container ? columnsProp || 12 : columnsContext;
-    const breakpointsValues = {};
-    const otherFiltered = (0, _extendsDefault.default)({}, other);
-    breakpoints.keys.forEach((breakpoint)=>{
-        if (other[breakpoint] != null) {
-            breakpointsValues[breakpoint] = other[breakpoint];
-            delete otherFiltered[breakpoint];
-        }
-    });
-    const ownerState = (0, _extendsDefault.default)({}, props, {
-        columns,
-        container,
-        direction,
-        item,
-        rowSpacing,
-        columnSpacing,
-        wrap,
-        zeroMinWidth,
-        spacing
-    }, breakpointsValues, {
-        breakpoints: breakpoints.keys
-    });
-    const classes = useUtilityClasses(ownerState);
-    return /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _gridContextDefault.default).Provider, {
-        value: columns,
-        children: /*#__PURE__*/ (0, _jsxRuntime.jsx)(GridRoot, (0, _extendsDefault.default)({
-            ownerState: ownerState,
-            className: (0, _clsxDefault.default)(classes.root, className),
-            as: component,
-            ref: ref
-        }, otherFiltered))
-    });
-});
-Grid.propTypes /* remove-proptypes */  = {
-    // ┌────────────────────────────── Warning ──────────────────────────────┐
-    // │ These PropTypes are generated from the TypeScript type definitions. │
-    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
-    // └─────────────────────────────────────────────────────────────────────┘
-    /**
-   * The content of the component.
-   */ children: (0, _propTypesDefault.default).node,
-    /**
-   * Override or extend the styles applied to the component.
-   */ classes: (0, _propTypesDefault.default).object,
-    /**
-   * @ignore
-   */ className: (0, _propTypesDefault.default).string,
-    /**
-   * The number of columns.
-   * @default 12
-   */ columns: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).number),
-        (0, _propTypesDefault.default).number,
-        (0, _propTypesDefault.default).object
-    ]),
-    /**
-   * Defines the horizontal space between the type `item` components.
-   * It overrides the value of the `spacing` prop.
-   */ columnSpacing: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
-            (0, _propTypesDefault.default).number,
-            (0, _propTypesDefault.default).string
-        ])),
-        (0, _propTypesDefault.default).number,
-        (0, _propTypesDefault.default).object,
-        (0, _propTypesDefault.default).string
-    ]),
-    /**
-   * The component used for the root node.
-   * Either a string to use a HTML element or a component.
-   */ component: (0, _propTypesDefault.default).elementType,
-    /**
-   * If `true`, the component will have the flex *container* behavior.
-   * You should be wrapping *items* with a *container*.
-   * @default false
-   */ container: (0, _propTypesDefault.default).bool,
-    /**
-   * Defines the `flex-direction` style property.
-   * It is applied for all screen sizes.
-   * @default 'row'
-   */ direction: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).oneOf([
-            "column-reverse",
-            "column",
-            "row-reverse",
-            "row"
-        ]),
-        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOf([
-            "column-reverse",
-            "column",
-            "row-reverse",
-            "row"
-        ])),
-        (0, _propTypesDefault.default).object
-    ]),
-    /**
-   * If `true`, the component will have the flex *item* behavior.
-   * You should be wrapping *items* with a *container*.
-   * @default false
-   */ item: (0, _propTypesDefault.default).bool,
-    /**
-   * If a number, it sets the number of columns the grid item uses.
-   * It can't be greater than the total number of columns of the container (12 by default).
-   * If 'auto', the grid item's width matches its content.
-   * If false, the prop is ignored.
-   * If true, the grid item's width grows to use the space available in the grid container.
-   * The value is applied for the `lg` breakpoint and wider screens if not overridden.
-   * @default false
-   */ lg: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).oneOf([
-            "auto"
-        ]),
-        (0, _propTypesDefault.default).number,
-        (0, _propTypesDefault.default).bool
-    ]),
-    /**
-   * If a number, it sets the number of columns the grid item uses.
-   * It can't be greater than the total number of columns of the container (12 by default).
-   * If 'auto', the grid item's width matches its content.
-   * If false, the prop is ignored.
-   * If true, the grid item's width grows to use the space available in the grid container.
-   * The value is applied for the `md` breakpoint and wider screens if not overridden.
-   * @default false
-   */ md: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).oneOf([
-            "auto"
-        ]),
-        (0, _propTypesDefault.default).number,
-        (0, _propTypesDefault.default).bool
-    ]),
-    /**
-   * Defines the vertical space between the type `item` components.
-   * It overrides the value of the `spacing` prop.
-   */ rowSpacing: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
-            (0, _propTypesDefault.default).number,
-            (0, _propTypesDefault.default).string
-        ])),
-        (0, _propTypesDefault.default).number,
-        (0, _propTypesDefault.default).object,
-        (0, _propTypesDefault.default).string
-    ]),
-    /**
-   * If a number, it sets the number of columns the grid item uses.
-   * It can't be greater than the total number of columns of the container (12 by default).
-   * If 'auto', the grid item's width matches its content.
-   * If false, the prop is ignored.
-   * If true, the grid item's width grows to use the space available in the grid container.
-   * The value is applied for the `sm` breakpoint and wider screens if not overridden.
-   * @default false
-   */ sm: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).oneOf([
-            "auto"
-        ]),
-        (0, _propTypesDefault.default).number,
-        (0, _propTypesDefault.default).bool
-    ]),
-    /**
-   * Defines the space between the type `item` components.
-   * It can only be used on a type `container` component.
-   * @default 0
-   */ spacing: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
-            (0, _propTypesDefault.default).number,
-            (0, _propTypesDefault.default).string
-        ])),
-        (0, _propTypesDefault.default).number,
-        (0, _propTypesDefault.default).object,
-        (0, _propTypesDefault.default).string
-    ]),
-    /**
-   * The system prop that allows defining system overrides as well as additional CSS styles.
-   */ sx: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
-            (0, _propTypesDefault.default).func,
-            (0, _propTypesDefault.default).object,
-            (0, _propTypesDefault.default).bool
-        ])),
-        (0, _propTypesDefault.default).func,
-        (0, _propTypesDefault.default).object
-    ]),
-    /**
-   * Defines the `flex-wrap` style property.
-   * It's applied for all screen sizes.
-   * @default 'wrap'
-   */ wrap: (0, _propTypesDefault.default).oneOf([
-        "nowrap",
-        "wrap-reverse",
-        "wrap"
-    ]),
-    /**
-   * If a number, it sets the number of columns the grid item uses.
-   * It can't be greater than the total number of columns of the container (12 by default).
-   * If 'auto', the grid item's width matches its content.
-   * If false, the prop is ignored.
-   * If true, the grid item's width grows to use the space available in the grid container.
-   * The value is applied for the `xl` breakpoint and wider screens if not overridden.
-   * @default false
-   */ xl: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).oneOf([
-            "auto"
-        ]),
-        (0, _propTypesDefault.default).number,
-        (0, _propTypesDefault.default).bool
-    ]),
-    /**
-   * If a number, it sets the number of columns the grid item uses.
-   * It can't be greater than the total number of columns of the container (12 by default).
-   * If 'auto', the grid item's width matches its content.
-   * If false, the prop is ignored.
-   * If true, the grid item's width grows to use the space available in the grid container.
-   * The value is applied for all the screen sizes with the lowest priority.
-   * @default false
-   */ xs: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).oneOf([
-            "auto"
-        ]),
-        (0, _propTypesDefault.default).number,
-        (0, _propTypesDefault.default).bool
-    ]),
-    /**
-   * If `true`, it sets `min-width: 0` on the item.
-   * Refer to the limitations section of the documentation to better understand the use case.
-   * @default false
-   */ zeroMinWidth: (0, _propTypesDefault.default).bool
-};
-{
-    const requireProp = (0, _requirePropFactoryDefault.default)("Grid", Grid);
-    // eslint-disable-next-line no-useless-concat
-    Grid["propTypes"] = (0, _extendsDefault.default)({}, Grid.propTypes, {
-        direction: requireProp("container"),
-        lg: requireProp("item"),
-        md: requireProp("item"),
-        sm: requireProp("item"),
-        spacing: requireProp("container"),
-        wrap: requireProp("container"),
-        xs: requireProp("item"),
-        zeroMinWidth: requireProp("item")
-    });
-}exports.default = Grid;
-
-},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"G7PIs","@mui/system":"Q0Zql","@mui/system/styleFunctionSx":"bRwpN","@mui/utils/composeClasses":"4kKno","../utils/requirePropFactory":"gQOX7","../styles/styled":"32xTg","../styles/useThemeProps":"dewuS","../styles/useTheme":"5nWMX","./GridContext":"ghr8E","./gridClasses":"iRwNS","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ghr8E":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _react = require("react");
-"use client";
-/**
- * @ignore - internal component.
- */ const GridContext = /*#__PURE__*/ _react.createContext();
-GridContext.displayName = "GridContext";
-exports.default = GridContext;
-
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iRwNS":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "getGridUtilityClass", ()=>getGridUtilityClass);
-var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
-var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
-var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
-var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
-function getGridUtilityClass(slot) {
-    return (0, _generateUtilityClassDefault.default)("MuiGrid", slot);
-}
-const SPACINGS = [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10
-];
-const DIRECTIONS = [
-    "column-reverse",
-    "column",
-    "row-reverse",
-    "row"
-];
-const WRAPS = [
-    "nowrap",
-    "wrap-reverse",
-    "wrap"
-];
-const GRID_SIZES = [
-    "auto",
-    true,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12
-];
-const gridClasses = (0, _generateUtilityClassesDefault.default)("MuiGrid", [
-    "root",
-    "container",
-    "item",
-    "zeroMinWidth",
-    // spacings
-    ...SPACINGS.map((spacing)=>`spacing-xs-${spacing}`),
-    // direction values
-    ...DIRECTIONS.map((direction)=>`direction-xs-${direction}`),
-    // wrap values
-    ...WRAPS.map((wrap)=>`wrap-xs-${wrap}`),
-    // grid sizes for all breakpoints
-    ...GRID_SIZES.map((size)=>`grid-xs-${size}`),
-    ...GRID_SIZES.map((size)=>`grid-sm-${size}`),
-    ...GRID_SIZES.map((size)=>`grid-md-${size}`),
-    ...GRID_SIZES.map((size)=>`grid-lg-${size}`),
-    ...GRID_SIZES.map((size)=>`grid-xl-${size}`)
-]);
-exports.default = gridClasses;
-
-},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jga6S":[function(require,module,exports) {
+},{"react":"21dqq","@mui/material/styles":"1lzai","classnames":"jocGM","@mui/material/Grid":"c17UE","@mui/material/Typography":"faxSz","@mui/utils":"iivny","../containers/Window":"jga6S","../containers/WorkspaceMosaic":"cGhqm","../containers/WorkspaceElastic":"bqRF4","../config/css-ns":"7FzFf","./IIIFDropTarget":"9AiKN","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jga6S":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _redux = require("redux");
@@ -10537,319 +14164,7 @@ WindowThumbnailSettings.defaultProps = {
     }
 };
 
-},{"react":"21dqq","@mui/material/styles":"1lzai","@mui/material/FormControlLabel":"gbxlC","@mui/material/ListSubheader":"kEPDP","@mui/material/MenuItem":"6tZ4p","@mui/icons-material/CropDinSharp":"fTHp6","./icons/ThumbnailNavigationBottomIcon":"5TmWI","./icons/ThumbnailNavigationRightIcon":"a73Ol","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gbxlC":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>(0, _formControlLabelDefault.default));
-parcelHelpers.export(exports, "formControlLabelClasses", ()=>(0, _formControlLabelClassesDefault.default));
-var _formControlLabel = require("./FormControlLabel");
-var _formControlLabelDefault = parcelHelpers.interopDefault(_formControlLabel);
-var _formControlLabelClasses = require("./formControlLabelClasses");
-var _formControlLabelClassesDefault = parcelHelpers.interopDefault(_formControlLabelClasses);
-parcelHelpers.exportAll(_formControlLabelClasses, exports);
-"use client";
-
-},{"./FormControlLabel":"5h0NR","./formControlLabelClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5h0NR":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "FormControlLabelRoot", ()=>FormControlLabelRoot);
-var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
-var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
-var _extends = require("@babel/runtime/helpers/esm/extends");
-var _extendsDefault = parcelHelpers.interopDefault(_extends);
-var _react = require("react");
-var _propTypes = require("prop-types");
-var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _clsx = require("clsx");
-var _clsxDefault = parcelHelpers.interopDefault(_clsx);
-var _refType = require("@mui/utils/refType");
-var _refTypeDefault = parcelHelpers.interopDefault(_refType);
-var _composeClasses = require("@mui/utils/composeClasses");
-var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
-var _formControl = require("../FormControl");
-var _stack = require("../Stack");
-var _stackDefault = parcelHelpers.interopDefault(_stack);
-var _typography = require("../Typography");
-var _typographyDefault = parcelHelpers.interopDefault(_typography);
-var _capitalize = require("../utils/capitalize");
-var _capitalizeDefault = parcelHelpers.interopDefault(_capitalize);
-var _styled = require("../styles/styled");
-var _styledDefault = parcelHelpers.interopDefault(_styled);
-var _useThemeProps = require("../styles/useThemeProps");
-var _useThemePropsDefault = parcelHelpers.interopDefault(_useThemeProps);
-var _formControlLabelClasses = require("./formControlLabelClasses");
-var _formControlLabelClassesDefault = parcelHelpers.interopDefault(_formControlLabelClasses);
-var _formControlState = require("../FormControl/formControlState");
-var _formControlStateDefault = parcelHelpers.interopDefault(_formControlState);
-var _jsxRuntime = require("react/jsx-runtime");
-"use client";
-const _excluded = [
-    "checked",
-    "className",
-    "componentsProps",
-    "control",
-    "disabled",
-    "disableTypography",
-    "inputRef",
-    "label",
-    "labelPlacement",
-    "name",
-    "onChange",
-    "required",
-    "slotProps",
-    "value"
-];
-const useUtilityClasses = (ownerState)=>{
-    const { classes, disabled, labelPlacement, error, required } = ownerState;
-    const slots = {
-        root: [
-            "root",
-            disabled && "disabled",
-            `labelPlacement${(0, _capitalizeDefault.default)(labelPlacement)}`,
-            error && "error",
-            required && "required"
-        ],
-        label: [
-            "label",
-            disabled && "disabled"
-        ],
-        asterisk: [
-            "asterisk",
-            error && "error"
-        ]
-    };
-    return (0, _composeClassesDefault.default)(slots, (0, _formControlLabelClasses.getFormControlLabelUtilityClasses), classes);
-};
-const FormControlLabelRoot = (0, _styledDefault.default)("label", {
-    name: "MuiFormControlLabel",
-    slot: "Root",
-    overridesResolver: (props, styles)=>{
-        const { ownerState } = props;
-        return [
-            {
-                [`& .${(0, _formControlLabelClassesDefault.default).label}`]: styles.label
-            },
-            styles.root,
-            styles[`labelPlacement${(0, _capitalizeDefault.default)(ownerState.labelPlacement)}`]
-        ];
-    }
-})(({ theme, ownerState })=>(0, _extendsDefault.default)({
-        display: "inline-flex",
-        alignItems: "center",
-        cursor: "pointer",
-        // For correct alignment with the text.
-        verticalAlign: "middle",
-        WebkitTapHighlightColor: "transparent",
-        marginLeft: -11,
-        marginRight: 16,
-        // used for row presentation of radio/checkbox
-        [`&.${(0, _formControlLabelClassesDefault.default).disabled}`]: {
-            cursor: "default"
-        }
-    }, ownerState.labelPlacement === "start" && {
-        flexDirection: "row-reverse",
-        marginLeft: 16,
-        // used for row presentation of radio/checkbox
-        marginRight: -11
-    }, ownerState.labelPlacement === "top" && {
-        flexDirection: "column-reverse",
-        marginLeft: 16
-    }, ownerState.labelPlacement === "bottom" && {
-        flexDirection: "column",
-        marginLeft: 16
-    }, {
-        [`& .${(0, _formControlLabelClassesDefault.default).label}`]: {
-            [`&.${(0, _formControlLabelClassesDefault.default).disabled}`]: {
-                color: (theme.vars || theme).palette.text.disabled
-            }
-        }
-    }));
-const AsteriskComponent = (0, _styledDefault.default)("span", {
-    name: "MuiFormControlLabel",
-    slot: "Asterisk",
-    overridesResolver: (props, styles)=>styles.asterisk
-})(({ theme })=>({
-        [`&.${(0, _formControlLabelClassesDefault.default).error}`]: {
-            color: (theme.vars || theme).palette.error.main
-        }
-    }));
-/**
- * Drop-in replacement of the `Radio`, `Switch` and `Checkbox` component.
- * Use this component if you want to display an extra label.
- */ const FormControlLabel = /*#__PURE__*/ _react.forwardRef(function FormControlLabel(inProps, ref) {
-    var _ref, _slotProps$typography;
-    const props = (0, _useThemePropsDefault.default)({
-        props: inProps,
-        name: "MuiFormControlLabel"
-    });
-    const { className, componentsProps = {}, control, disabled: disabledProp, disableTypography, label: labelProp, labelPlacement = "end", required: requiredProp, slotProps = {} } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
-    const muiFormControl = (0, _formControl.useFormControl)();
-    const disabled = (_ref = disabledProp != null ? disabledProp : control.props.disabled) != null ? _ref : muiFormControl == null ? void 0 : muiFormControl.disabled;
-    const required = requiredProp != null ? requiredProp : control.props.required;
-    const controlProps = {
-        disabled,
-        required
-    };
-    [
-        "checked",
-        "name",
-        "onChange",
-        "value",
-        "inputRef"
-    ].forEach((key)=>{
-        if (typeof control.props[key] === "undefined" && typeof props[key] !== "undefined") controlProps[key] = props[key];
-    });
-    const fcs = (0, _formControlStateDefault.default)({
-        props,
-        muiFormControl,
-        states: [
-            "error"
-        ]
-    });
-    const ownerState = (0, _extendsDefault.default)({}, props, {
-        disabled,
-        labelPlacement,
-        required,
-        error: fcs.error
-    });
-    const classes = useUtilityClasses(ownerState);
-    const typographySlotProps = (_slotProps$typography = slotProps.typography) != null ? _slotProps$typography : componentsProps.typography;
-    let label = labelProp;
-    if (label != null && label.type !== (0, _typographyDefault.default) && !disableTypography) label = /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _typographyDefault.default), (0, _extendsDefault.default)({
-        component: "span"
-    }, typographySlotProps, {
-        className: (0, _clsxDefault.default)(classes.label, typographySlotProps == null ? void 0 : typographySlotProps.className),
-        children: label
-    }));
-    return /*#__PURE__*/ (0, _jsxRuntime.jsxs)(FormControlLabelRoot, (0, _extendsDefault.default)({
-        className: (0, _clsxDefault.default)(classes.root, className),
-        ownerState: ownerState,
-        ref: ref
-    }, other, {
-        children: [
-            /*#__PURE__*/ _react.cloneElement(control, controlProps),
-            required ? /*#__PURE__*/ (0, _jsxRuntime.jsxs)((0, _stackDefault.default), {
-                display: "block",
-                children: [
-                    label,
-                    /*#__PURE__*/ (0, _jsxRuntime.jsxs)(AsteriskComponent, {
-                        ownerState: ownerState,
-                        "aria-hidden": true,
-                        className: classes.asterisk,
-                        children: [
-                            "\u2009",
-                            "*"
-                        ]
-                    })
-                ]
-            }) : label
-        ]
-    }));
-});
-FormControlLabel.propTypes /* remove-proptypes */  = {
-    // ┌────────────────────────────── Warning ──────────────────────────────┐
-    // │ These PropTypes are generated from the TypeScript type definitions. │
-    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
-    // └─────────────────────────────────────────────────────────────────────┘
-    /**
-   * If `true`, the component appears selected.
-   */ checked: (0, _propTypesDefault.default).bool,
-    /**
-   * Override or extend the styles applied to the component.
-   */ classes: (0, _propTypesDefault.default).object,
-    /**
-   * @ignore
-   */ className: (0, _propTypesDefault.default).string,
-    /**
-   * The props used for each slot inside.
-   * @default {}
-   */ componentsProps: (0, _propTypesDefault.default).shape({
-        typography: (0, _propTypesDefault.default).object
-    }),
-    /**
-   * A control element. For instance, it can be a `Radio`, a `Switch` or a `Checkbox`.
-   */ control: (0, _propTypesDefault.default).element.isRequired,
-    /**
-   * If `true`, the control is disabled.
-   */ disabled: (0, _propTypesDefault.default).bool,
-    /**
-   * If `true`, the label is rendered as it is passed without an additional typography node.
-   */ disableTypography: (0, _propTypesDefault.default).bool,
-    /**
-   * Pass a ref to the `input` element.
-   */ inputRef: (0, _refTypeDefault.default),
-    /**
-   * A text or an element to be used in an enclosing label element.
-   */ label: (0, _propTypesDefault.default).node,
-    /**
-   * The position of the label.
-   * @default 'end'
-   */ labelPlacement: (0, _propTypesDefault.default).oneOf([
-        "bottom",
-        "end",
-        "start",
-        "top"
-    ]),
-    /**
-   * @ignore
-   */ name: (0, _propTypesDefault.default).string,
-    /**
-   * Callback fired when the state is changed.
-   *
-   * @param {React.SyntheticEvent} event The event source of the callback.
-   * You can pull out the new checked state by accessing `event.target.checked` (boolean).
-   */ onChange: (0, _propTypesDefault.default).func,
-    /**
-   * If `true`, the label will indicate that the `input` is required.
-   */ required: (0, _propTypesDefault.default).bool,
-    /**
-   * The props used for each slot inside.
-   * @default {}
-   */ slotProps: (0, _propTypesDefault.default).shape({
-        typography: (0, _propTypesDefault.default).object
-    }),
-    /**
-   * The system prop that allows defining system overrides as well as additional CSS styles.
-   */ sx: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
-            (0, _propTypesDefault.default).func,
-            (0, _propTypesDefault.default).object,
-            (0, _propTypesDefault.default).bool
-        ])),
-        (0, _propTypesDefault.default).func,
-        (0, _propTypesDefault.default).object
-    ]),
-    /**
-   * The value of the component.
-   */ value: (0, _propTypesDefault.default).any
-};
-exports.default = FormControlLabel;
-
-},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"G7PIs","@mui/utils/refType":"cNuf9","@mui/utils/composeClasses":"4kKno","../FormControl":"2FZGq","../Stack":"cuThX","../Typography":"faxSz","../utils/capitalize":"lwNtZ","../styles/styled":"32xTg","../styles/useThemeProps":"dewuS","./formControlLabelClasses":"2PiDA","../FormControl/formControlState":"7wKpz","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2PiDA":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "getFormControlLabelUtilityClasses", ()=>getFormControlLabelUtilityClasses);
-var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
-var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
-var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
-var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
-function getFormControlLabelUtilityClasses(slot) {
-    return (0, _generateUtilityClassDefault.default)("MuiFormControlLabel", slot);
-}
-const formControlLabelClasses = (0, _generateUtilityClassesDefault.default)("MuiFormControlLabel", [
-    "root",
-    "labelPlacementStart",
-    "labelPlacementTop",
-    "labelPlacementBottom",
-    "disabled",
-    "label",
-    "error",
-    "required",
-    "asterisk"
-]);
-exports.default = formControlLabelClasses;
-
-},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fTHp6":[function(require,module,exports) {
+},{"react":"21dqq","@mui/material/styles":"1lzai","@mui/material/FormControlLabel":"gbxlC","@mui/material/ListSubheader":"kEPDP","@mui/material/MenuItem":"6tZ4p","@mui/icons-material/CropDinSharp":"fTHp6","./icons/ThumbnailNavigationBottomIcon":"5TmWI","./icons/ThumbnailNavigationRightIcon":"a73Ol","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fTHp6":[function(require,module,exports) {
 "use strict";
 "use client";
 var _interopRequireDefault = require("d5849cf5db15faf1");
@@ -12768,712 +16083,7 @@ WindowSideBar.defaultProps = {
     sideBarOpen: false
 };
 
-},{"react":"21dqq","@mui/material/styles":"1lzai","@mui/material/Drawer":"hMEec","../containers/WindowSideBarButtons":"93Gaf","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hMEec":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>(0, _drawerDefault.default));
-parcelHelpers.export(exports, "drawerClasses", ()=>(0, _drawerClassesDefault.default));
-var _drawer = require("./Drawer");
-var _drawerDefault = parcelHelpers.interopDefault(_drawer);
-var _drawerClasses = require("./drawerClasses");
-var _drawerClassesDefault = parcelHelpers.interopDefault(_drawerClasses);
-parcelHelpers.exportAll(_drawerClasses, exports);
-"use client";
-
-},{"./Drawer":"cLVEp","./drawerClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cLVEp":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "isHorizontal", ()=>isHorizontal);
-parcelHelpers.export(exports, "getAnchor", ()=>getAnchor);
-var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
-var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
-var _extends = require("@babel/runtime/helpers/esm/extends");
-var _extendsDefault = parcelHelpers.interopDefault(_extends);
-var _react = require("react");
-var _propTypes = require("prop-types");
-var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _clsx = require("clsx");
-var _clsxDefault = parcelHelpers.interopDefault(_clsx);
-var _integerPropType = require("@mui/utils/integerPropType");
-var _integerPropTypeDefault = parcelHelpers.interopDefault(_integerPropType);
-var _composeClasses = require("@mui/utils/composeClasses");
-var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
-var _rtlProvider = require("@mui/system/RtlProvider");
-var _modal = require("../Modal");
-var _modalDefault = parcelHelpers.interopDefault(_modal);
-var _slide = require("../Slide");
-var _slideDefault = parcelHelpers.interopDefault(_slide);
-var _paper = require("../Paper");
-var _paperDefault = parcelHelpers.interopDefault(_paper);
-var _capitalize = require("../utils/capitalize");
-var _capitalizeDefault = parcelHelpers.interopDefault(_capitalize);
-var _useTheme = require("../styles/useTheme");
-var _useThemeDefault = parcelHelpers.interopDefault(_useTheme);
-var _useThemeProps = require("../styles/useThemeProps");
-var _useThemePropsDefault = parcelHelpers.interopDefault(_useThemeProps);
-var _styled = require("../styles/styled");
-var _styledDefault = parcelHelpers.interopDefault(_styled);
-var _drawerClasses = require("./drawerClasses");
-var _jsxRuntime = require("react/jsx-runtime");
-"use client";
-const _excluded = [
-    "BackdropProps"
-], _excluded2 = [
-    "anchor",
-    "BackdropProps",
-    "children",
-    "className",
-    "elevation",
-    "hideBackdrop",
-    "ModalProps",
-    "onClose",
-    "open",
-    "PaperProps",
-    "SlideProps",
-    "TransitionComponent",
-    "transitionDuration",
-    "variant"
-];
-const overridesResolver = (props, styles)=>{
-    const { ownerState } = props;
-    return [
-        styles.root,
-        (ownerState.variant === "permanent" || ownerState.variant === "persistent") && styles.docked,
-        styles.modal
-    ];
-};
-const useUtilityClasses = (ownerState)=>{
-    const { classes, anchor, variant } = ownerState;
-    const slots = {
-        root: [
-            "root"
-        ],
-        docked: [
-            (variant === "permanent" || variant === "persistent") && "docked"
-        ],
-        modal: [
-            "modal"
-        ],
-        paper: [
-            "paper",
-            `paperAnchor${(0, _capitalizeDefault.default)(anchor)}`,
-            variant !== "temporary" && `paperAnchorDocked${(0, _capitalizeDefault.default)(anchor)}`
-        ]
-    };
-    return (0, _composeClassesDefault.default)(slots, (0, _drawerClasses.getDrawerUtilityClass), classes);
-};
-const DrawerRoot = (0, _styledDefault.default)((0, _modalDefault.default), {
-    name: "MuiDrawer",
-    slot: "Root",
-    overridesResolver
-})(({ theme })=>({
-        zIndex: (theme.vars || theme).zIndex.drawer
-    }));
-const DrawerDockedRoot = (0, _styledDefault.default)("div", {
-    shouldForwardProp: (0, _styled.rootShouldForwardProp),
-    name: "MuiDrawer",
-    slot: "Docked",
-    skipVariantsResolver: false,
-    overridesResolver
-})({
-    flex: "0 0 auto"
-});
-const DrawerPaper = (0, _styledDefault.default)((0, _paperDefault.default), {
-    name: "MuiDrawer",
-    slot: "Paper",
-    overridesResolver: (props, styles)=>{
-        const { ownerState } = props;
-        return [
-            styles.paper,
-            styles[`paperAnchor${(0, _capitalizeDefault.default)(ownerState.anchor)}`],
-            ownerState.variant !== "temporary" && styles[`paperAnchorDocked${(0, _capitalizeDefault.default)(ownerState.anchor)}`]
-        ];
-    }
-})(({ theme, ownerState })=>(0, _extendsDefault.default)({
-        overflowY: "auto",
-        display: "flex",
-        flexDirection: "column",
-        height: "100%",
-        flex: "1 0 auto",
-        zIndex: (theme.vars || theme).zIndex.drawer,
-        // Add iOS momentum scrolling for iOS < 13.0
-        WebkitOverflowScrolling: "touch",
-        // temporary style
-        position: "fixed",
-        top: 0,
-        // We disable the focus ring for mouse, touch and keyboard users.
-        // At some point, it would be better to keep it for keyboard users.
-        // :focus-ring CSS pseudo-class will help.
-        outline: 0
-    }, ownerState.anchor === "left" && {
-        left: 0
-    }, ownerState.anchor === "top" && {
-        top: 0,
-        left: 0,
-        right: 0,
-        height: "auto",
-        maxHeight: "100%"
-    }, ownerState.anchor === "right" && {
-        right: 0
-    }, ownerState.anchor === "bottom" && {
-        top: "auto",
-        left: 0,
-        bottom: 0,
-        right: 0,
-        height: "auto",
-        maxHeight: "100%"
-    }, ownerState.anchor === "left" && ownerState.variant !== "temporary" && {
-        borderRight: `1px solid ${(theme.vars || theme).palette.divider}`
-    }, ownerState.anchor === "top" && ownerState.variant !== "temporary" && {
-        borderBottom: `1px solid ${(theme.vars || theme).palette.divider}`
-    }, ownerState.anchor === "right" && ownerState.variant !== "temporary" && {
-        borderLeft: `1px solid ${(theme.vars || theme).palette.divider}`
-    }, ownerState.anchor === "bottom" && ownerState.variant !== "temporary" && {
-        borderTop: `1px solid ${(theme.vars || theme).palette.divider}`
-    }));
-const oppositeDirection = {
-    left: "right",
-    right: "left",
-    top: "down",
-    bottom: "up"
-};
-function isHorizontal(anchor) {
-    return [
-        "left",
-        "right"
-    ].indexOf(anchor) !== -1;
-}
-function getAnchor({ direction }, anchor) {
-    return direction === "rtl" && isHorizontal(anchor) ? oppositeDirection[anchor] : anchor;
-}
-/**
- * The props of the [Modal](/material-ui/api/modal/) component are available
- * when `variant="temporary"` is set.
- */ const Drawer = /*#__PURE__*/ _react.forwardRef(function Drawer(inProps, ref) {
-    const props = (0, _useThemePropsDefault.default)({
-        props: inProps,
-        name: "MuiDrawer"
-    });
-    const theme = (0, _useThemeDefault.default)();
-    const isRtl = (0, _rtlProvider.useRtl)();
-    const defaultTransitionDuration = {
-        enter: theme.transitions.duration.enteringScreen,
-        exit: theme.transitions.duration.leavingScreen
-    };
-    const { anchor: anchorProp = "left", BackdropProps, children, className, elevation = 16, hideBackdrop = false, ModalProps: { BackdropProps: BackdropPropsProp } = {}, onClose, open = false, PaperProps = {}, SlideProps, // eslint-disable-next-line react/prop-types
-    TransitionComponent = (0, _slideDefault.default), transitionDuration = defaultTransitionDuration, variant = "temporary" } = props, ModalProps = (0, _objectWithoutPropertiesLooseDefault.default)(props.ModalProps, _excluded), other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded2);
-    // Let's assume that the Drawer will always be rendered on user space.
-    // We use this state is order to skip the appear transition during the
-    // initial mount of the component.
-    const mounted = _react.useRef(false);
-    _react.useEffect(()=>{
-        mounted.current = true;
-    }, []);
-    const anchorInvariant = getAnchor({
-        direction: isRtl ? "rtl" : "ltr"
-    }, anchorProp);
-    const anchor = anchorProp;
-    const ownerState = (0, _extendsDefault.default)({}, props, {
-        anchor,
-        elevation,
-        open,
-        variant
-    }, other);
-    const classes = useUtilityClasses(ownerState);
-    const drawer = /*#__PURE__*/ (0, _jsxRuntime.jsx)(DrawerPaper, (0, _extendsDefault.default)({
-        elevation: variant === "temporary" ? elevation : 0,
-        square: true
-    }, PaperProps, {
-        className: (0, _clsxDefault.default)(classes.paper, PaperProps.className),
-        ownerState: ownerState,
-        children: children
-    }));
-    if (variant === "permanent") return /*#__PURE__*/ (0, _jsxRuntime.jsx)(DrawerDockedRoot, (0, _extendsDefault.default)({
-        className: (0, _clsxDefault.default)(classes.root, classes.docked, className),
-        ownerState: ownerState,
-        ref: ref
-    }, other, {
-        children: drawer
-    }));
-    const slidingDrawer = /*#__PURE__*/ (0, _jsxRuntime.jsx)(TransitionComponent, (0, _extendsDefault.default)({
-        in: open,
-        direction: oppositeDirection[anchorInvariant],
-        timeout: transitionDuration,
-        appear: mounted.current
-    }, SlideProps, {
-        children: drawer
-    }));
-    if (variant === "persistent") return /*#__PURE__*/ (0, _jsxRuntime.jsx)(DrawerDockedRoot, (0, _extendsDefault.default)({
-        className: (0, _clsxDefault.default)(classes.root, classes.docked, className),
-        ownerState: ownerState,
-        ref: ref
-    }, other, {
-        children: slidingDrawer
-    }));
-    // variant === temporary
-    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(DrawerRoot, (0, _extendsDefault.default)({
-        BackdropProps: (0, _extendsDefault.default)({}, BackdropProps, BackdropPropsProp, {
-            transitionDuration
-        }),
-        className: (0, _clsxDefault.default)(classes.root, classes.modal, className),
-        open: open,
-        ownerState: ownerState,
-        onClose: onClose,
-        hideBackdrop: hideBackdrop,
-        ref: ref
-    }, other, ModalProps, {
-        children: slidingDrawer
-    }));
-});
-Drawer.propTypes /* remove-proptypes */  = {
-    // ┌────────────────────────────── Warning ──────────────────────────────┐
-    // │ These PropTypes are generated from the TypeScript type definitions. │
-    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
-    // └─────────────────────────────────────────────────────────────────────┘
-    /**
-   * Side from which the drawer will appear.
-   * @default 'left'
-   */ anchor: (0, _propTypesDefault.default).oneOf([
-        "bottom",
-        "left",
-        "right",
-        "top"
-    ]),
-    /**
-   * @ignore
-   */ BackdropProps: (0, _propTypesDefault.default).object,
-    /**
-   * The content of the component.
-   */ children: (0, _propTypesDefault.default).node,
-    /**
-   * Override or extend the styles applied to the component.
-   */ classes: (0, _propTypesDefault.default).object,
-    /**
-   * @ignore
-   */ className: (0, _propTypesDefault.default).string,
-    /**
-   * The elevation of the drawer.
-   * @default 16
-   */ elevation: (0, _integerPropTypeDefault.default),
-    /**
-   * If `true`, the backdrop is not rendered.
-   * @default false
-   */ hideBackdrop: (0, _propTypesDefault.default).bool,
-    /**
-   * Props applied to the [`Modal`](/material-ui/api/modal/) element.
-   * @default {}
-   */ ModalProps: (0, _propTypesDefault.default).object,
-    /**
-   * Callback fired when the component requests to be closed.
-   * The `reason` parameter can optionally be used to control the response to `onClose`.
-   *
-   * @param {object} event The event source of the callback.
-   * @param {string} reason Can be: `"escapeKeyDown"`, `"backdropClick"`.
-   */ onClose: (0, _propTypesDefault.default).func,
-    /**
-   * If `true`, the component is shown.
-   * @default false
-   */ open: (0, _propTypesDefault.default).bool,
-    /**
-   * Props applied to the [`Paper`](/material-ui/api/paper/) element.
-   * @default {}
-   */ PaperProps: (0, _propTypesDefault.default).object,
-    /**
-   * Props applied to the [`Slide`](/material-ui/api/slide/) element.
-   */ SlideProps: (0, _propTypesDefault.default).object,
-    /**
-   * The system prop that allows defining system overrides as well as additional CSS styles.
-   */ sx: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
-            (0, _propTypesDefault.default).func,
-            (0, _propTypesDefault.default).object,
-            (0, _propTypesDefault.default).bool
-        ])),
-        (0, _propTypesDefault.default).func,
-        (0, _propTypesDefault.default).object
-    ]),
-    /**
-   * The duration for the transition, in milliseconds.
-   * You may specify a single timeout for all transitions, or individually with an object.
-   * @default {
-   *   enter: theme.transitions.duration.enteringScreen,
-   *   exit: theme.transitions.duration.leavingScreen,
-   * }
-   */ transitionDuration: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).number,
-        (0, _propTypesDefault.default).shape({
-            appear: (0, _propTypesDefault.default).number,
-            enter: (0, _propTypesDefault.default).number,
-            exit: (0, _propTypesDefault.default).number
-        })
-    ]),
-    /**
-   * The variant to use.
-   * @default 'temporary'
-   */ variant: (0, _propTypesDefault.default).oneOf([
-        "permanent",
-        "persistent",
-        "temporary"
-    ])
-};
-exports.default = Drawer;
-
-},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"G7PIs","@mui/utils/integerPropType":"T93rM","@mui/utils/composeClasses":"4kKno","@mui/system/RtlProvider":"4iqca","../Modal":"lSUh1","../Slide":"fZVcF","../Paper":"6IiTP","../utils/capitalize":"lwNtZ","../styles/useTheme":"5nWMX","../styles/useThemeProps":"dewuS","../styles/styled":"32xTg","./drawerClasses":"aFQC1","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fZVcF":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>(0, _slideDefault.default));
-var _slide = require("./Slide");
-var _slideDefault = parcelHelpers.interopDefault(_slide);
-"use client";
-
-},{"./Slide":"eCirY","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eCirY":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "setTranslateValue", ()=>setTranslateValue);
-var _extends = require("@babel/runtime/helpers/esm/extends");
-var _extendsDefault = parcelHelpers.interopDefault(_extends);
-var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
-var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
-var _react = require("react");
-var _propTypes = require("prop-types");
-var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _reactTransitionGroup = require("react-transition-group");
-var _chainPropTypes = require("@mui/utils/chainPropTypes");
-var _chainPropTypesDefault = parcelHelpers.interopDefault(_chainPropTypes);
-var _htmlelementType = require("@mui/utils/HTMLElementType");
-var _htmlelementTypeDefault = parcelHelpers.interopDefault(_htmlelementType);
-var _elementAcceptingRef = require("@mui/utils/elementAcceptingRef");
-var _elementAcceptingRefDefault = parcelHelpers.interopDefault(_elementAcceptingRef);
-var _debounce = require("../utils/debounce");
-var _debounceDefault = parcelHelpers.interopDefault(_debounce);
-var _useForkRef = require("../utils/useForkRef");
-var _useForkRefDefault = parcelHelpers.interopDefault(_useForkRef);
-var _useTheme = require("../styles/useTheme");
-var _useThemeDefault = parcelHelpers.interopDefault(_useTheme);
-var _utils = require("../transitions/utils");
-var _utils1 = require("../utils");
-// Translate the node so it can't be seen on the screen.
-// Later, we're going to translate the node back to its original location with `none`.
-var _jsxRuntime = require("react/jsx-runtime");
-"use client";
-const _excluded = [
-    "addEndListener",
-    "appear",
-    "children",
-    "container",
-    "direction",
-    "easing",
-    "in",
-    "onEnter",
-    "onEntered",
-    "onEntering",
-    "onExit",
-    "onExited",
-    "onExiting",
-    "style",
-    "timeout",
-    "TransitionComponent"
-];
-function getTranslateValue(direction, node, resolvedContainer) {
-    const rect = node.getBoundingClientRect();
-    const containerRect = resolvedContainer && resolvedContainer.getBoundingClientRect();
-    const containerWindow = (0, _utils1.ownerWindow)(node);
-    let transform;
-    if (node.fakeTransform) transform = node.fakeTransform;
-    else {
-        const computedStyle = containerWindow.getComputedStyle(node);
-        transform = computedStyle.getPropertyValue("-webkit-transform") || computedStyle.getPropertyValue("transform");
-    }
-    let offsetX = 0;
-    let offsetY = 0;
-    if (transform && transform !== "none" && typeof transform === "string") {
-        const transformValues = transform.split("(")[1].split(")")[0].split(",");
-        offsetX = parseInt(transformValues[4], 10);
-        offsetY = parseInt(transformValues[5], 10);
-    }
-    if (direction === "left") {
-        if (containerRect) return `translateX(${containerRect.right + offsetX - rect.left}px)`;
-        return `translateX(${containerWindow.innerWidth + offsetX - rect.left}px)`;
-    }
-    if (direction === "right") {
-        if (containerRect) return `translateX(-${rect.right - containerRect.left - offsetX}px)`;
-        return `translateX(-${rect.left + rect.width - offsetX}px)`;
-    }
-    if (direction === "up") {
-        if (containerRect) return `translateY(${containerRect.bottom + offsetY - rect.top}px)`;
-        return `translateY(${containerWindow.innerHeight + offsetY - rect.top}px)`;
-    }
-    // direction === 'down'
-    if (containerRect) return `translateY(-${rect.top - containerRect.top + rect.height - offsetY}px)`;
-    return `translateY(-${rect.top + rect.height - offsetY}px)`;
-}
-function resolveContainer(containerPropProp) {
-    return typeof containerPropProp === "function" ? containerPropProp() : containerPropProp;
-}
-function setTranslateValue(direction, node, containerProp) {
-    const resolvedContainer = resolveContainer(containerProp);
-    const transform = getTranslateValue(direction, node, resolvedContainer);
-    if (transform) {
-        node.style.webkitTransform = transform;
-        node.style.transform = transform;
-    }
-}
-/**
- * The Slide transition is used by the [Drawer](/material-ui/react-drawer/) component.
- * It uses [react-transition-group](https://github.com/reactjs/react-transition-group) internally.
- */ const Slide = /*#__PURE__*/ _react.forwardRef(function Slide(props, ref) {
-    const theme = (0, _useThemeDefault.default)();
-    const defaultEasing = {
-        enter: theme.transitions.easing.easeOut,
-        exit: theme.transitions.easing.sharp
-    };
-    const defaultTimeout = {
-        enter: theme.transitions.duration.enteringScreen,
-        exit: theme.transitions.duration.leavingScreen
-    };
-    const { addEndListener, appear = true, children, container: containerProp, direction = "down", easing: easingProp = defaultEasing, in: inProp, onEnter, onEntered, onEntering, onExit, onExited, onExiting, style, timeout = defaultTimeout, // eslint-disable-next-line react/prop-types
-    TransitionComponent = (0, _reactTransitionGroup.Transition) } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
-    const childrenRef = _react.useRef(null);
-    const handleRef = (0, _useForkRefDefault.default)(children.ref, childrenRef, ref);
-    const normalizedTransitionCallback = (callback)=>(isAppearing)=>{
-            if (callback) {
-                // onEnterXxx and onExitXxx callbacks have a different arguments.length value.
-                if (isAppearing === undefined) callback(childrenRef.current);
-                else callback(childrenRef.current, isAppearing);
-            }
-        };
-    const handleEnter = normalizedTransitionCallback((node, isAppearing)=>{
-        setTranslateValue(direction, node, containerProp);
-        (0, _utils.reflow)(node);
-        if (onEnter) onEnter(node, isAppearing);
-    });
-    const handleEntering = normalizedTransitionCallback((node, isAppearing)=>{
-        const transitionProps = (0, _utils.getTransitionProps)({
-            timeout,
-            style,
-            easing: easingProp
-        }, {
-            mode: "enter"
-        });
-        node.style.webkitTransition = theme.transitions.create("-webkit-transform", (0, _extendsDefault.default)({}, transitionProps));
-        node.style.transition = theme.transitions.create("transform", (0, _extendsDefault.default)({}, transitionProps));
-        node.style.webkitTransform = "none";
-        node.style.transform = "none";
-        if (onEntering) onEntering(node, isAppearing);
-    });
-    const handleEntered = normalizedTransitionCallback(onEntered);
-    const handleExiting = normalizedTransitionCallback(onExiting);
-    const handleExit = normalizedTransitionCallback((node)=>{
-        const transitionProps = (0, _utils.getTransitionProps)({
-            timeout,
-            style,
-            easing: easingProp
-        }, {
-            mode: "exit"
-        });
-        node.style.webkitTransition = theme.transitions.create("-webkit-transform", transitionProps);
-        node.style.transition = theme.transitions.create("transform", transitionProps);
-        setTranslateValue(direction, node, containerProp);
-        if (onExit) onExit(node);
-    });
-    const handleExited = normalizedTransitionCallback((node)=>{
-        // No need for transitions when the component is hidden
-        node.style.webkitTransition = "";
-        node.style.transition = "";
-        if (onExited) onExited(node);
-    });
-    const handleAddEndListener = (next)=>{
-        if (addEndListener) // Old call signature before `react-transition-group` implemented `nodeRef`
-        addEndListener(childrenRef.current, next);
-    };
-    const updatePosition = _react.useCallback(()=>{
-        if (childrenRef.current) setTranslateValue(direction, childrenRef.current, containerProp);
-    }, [
-        direction,
-        containerProp
-    ]);
-    _react.useEffect(()=>{
-        // Skip configuration where the position is screen size invariant.
-        if (inProp || direction === "down" || direction === "right") return undefined;
-        const handleResize = (0, _debounceDefault.default)(()=>{
-            if (childrenRef.current) setTranslateValue(direction, childrenRef.current, containerProp);
-        });
-        const containerWindow = (0, _utils1.ownerWindow)(childrenRef.current);
-        containerWindow.addEventListener("resize", handleResize);
-        return ()=>{
-            handleResize.clear();
-            containerWindow.removeEventListener("resize", handleResize);
-        };
-    }, [
-        direction,
-        inProp,
-        containerProp
-    ]);
-    _react.useEffect(()=>{
-        if (!inProp) // We need to update the position of the drawer when the direction change and
-        // when it's hidden.
-        updatePosition();
-    }, [
-        inProp,
-        updatePosition
-    ]);
-    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(TransitionComponent, (0, _extendsDefault.default)({
-        nodeRef: childrenRef,
-        onEnter: handleEnter,
-        onEntered: handleEntered,
-        onEntering: handleEntering,
-        onExit: handleExit,
-        onExited: handleExited,
-        onExiting: handleExiting,
-        addEndListener: handleAddEndListener,
-        appear: appear,
-        in: inProp,
-        timeout: timeout
-    }, other, {
-        children: (state, childProps)=>{
-            return /*#__PURE__*/ _react.cloneElement(children, (0, _extendsDefault.default)({
-                ref: handleRef,
-                style: (0, _extendsDefault.default)({
-                    visibility: state === "exited" && !inProp ? "hidden" : undefined
-                }, style, children.props.style)
-            }, childProps));
-        }
-    }));
-});
-Slide.propTypes /* remove-proptypes */  = {
-    // ┌────────────────────────────── Warning ──────────────────────────────┐
-    // │ These PropTypes are generated from the TypeScript type definitions. │
-    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
-    // └─────────────────────────────────────────────────────────────────────┘
-    /**
-   * Add a custom transition end trigger. Called with the transitioning DOM
-   * node and a done callback. Allows for more fine grained transition end
-   * logic. Note: Timeouts are still used as a fallback if provided.
-   */ addEndListener: (0, _propTypesDefault.default).func,
-    /**
-   * Perform the enter transition when it first mounts if `in` is also `true`.
-   * Set this to `false` to disable this behavior.
-   * @default true
-   */ appear: (0, _propTypesDefault.default).bool,
-    /**
-   * A single child content element.
-   */ children: (0, _elementAcceptingRefDefault.default).isRequired,
-    /**
-   * An HTML element, or a function that returns one.
-   * It's used to set the container the Slide is transitioning from.
-   */ container: (0, _chainPropTypesDefault.default)((0, _propTypesDefault.default).oneOfType([
-        (0, _htmlelementTypeDefault.default),
-        (0, _propTypesDefault.default).func
-    ]), (props)=>{
-        if (props.open) {
-            const resolvedContainer = resolveContainer(props.container);
-            if (resolvedContainer && resolvedContainer.nodeType === 1) {
-                const box = resolvedContainer.getBoundingClientRect();
-                if (box.top === 0 && box.left === 0 && box.right === 0 && box.bottom === 0) return new Error([
-                    "MUI: The `container` prop provided to the component is invalid.",
-                    "The anchor element should be part of the document layout.",
-                    "Make sure the element is present in the document or that it's not display none."
-                ].join("\n"));
-            } else if (!resolvedContainer || typeof resolvedContainer.getBoundingClientRect !== "function" || resolvedContainer.contextElement != null && resolvedContainer.contextElement.nodeType !== 1) return new Error([
-                "MUI: The `container` prop provided to the component is invalid.",
-                "It should be an HTML element instance."
-            ].join("\n"));
-        }
-        return null;
-    }),
-    /**
-   * Direction the child node will enter from.
-   * @default 'down'
-   */ direction: (0, _propTypesDefault.default).oneOf([
-        "down",
-        "left",
-        "right",
-        "up"
-    ]),
-    /**
-   * The transition timing function.
-   * You may specify a single easing or a object containing enter and exit values.
-   * @default {
-   *   enter: theme.transitions.easing.easeOut,
-   *   exit: theme.transitions.easing.sharp,
-   * }
-   */ easing: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).shape({
-            enter: (0, _propTypesDefault.default).string,
-            exit: (0, _propTypesDefault.default).string
-        }),
-        (0, _propTypesDefault.default).string
-    ]),
-    /**
-   * If `true`, the component will transition in.
-   */ in: (0, _propTypesDefault.default).bool,
-    /**
-   * @ignore
-   */ onEnter: (0, _propTypesDefault.default).func,
-    /**
-   * @ignore
-   */ onEntered: (0, _propTypesDefault.default).func,
-    /**
-   * @ignore
-   */ onEntering: (0, _propTypesDefault.default).func,
-    /**
-   * @ignore
-   */ onExit: (0, _propTypesDefault.default).func,
-    /**
-   * @ignore
-   */ onExited: (0, _propTypesDefault.default).func,
-    /**
-   * @ignore
-   */ onExiting: (0, _propTypesDefault.default).func,
-    /**
-   * @ignore
-   */ style: (0, _propTypesDefault.default).object,
-    /**
-   * The duration for the transition, in milliseconds.
-   * You may specify a single timeout for all transitions, or individually with an object.
-   * @default {
-   *   enter: theme.transitions.duration.enteringScreen,
-   *   exit: theme.transitions.duration.leavingScreen,
-   * }
-   */ timeout: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).number,
-        (0, _propTypesDefault.default).shape({
-            appear: (0, _propTypesDefault.default).number,
-            enter: (0, _propTypesDefault.default).number,
-            exit: (0, _propTypesDefault.default).number
-        })
-    ])
-};
-exports.default = Slide;
-
-},{"@babel/runtime/helpers/esm/extends":"fTBFS","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","react":"21dqq","prop-types":"7wKI2","react-transition-group":"fZSkB","@mui/utils/chainPropTypes":"d7DEu","@mui/utils/HTMLElementType":"kvNNC","@mui/utils/elementAcceptingRef":"jxtYN","../utils/debounce":"aggDu","../utils/useForkRef":"Q1vCZ","../styles/useTheme":"5nWMX","../transitions/utils":"bSIvX","../utils":"9bp9M","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aFQC1":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "getDrawerUtilityClass", ()=>getDrawerUtilityClass);
-var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
-var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
-var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
-var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
-function getDrawerUtilityClass(slot) {
-    return (0, _generateUtilityClassDefault.default)("MuiDrawer", slot);
-}
-const drawerClasses = (0, _generateUtilityClassesDefault.default)("MuiDrawer", [
-    "root",
-    "docked",
-    "paper",
-    "paperAnchorLeft",
-    "paperAnchorRight",
-    "paperAnchorTop",
-    "paperAnchorBottom",
-    "paperAnchorDockedLeft",
-    "paperAnchorDockedRight",
-    "paperAnchorDockedTop",
-    "paperAnchorDockedBottom",
-    "modal"
-]);
-exports.default = drawerClasses;
-
-},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"93Gaf":[function(require,module,exports) {
+},{"react":"21dqq","@mui/material/styles":"1lzai","@mui/material/Drawer":"hMEec","../containers/WindowSideBarButtons":"93Gaf","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"93Gaf":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _redux = require("redux");
@@ -14820,512 +17430,7 @@ ErrorContent.defaultProps = {
     }
 };
 
-},{"react":"21dqq","@mui/material/styles":"1lzai","@mui/material/Accordion":"fQZka","@mui/material/AccordionSummary":"0u6LC","@mui/material/AccordionDetails":"8mhf8","@mui/material/Stack":"cuThX","@mui/material/Alert":"bJH0A","@mui/icons-material/ExpandMore":"7hPin","./PluginHook":"btJE7","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bJH0A":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>(0, _alertDefault.default));
-parcelHelpers.export(exports, "alertClasses", ()=>(0, _alertClassesDefault.default));
-var _alert = require("./Alert");
-var _alertDefault = parcelHelpers.interopDefault(_alert);
-var _alertClasses = require("./alertClasses");
-var _alertClassesDefault = parcelHelpers.interopDefault(_alertClasses);
-parcelHelpers.exportAll(_alertClasses, exports);
-"use client";
-
-},{"./Alert":"drgv7","./alertClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"drgv7":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
-var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
-var _extends = require("@babel/runtime/helpers/esm/extends");
-var _extendsDefault = parcelHelpers.interopDefault(_extends);
-var _react = require("react");
-var _propTypes = require("prop-types");
-var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _clsx = require("clsx");
-var _clsxDefault = parcelHelpers.interopDefault(_clsx);
-var _composeClasses = require("@mui/utils/composeClasses");
-var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
-var _colorManipulator = require("@mui/system/colorManipulator");
-var _zeroStyled = require("../zero-styled");
-var _useSlot = require("../utils/useSlot");
-var _useSlotDefault = parcelHelpers.interopDefault(_useSlot);
-var _capitalize = require("../utils/capitalize");
-var _capitalizeDefault = parcelHelpers.interopDefault(_capitalize);
-var _paper = require("../Paper");
-var _paperDefault = parcelHelpers.interopDefault(_paper);
-var _alertClasses = require("./alertClasses");
-var _alertClassesDefault = parcelHelpers.interopDefault(_alertClasses);
-var _iconButton = require("../IconButton");
-var _iconButtonDefault = parcelHelpers.interopDefault(_iconButton);
-var _successOutlined = require("../internal/svg-icons/SuccessOutlined");
-var _successOutlinedDefault = parcelHelpers.interopDefault(_successOutlined);
-var _reportProblemOutlined = require("../internal/svg-icons/ReportProblemOutlined");
-var _reportProblemOutlinedDefault = parcelHelpers.interopDefault(_reportProblemOutlined);
-var _errorOutline = require("../internal/svg-icons/ErrorOutline");
-var _errorOutlineDefault = parcelHelpers.interopDefault(_errorOutline);
-var _infoOutlined = require("../internal/svg-icons/InfoOutlined");
-var _infoOutlinedDefault = parcelHelpers.interopDefault(_infoOutlined);
-var _close = require("../internal/svg-icons/Close");
-var _closeDefault = parcelHelpers.interopDefault(_close);
-var _jsxRuntime = require("react/jsx-runtime");
-"use client";
-const _excluded = [
-    "action",
-    "children",
-    "className",
-    "closeText",
-    "color",
-    "components",
-    "componentsProps",
-    "icon",
-    "iconMapping",
-    "onClose",
-    "role",
-    "severity",
-    "slotProps",
-    "slots",
-    "variant"
-];
-const useThemeProps = (0, _zeroStyled.createUseThemeProps)("MuiAlert");
-const useUtilityClasses = (ownerState)=>{
-    const { variant, color, severity, classes } = ownerState;
-    const slots = {
-        root: [
-            "root",
-            `color${(0, _capitalizeDefault.default)(color || severity)}`,
-            `${variant}${(0, _capitalizeDefault.default)(color || severity)}`,
-            `${variant}`
-        ],
-        icon: [
-            "icon"
-        ],
-        message: [
-            "message"
-        ],
-        action: [
-            "action"
-        ]
-    };
-    return (0, _composeClassesDefault.default)(slots, (0, _alertClasses.getAlertUtilityClass), classes);
-};
-const AlertRoot = (0, _zeroStyled.styled)((0, _paperDefault.default), {
-    name: "MuiAlert",
-    slot: "Root",
-    overridesResolver: (props, styles)=>{
-        const { ownerState } = props;
-        return [
-            styles.root,
-            styles[ownerState.variant],
-            styles[`${ownerState.variant}${(0, _capitalizeDefault.default)(ownerState.color || ownerState.severity)}`]
-        ];
-    }
-})(({ theme })=>{
-    const getColor = theme.palette.mode === "light" ? (0, _colorManipulator.darken) : (0, _colorManipulator.lighten);
-    const getBackgroundColor = theme.palette.mode === "light" ? (0, _colorManipulator.lighten) : (0, _colorManipulator.darken);
-    return (0, _extendsDefault.default)({}, theme.typography.body2, {
-        backgroundColor: "transparent",
-        display: "flex",
-        padding: "6px 16px",
-        variants: [
-            ...Object.entries(theme.palette).filter(([, value])=>value.main && value.light).map(([color])=>({
-                    props: {
-                        colorSeverity: color,
-                        variant: "standard"
-                    },
-                    style: {
-                        color: theme.vars ? theme.vars.palette.Alert[`${color}Color`] : getColor(theme.palette[color].light, 0.6),
-                        backgroundColor: theme.vars ? theme.vars.palette.Alert[`${color}StandardBg`] : getBackgroundColor(theme.palette[color].light, 0.9),
-                        [`& .${(0, _alertClassesDefault.default).icon}`]: theme.vars ? {
-                            color: theme.vars.palette.Alert[`${color}IconColor`]
-                        } : {
-                            color: theme.palette[color].main
-                        }
-                    }
-                })),
-            ...Object.entries(theme.palette).filter(([, value])=>value.main && value.light).map(([color])=>({
-                    props: {
-                        colorSeverity: color,
-                        variant: "outlined"
-                    },
-                    style: {
-                        color: theme.vars ? theme.vars.palette.Alert[`${color}Color`] : getColor(theme.palette[color].light, 0.6),
-                        border: `1px solid ${(theme.vars || theme).palette[color].light}`,
-                        [`& .${(0, _alertClassesDefault.default).icon}`]: theme.vars ? {
-                            color: theme.vars.palette.Alert[`${color}IconColor`]
-                        } : {
-                            color: theme.palette[color].main
-                        }
-                    }
-                })),
-            ...Object.entries(theme.palette).filter(([, value])=>value.main && value.dark).map(([color])=>({
-                    props: {
-                        colorSeverity: color,
-                        variant: "filled"
-                    },
-                    style: (0, _extendsDefault.default)({
-                        fontWeight: theme.typography.fontWeightMedium
-                    }, theme.vars ? {
-                        color: theme.vars.palette.Alert[`${color}FilledColor`],
-                        backgroundColor: theme.vars.palette.Alert[`${color}FilledBg`]
-                    } : {
-                        backgroundColor: theme.palette.mode === "dark" ? theme.palette[color].dark : theme.palette[color].main,
-                        color: theme.palette.getContrastText(theme.palette[color].main)
-                    })
-                }))
-        ]
-    });
-});
-const AlertIcon = (0, _zeroStyled.styled)("div", {
-    name: "MuiAlert",
-    slot: "Icon",
-    overridesResolver: (props, styles)=>styles.icon
-})({
-    marginRight: 12,
-    padding: "7px 0",
-    display: "flex",
-    fontSize: 22,
-    opacity: 0.9
-});
-const AlertMessage = (0, _zeroStyled.styled)("div", {
-    name: "MuiAlert",
-    slot: "Message",
-    overridesResolver: (props, styles)=>styles.message
-})({
-    padding: "8px 0",
-    minWidth: 0,
-    overflow: "auto"
-});
-const AlertAction = (0, _zeroStyled.styled)("div", {
-    name: "MuiAlert",
-    slot: "Action",
-    overridesResolver: (props, styles)=>styles.action
-})({
-    display: "flex",
-    alignItems: "flex-start",
-    padding: "4px 0 0 16px",
-    marginLeft: "auto",
-    marginRight: -8
-});
-const defaultIconMapping = {
-    success: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _successOutlinedDefault.default), {
-        fontSize: "inherit"
-    }),
-    warning: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _reportProblemOutlinedDefault.default), {
-        fontSize: "inherit"
-    }),
-    error: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _errorOutlineDefault.default), {
-        fontSize: "inherit"
-    }),
-    info: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _infoOutlinedDefault.default), {
-        fontSize: "inherit"
-    })
-};
-const Alert = /*#__PURE__*/ _react.forwardRef(function Alert(inProps, ref) {
-    const props = useThemeProps({
-        props: inProps,
-        name: "MuiAlert"
-    });
-    const { action, children, className, closeText = "Close", color, components = {}, componentsProps = {}, icon, iconMapping = defaultIconMapping, onClose, role = "alert", severity = "success", slotProps = {}, slots = {}, variant = "standard" } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
-    const ownerState = (0, _extendsDefault.default)({}, props, {
-        color,
-        severity,
-        variant,
-        colorSeverity: color || severity
-    });
-    const classes = useUtilityClasses(ownerState);
-    const externalForwardedProps = {
-        slots: (0, _extendsDefault.default)({
-            closeButton: components.CloseButton,
-            closeIcon: components.CloseIcon
-        }, slots),
-        slotProps: (0, _extendsDefault.default)({}, componentsProps, slotProps)
-    };
-    const [CloseButtonSlot, closeButtonProps] = (0, _useSlotDefault.default)("closeButton", {
-        elementType: (0, _iconButtonDefault.default),
-        externalForwardedProps,
-        ownerState
-    });
-    const [CloseIconSlot, closeIconProps] = (0, _useSlotDefault.default)("closeIcon", {
-        elementType: (0, _closeDefault.default),
-        externalForwardedProps,
-        ownerState
-    });
-    return /*#__PURE__*/ (0, _jsxRuntime.jsxs)(AlertRoot, (0, _extendsDefault.default)({
-        role: role,
-        elevation: 0,
-        ownerState: ownerState,
-        className: (0, _clsxDefault.default)(classes.root, className),
-        ref: ref
-    }, other, {
-        children: [
-            icon !== false ? /*#__PURE__*/ (0, _jsxRuntime.jsx)(AlertIcon, {
-                ownerState: ownerState,
-                className: classes.icon,
-                children: icon || iconMapping[severity] || defaultIconMapping[severity]
-            }) : null,
-            /*#__PURE__*/ (0, _jsxRuntime.jsx)(AlertMessage, {
-                ownerState: ownerState,
-                className: classes.message,
-                children: children
-            }),
-            action != null ? /*#__PURE__*/ (0, _jsxRuntime.jsx)(AlertAction, {
-                ownerState: ownerState,
-                className: classes.action,
-                children: action
-            }) : null,
-            action == null && onClose ? /*#__PURE__*/ (0, _jsxRuntime.jsx)(AlertAction, {
-                ownerState: ownerState,
-                className: classes.action,
-                children: /*#__PURE__*/ (0, _jsxRuntime.jsx)(CloseButtonSlot, (0, _extendsDefault.default)({
-                    size: "small",
-                    "aria-label": closeText,
-                    title: closeText,
-                    color: "inherit",
-                    onClick: onClose
-                }, closeButtonProps, {
-                    children: /*#__PURE__*/ (0, _jsxRuntime.jsx)(CloseIconSlot, (0, _extendsDefault.default)({
-                        fontSize: "small"
-                    }, closeIconProps))
-                }))
-            }) : null
-        ]
-    }));
-});
-Alert.propTypes /* remove-proptypes */  = {
-    // ┌────────────────────────────── Warning ──────────────────────────────┐
-    // │ These PropTypes are generated from the TypeScript type definitions. │
-    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
-    // └─────────────────────────────────────────────────────────────────────┘
-    /**
-   * The action to display. It renders after the message, at the end of the alert.
-   */ action: (0, _propTypesDefault.default).node,
-    /**
-   * The content of the component.
-   */ children: (0, _propTypesDefault.default).node,
-    /**
-   * Override or extend the styles applied to the component.
-   */ classes: (0, _propTypesDefault.default).object,
-    /**
-   * @ignore
-   */ className: (0, _propTypesDefault.default).string,
-    /**
-   * Override the default label for the *close popup* icon button.
-   *
-   * For localization purposes, you can use the provided [translations](/material-ui/guides/localization/).
-   * @default 'Close'
-   */ closeText: (0, _propTypesDefault.default).string,
-    /**
-   * The color of the component. Unless provided, the value is taken from the `severity` prop.
-   * It supports both default and custom theme colors, which can be added as shown in the
-   * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
-   */ color: (0, _propTypesDefault.default /* @typescript-to-proptypes-ignore */ ).oneOfType([
-        (0, _propTypesDefault.default).oneOf([
-            "error",
-            "info",
-            "success",
-            "warning"
-        ]),
-        (0, _propTypesDefault.default).string
-    ]),
-    /**
-   * The components used for each slot inside.
-   *
-   * @deprecated use the `slots` prop instead. This prop will be removed in v7. [How to migrate](/material-ui/migration/migrating-from-deprecated-apis/).
-   *
-   * @default {}
-   */ components: (0, _propTypesDefault.default).shape({
-        CloseButton: (0, _propTypesDefault.default).elementType,
-        CloseIcon: (0, _propTypesDefault.default).elementType
-    }),
-    /**
-   * The extra props for the slot components.
-   * You can override the existing props or add new ones.
-   *
-   * @deprecated use the `slotProps` prop instead. This prop will be removed in v7. [How to migrate](/material-ui/migration/migrating-from-deprecated-apis/).
-   *
-   * @default {}
-   */ componentsProps: (0, _propTypesDefault.default).shape({
-        closeButton: (0, _propTypesDefault.default).object,
-        closeIcon: (0, _propTypesDefault.default).object
-    }),
-    /**
-   * Override the icon displayed before the children.
-   * Unless provided, the icon is mapped to the value of the `severity` prop.
-   * Set to `false` to remove the `icon`.
-   */ icon: (0, _propTypesDefault.default).node,
-    /**
-   * The component maps the `severity` prop to a range of different icons,
-   * for instance success to `<SuccessOutlined>`.
-   * If you wish to change this mapping, you can provide your own.
-   * Alternatively, you can use the `icon` prop to override the icon displayed.
-   */ iconMapping: (0, _propTypesDefault.default).shape({
-        error: (0, _propTypesDefault.default).node,
-        info: (0, _propTypesDefault.default).node,
-        success: (0, _propTypesDefault.default).node,
-        warning: (0, _propTypesDefault.default).node
-    }),
-    /**
-   * Callback fired when the component requests to be closed.
-   * When provided and no `action` prop is set, a close icon button is displayed that triggers the callback when clicked.
-   * @param {React.SyntheticEvent} event The event source of the callback.
-   */ onClose: (0, _propTypesDefault.default).func,
-    /**
-   * The ARIA role attribute of the element.
-   * @default 'alert'
-   */ role: (0, _propTypesDefault.default).string,
-    /**
-   * The severity of the alert. This defines the color and icon used.
-   * @default 'success'
-   */ severity: (0, _propTypesDefault.default /* @typescript-to-proptypes-ignore */ ).oneOfType([
-        (0, _propTypesDefault.default).oneOf([
-            "error",
-            "info",
-            "success",
-            "warning"
-        ]),
-        (0, _propTypesDefault.default).string
-    ]),
-    /**
-   * The props used for each slot inside.
-   * @default {}
-   */ slotProps: (0, _propTypesDefault.default).shape({
-        closeButton: (0, _propTypesDefault.default).oneOfType([
-            (0, _propTypesDefault.default).func,
-            (0, _propTypesDefault.default).object
-        ]),
-        closeIcon: (0, _propTypesDefault.default).oneOfType([
-            (0, _propTypesDefault.default).func,
-            (0, _propTypesDefault.default).object
-        ])
-    }),
-    /**
-   * The components used for each slot inside.
-   * @default {}
-   */ slots: (0, _propTypesDefault.default).shape({
-        closeButton: (0, _propTypesDefault.default).elementType,
-        closeIcon: (0, _propTypesDefault.default).elementType
-    }),
-    /**
-   * The system prop that allows defining system overrides as well as additional CSS styles.
-   */ sx: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
-            (0, _propTypesDefault.default).func,
-            (0, _propTypesDefault.default).object,
-            (0, _propTypesDefault.default).bool
-        ])),
-        (0, _propTypesDefault.default).func,
-        (0, _propTypesDefault.default).object
-    ]),
-    /**
-   * The variant to use.
-   * @default 'standard'
-   */ variant: (0, _propTypesDefault.default /* @typescript-to-proptypes-ignore */ ).oneOfType([
-        (0, _propTypesDefault.default).oneOf([
-            "filled",
-            "outlined",
-            "standard"
-        ]),
-        (0, _propTypesDefault.default).string
-    ])
-};
-exports.default = Alert;
-
-},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"G7PIs","@mui/utils/composeClasses":"4kKno","@mui/system/colorManipulator":"bO1j5","../zero-styled":"e4lsd","../utils/useSlot":"3wNlf","../utils/capitalize":"lwNtZ","../Paper":"6IiTP","./alertClasses":"4g1D4","../IconButton":"38BrD","../internal/svg-icons/SuccessOutlined":"6SDrv","../internal/svg-icons/ReportProblemOutlined":"fMsc8","../internal/svg-icons/ErrorOutline":"8SX77","../internal/svg-icons/InfoOutlined":"6YC70","../internal/svg-icons/Close":"gEje4","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4g1D4":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "getAlertUtilityClass", ()=>getAlertUtilityClass);
-var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
-var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
-var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
-var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
-function getAlertUtilityClass(slot) {
-    return (0, _generateUtilityClassDefault.default)("MuiAlert", slot);
-}
-const alertClasses = (0, _generateUtilityClassesDefault.default)("MuiAlert", [
-    "root",
-    "action",
-    "icon",
-    "message",
-    "filled",
-    "colorSuccess",
-    "colorInfo",
-    "colorWarning",
-    "colorError",
-    "filledSuccess",
-    "filledInfo",
-    "filledWarning",
-    "filledError",
-    "outlined",
-    "outlinedSuccess",
-    "outlinedInfo",
-    "outlinedWarning",
-    "outlinedError",
-    "standard",
-    "standardSuccess",
-    "standardInfo",
-    "standardWarning",
-    "standardError"
-]);
-exports.default = alertClasses;
-
-},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6SDrv":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _react = require("react");
-var _createSvgIcon = require("../../utils/createSvgIcon");
-var _createSvgIconDefault = parcelHelpers.interopDefault(_createSvgIcon);
-/**
- * @ignore - internal component.
- */ var _jsxRuntime = require("react/jsx-runtime");
-"use client";
-exports.default = (0, _createSvgIconDefault.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("path", {
-    d: "M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.76,4 13.5,4.11 14.2, 4.31L15.77,2.74C14.61,2.26 13.34,2 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0, 0 22,12M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z"
-}), "SuccessOutlined");
-
-},{"react":"21dqq","../../utils/createSvgIcon":"f9XLK","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fMsc8":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _react = require("react");
-var _createSvgIcon = require("../../utils/createSvgIcon");
-var _createSvgIconDefault = parcelHelpers.interopDefault(_createSvgIcon);
-/**
- * @ignore - internal component.
- */ var _jsxRuntime = require("react/jsx-runtime");
-"use client";
-exports.default = (0, _createSvgIconDefault.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("path", {
-    d: "M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z"
-}), "ReportProblemOutlined");
-
-},{"react":"21dqq","../../utils/createSvgIcon":"f9XLK","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8SX77":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _react = require("react");
-var _createSvgIcon = require("../../utils/createSvgIcon");
-var _createSvgIconDefault = parcelHelpers.interopDefault(_createSvgIcon);
-/**
- * @ignore - internal component.
- */ var _jsxRuntime = require("react/jsx-runtime");
-"use client";
-exports.default = (0, _createSvgIconDefault.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("path", {
-    d: "M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-}), "ErrorOutline");
-
-},{"react":"21dqq","../../utils/createSvgIcon":"f9XLK","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6YC70":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _react = require("react");
-var _createSvgIcon = require("../../utils/createSvgIcon");
-var _createSvgIconDefault = parcelHelpers.interopDefault(_createSvgIcon);
-/**
- * @ignore - internal component.
- */ var _jsxRuntime = require("react/jsx-runtime");
-"use client";
-exports.default = (0, _createSvgIconDefault.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("path", {
-    d: "M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20, 12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10, 10 0 0,0 12,2M11,17H13V11H11V17Z"
-}), "InfoOutlined");
-
-},{"react":"21dqq","../../utils/createSvgIcon":"f9XLK","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"58aWq":[function(require,module,exports) {
+},{"react":"21dqq","@mui/material/styles":"1lzai","@mui/material/Accordion":"fQZka","@mui/material/AccordionSummary":"0u6LC","@mui/material/AccordionDetails":"8mhf8","@mui/material/Stack":"cuThX","@mui/material/Alert":"bJH0A","@mui/icons-material/ExpandMore":"7hPin","./PluginHook":"btJE7","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"58aWq":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _redux = require("redux");
@@ -21740,323 +23845,7 @@ var _default = exports.default = (0, _createSvgIcon.default)(/*#__PURE__*/ (0, _
     d: "M4.01 2 4 22h16V8l-6-6zM13 9V3.5L18.5 9z"
 }), "InsertDriveFileSharp");
 
-},{"5956e3ef9869ac":"7XM86","1e87a4310c838134":"lVV9C","7321462efa042e5a":"6AEwr"}],"jNAPI":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "common", ()=>(0, _commonDefault.default));
-parcelHelpers.export(exports, "red", ()=>(0, _redDefault.default));
-parcelHelpers.export(exports, "pink", ()=>(0, _pinkDefault.default));
-parcelHelpers.export(exports, "purple", ()=>(0, _purpleDefault.default));
-parcelHelpers.export(exports, "deepPurple", ()=>(0, _deepPurpleDefault.default));
-parcelHelpers.export(exports, "indigo", ()=>(0, _indigoDefault.default));
-parcelHelpers.export(exports, "blue", ()=>(0, _blueDefault.default));
-parcelHelpers.export(exports, "lightBlue", ()=>(0, _lightBlueDefault.default));
-parcelHelpers.export(exports, "cyan", ()=>(0, _cyanDefault.default));
-parcelHelpers.export(exports, "teal", ()=>(0, _tealDefault.default));
-parcelHelpers.export(exports, "green", ()=>(0, _greenDefault.default));
-parcelHelpers.export(exports, "lightGreen", ()=>(0, _lightGreenDefault.default));
-parcelHelpers.export(exports, "lime", ()=>(0, _limeDefault.default));
-parcelHelpers.export(exports, "yellow", ()=>(0, _yellowDefault.default));
-parcelHelpers.export(exports, "amber", ()=>(0, _amberDefault.default));
-parcelHelpers.export(exports, "orange", ()=>(0, _orangeDefault.default));
-parcelHelpers.export(exports, "deepOrange", ()=>(0, _deepOrangeDefault.default));
-parcelHelpers.export(exports, "brown", ()=>(0, _brownDefault.default));
-parcelHelpers.export(exports, "grey", ()=>(0, _greyDefault.default));
-parcelHelpers.export(exports, "blueGrey", ()=>(0, _blueGreyDefault.default));
-var _common = require("./common");
-var _commonDefault = parcelHelpers.interopDefault(_common);
-var _red = require("./red");
-var _redDefault = parcelHelpers.interopDefault(_red);
-var _pink = require("./pink");
-var _pinkDefault = parcelHelpers.interopDefault(_pink);
-var _purple = require("./purple");
-var _purpleDefault = parcelHelpers.interopDefault(_purple);
-var _deepPurple = require("./deepPurple");
-var _deepPurpleDefault = parcelHelpers.interopDefault(_deepPurple);
-var _indigo = require("./indigo");
-var _indigoDefault = parcelHelpers.interopDefault(_indigo);
-var _blue = require("./blue");
-var _blueDefault = parcelHelpers.interopDefault(_blue);
-var _lightBlue = require("./lightBlue");
-var _lightBlueDefault = parcelHelpers.interopDefault(_lightBlue);
-var _cyan = require("./cyan");
-var _cyanDefault = parcelHelpers.interopDefault(_cyan);
-var _teal = require("./teal");
-var _tealDefault = parcelHelpers.interopDefault(_teal);
-var _green = require("./green");
-var _greenDefault = parcelHelpers.interopDefault(_green);
-var _lightGreen = require("./lightGreen");
-var _lightGreenDefault = parcelHelpers.interopDefault(_lightGreen);
-var _lime = require("./lime");
-var _limeDefault = parcelHelpers.interopDefault(_lime);
-var _yellow = require("./yellow");
-var _yellowDefault = parcelHelpers.interopDefault(_yellow);
-var _amber = require("./amber");
-var _amberDefault = parcelHelpers.interopDefault(_amber);
-var _orange = require("./orange");
-var _orangeDefault = parcelHelpers.interopDefault(_orange);
-var _deepOrange = require("./deepOrange");
-var _deepOrangeDefault = parcelHelpers.interopDefault(_deepOrange);
-var _brown = require("./brown");
-var _brownDefault = parcelHelpers.interopDefault(_brown);
-var _grey = require("./grey");
-var _greyDefault = parcelHelpers.interopDefault(_grey);
-var _blueGrey = require("./blueGrey");
-var _blueGreyDefault = parcelHelpers.interopDefault(_blueGrey);
-
-},{"./common":"bwTuH","./red":"6mRcQ","./pink":"ciHKg","./purple":"f3Uf0","./deepPurple":"40ub5","./indigo":"4CY7L","./blue":"3u97j","./lightBlue":"f81LW","./cyan":"akmv6","./teal":"6VKeR","./green":"kH9Ro","./lightGreen":"34oru","./lime":"kDHWK","./yellow":"53O4B","./amber":"7XS0h","./orange":"9tiLD","./deepOrange":"fa0cj","./brown":"lnYX6","./grey":"lwTx7","./blueGrey":"9GO8u","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ciHKg":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const pink = {
-    50: "#fce4ec",
-    100: "#f8bbd0",
-    200: "#f48fb1",
-    300: "#f06292",
-    400: "#ec407a",
-    500: "#e91e63",
-    600: "#d81b60",
-    700: "#c2185b",
-    800: "#ad1457",
-    900: "#880e4f",
-    A100: "#ff80ab",
-    A200: "#ff4081",
-    A400: "#f50057",
-    A700: "#c51162"
-};
-exports.default = pink;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"40ub5":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const deepPurple = {
-    50: "#ede7f6",
-    100: "#d1c4e9",
-    200: "#b39ddb",
-    300: "#9575cd",
-    400: "#7e57c2",
-    500: "#673ab7",
-    600: "#5e35b1",
-    700: "#512da8",
-    800: "#4527a0",
-    900: "#311b92",
-    A100: "#b388ff",
-    A200: "#7c4dff",
-    A400: "#651fff",
-    A700: "#6200ea"
-};
-exports.default = deepPurple;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4CY7L":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const indigo = {
-    50: "#e8eaf6",
-    100: "#c5cae9",
-    200: "#9fa8da",
-    300: "#7986cb",
-    400: "#5c6bc0",
-    500: "#3f51b5",
-    600: "#3949ab",
-    700: "#303f9f",
-    800: "#283593",
-    900: "#1a237e",
-    A100: "#8c9eff",
-    A200: "#536dfe",
-    A400: "#3d5afe",
-    A700: "#304ffe"
-};
-exports.default = indigo;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"akmv6":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const cyan = {
-    50: "#e0f7fa",
-    100: "#b2ebf2",
-    200: "#80deea",
-    300: "#4dd0e1",
-    400: "#26c6da",
-    500: "#00bcd4",
-    600: "#00acc1",
-    700: "#0097a7",
-    800: "#00838f",
-    900: "#006064",
-    A100: "#84ffff",
-    A200: "#18ffff",
-    A400: "#00e5ff",
-    A700: "#00b8d4"
-};
-exports.default = cyan;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6VKeR":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const teal = {
-    50: "#e0f2f1",
-    100: "#b2dfdb",
-    200: "#80cbc4",
-    300: "#4db6ac",
-    400: "#26a69a",
-    500: "#009688",
-    600: "#00897b",
-    700: "#00796b",
-    800: "#00695c",
-    900: "#004d40",
-    A100: "#a7ffeb",
-    A200: "#64ffda",
-    A400: "#1de9b6",
-    A700: "#00bfa5"
-};
-exports.default = teal;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"34oru":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const lightGreen = {
-    50: "#f1f8e9",
-    100: "#dcedc8",
-    200: "#c5e1a5",
-    300: "#aed581",
-    400: "#9ccc65",
-    500: "#8bc34a",
-    600: "#7cb342",
-    700: "#689f38",
-    800: "#558b2f",
-    900: "#33691e",
-    A100: "#ccff90",
-    A200: "#b2ff59",
-    A400: "#76ff03",
-    A700: "#64dd17"
-};
-exports.default = lightGreen;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kDHWK":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const lime = {
-    50: "#f9fbe7",
-    100: "#f0f4c3",
-    200: "#e6ee9c",
-    300: "#dce775",
-    400: "#d4e157",
-    500: "#cddc39",
-    600: "#c0ca33",
-    700: "#afb42b",
-    800: "#9e9d24",
-    900: "#827717",
-    A100: "#f4ff81",
-    A200: "#eeff41",
-    A400: "#c6ff00",
-    A700: "#aeea00"
-};
-exports.default = lime;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"53O4B":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const yellow = {
-    50: "#fffde7",
-    100: "#fff9c4",
-    200: "#fff59d",
-    300: "#fff176",
-    400: "#ffee58",
-    500: "#ffeb3b",
-    600: "#fdd835",
-    700: "#fbc02d",
-    800: "#f9a825",
-    900: "#f57f17",
-    A100: "#ffff8d",
-    A200: "#ffff00",
-    A400: "#ffea00",
-    A700: "#ffd600"
-};
-exports.default = yellow;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7XS0h":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const amber = {
-    50: "#fff8e1",
-    100: "#ffecb3",
-    200: "#ffe082",
-    300: "#ffd54f",
-    400: "#ffca28",
-    500: "#ffc107",
-    600: "#ffb300",
-    700: "#ffa000",
-    800: "#ff8f00",
-    900: "#ff6f00",
-    A100: "#ffe57f",
-    A200: "#ffd740",
-    A400: "#ffc400",
-    A700: "#ffab00"
-};
-exports.default = amber;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fa0cj":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const deepOrange = {
-    50: "#fbe9e7",
-    100: "#ffccbc",
-    200: "#ffab91",
-    300: "#ff8a65",
-    400: "#ff7043",
-    500: "#ff5722",
-    600: "#f4511e",
-    700: "#e64a19",
-    800: "#d84315",
-    900: "#bf360c",
-    A100: "#ff9e80",
-    A200: "#ff6e40",
-    A400: "#ff3d00",
-    A700: "#dd2c00"
-};
-exports.default = deepOrange;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lnYX6":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const brown = {
-    50: "#efebe9",
-    100: "#d7ccc8",
-    200: "#bcaaa4",
-    300: "#a1887f",
-    400: "#8d6e63",
-    500: "#795548",
-    600: "#6d4c41",
-    700: "#5d4037",
-    800: "#4e342e",
-    900: "#3e2723",
-    A100: "#d7ccc8",
-    A200: "#bcaaa4",
-    A400: "#8d6e63",
-    A700: "#5d4037"
-};
-exports.default = brown;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9GO8u":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const blueGrey = {
-    50: "#eceff1",
-    100: "#cfd8dc",
-    200: "#b0bec5",
-    300: "#90a4ae",
-    400: "#78909c",
-    500: "#607d8b",
-    600: "#546e7a",
-    700: "#455a64",
-    800: "#37474f",
-    900: "#263238",
-    A100: "#cfd8dc",
-    A200: "#b0bec5",
-    A400: "#78909c",
-    A700: "#455a64"
-};
-exports.default = blueGrey;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fNyPc":[function(require,module,exports) {
+},{"5956e3ef9869ac":"7XM86","1e87a4310c838134":"lVV9C","7321462efa042e5a":"6AEwr"}],"fNyPc":[function(require,module,exports) {
 /** Extract metadata from an image File */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "readImageMetadata", ()=>readImageMetadata);
