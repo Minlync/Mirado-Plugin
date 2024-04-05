@@ -20990,20 +20990,6 @@ function _toPrimitive(t, r) {
     return CanvasAnnotationDisplay;
 }();
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aMmjg":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "OSDReferences", ()=>OSDReferences);
-var OSDReferences = {
-    /** */ get: function get(windowId) {
-        return this.refs[windowId];
-    },
-    refs: {},
-    /** */ set: function set(windowId, ref) {
-        this.refs[windowId] = ref;
-    }
-};
-
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["9Ij5p","1xC6H"], null, "parcelRequire5eb7")
 
 //# sourceMappingURL=OpenSeadragonViewer.570eae9d.js.map

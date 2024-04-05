@@ -25,7 +25,6 @@ const Selector = () => {
         <InputLabel id="demo-simple-select-error-label">Country</InputLabel>
         <Select
           labelId="demo-simple-select-error-label"
-          id="demo-simple-select-error"
           value={country}
           label="Country"
           onChange={handleCountryChange}
@@ -39,10 +38,11 @@ const Selector = () => {
           <MenuItem value="MX">Mexico</MenuItem>
           <MenuItem value="CN">China</MenuItem>
         </Select>
-        <FormHelperText>Required</FormHelperText>
+        {/* text under the box */}
+        <FormHelperText></FormHelperText> 
       </FormControl>
-         
-      <FormControl required sx={{ m: 1, minWidth: 150 }} error >
+      {/* <FormControl required sx={{ m: 1, minWidth: 150 }} > */}
+      <FormControl sx={{ m: 1, minWidth: 150 }}>
         <InputLabel id="demo-simple-select-required-label">Language</InputLabel>
         <Select
           labelId="demo-simple-select-required-label"
@@ -63,7 +63,7 @@ const Selector = () => {
           <MenuItem value="KO">Korean</MenuItem>
 
         </Select>
-        <FormHelperText>Required</FormHelperText>
+        <FormHelperText></FormHelperText>
       </FormControl>
     </div>
   );

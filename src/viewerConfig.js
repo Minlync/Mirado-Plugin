@@ -1,6 +1,6 @@
 const defaultConfig = {
   id: null,
-  selectedTheme: 'light',
+  selectedTheme: 'dark',
   // For more info about adding and configuring languages in Mirador, see:
   // https://github.com/ProjectMirador/mirador/wiki/M3-Internationalization-(i18n)
   language: 'en', // Set default language display here.

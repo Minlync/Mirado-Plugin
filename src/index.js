@@ -1,6 +1,8 @@
 import Mirador from 'mirador';
 import CustomSidePanel from './components/sidebar';
+import miradorDownloadPlugin from './plugins/mirador-dl-plugin';
 import { defaultConfig } from './viewerConfig';
+
 
 const uuid = 'mirador-app';
 
@@ -34,4 +36,4 @@ const config = {
   },
 }
 
-Mirador.viewer(config, [ CustomSidePanel ]);
+Mirador.viewer(config, [ CustomSidePanel, miradorDownloadPlugin ]);
