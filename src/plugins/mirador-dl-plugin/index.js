@@ -1,6 +1,3 @@
-
-
-
 import miradorDownloadPlugin from './miradorDownloadPlugin';
 import MiradorDownloadDialogPlugin from './MiradorDownloadDialog';
 

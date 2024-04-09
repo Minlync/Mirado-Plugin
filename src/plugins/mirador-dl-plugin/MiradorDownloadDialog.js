@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@mui/styles'; // updated import for withStyles
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions'; // updated
+import DialogTitle from '@mui/material/DialogTitle'; // updated 
+import Typography from '@mui/material/Typography'; // updated 
 import { getCanvasLabel, getVisibleCanvases, selectInfoResponse } from 'mirador/dist/es/src/state/selectors/canvases';
 import { getWindowViewType } from 'mirador/dist/es/src/state/selectors/windows';
 import { getManifestoInstance } from 'mirador/dist/es/src/state/selectors/manifests';

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link'; // updated import
+import List from '@mui/material/List'; // updated import
+import ListItem from '@mui/material/ListItem'; // updated import
 import uniqBy from 'lodash/uniqBy';
 import { OSDReferences } from 'mirador/dist/es/src/plugins/OSDReferences';
 import RenderingDownloadLink from './RenderingDownloadLink';
+
 
 
 /**

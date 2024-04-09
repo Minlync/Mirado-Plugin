@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Link from '@material-ui/core/Link';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import Link from '@mui/material/Link'; // updated
+import ListItem from '@mui/material/ListItem'; // updated
+import ListItemText from '@mui/material/ListItemText'; // update
+
 
 /**
  * RenderingDownloadLink ~

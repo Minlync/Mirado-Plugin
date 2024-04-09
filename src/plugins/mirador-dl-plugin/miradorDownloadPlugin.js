@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import MenuItem from '@material-ui/core/MenuItem';
-import DownloadIcon from '@material-ui/icons/VerticalAlignBottomSharp';
+import ListItemIcon from '@mui/material/ListItemIcon'; // updated from @material-ui/core/ListItemIcon
+import ListItemText from '@mui/material/ListItemText'; // same
+import MenuItem from '@mui/material/MenuItem'; // same
+import DownloadIcon from '@mui/icons-material/VerticalAlignBottomSharp'; // @material-ui/icons/VerticalAlignBottomSharp';
+
 
 const downloadDialogReducer = (state = {}, action) => {
   if (action.type === 'OPEN_WINDOW_DIALOG') {

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
+// import List from '@material-ui/core/List';
+import List from '@mui/material/List'; //new
+import Typography from '@mui/material/Typography';//new
 import RenderingDownloadLink from './RenderingDownloadLink';
 
 /**
