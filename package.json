@@ -35,5 +35,14 @@
     "lint-fix": "eslint src/ --ext .js --ext .jsx --fix"
   },
   "author": "Evelyn Chen <mc9435@nyu.edu>",
-  "license": "ISC"
+  "license": "ISC",
+
+  "targets": {
+    "default":{
+      "distDir" : "./integration/mirador"
+      
+    }
+
+  }
 }
+
